@@ -1,0 +1,223 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import SiteNavigation from './SiteNavigation.astro';
+
+interface Props {
+  lang: 'en' | 'vi';
+}
+
+interface ProcessStep {
+  number: string;
+  title: string;
+  text: string;
+  points?: string[];
+}
+
+const { lang } = Astro.props;
+const isVietnamese = lang === 'vi';
+
+const copy = isVietnamese
+  ? {
+      pageTitle: 'Cách Archway hoạt động | Archway Business Brokers',
+      description: 'Tìm hiểu quy trình Archway hỗ trợ chủ doanh nghiệp chuẩn bị, tiếp cận người mua và điều phối giao dịch chuyển giao doanh nghiệp.',
+      heading: 'Cách Archway hoạt động',
+      intro: 'Đây là quy trình tóm tắt.',
+      feeNote: 'Quý khách trả 0 đồng cho đến khi chúng tôi bán được doanh nghiệp:',
+      processHeading: 'Quy trình chuyển giao doanh nghiệp',
+      ctaHeading: 'Sẵn sàng nhận định giá?',
+      ctaText: 'Quý khách trả 0 đồng cho đến khi chúng tôi bán được doanh nghiệp.',
+      ctaLink: 'Trao đổi về bán doanh nghiệp',
+      footerAddress: 'Tầng 17, Tòa nhà Vincom Center, 72 đường Lê Thánh Tôn, Quận 1, Thành phố Hồ Chí Minh, Việt Nam',
+      footerPhone: 'Điện thoại: 0346-346-550',
+      steps: [
+        {
+          number: '01',
+          title: 'Định giá (trong vòng 12 giờ)',
+          text: 'Archway tìm hiểu về doanh nghiệp của Quý khách, rà soát thông tin tài chính và cho Quý khách biết doanh nghiệp đáng giá bao nhiêu cùng loại đề nghị Quý khách có thể kỳ vọng trên thị trường. Tài chính và thông tin của Quý khách được bảo mật 100%, chúng tôi ký thỏa thuận bảo mật (NDA) để cam kết điều đó.',
+        },
+        {
+          number: '02',
+          title: 'Thỏa thuận môi giới',
+          text: 'Khi Archway chấp nhận doanh nghiệp của Quý khách, chúng tôi gửi thỏa thuận môi giới nêu rõ Archway chỉ được trả phí khi Quý khách nhận được tiền, cùng mức giá bán đã thống nhất khi đưa doanh nghiệp ra thị trường. Chúng tôi hoan nghênh luật sư của Quý khách rà soát thỏa thuận; đây là bản thỏa thuận được xây dựng có lợi cho bên bán. Hình thức hợp tác thường là môi giới độc quyền trong thời gian hai bên thống nhất.',
+        },
+        {
+          number: '03',
+          title: 'Hồ sơ giới thiệu (5-14 ngày)',
+          text: 'Đội truyền thông của Archway soạn bộ hồ sơ chào bán dành cho người mua. Chúng tôi dành nhiều năm hoàn thiện những nội dung cần có trong hồ sơ chào bán và chăm chút thiết kế thuộc nhóm tốt nhất trong ngành để hồ sơ của Quý khách nổi bật.',
+        },
+        {
+          number: '04',
+          title: 'Phương án tài chính',
+          text: 'Song song với bộ hồ sơ giới thiệu, Archway làm rõ năng lực tài chính của người mua trước khi chia sẻ thông tin sâu hơn về doanh nghiệp. Khi phù hợp, Archway kết nối người mua với ngân hàng và đối tác tài chính để chuẩn bị phương án vốn, giúp mở rộng nhóm người có thể thực hiện giao dịch.',
+        },
+        {
+          number: '05',
+          title: 'Đưa cơ hội ra thị trường (1-3 tháng)',
+          text: 'Archway đưa cơ hội ra thị trường với ba hướng tiếp cận khác nhau để tìm người mua cho doanh nghiệp của Quý khách.',
+          points: [
+            'Gửi cơ hội vào mạng lưới người mua hiện có của Archway.',
+            'Phát cơ hội qua các kênh truyền thông của Archway: mạng lưới giới thiệu, cộng đồng doanh nhân, trang web, tìm kiếm trực tuyến, LinkedIn, Facebook, Zalo và tiếp cận trực tiếp.',
+            'Tìm người mua chiến lược hoặc doanh nghiệp liền kề: Archway lập danh sách mục tiêu và liên hệ trực tiếp.',
+          ],
+        },
+        {
+          number: '06',
+          title: 'Chấp nhận đề nghị',
+          text: 'Các bên quan tâm gửi đề nghị và Quý khách quyết định người mua phù hợp nhất dựa trên giá, điều khoản và lý lịch của họ. Người mua được chọn bước vào giai đoạn thẩm tra độc quyền để xác nhận những nội dung Archway đã giới thiệu về doanh nghiệp.',
+        },
+        {
+          number: '07',
+          title: 'Thẩm tra (1-3 tháng)',
+          text: 'Người mua được cấp giai đoạn độc quyền để rà soát tờ khai thuế, sao kê ngân hàng và hoạt động vận hành cùng Quý khách, xác nhận doanh nghiệp đúng như đã tuyên bố.',
+        },
+        {
+          number: '08',
+          title: 'Soạn thảo hợp đồng',
+          text: 'Người mua chịu trách nhiệm soạn thảo hợp đồng chuyển nhượng vốn góp hoặc tài sản doanh nghiệp. Bản dự thảo được gửi đến và luật sư của Quý khách rà soát để đảm bảo quyền lợi của Quý khách được bảo vệ. Archway kết nối luật sư cho Quý khách khi cần.',
+        },
+        {
+          number: '09',
+          title: 'Đặt cọc và ký kết',
+          text: 'Khi kết quả thẩm tra đạt yêu cầu và hai bên thống nhất điều khoản cuối cùng, người mua đặt cọc để chốt giao dịch; mức cọc và điều kiện hoàn trả do hai bên thỏa thuận. Hai bên ký hợp đồng và hoàn tất thanh toán qua ngân hàng; một phần tiền có thể được giữ lại đến khi hoàn tất bàn giao. Khi phù hợp, ngân hàng hoặc bên thứ ba có thể đứng ra giữ tiền theo thỏa thuận. Archway không trực tiếp giữ hoặc giải ngân tiền giao dịch.',
+        },
+        {
+          number: '10',
+          title: 'Đào tạo và chuyển giao (1-3 tháng)',
+          text: 'Sau khi ký kết, hai bên hoàn tất thủ tục pháp lý theo quy định: đăng ký thay đổi thành viên hoặc cổ đông, điều chỉnh Điều lệ, bàn giao con dấu, tài khoản ngân hàng và hồ sơ doanh nghiệp. Tiếp đó là giai đoạn chuyển tiếp, nơi Quý khách giúp chủ sở hữu mới hiểu về doanh nghiệp, giới thiệu đội ngũ và đối tác. Thời gian và mức độ tham gia thường được đàm phán và thống nhất trước khi giao dịch kết thúc.',
+        },
+      ] as ProcessStep[],
+    }
+  : {
+      pageTitle: 'How Archway Works | Archway Business Brokers',
+      description: 'Learn how Archway helps business owners prepare, reach buyers and coordinate the transfer of an operating business.',
+      heading: 'How Archway works',
+      intro: 'This is a summary of the process.',
+      feeNote: 'You pay nothing until we sell your business:',
+      processHeading: 'Business transfer process',
+      ctaHeading: 'Ready for a valuation?',
+      ctaText: 'You pay nothing until we sell your business.',
+      ctaLink: 'Discuss selling your business',
+      footerAddress: '17th Floor, Vincom Center Building, 72 Le Thanh Ton Street, District 1, Ho Chi Minh City, Vietnam',
+      footerPhone: 'Phone: (+84) 346-346-550',
+      steps: [
+        {
+          number: '01',
+          title: 'Valuation (within 12 hours)',
+          text: 'Archway learns about your business, reviews its financial information and tells you what the business may be worth and what type of offer you may expect in the market. Your financial and business information stays 100% confidential, and we sign a non-disclosure agreement (NDA) to support that commitment.',
+        },
+        {
+          number: '02',
+          title: 'Brokerage agreement',
+          text: 'When Archway accepts your business, we send a brokerage agreement stating that Archway is paid only when you receive the sale proceeds, together with the agreed sale price when the business goes to market. We welcome your lawyer reviewing the agreement, which is structured to protect the seller. The usual arrangement is an exclusive brokerage period agreed by both parties.',
+        },
+        {
+          number: '03',
+          title: 'Offering memorandum (5-14 days)',
+          text: 'Archway’s communications team prepares an offering memorandum for prospective buyers. We have spent years refining the content expected in a business sale memorandum and developing a high-quality presentation so your business stands out.',
+        },
+        {
+          number: '04',
+          title: 'Financing plan',
+          text: 'Alongside the offering memorandum, Archway clarifies the buyer’s financial capacity before sharing deeper business information. Where suitable, Archway connects the buyer with banks and financing partners to prepare a capital plan and expand the group of people able to complete the transaction.',
+        },
+        {
+          number: '05',
+          title: 'Taking the opportunity to market (1-3 months)',
+          text: 'Archway brings the opportunity to market through three different approaches to find a buyer for your business.',
+          points: [
+            'Share the opportunity with Archway’s existing buyer network.',
+            'Promote the opportunity through Archway’s channels: referral networks, entrepreneur communities, the website, online search, LinkedIn, Facebook, Zalo and direct outreach.',
+            'Find strategic or adjacent buyers by building a target list and contacting them directly.',
+          ],
+        },
+        {
+          number: '06',
+          title: 'Accepting an offer',
+          text: 'Interested parties submit offers, and you decide which buyer is the best fit based on price, terms and background. The selected buyer enters an exclusive diligence period to confirm the information Archway has presented about the business.',
+        },
+        {
+          number: '07',
+          title: 'Due diligence (1-3 months)',
+          text: 'The buyer receives an exclusive period to review tax filings, bank statements and operations with you, confirming that the business is as represented.',
+        },
+        {
+          number: '08',
+          title: 'Drafting the agreement',
+          text: 'The buyer is responsible for drafting the agreement for the transfer of equity or business assets. The draft is shared with you, and your lawyer reviews it to protect your interests. Archway can connect you with a lawyer when needed.',
+        },
+        {
+          number: '09',
+          title: 'Deposit and signing',
+          text: 'When diligence is satisfactory and both parties agree on the final terms, the buyer places a deposit to confirm the transaction; the deposit amount and refund conditions are agreed by both parties. The parties sign the agreement and complete payment through a bank, with some funds potentially held back until handover is complete. Where suitable, a bank or third party may hold the funds under the agreed terms. Archway does not directly hold or disburse transaction funds.',
+        },
+        {
+          number: '10',
+          title: 'Training and handover (1-3 months)',
+          text: 'After signing, both parties complete the legal procedures required by law, including registering changes to members or shareholders, updating the charter and handing over the company seal, bank accounts and business records. The transition period follows, during which you help the new owner understand the business and introduce the team and partners. The timing and level of involvement are usually negotiated and agreed before the transaction closes.',
+        },
+      ] as ProcessStep[],
+    };
+
+---
+
+<SiteLayout lang={lang} title={copy.pageTitle} description={copy.description}>
+  <div class="min-h-dvh bg-[var(--color-muted)] text-[var(--color-ink)]">
+    <div class="relative min-h-28 bg-[var(--color-paper)]">
+      <SiteNavigation lang={lang} showBrand theme="light" />
+    </div>
+
+    <main>
+      <section class="bg-[var(--color-muted)] px-6 py-16 text-center sm:px-10 sm:py-24 lg:py-28">
+        <div class="mx-auto max-w-3xl">
+          <h1 class="text-[clamp(2.25rem,4vw,2.75rem)] leading-tight">{copy.heading}</h1>
+          <p class="mx-auto mt-5 max-w-2xl text-base leading-7 text-[var(--color-ink)]">{copy.intro}</p>
+          <p class="mx-auto mt-1 max-w-2xl text-base leading-7 text-[var(--color-ink)]">{copy.feeNote}</p>
+        </div>
+      </section>
+
+      <section class="bg-[var(--color-paper)] px-6 py-16 sm:px-10 sm:py-24" aria-labelledby="process-title">
+        <div class="mx-auto w-full max-w-6xl">
+          <h2 id="process-title" class="sr-only">{copy.processHeading}</h2>
+          <div class="relative mx-auto max-w-5xl">
+            <div class="pointer-events-none absolute bottom-5 left-5 top-5 w-px bg-[var(--color-line-dark)] lg:bottom-0 lg:left-1/2 lg:top-0 lg:-translate-x-1/2" aria-hidden="true"></div>
+            <ol class="relative grid gap-8 lg:gap-0">
+              {copy.steps.map((step, index) => (
+                <li class="relative grid grid-cols-[2.5rem_minmax(0,1fr)] gap-4 lg:min-h-[15rem] lg:grid-cols-[minmax(0,1fr)_5rem_minmax(0,1fr)] lg:items-center lg:gap-0">
+                  <div class="z-10 col-start-1 row-start-1 flex h-10 w-10 items-center justify-center self-start justify-self-center bg-[var(--color-accent)] text-sm font-medium text-[var(--color-paper)] sm:h-12 sm:w-12 lg:col-start-2 lg:h-12 lg:w-12 lg:self-center" aria-hidden="true">
+                    {step.number}
+                  </div>
+                  <article class={`col-start-2 row-start-1 min-w-0 max-w-full bg-[var(--color-ink)] p-5 text-[var(--color-paper)] sm:p-7 lg:max-w-[34rem] ${index % 2 === 0 ? 'lg:col-start-1 lg:justify-self-end lg:mr-8' : 'lg:col-start-3 lg:justify-self-start lg:ml-8'}`}>
+                    <p class="text-sm font-medium uppercase tracking-[0.12em] text-[var(--color-paper)]">{isVietnamese ? 'Bước' : 'Step'} {step.number}</p>
+                    <h3 class="mt-3 text-xl font-medium leading-tight text-[var(--color-paper)]">{step.title}</h3>
+                    <p class="mt-4 text-base leading-7 text-[var(--color-paper)]">{step.text}</p>
+                    {step.points && (
+                      <ul class="mt-4 grid gap-2 text-base leading-7 text-[var(--color-paper)]">
+                        {step.points.map((point) => <li class="pl-4 before:mr-2 before:text-[var(--color-paper)] before:content-['•']">{point}</li>)}
+                      </ul>
+                    )}
+                  </article>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="border-y border-[var(--color-line-dark)] bg-[var(--color-muted)] px-6 sm:px-10" aria-labelledby="cta-title">
+        <div class="mx-auto flex max-w-6xl flex-col gap-8 py-16 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:py-24">
+          <div>
+            <h2 id="cta-title" class="text-[clamp(2rem,4vw,3rem)] leading-tight">{copy.ctaHeading}</h2>
+            <p class="mt-4 max-w-xl text-base leading-7 text-[var(--color-ink)]">{copy.ctaText}</p>
+          </div>
+          <a class="inline-flex min-h-11 w-full shrink-0 items-center justify-center bg-[var(--color-ink)] px-6 py-3 text-base font-medium text-[var(--color-paper)] transition-colors hover:bg-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-ink)] sm:w-auto" href={isVietnamese ? '/sell-your-business/' : '/en/sell-your-business/'}>{copy.ctaLink}</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-[var(--color-ink)] px-6 py-8 text-center text-sm text-[var(--color-paper)] sm:px-10">
+      <p class="m-0">Archway Business Brokers, {copy.footerAddress}</p>
+      <a class="mt-2 inline-flex text-[var(--color-paper)] no-underline hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-paper)] focus-visible:outline-offset-4" href="tel:+84346346550">{copy.footerPhone}</a>
+      <a class="mt-2 block text-[var(--color-paper)] no-underline hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-paper)] focus-visible:outline-offset-4" href="mailto:brokers@archway.vn">brokers@archway.vn</a>
+    </footer>
+  </div>
+</SiteLayout>

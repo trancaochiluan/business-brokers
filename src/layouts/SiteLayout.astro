@@ -1,0 +1,143 @@
+---
+import designTokens from '../../design-tokens.json';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  lang?: 'en' | 'vi';
+  noIndex?: boolean;
+  includeNavigationScript?: boolean;
+}
+
+const {
+  title,
+  description = 'Archway Business Brokers hỗ trợ chủ doanh nghiệp bán hoặc chuyển nhượng các doanh nghiệp đang hoạt động tại Việt Nam có doanh thu từ 3 tỷ đồng mỗi năm.',
+  lang = 'vi',
+  noIndex = false,
+  includeNavigationScript = true,
+} = Astro.props;
+
+const colorVars = Object.entries(designTokens.colors as Record<string, string>)
+  .map(([name, value]) => `--color-${name}:${value}`)
+  .join(';');
+
+const siteUrl = Astro.site ?? new URL('https://archway.vn');
+const normalizePath = (pathname: string) => {
+  const path = pathname.replace(/index\.html$/, '');
+  if (!path || path === '/') return '/';
+  return path.endsWith('/') ? path : `${path}/`;
+};
+const currentPath = normalizePath(Astro.url.pathname);
+const vietnamesePath = lang === 'en' ? currentPath.replace(/^\/en(?=\/|$)/, '') || '/' : currentPath;
+const englishPath = lang === 'en' ? currentPath : `/en${currentPath === '/' ? '/' : currentPath}`;
+const canonicalUrl = new URL(currentPath, siteUrl).href;
+const vietnameseUrl = new URL(vietnamesePath, siteUrl).href;
+const englishUrl = new URL(englishPath, siteUrl).href;
+const imageUrl = new URL('/assets/hero-poster.jpg', siteUrl).href;
+const languageCode = lang === 'vi' ? 'vi-VN' : 'en-VN';
+const openGraphLocale = lang === 'vi' ? 'vi_VN' : 'en_VN';
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${siteUrl.href}#organization`,
+      name: 'Archway Business Brokers',
+      url: siteUrl.href,
+      email: 'brokers@archway.vn',
+      telephone: '+84 346 346 550',
+      areaServed: 'VN',
+      knowsAbout: [
+        'Business brokerage',
+        'Business sales and transfers',
+        'M&A advisory',
+        'Business valuation preparation',
+        'Bán doanh nghiệp',
+        'Chuyển nhượng doanh nghiệp',
+        'Môi giới mua bán doanh nghiệp',
+      ],
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: '+84 346 346 550',
+        contactType: 'business inquiries',
+        areaServed: 'VN',
+        availableLanguage: ['Vietnamese', 'English'],
+      },
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: '17th Floor, Vincom Center Building, 72 Le Thanh Ton Street, District 1',
+        addressLocality: 'Ho Chi Minh City',
+        addressCountry: 'VN',
+      },
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${siteUrl.href}#website`,
+      url: siteUrl.href,
+      name: 'Archway Business Brokers',
+      inLanguage: languageCode,
+      publisher: { '@id': `${siteUrl.href}#organization` },
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${canonicalUrl}#webpage`,
+      url: canonicalUrl,
+      name: title,
+      description,
+      inLanguage: languageCode,
+      isPartOf: { '@id': `${siteUrl.href}#website` },
+      about: { '@id': `${siteUrl.href}#organization` },
+    },
+  ],
+};
+---
+
+<!doctype html>
+<html lang={languageCode} style={colorVars} class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="author" content="Archway Business Brokers" />
+    <meta name="description" content={description} />
+    <meta name="robots" content={noIndex ? 'noindex, nofollow' : 'index, follow'} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Archway Business Brokers" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:locale" content={openGraphLocale} />
+    <meta property="og:locale:alternate" content={lang === 'vi' ? 'en_VN' : 'vi_VN'} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:alt" content="Archway Business Brokers" />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="720" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+    <meta name="twitter:image:alt" content="Archway Business Brokers" />
+    <meta name="theme-color" content={designTokens.colors.ink} />
+    {!noIndex && <link rel="canonical" href={canonicalUrl} />}
+    {!noIndex && <link rel="alternate" hreflang="vi-VN" href={vietnameseUrl} />}
+    {!noIndex && <link rel="alternate" hreflang="en-VN" href={englishUrl} />}
+    {!noIndex && <link rel="alternate" hreflang="x-default" href={vietnameseUrl} />}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png?v=2" />
+    <link rel="shortcut icon" href="/favicon.ico?v=2" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
+    {includeNavigationScript && <script is:inline src="/navigation.js" defer></script>}
+    <title>{title}</title>
+  </head>
+  <body class="min-w-[320px] bg-[var(--color-ink)] font-sans text-[var(--color-paper)]">
+    <slot />
+  </body>
+</html>

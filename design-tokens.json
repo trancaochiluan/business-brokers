@@ -1,0 +1,35 @@
+{
+  "colors": {
+    "ink": "#2a0b12",
+    "paper": "#ffffff",
+    "muted": "#f0dfe2",
+    "accent": "#c52233",
+    "accent-hover": "#9f1d2a",
+    "line": "rgba(255, 255, 255, 0.5)",
+    "line-dark": "rgba(42, 11, 18, 0.3)",
+    "field": "rgba(255, 255, 255, 0.1)",
+    "panel": "rgba(42, 11, 18, 0.94)",
+    "scrim": "rgba(0, 0, 0, 0.8)",
+    "favicon-red": "#c52233",
+    "favicon-mid": "#7f1624",
+    "favicon-burgundy": "#2a0b12",
+    "favicon-text": "#ffffff"
+  },
+  "contrastPairs": [
+    {
+      "foreground": "paper",
+      "background": "ink",
+      "usage": "primary text over the video overlay"
+    },
+    {
+      "foreground": "paper",
+      "background": "accent",
+      "usage": "button text over the accent button"
+    },
+    {
+      "foreground": "paper",
+      "background": "accent-hover",
+      "usage": "button hover text over the accent hover color"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import SiteNavigation from '../components/SiteNavigation.astro';
+---
+
+<SiteLayout
+  lang="vi"
+  noIndex
+  title="Không tìm thấy trang | Page not found | Archway Business Brokers"
+  description="Trang này không tồn tại. This page does not exist."
+>
+  <main class="flex min-h-screen items-center justify-center bg-[var(--color-accent-hover)] px-6 py-12 text-[var(--color-paper)] sm:px-10">
+    <SiteNavigation lang="vi" />
+
+    <div class="flex w-full max-w-[1400px] flex-col items-center text-center">
+      <p class="m-0 text-[clamp(5rem,16vw,11rem)] font-medium leading-[0.8] text-[var(--color-paper)]" aria-label="404">404</p>
+      <h1 class="mt-8 w-full max-w-[48rem] text-[clamp(1.75rem,4vw,3rem)] font-medium leading-[1.15] text-[var(--color-paper)]">
+        <span class="block" lang="vi">Trang này không tồn tại.</span>
+        <span class="mt-2 block text-[0.8em] text-[var(--color-muted)]" lang="en">This page does not exist.</span>
+      </h1>
+      <p class="my-5 w-full max-w-[48rem] text-[1.1rem] leading-[1.6] text-[var(--color-paper)]">
+        <span class="block" lang="vi">Địa chỉ có thể đã thay đổi hoặc trang đã được chuyển sang vị trí khác.</span>
+        <span class="mt-2 block text-[0.9em] text-[var(--color-muted)]" lang="en">The address may have changed, or the page may have moved.</span>
+      </p>
+      <a
+        class="inline-flex items-center justify-center border-0 bg-[var(--color-paper)] px-6 py-[0.78rem] text-[var(--color-ink)] hover:bg-[var(--color-muted)] focus-visible:outline-2 focus-visible:outline-[var(--color-paper)] focus-visible:outline-offset-4"
+        href="/"
+      >
+        <span lang="vi">Về trang chủ</span>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <span lang="en">Back to home</span>
+      </a>
+    </div>
+  </main>
+</SiteLayout>

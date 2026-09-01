@@ -1,0 +1,371 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+
+interface Props {
+  lang: 'en' | 'vi';
+}
+
+const { lang } = Astro.props;
+const isVietnamese = lang === 'vi';
+
+const copy = isVietnamese
+  ? {
+      pageTitle: 'Bán doanh nghiệp tại Việt Nam | Archway Business Brokers',
+      heading: 'Bán doanh nghiệp',
+      description: 'Điền thông tin doanh nghiệp để trao đổi miễn phí và bảo mật với Archway Business Brokers.',
+      language: 'EN',
+      languageLabel: 'Chuyển sang English',
+      timelinePrompt: 'Quý khách dự kiến bán doanh nghiệp khi nào',
+      industryPrompt: 'Doanh nghiệp của Quý khách thuộc ngành nào',
+      employeesPrompt: 'Doanh nghiệp của Quý khách có bao nhiêu nhân viên, bao gồm cả cộng tác viên',
+      revenuePrompt: 'Doanh thu 12 tháng gần nhất của doanh nghiệp',
+      profitPrompt: 'Lợi nhuận ròng 12 tháng gần nhất, gồm cả lương Quý khách tự trả',
+      provinceLabel: 'Doanh nghiệp đặt tại tỉnh hoặc thành phố nào?',
+      websiteLabel: 'Website hoặc fanpage (Facebook/Zalo) của doanh nghiệp?',
+      contactHeading: 'Chúng tôi chỉ cần thông tin liên hệ của Quý khách để tiện liên lạc lại.',
+      nameLabel: 'Họ và tên',
+      emailLabel: 'Email',
+      phoneLabel: 'Số điện thoại',
+      namePlaceholder: 'Nguyễn Văn A',
+      emailPlaceholder: 'email@domain.com',
+      phonePlaceholder: '09xx xxx xxx',
+      provincePlaceholder: 'TP. Hồ Chí Minh',
+      websitePlaceholder: 'archway.vn',
+      emailHelp: 'Quý khách dùng email cá nhân nếu muốn giữ trao đổi riêng tư.',
+      phoneHelp: 'Quý khách dùng số di động cá nhân để chúng tôi liên lạc thuận tiện.',
+      back: 'Quay lại',
+      next: 'Tiếp tục',
+      submit: 'Gửi thông tin',
+      processing: 'Đang xử lý...',
+      submitting: 'Đang gửi...',
+      success: 'Xin cảm ơn. Archway Business Brokers đã tiếp nhận thông tin và sẽ liên hệ để trao đổi bước đầu.',
+      error: 'Hiện chưa thể gửi thông tin. Vui lòng thử lại sau hoặc liên hệ brokers@archway.vn.',
+      confidentialNotice: 'Tất cả trao đổi và tư vấn đều miễn phí và bảo mật.',
+      privacyPrefix: 'Tôi chấp thuận',
+      privacyLink: 'Chính sách bảo mật',
+      privacySuffix: ' và cam kết giữ bí mật nội dung trao đổi với Archway Business Brokers.',
+      sidebarIntro: 'Archway Business Brokers hỗ trợ Quý khách trao đổi về việc bán hoặc chuyển nhượng doanh nghiệp đang hoạt động tại Việt Nam. Chúng tôi sẽ hướng dẫn từng bước phù hợp với tình hình doanh nghiệp.',
+      points: [
+        'Trao đổi và tư vấn miễn phí',
+        'Thông tin được giữ bảo mật',
+        'Không mất phí trước',
+        'Được hướng dẫn qua từng bước',
+        'Kết nối với người mua phù hợp',
+        'Nhiều đề nghị từ người mua nghiêm túc',
+        'Quy trình bán 180 ngày',
+      ],
+      footerAddress: 'Tầng 17, Tòa nhà Vincom Center, 72 đường Lê Thánh Tôn, Quận 1, Thành phố Hồ Chí Minh, Việt Nam',
+      footerPhone: 'Điện thoại: 0346-346-550',
+    }
+  : {
+      pageTitle: 'Sell Your Business in Vietnam | Archway Business Brokers',
+      heading: 'Sell your business',
+      description: 'Share your business details for a free and confidential conversation with Archway Business Brokers.',
+      language: 'VI',
+      languageLabel: 'Chuyển sang Vietnamese',
+      timelinePrompt: 'How Quickly Do You Want To Sell Your Business',
+      industryPrompt: 'What industry is your business in',
+      employeesPrompt: 'How many employees does your business have, including contractors',
+      revenuePrompt: 'What was your business revenue in the last 12 months',
+      profitPrompt: 'What was your net profit in the last 12 months, including your own salary',
+      provinceLabel: 'Which city or province is the business located in?',
+      websiteLabel: 'What is the business website or social page (Facebook/Zalo)?',
+      contactHeading: 'We only need your contact details so we can follow up with you.',
+      nameLabel: 'Full name',
+      emailLabel: 'Email',
+      phoneLabel: 'Mobile number',
+      namePlaceholder: 'Your full name',
+      emailPlaceholder: 'you@example.com',
+      phonePlaceholder: 'Your mobile number',
+      provincePlaceholder: 'Ho Chi Minh City',
+      websitePlaceholder: 'archway.vn',
+      emailHelp: 'Use a personal email if you want to keep the conversation separate from your company email.',
+      phoneHelp: 'Use a personal mobile number so we can contact you conveniently.',
+      back: 'Back',
+      next: 'Continue',
+      submit: 'Submit information',
+      processing: 'Processing...',
+      submitting: 'Sending...',
+      success: 'Thank you. Archway Business Brokers has received your information and will contact you for an initial conversation.',
+      error: 'We could not submit your information. Please try again or contact brokers@archway.vn.',
+      confidentialNotice: 'All discussions and advisory support are free and confidential.',
+      privacyPrefix: 'I accept the',
+      privacyLink: 'Privacy Policy',
+      privacySuffix: ' and agree to treat my discussions with Archway Business Brokers as confidential.',
+      sidebarIntro: 'Archway Business Brokers helps owners discuss the sale or transfer of operating businesses in Vietnam. We will guide you through the steps that fit your business.',
+      points: [
+        'Free discussions and advisory support',
+        'Confidential handling of information',
+        'No upfront fee',
+        'Guidance through each step',
+        'Connection with suitable buyers',
+        'Multiple offers from serious buyers',
+        '180-day sale process',
+      ],
+      footerAddress: '17th Floor, Vincom Center Building, 72 Le Thanh Ton Street, District 1, Ho Chi Minh City, Vietnam',
+      footerPhone: 'Phone: (+84) 346-346-550',
+    };
+
+const timeline = isVietnamese
+  ? ['Ngay bây giờ', 'Trong 6 tháng tới', 'Trong 1-2 năm tới', 'Trong 2-5 năm tới']
+  : ['Now', 'Within 6 months', 'Within 1-2 years', 'Within 2-5 years'];
+
+const industries = isVietnamese
+  ? [
+      'Y tế và dịch vụ hỗ trợ y tế',
+      'Kế toán, thuế và dịch vụ thuê ngoài',
+      'Dịch vụ doanh nghiệp (B2B)',
+      'Bảo trì và bảo dưỡng',
+      'Dịch vụ công nghệ thông tin',
+      'Kiểm định và tuân thủ',
+      'Sản xuất',
+      'Thương mại và bán lẻ',
+      'Ẩm thực và nhà hàng',
+      'Xây dựng',
+      'Vận tải và logistics',
+      'Giáo dục',
+      'Du lịch và khách sạn',
+      'Thương mại điện tử',
+      'Nông nghiệp',
+      'Khác',
+    ]
+  : [
+      'Healthcare and healthcare support',
+      'Accounting, tax and outsourcing',
+      'Business services (B2B)',
+      'Maintenance and servicing',
+      'Information technology services',
+      'Inspection and compliance',
+      'Manufacturing',
+      'Trade and retail',
+      'Food and restaurants',
+      'Construction',
+      'Transport and logistics',
+      'Education',
+      'Travel and hospitality',
+      'E-commerce',
+      'Agriculture',
+      'Other',
+    ];
+
+const employees = isVietnamese
+  ? ['0 - 5', '6 - 10', '11 - 20', '21 - 40', '41 - 100', 'Trên 100']
+  : ['0 - 5', '6 - 10', '11 - 20', '21 - 40', '41 - 100', 'Over 100'];
+
+const revenue = isVietnamese
+  ? ['Dưới 3 tỷ', '3 - 5 tỷ', '5 - 10 tỷ', '10 - 20 tỷ', '20 - 50 tỷ', 'Trên 50 tỷ']
+  : ['Below VND 3 billion', 'VND 3 - 5 billion', 'VND 5 - 10 billion', 'VND 10 - 20 billion', 'VND 20 - 50 billion', 'Above VND 50 billion'];
+
+const profit = isVietnamese
+  ? ['Dưới 500 triệu', '500 triệu - 1 tỷ', '1 - 2 tỷ', '2 - 5 tỷ', '5 - 10 tỷ', 'Trên 10 tỷ']
+  : ['Below VND 500 million', 'VND 500 million - 1 billion', 'VND 1 - 2 billion', 'VND 2 - 5 billion', 'VND 5 - 10 billion', 'Above VND 10 billion'];
+
+const homeHref = isVietnamese ? '/' : '/en/';
+const languageHref = isVietnamese ? '/en/sell-your-business/' : '/sell-your-business/';
+const languageFlag = isVietnamese ? '🇬🇧' : '🇻🇳';
+const privacyHref = isVietnamese ? '/privacy-policy/' : '/en/privacy-policy/';
+const questionMark = String.fromCharCode(63);
+const formId = isVietnamese ? 'seller-form-vi' : 'seller-form-en';
+const questionClass = 'border-b border-[var(--color-line-dark)] pb-5 text-center text-xl font-medium leading-snug text-[var(--color-ink)]';
+const optionCardClass = 'relative flex cursor-pointer items-center gap-4 border-2 border-[var(--color-line-dark)] bg-[var(--color-paper)] px-4 py-2.5 text-base leading-6 text-[var(--color-ink)] transition-colors has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-[var(--color-ink)] has-[:checked]:border-[var(--color-accent)]';
+const optionRingClass = 'flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-[var(--color-line-dark)] bg-[var(--color-paper)] transition-colors peer-checked:border-[var(--color-accent)]';
+const optionDotClass = 'h-2.5 w-2.5 rounded-full bg-transparent peer-checked:bg-[var(--color-accent)]';
+const fieldLabelClass = 'text-base font-medium text-[var(--color-ink)]';
+const inputClass = 'min-h-11 border border-[var(--color-line-dark)] bg-[var(--color-paper)] px-4 py-2.5 text-base text-[var(--color-ink)] placeholder:text-[var(--color-ink)] placeholder:opacity-60 placeholder:italic focus:border-[var(--color-accent)] focus:outline-2 focus:outline-offset-2 focus:outline-[var(--color-accent)]';
+const buttonClass = 'inline-flex min-h-11 items-center justify-center gap-2 border-0 bg-[var(--color-accent)] px-6 py-3 text-base font-medium leading-none text-[var(--color-paper)] transition-colors hover:bg-[var(--color-accent-hover)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)] disabled:pointer-events-none disabled:opacity-60';
+const backButtonClass = 'inline-flex min-h-11 items-center justify-center border border-[var(--color-ink)] bg-transparent px-6 py-3 text-base font-medium leading-none text-[var(--color-ink)] transition-colors hover:bg-[var(--color-muted)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-ink)] disabled:pointer-events-none disabled:opacity-60';
+---
+
+<SiteLayout lang={lang} title={copy.pageTitle} description={copy.description} includeNavigationScript={false}>
+  <div class="min-h-dvh bg-[var(--color-muted)] text-[var(--color-ink)]">
+    <header class="bg-[var(--color-paper)] text-[var(--color-ink)]">
+      <div class="relative mx-auto flex min-h-20 w-full max-w-7xl items-center justify-start px-4 py-4 sm:min-h-24 sm:justify-center sm:px-10 sm:py-6">
+        <a class="inline-flex max-w-full items-center whitespace-nowrap text-[clamp(0.75rem,3.8vw,1.5rem)] font-medium leading-none tracking-tight text-[var(--color-ink)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4" href={homeHref} aria-label={isVietnamese ? 'Trang chủ Archway Business Brokers' : 'Archway Business Brokers home'}>
+          <img class="mr-1.5 h-6 w-6 shrink-0 sm:mr-2 sm:h-7 sm:w-7" src="/favicon.svg" alt="" width="28" height="28" decoding="async" />
+          <span>Archway</span>
+          <span class="ml-1 text-[var(--color-accent)]">Business Brokers</span>
+        </a>
+        <a class="absolute right-4 inline-flex shrink-0 items-center gap-0 text-sm text-[var(--color-ink)] hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4 sm:right-10" href={languageHref} lang={isVietnamese ? 'en' : 'vi'} aria-label={copy.languageLabel}>
+          <span aria-hidden="true">{languageFlag}</span>
+          <span>{copy.language}</span>
+        </a>
+      </div>
+    </header>
+
+    <main class="mx-auto mt-2.5 mb-16 w-[min(92%,75rem)] border border-[var(--color-line-dark)] bg-[var(--color-paper)] p-6 sm:p-10">
+      <h1 class="sr-only">{copy.heading}</h1>
+
+      <div class="lg:grid lg:grid-cols-3 lg:gap-12">
+        <form
+          id={formId}
+          class="lg:col-span-2"
+          data-seller-form
+          data-locale={lang}
+          data-next-label={copy.next}
+          data-submit-label={copy.submit}
+          data-processing-label={copy.processing}
+          data-submitting-label={copy.submitting}
+          data-success-message={copy.success}
+          data-error-message={copy.error}
+          method="post"
+          action="/api/register/"
+          novalidate
+        >
+          <input type="hidden" name="form_type" value="seller" />
+          <input type="hidden" name="locale" value={lang} />
+          <input aria-hidden="true" autocomplete="off" class="hidden" name="fax_number" tabindex="-1" type="text" />
+
+          <div data-step class="grid gap-6">
+            <h2 class={questionClass}>
+              {copy.timelinePrompt}{questionMark} <span class="text-[var(--color-accent)]" aria-hidden="true">*</span>
+            </h2>
+            <div class="grid gap-2.5 pt-1">
+              {timeline.map((option) => (
+                <label class={optionCardClass}>
+                  <input type="radio" name="timeline" value={option} required class="peer sr-only" />
+                  <span class={optionRingClass} aria-hidden="true"><span class={optionDotClass}></span></span>
+                  <span>{option}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <div data-step class="grid gap-6" hidden>
+            <h2 class={questionClass}>
+              {copy.industryPrompt}{questionMark} <span class="text-[var(--color-accent)]" aria-hidden="true">*</span>
+            </h2>
+            <div class="grid gap-2.5 pt-1 sm:grid-cols-2">
+              {industries.map((option) => (
+                <label class={optionCardClass}>
+                  <input type="radio" name="industry" value={option} required class="peer sr-only" />
+                  <span class={optionRingClass} aria-hidden="true"><span class={optionDotClass}></span></span>
+                  <span>{option}</span>
+                </label>
+              ))}
+            </div>
+            <h2 class={questionClass}>
+              {copy.employeesPrompt}{questionMark} <span class="text-[var(--color-accent)]" aria-hidden="true">*</span>
+            </h2>
+            <div class="grid gap-2.5 pt-1 sm:grid-cols-2">
+              {employees.map((option) => (
+                <label class={optionCardClass}>
+                  <input type="radio" name="employees" value={option} required class="peer sr-only" />
+                  <span class={optionRingClass} aria-hidden="true"><span class={optionDotClass}></span></span>
+                  <span>{option}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <div data-step class="grid gap-6" hidden>
+            <h2 class={questionClass}>
+              {copy.revenuePrompt}{questionMark} <span class="text-[var(--color-accent)]" aria-hidden="true">*</span>
+            </h2>
+            <div class="grid gap-2.5 pt-1 sm:grid-cols-2">
+              {revenue.map((option) => (
+                <label class={optionCardClass}>
+                  <input type="radio" name="revenue" value={option} required class="peer sr-only" />
+                  <span class={optionRingClass} aria-hidden="true"><span class={optionDotClass}></span></span>
+                  <span>{option}</span>
+                </label>
+              ))}
+            </div>
+            <h2 class={questionClass}>
+              {copy.profitPrompt}{questionMark} <span class="text-[var(--color-accent)]" aria-hidden="true">*</span>
+            </h2>
+            <div class="grid gap-2.5 pt-1 sm:grid-cols-2">
+              {profit.map((option) => (
+                <label class={optionCardClass}>
+                  <input type="radio" name="profit" value={option} required class="peer sr-only" />
+                  <span class={optionRingClass} aria-hidden="true"><span class={optionDotClass}></span></span>
+                  <span>{option}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <div data-step class="grid gap-6" hidden>
+            <div class="grid gap-2">
+              <label for={`${formId}-province`} class={fieldLabelClass}>
+                {copy.provinceLabel} <span class="text-[var(--color-accent)]" aria-hidden="true">*</span>
+              </label>
+              <input id={`${formId}-province`} name="province" type="text" required placeholder={copy.provincePlaceholder} autocomplete="address-level2" class={inputClass} />
+            </div>
+            <div class="grid gap-2">
+              <label for={`${formId}-website`} class={fieldLabelClass}>
+                {copy.websiteLabel} <span class="text-[var(--color-accent)]" aria-hidden="true">*</span>
+              </label>
+              <input id={`${formId}-website`} name="website" type="text" required placeholder={copy.websitePlaceholder} autocomplete="url" class={inputClass} />
+            </div>
+          </div>
+
+          <div data-step class="grid gap-6" hidden>
+            <h2 class="text-left text-xl font-medium leading-snug text-[var(--color-ink)]">{copy.contactHeading}</h2>
+            <div class="grid gap-5">
+              <div class="grid gap-2">
+                <label for={`${formId}-name`} class={fieldLabelClass}>
+                  {copy.nameLabel} <span class="text-[var(--color-accent)]" aria-hidden="true">*</span>
+                </label>
+                <input id={`${formId}-name`} name="name" type="text" required autocomplete="name" placeholder={copy.namePlaceholder} class={inputClass} />
+              </div>
+              <div class="grid gap-2">
+                <label for={`${formId}-email`} class={fieldLabelClass}>
+                  {copy.emailLabel} <span class="text-[var(--color-accent)]" aria-hidden="true">*</span>
+                </label>
+                <input id={`${formId}-email`} name="email" type="email" required autocomplete="email" placeholder={copy.emailPlaceholder} class={inputClass} />
+                <p class="pt-1 text-base leading-7 text-[var(--color-ink)]">{copy.emailHelp}</p>
+              </div>
+              <div class="grid gap-2">
+                <label for={`${formId}-phone`} class={fieldLabelClass}>
+                  {copy.phoneLabel} <span class="text-[var(--color-accent)]" aria-hidden="true">*</span>
+                </label>
+                <input id={`${formId}-phone`} name="phone" type="tel" required autocomplete="tel" placeholder={copy.phonePlaceholder} class={inputClass} />
+                <p class="pt-1 text-base leading-7 text-[var(--color-ink)]">{copy.phoneHelp}</p>
+              </div>
+            </div>
+
+            <label class="mt-6 flex items-start gap-3 text-sm leading-[1.5]" for={`${formId}-privacy`}>
+              <input id={`${formId}-privacy`} name="privacy-consent" value="on" type="checkbox" required class="mt-1 h-4 w-4 shrink-0 accent-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-2" />
+              <span><span class="text-[var(--color-accent)]" aria-hidden="true">*</span> {copy.privacyPrefix} <a class="text-[var(--color-accent)] underline underline-offset-2 hover:text-[var(--color-accent-hover)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4" href={privacyHref}>{copy.privacyLink}</a>{copy.privacySuffix}</span>
+            </label>
+          </div>
+
+          <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
+            <button id={`${formId}-back`} data-step-back type="button" hidden class={backButtonClass}>{copy.back}</button>
+            <button id={`${formId}-next`} data-step-next type="submit" class={buttonClass}>
+              <span data-step-spinner class="hidden h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent motion-reduce:animate-none" aria-hidden="true"></span>
+              <span data-step-next-label>{copy.next}</span>
+            </button>
+          </div>
+          <p data-form-status class="mt-4 min-h-7 text-base text-[var(--color-ink)]" role="status" aria-live="polite" tabindex="-1"></p>
+          <p class="mt-2 text-sm leading-6 text-[var(--color-ink)]">{copy.confidentialNotice}</p>
+        </form>
+
+        <aside class="mt-12 lg:mt-0">
+          <div class="flex flex-col items-center gap-6">
+            <div class="h-36 w-36 shrink-0 overflow-hidden rounded-full border-4 border-[var(--color-ink)] bg-[var(--color-paper)]">
+              <img class="h-full w-full object-contain p-3" src="/favicon.svg" alt={isVietnamese ? 'Logo Archway Business Brokers' : 'Archway Business Brokers logo'} width="144" height="144" decoding="async" />
+            </div>
+            <p class="text-base leading-7 text-[var(--color-ink)]">{copy.sidebarIntro}</p>
+            <ul class="grid w-full gap-3">
+              {copy.points.map((point) => (
+                <li class="flex items-start gap-3 text-base leading-7 text-[var(--color-ink)]">
+                  <span class="mt-1 flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-[var(--color-ink)] text-xs text-[var(--color-paper)]" aria-hidden="true">✓</span>
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="bg-[var(--color-paper)] px-6 py-8 text-center text-sm text-[var(--color-ink)] sm:px-10">
+      <p class="m-0">Archway Business Brokers, {copy.footerAddress}</p>
+      <a class="mt-2 inline-flex text-[var(--color-ink)] no-underline hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4" href="tel:+84346346550">{copy.footerPhone}</a>
+      <a class="mt-2 block text-[var(--color-ink)] no-underline hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4" href="mailto:brokers@archway.vn">brokers@archway.vn</a>
+    </footer>
+  </div>
+
+  <script is:inline src="/seller-form.js" defer></script>
+</SiteLayout>

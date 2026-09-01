@@ -1,0 +1,187 @@
+---
+interface Props {
+  lang: 'en' | 'vi';
+  showBrand?: boolean;
+  theme?: 'dark' | 'light';
+}
+
+const { lang, showBrand = false, theme = 'dark' } = Astro.props;
+const isVietnamese = lang === 'vi';
+const isLightTheme = theme === 'light';
+const labels = isVietnamese
+  ? {
+      navigation: 'Điều hướng chính',
+      sell: 'Bán doanh nghiệp',
+      buy: 'Mua doanh nghiệp',
+      learnMore: 'Tìm hiểu thêm',
+      howItWorks: '10 bước bán doanh nghiệp',
+      about: 'Tìm hiểu Archway',
+      industries: 'Các ngành chúng tôi phục vụ',
+      contact: 'Liên hệ',
+      language: 'EN',
+      languageLabel: 'Chuyển sang English',
+      openMenu: 'Mở menu',
+      closeMenu: 'Đóng menu',
+      contactDetails: 'Thông tin liên hệ',
+      phone: 'Điện thoại',
+      email: 'Email',
+    }
+  : {
+      navigation: 'Main navigation',
+      sell: 'Sell your business',
+      buy: 'Buy a business',
+      learnMore: 'Learn more',
+      howItWorks: '10 steps to sell a business',
+      about: 'About Archway',
+      industries: 'Industries we serve',
+      contact: 'Contact',
+      language: 'VI',
+      languageLabel: 'Switch to Vietnamese',
+      openMenu: 'Open menu',
+      closeMenu: 'Close menu',
+      contactDetails: 'Contact details',
+      phone: 'Phone',
+      email: 'Email',
+    };
+
+const homeHref = isVietnamese ? '/' : '/en/';
+const normalizedCurrentPath = Astro.url.pathname === '/404' || Astro.url.pathname === '/404/' ? '/' : Astro.url.pathname;
+const currentPath = normalizedCurrentPath === '/' || normalizedCurrentPath.endsWith('/') ? normalizedCurrentPath : `${normalizedCurrentPath}/`;
+const languageHref = isVietnamese ? (currentPath === '/' ? '/en/' : `/en${currentPath}`) : currentPath.replace(/^\/en(?=\/|$)/, '') || '/';
+const phoneNumber = isVietnamese ? '0346-346-550' : '(+84) 346-346-550';
+const localizedPath = (path: string) => (isVietnamese ? path : `/en${path}`);
+const languageFlag = isVietnamese ? '🇬🇧' : '🇻🇳';
+const navLinkClass = isLightTheme
+  ? 'text-[var(--color-ink)] underline-offset-4 hover:text-[var(--color-accent)] hover:underline focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4'
+  : 'text-[var(--color-paper)] underline-offset-4 hover:text-[var(--color-paper)] hover:underline focus-visible:outline-2 focus-visible:outline-[var(--color-paper)] focus-visible:outline-offset-4';
+const summaryClass = `flex cursor-pointer list-none items-center gap-2 ${navLinkClass} [&::-webkit-details-marker]:hidden`;
+const menuPanelClass = isLightTheme
+  ? 'absolute right-0 top-full z-20 mt-2 min-w-[18rem] border border-[var(--color-line-dark)] bg-[var(--color-paper)] p-2 text-left'
+  : 'absolute right-0 top-full z-20 mt-2 min-w-[18rem] border border-[var(--color-line)] bg-[var(--color-panel)] p-2 text-left';
+const menuItemClass = isLightTheme
+  ? 'block px-3 py-2 text-sm text-[var(--color-ink)] hover:bg-[var(--color-accent)] hover:text-[var(--color-paper)] focus-visible:bg-[var(--color-accent)] focus-visible:text-[var(--color-paper)] focus-visible:outline-0'
+  : 'block px-3 py-2 text-sm text-[var(--color-paper)] hover:bg-[var(--color-accent)] focus-visible:bg-[var(--color-accent)] focus-visible:outline-0';
+const languageClass = isLightTheme
+  ? 'inline-flex shrink-0 items-center gap-0 text-sm text-[var(--color-ink)] hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4'
+  : 'inline-flex shrink-0 items-center gap-0 text-sm text-[var(--color-paper)] hover:text-[var(--color-paper)] focus-visible:outline-2 focus-visible:outline-[var(--color-paper)] focus-visible:outline-offset-4';
+const menuButtonClass = isLightTheme
+  ? 'inline-flex h-6 w-7 shrink-0 flex-col items-end justify-between py-1 text-[var(--color-ink)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4 lg:hidden'
+  : 'inline-flex h-6 w-7 shrink-0 flex-col items-end justify-between py-1 text-[var(--color-paper)] focus-visible:outline-2 focus-visible:outline-[var(--color-paper)] focus-visible:outline-offset-4 lg:hidden';
+const brandClass = isLightTheme
+  ? 'text-[var(--color-ink)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4'
+  : 'text-[var(--color-paper)] focus-visible:outline-2 focus-visible:outline-[var(--color-paper)] focus-visible:outline-offset-4';
+---
+
+<header data-site-navigation class="absolute inset-x-6 top-6 z-[10] sm:inset-x-10 sm:top-8">
+  <div class={`flex items-start gap-3 ${showBrand ? 'justify-between' : 'justify-end'}`}>
+    <div class={`flex items-start gap-3 ${showBrand ? 'order-2' : ''}`}>
+      <nav class="hidden items-center gap-6 text-sm lg:flex" aria-label={labels.navigation}>
+        <a class={navLinkClass} href={localizedPath('/sell-your-business/')}>
+          {labels.sell}
+        </a>
+        <a class={navLinkClass} href={localizedPath('/buyer-register/')}>
+          {labels.buy}
+        </a>
+        <details data-desktop-more-menu class="group relative">
+          <summary class={summaryClass} aria-haspopup="menu" aria-expanded="false">
+            <span>{labels.learnMore}</span>
+            <span class="h-2 w-2 rotate-45 border-b border-r border-current transition-transform duration-150 group-open:rotate-[225deg] motion-reduce:transition-none" aria-hidden="true"></span>
+          </summary>
+          <div role="menu" class={menuPanelClass}>
+            <a class={menuItemClass} href={localizedPath('/how-it-works/')} role="menuitem">
+              {labels.howItWorks}
+            </a>
+            <a class={menuItemClass} href={localizedPath('/about/')} role="menuitem">
+              {labels.about}
+            </a>
+            <a class={menuItemClass} href={localizedPath('/industries-we-serve/')} role="menuitem">
+              {labels.industries}
+            </a>
+            <a class={menuItemClass} href={localizedPath('/contact/')} role="menuitem">
+              {labels.contact}
+            </a>
+          </div>
+        </details>
+      </nav>
+
+      <a class={languageClass} href={languageHref} lang={isVietnamese ? 'en' : 'vi'} aria-label={labels.languageLabel}>
+        <span aria-hidden="true">{languageFlag}</span>
+        <span>{labels.language}</span>
+      </a>
+
+      <button class={menuButtonClass} type="button" data-menu-open aria-controls="mobile-nav-drawer" aria-expanded="false" aria-label={labels.openMenu}>
+        <span class="block h-px w-7 bg-current" aria-hidden="true"></span>
+        <span class="block h-px w-5 bg-current" aria-hidden="true"></span>
+        <span class="block h-px w-7 bg-current" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    {showBrand && (
+      <a
+        class={`order-1 inline-flex min-w-0 max-w-[12rem] items-center gap-1.5 whitespace-nowrap ${brandClass} sm:max-w-[18rem] sm:gap-2`}
+        href={homeHref}
+        aria-label={isVietnamese ? 'Trang chủ Archway Business Brokers' : 'Archway Business Brokers home'}
+      >
+        <img class="h-6 w-6 shrink-0 sm:h-7 sm:w-7" src="/favicon.svg" alt="" width="28" height="28" decoding="async" />
+        <span class="whitespace-nowrap text-[clamp(0.75rem,3.5vw,1.25rem)] font-medium leading-none tracking-tight">
+          <span>Archway</span>
+          <span class="ml-1 text-[var(--color-accent)]">Business Brokers</span>
+        </span>
+      </a>
+    )}
+  </div>
+</header>
+
+<div class="pointer-events-none fixed inset-0 z-[40] bg-[var(--color-scrim)] opacity-0 transition-opacity duration-200 motion-reduce:transition-none lg:hidden" data-mobile-backdrop aria-hidden="true"></div>
+
+<aside id="mobile-nav-drawer" class="fixed inset-y-0 right-0 z-[50] w-[min(22rem,88vw)] translate-x-full border-l border-[var(--color-line-dark)] bg-[var(--color-paper)] text-[var(--color-ink)] transition-transform duration-200 motion-reduce:transition-none lg:hidden" data-mobile-drawer aria-hidden="true">
+  <div class="flex h-full flex-col overflow-y-auto px-6 py-6">
+    <div class="flex items-center justify-between gap-4 border-b border-[var(--color-line-dark)] pb-5">
+      <a class="flex min-w-0 items-center gap-3 text-[var(--color-ink)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4" href={homeHref} aria-label={isVietnamese ? 'Trang chủ Archway Business Brokers' : 'Archway Business Brokers home'}>
+        <img class="h-10 w-10 shrink-0" src="/favicon.svg" alt="" width="40" height="40" decoding="async" />
+        <span class="flex min-w-0 flex-col font-medium leading-[0.9] tracking-tight">
+          <span class="text-lg">Archway</span>
+          <span class="text-sm text-[var(--color-accent)]">Business Brokers</span>
+        </span>
+      </a>
+      <button class="inline-flex h-7 w-7 items-center justify-center text-2xl leading-none text-[var(--color-ink)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4" type="button" data-menu-close aria-label={labels.closeMenu}>
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+
+    <nav class="flex flex-col pt-5" aria-label={labels.navigation}>
+      <a class="border-b border-[var(--color-line-dark)] py-4 text-base text-[var(--color-ink)] hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4" href={localizedPath('/sell-your-business/')}>
+        {labels.sell}
+      </a>
+      <a class="border-b border-[var(--color-line-dark)] py-4 text-base text-[var(--color-ink)] hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4" href={localizedPath('/buyer-register/')}>
+        {labels.buy}
+      </a>
+      <details data-mobile-more-menu class="group border-b border-[var(--color-line-dark)]">
+        <summary class="flex cursor-pointer list-none items-center justify-between py-4 text-base text-[var(--color-ink)] hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4 [&::-webkit-details-marker]:hidden" aria-expanded="false">
+          <span>{labels.learnMore}</span>
+          <span class="h-2 w-2 rotate-45 border-b border-r border-current transition-transform duration-150 group-open:rotate-[225deg] motion-reduce:transition-none" aria-hidden="true"></span>
+        </summary>
+        <div class="flex flex-col pb-3 pl-4">
+          <a class="py-2 text-sm text-[var(--color-ink)] hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4" href={localizedPath('/how-it-works/')}>
+            {labels.howItWorks}
+          </a>
+          <a class="py-2 text-sm text-[var(--color-ink)] hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4" href={localizedPath('/about/')}>
+            {labels.about}
+          </a>
+          <a class="py-2 text-sm text-[var(--color-ink)] hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4" href={localizedPath('/industries-we-serve/')}>
+            {labels.industries}
+          </a>
+          <a class="py-2 text-sm text-[var(--color-ink)] hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4" href={localizedPath('/contact/')}>
+            {labels.contact}
+          </a>
+        </div>
+      </details>
+    </nav>
+
+    <div class="mt-auto border-t border-[var(--color-line-dark)] pt-5">
+      <p class="text-xs font-medium uppercase tracking-[0.12em] text-[var(--color-ink)]">{labels.contactDetails}</p>
+      <a class="mt-3 block text-sm text-[var(--color-ink)] hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4" href="tel:+84346346550">{labels.phone}: {phoneNumber}</a>
+      <a class="mt-2 block break-words text-sm text-[var(--color-ink)] hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4" href="mailto:brokers@archway.vn">{labels.email}: brokers@archway.vn</a>
+    </div>
+  </div>
+</aside>

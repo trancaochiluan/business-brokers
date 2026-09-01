@@ -1,0 +1,307 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import SiteNavigation from './SiteNavigation.astro';
+
+interface Props {
+  lang: 'en' | 'vi';
+}
+
+interface PrivacySection {
+  heading: string;
+  paragraphs: string[];
+  list?: string[];
+}
+
+const { lang } = Astro.props;
+const isVietnamese = lang === 'vi';
+
+const vietnameseSections: PrivacySection[] = [
+  {
+    heading: 'Giới thiệu',
+    paragraphs: [
+      'Archway Business Brokers thu thập thông tin theo nhiều cách khác nhau từ những người truy cập website, sau đây gọi là “Khách truy cập”, và những người gửi thông tin cho chúng tôi thông qua các biểu mẫu trên website, sau đây gọi là “Người dùng”, bao gồm biểu mẫu liên hệ, biểu mẫu yêu cầu định giá và biểu mẫu đăng ký nhận cơ hội mua doanh nghiệp.',
+      'Chúng tôi xây dựng Chính sách quyền riêng tư này để thể hiện cam kết vững chắc về quyền riêng tư và bảo mật. Chính sách quyền riêng tư này mô tả cách Archway Business Brokers thu thập thông tin từ người dùng cuối của website, chúng tôi làm gì với thông tin thu thập được, và các lựa chọn của Quý khách liên quan đến việc thu thập và sử dụng thông tin đó. Chúng tôi đề nghị Quý khách đọc kỹ Chính sách quyền riêng tư này.',
+      'Mặc dù chúng tôi áp dụng các biện pháp phù hợp để ngăn chặn việc tiết lộ thông tin trái phép, chúng tôi không thể bảo đảm rằng thông tin nhận diện cá nhân mà chúng tôi thu thập sẽ không bao giờ bị tiết lộ theo cách không nhất quán với Chính sách quyền riêng tư này.',
+    ],
+  },
+  {
+    heading: 'Thông tin Quý khách gửi qua biểu mẫu',
+    paragraphs: [
+      'Khi Quý khách điền biểu mẫu trên website, chúng tôi có thể thu thập các thông tin như họ tên, tên công ty, số điện thoại, địa chỉ email, địa chỉ, vị trí, gồm tỉnh hoặc thành phố và phường hoặc xã, năng lực đầu tư, khu vực và ngành quan tâm, cùng tiêu chí mua doanh nghiệp của Quý khách. Website của chúng tôi không yêu cầu tạo tài khoản và không lưu mật khẩu của Quý khách.',
+      'Thông tin này được chúng tôi sử dụng để phản hồi yêu cầu của Quý khách, thực hiện định giá sơ bộ, và ghép nối với các cơ hội giao dịch phù hợp với tiêu chí Quý khách đã cung cấp. Chúng tôi có thể liên hệ với Quý khách qua điện thoại hoặc email để phục vụ các mục đích này.',
+      'Trong quá trình hỗ trợ một giao dịch, chúng tôi có thể chia sẻ thông tin của Quý khách với bên liên quan đến giao dịch đó, ví dụ chủ doanh nghiệp hoặc cố vấn giao dịch, với phạm vi cần thiết và sau khi có thỏa thuận bảo mật. Ngoài các trường hợp này, chúng tôi không bán thông tin cá nhân của Quý khách cho bên thứ ba.',
+    ],
+  },
+  {
+    heading: 'Đối tác dịch vụ',
+    paragraphs: [
+      'Chúng tôi có thể sử dụng các nhà cung cấp dịch vụ bên thứ ba, ví dụ dịch vụ lưu trữ website, phân tích lưu lượng hoặc nền tảng email, để vận hành website và liên hệ với Quý khách. Các nhà cung cấp này chỉ được xử lý thông tin của Quý khách trong phạm vi cần thiết để cung cấp dịch vụ cho chúng tôi và theo hướng dẫn của chúng tôi.',
+    ],
+  },
+  {
+    heading: 'Quảng cáo trực tuyến',
+    paragraphs: [
+      'Chúng tôi có thể quảng bá dịch vụ của mình trên các nền tảng trực tuyến. Trong những trường hợp đó, chúng tôi chỉ chia sẻ thông tin tổng hợp, không nhận diện cá nhân về khách truy cập website cho các nền tảng quảng cáo, nhằm đưa thông tin đến đúng đối tượng quan tâm.',
+    ],
+  },
+  {
+    heading: 'Phản hồi thư điện tử',
+    paragraphs: [
+      'Khi Quý khách gửi thư hỏi đến Archway Business Brokers, địa chỉ email phản hồi được dùng để trả lời thư hỏi mà chúng tôi nhận được.',
+    ],
+  },
+  {
+    heading: 'Khảo sát khách hàng tự nguyện',
+    paragraphs: [
+      'Chúng tôi có thể định kỳ thực hiện các khảo sát khách hàng. Chúng tôi khuyến khích Quý khách tham gia vì các khảo sát mang lại thông tin quan trọng giúp chúng tôi cải thiện chất lượng dịch vụ.',
+      'Chúng tôi có thể kết hợp câu trả lời của Quý khách với câu trả lời của các khách hàng khác để tạo ra kết quả tổng quát, chẳng hạn như ngành nghề, quy mô doanh nghiệp và khu vực. Thông tin tổng hợp, không nhận diện cá nhân này có thể được chia sẻ với bên thứ ba.',
+    ],
+  },
+  {
+    heading: 'Trường hợp đặc biệt',
+    paragraphs: [
+      'Ngoài ra, chúng tôi có thể tiết lộ thông tin cá nhân của Quý khách, hoặc thông tin liên quan đến việc sử dụng website của chúng tôi, vì bất kỳ lý do nào nếu theo quyết định riêng của mình, chúng tôi tin rằng việc đó là hợp lý, bao gồm: để tuân thủ pháp luật, các quy định hoặc yêu cầu của cơ quan nhà nước có thẩm quyền; tiết lộ thông tin cần thiết để xác định, liên hệ hoặc khởi kiện người có hành vi vi phạm Điều khoản sử dụng, hoặc các chính sách người dùng khác; để vận hành website đúng cách; hoặc để bảo vệ Archway Business Brokers và người dùng của chúng tôi.',
+    ],
+  },
+  {
+    heading: 'Thông tin ở mức trình duyệt',
+    paragraphs: [
+      'Máy chủ web của Archway Business Brokers có thể tự động thu thập thông tin về địa chỉ IP của người dùng, loại trình duyệt và URL mà Quý khách vừa truy cập, dù URL này có thuộc website hay không, và URL tiếp theo Quý khách truy cập, dù URL này có thuộc website hay không, bằng cách đọc thông tin này từ trình duyệt của người dùng. Thông tin do trình duyệt của mọi người dùng cung cấp được thu vào một cơ sở dữ liệu và được sử dụng, theo cách tổng hợp và ẩn danh, cho phân tích nội bộ của chúng tôi về mẫu lưu lượng truy cập trong website. Thông tin này được đa số website tự động ghi lại. Archway Business Brokers cũng có thể sử dụng bên thứ ba để thu thập thông tin, bao gồm thông qua việc sử dụng web beacons, hay thẻ theo dõi web.',
+    ],
+  },
+  {
+    heading: 'Quyền của Quý khách theo quy định hiện hành',
+    paragraphs: [
+      'Chính sách quyền riêng tư này xác định các nhóm thông tin nhận diện cá nhân mà Archway Business Brokers thu thập qua website về các cá nhân sử dụng hoặc truy cập website của chúng tôi, và các nhóm cá nhân, tổ chức mà chúng tôi có thể chia sẻ thông tin đó.',
+      'Quý khách có quyền yêu cầu xem xét, cập nhật hoặc xóa thông tin nhận diện cá nhân của mình mà chúng tôi thu thập qua website bằng cách gửi email đến brokers@archway.vn, kèm họ tên và địa chỉ email Quý khách đã cung cấp. Chúng tôi sẽ phản hồi trong vòng ba mươi ngày kể từ khi nhận được yêu cầu.',
+      'Xem mục dưới đây có tiêu đề “Sửa đổi chính sách này” để biết quy trình chúng tôi thông báo về các thay đổi quan trọng của chính sách quyền riêng tư. Ngày hiệu lực của chính sách được ghi ở cuối văn bản dưới tiêu đề “Cập nhật lần cuối”.',
+      'Tùy hoạt động của Quý khách trên website, các “thông tin nhận diện cá nhân” sau đây có thể được thu thập, ngoài thông tin được nêu tại các mục khác của văn bản này. Thuật ngữ “thông tin nhận diện cá nhân” có nghĩa là thông tin nhận diện được về một cá nhân, được chúng tôi thu thập trực tuyến và lưu giữ ở dạng có thể truy cập, và có thể bao gồm bất kỳ nội dung nào sau đây:',
+    ],
+    list: [
+      'Họ và tên.',
+      'Địa chỉ nơi ở hoặc địa chỉ vật lý khác, bao gồm tên đường và tên thành phố, thị xã.',
+      'Địa chỉ email.',
+      'Số điện thoại.',
+      'Số định danh cá nhân.',
+      'Bất kỳ định danh nào khác cho phép liên hệ vật lý hoặc trực tuyến với một cá nhân cụ thể.',
+      'Thông tin về người dùng mà website thu thập trực tuyến từ người dùng và lưu giữ ở dạng nhận diện cá nhân, kết hợp với một định danh được mô tả trong chính sách quyền riêng tư này.',
+    ],
+  },
+  {
+    heading: '“Cookie” và cách Archway Business Brokers sử dụng',
+    paragraphs: [
+      '“Cookie” là một tệp dữ liệu nhỏ có thể được đặt trên thiết bị của Quý khách khi truy cập một số website nhất định. Archway Business Brokers có thể sử dụng cookie để thu thập, lưu giữ và đôi khi theo dõi thông tin cho các mục đích nêu trong văn bản này cũng như cho mục đích thống kê nhằm cải thiện dịch vụ chúng tôi cung cấp.',
+      'Hầu hết trình duyệt web tự động chấp nhận cookie, nhưng Quý khách thường có thể thay đổi cài đặt trình duyệt để hiện cảnh báo trước khi chấp nhận cookie, hoặc từ chối mọi cookie. Tuy nhiên, nếu Quý khách chọn tắt việc nhận cookie từ website của chúng tôi, Quý khách có thể không sử dụng được một số tính năng của trang. Truy cập www.aboutcookies.org để tìm hiểu cách xóa và kiểm soát cookie trên các loại trình duyệt phổ biến.',
+      'Chúng tôi có thể sử dụng Tiếp thị lại, hay Remarketing, với Google Analytics và Facebook để quảng cáo trực tuyến. Các nhà cung cấp bên thứ ba, bao gồm Google, có thể hiển thị quảng cáo của chúng tôi trên các trang trên khắp Internet. Chúng tôi, cùng với các nhà cung cấp bên thứ ba bao gồm Google, sử dụng cookie của bên thứ nhất, chẳng hạn cookie Google Analytics, và cookie của bên thứ ba cùng nhau để cung cấp thông tin, tối ưu hóa và phân phối quảng cáo dựa trên các lượt truy cập trước đó của một người vào website của chúng tôi.',
+      'Quý khách có thể từ chối Google Analytics cho Quảng cáo Hiển thị và tùy chỉnh quảng cáo Mạng Hiển thị Google qua Cài đặt Quảng cáo của Google tại https://www.google.com/settings/ads. Quý khách cũng có thể dùng tiện ích bổ sung tắt Google Analytics của Google cho trình duyệt tại https://tools.google.com/dlpage/gaoptout/.',
+    ],
+  },
+  {
+    heading: 'Cam kết của Archway Business Brokers về quyền riêng tư của trẻ em',
+    paragraphs: [
+      'Bảo vệ quyền riêng tư của trẻ em đặc biệt quan trọng đối với chúng tôi. Chính sách của chúng tôi là tuân thủ pháp luật hiện hành về bảo vệ trẻ em trên môi trường trực tuyến và mọi quy định pháp luật liên quan khác. Vì vậy, chúng tôi giới hạn website dành cho người từ mười tám tuổi trở lên.',
+      'Quý khách phải đủ mười tám (18) tuổi trở lên mới được truy cập website này. Nếu Quý khách chưa đủ mười tám tuổi, Quý khách không được phép truy cập website này vì bất kỳ lý do nào. Do giới hạn độ tuổi sử dụng website này, mọi thông tin mà website này thu được không thuộc phạm vi điều chỉnh của quy định pháp luật về bảo vệ dữ liệu cá nhân của trẻ em và không được giám sát theo hướng đó.',
+    ],
+  },
+  {
+    heading: 'Cam kết của Archway Business Brokers về bảo mật dữ liệu',
+    paragraphs: [
+      'Website và hệ thống do chúng tôi vận hành có biện pháp bảo mật nhằm bảo vệ thông tin trong phạm vi kiểm soát của chúng tôi khỏi việc bị mất, sử dụng sai và thay đổi trái phép. Mặc dù chúng tôi nỗ lực hết mức để bảo đảm tính toàn vẹn và an toàn của mạng lưới và hệ thống, chúng tôi không thể bảo đảm rằng các biện pháp bảo mật sẽ ngăn được hacker bên thứ ba lấy trái phép thông tin này.',
+    ],
+  },
+  {
+    heading: 'Trong trường hợp bán công ty hoặc phá sản',
+    paragraphs: [
+      'Quyền sở hữu Archway Business Brokers có thể thay đổi vào một thời điểm nào đó trong tương lai. Nếu điều đó xảy ra, chúng tôi mong website này vẫn duy trì được mối quan hệ với Quý khách. Trong trường hợp bán, sáp nhập, chào bán công khai, phá sản hoặc thay đổi kiểm soát khác đối với Archway Business Brokers, thông tin của Quý khách có thể được chia sẻ với cá nhân hoặc doanh nghiệp sở hữu hoặc kiểm soát website này, và các lựa chọn của Quý khách sẽ tiếp tục được tôn trọng đối với việc sử dụng thông tin đó.',
+    ],
+  },
+  {
+    heading: 'Câu hỏi về Chính sách quyền riêng tư',
+    paragraphs: [
+      'Nếu Quý khách có bất kỳ câu hỏi nào về Chính sách quyền riêng tư này hoặc các thực tiễn được mô tả trong văn bản, Quý khách có thể liên hệ chúng tôi qua email brokers@archway.vn hoặc thông tin liên hệ được cung cấp trên website.',
+    ],
+  },
+  {
+    heading: 'Sửa đổi chính sách này',
+    paragraphs: [
+      'Archway Business Brokers bảo lưu quyền sửa đổi, bổ sung hoặc điều chỉnh chính sách này, Điều khoản sử dụng, cũng như các chính sách khác của mình bất kỳ lúc nào và bằng bất kỳ cách nào, bằng cách cập nhật nội dung đăng tải này. Việc Quý khách tiếp tục sử dụng website sau khi các thay đổi được áp dụng đồng nghĩa với việc Quý khách xác nhận và chấp nhận các thay đổi đó. Vui lòng xem lại tuyên bố quyền riêng tư này trước mỗi lần sử dụng để nắm các thay đổi.',
+    ],
+  },
+];
+
+const englishSections: PrivacySection[] = [
+  {
+    heading: 'Introduction',
+    paragraphs: [
+      'Archway Business Brokers collects information in several ways from people who visit the website, referred to below as “Visitors”, and from people who submit information through website forms, referred to below as “Users”, including the contact form, valuation request form and buyer opportunity registration form.',
+      'We created this Privacy Policy to demonstrate our strong commitment to privacy and security. This Privacy Policy describes how Archway Business Brokers collects information from website end users, what we do with the information collected, and the choices available to you regarding the collection and use of that information. We encourage you to read this Privacy Policy carefully.',
+      'Although we take appropriate measures to prevent unauthorized disclosure, we cannot guarantee that personally identifiable information we collect will never be disclosed in a manner inconsistent with this Privacy Policy.',
+    ],
+  },
+  {
+    heading: 'Information you submit through forms',
+    paragraphs: [
+      'When you complete a form on the website, we may collect information such as your name, company name, mobile number, email address, address, location, including city or province and ward or commune, investment capacity, areas and industries of interest, and your business acquisition criteria. Our website does not require you to create an account and does not store your password.',
+      'We use this information to respond to your request, prepare an initial valuation where relevant, and match you with transaction opportunities that fit the criteria you provide. We may contact you by phone or email for these purposes.',
+      'While supporting a transaction, we may share your information with a party connected to that transaction, such as a business owner or transaction adviser, to the extent necessary and after a confidentiality agreement is in place. Outside these circumstances, we do not sell your personal information to third parties.',
+    ],
+  },
+  {
+    heading: 'Service providers',
+    paragraphs: [
+      'We may use third-party service providers, such as website hosting, traffic analytics or email platforms, to operate the website and contact you. These providers may process your information only to the extent necessary to provide services to us and according to our instructions.',
+    ],
+  },
+  {
+    heading: 'Online advertising',
+    paragraphs: [
+      'We may promote our services on online platforms. In those circumstances, we share only aggregated, non-personally identifiable information about website visitors with advertising platforms so that information can reach people who may be interested.',
+    ],
+  },
+  {
+    heading: 'Email responses',
+    paragraphs: [
+      'When you send an enquiry to Archway Business Brokers, your response email address is used to reply to the enquiry we receive.',
+    ],
+  },
+  {
+    heading: 'Voluntary customer surveys',
+    paragraphs: [
+      'We may conduct customer surveys from time to time. We encourage you to participate because surveys provide important information that helps us improve the quality of our services.',
+      'We may combine your answers with the answers of other customers to create aggregate results, such as industry, business size and location. This aggregated, non-personally identifiable information may be shared with third parties.',
+    ],
+  },
+  {
+    heading: 'Special circumstances',
+    paragraphs: [
+      'We may also disclose your personal information, or information relating to your use of our website, for any reason if, in our sole judgment, we believe doing so is reasonable, including to comply with laws, regulations or requests from competent authorities; to disclose information necessary to identify, contact or bring an action against someone who may be violating the Terms of Use or other user policies; to operate the website properly; or to protect Archway Business Brokers and our Users.',
+    ],
+  },
+  {
+    heading: 'Browser-level information',
+    paragraphs: [
+      'Archway Business Brokers web servers may automatically collect information about a user’s IP address, browser type, the URL the user just visited, whether or not that URL is on the website, and the next URL the user visits, whether or not that URL is on the website, by reading this information from the user’s browser. Information supplied by every user’s browser is collected into a database and used, in aggregate and anonymously, for our internal analysis of website traffic patterns. Most websites automatically record this information. Archway Business Brokers may also use third parties to collect information, including through web beacons.',
+    ],
+  },
+  {
+    heading: 'Your rights under applicable law',
+    paragraphs: [
+      'This Privacy Policy identifies the categories of personally identifiable information that Archway Business Brokers collects through the website about individuals who use or access our website, and the categories of people and organizations with whom we may share that information.',
+      'You may request to review, update or delete the personally identifiable information we collect through the website by emailing brokers@archway.vn with your name and the email address you provided. We will respond within thirty days after receiving your request.',
+      'See the section below titled “Changes to this policy” for the process we use to notify you about material changes to this Privacy Policy. The effective date of the policy appears at the end of this document under “Last updated”.',
+      'Depending on your activity on the website, the following personally identifiable information may be collected in addition to information described elsewhere in this document. “Personally identifiable information” means information that identifies an individual, which we collect online and maintain in an accessible form, and may include any of the following:',
+    ],
+    list: [
+      'Full name.',
+      'Home address or other physical address, including street name and city or town.',
+      'Email address.',
+      'Mobile number.',
+      'Personal identification number.',
+      'Any other identifier that permits physical or online contact with a specific individual.',
+      'Information about a User that the website collects online from that User and maintains in personally identifiable form, combined with an identifier described in this Privacy Policy.',
+    ],
+  },
+  {
+    heading: 'Cookies and how Archway Business Brokers uses them',
+    paragraphs: [
+      'A “cookie” is a small data file that may be placed on your device when you visit certain websites. Archway Business Brokers may use cookies to collect, store and sometimes track information for the purposes described in this document and for statistical purposes to improve the services we provide.',
+      'Most web browsers automatically accept cookies, but you can usually change your browser settings to display a warning before accepting cookies or to refuse all cookies. If you choose to disable cookies from our website, however, you may be unable to use some features of the site. Visit www.aboutcookies.org to learn how to delete and control cookies on common browsers.',
+      'We may use Remarketing with Google Analytics and Facebook for online advertising. Third-party providers, including Google, may display our advertisements on sites across the Internet. We, together with third-party providers including Google, use first-party cookies, such as Google Analytics cookies, and third-party cookies together to inform, optimize and serve advertisements based on a person’s prior visits to our website.',
+      'You may opt out of Google Analytics for Display Advertising and customize Google Display Network advertisements through Google’s Ads Settings at https://www.google.com/settings/ads. You may also use Google’s Google Analytics Opt-out Browser Add-on at https://tools.google.com/dlpage/gaoptout/.',
+    ],
+  },
+  {
+    heading: 'Our commitment to children’s privacy',
+    paragraphs: [
+      'Protecting children’s privacy is especially important to us. Our policy is to comply with applicable laws concerning children online and all other applicable laws. Accordingly, we limit the website to people aged eighteen and older.',
+      'You must be at least eighteen (18) years old to access this website. If you are under eighteen, you are not permitted to access this website for any reason. Because of this age restriction, information collected by this website does not fall within the scope of children’s personal data protection rules and is not monitored as such.',
+    ],
+  },
+  {
+    heading: 'Our commitment to data security',
+    paragraphs: [
+      'The website and systems we operate use security measures intended to protect information within our control from loss, misuse and unauthorized alteration. Although we make every effort to ensure the integrity and security of our network and systems, we cannot guarantee that security measures will prevent third-party hackers from obtaining this information unlawfully.',
+    ],
+  },
+  {
+    heading: 'In the event of a sale or bankruptcy',
+    paragraphs: [
+      'Ownership of Archway Business Brokers may change at some point in the future. If that happens, we hope this website will continue its relationship with you. In the event of a sale, merger, public offering, bankruptcy or other change of control involving Archway Business Brokers, your information may be shared with the person or business that owns or controls this website, and your choices regarding the use of that information will continue to be respected.',
+    ],
+  },
+  {
+    heading: 'Questions about this Privacy Policy',
+    paragraphs: [
+      'If you have questions about this Privacy Policy or the practices described in it, you may contact us at brokers@archway.vn or through the contact information provided on the website.',
+    ],
+  },
+  {
+    heading: 'Changes to this policy',
+    paragraphs: [
+      'Archway Business Brokers reserves the right to revise, supplement or amend this policy, the Terms of Use and its other policies at any time and in any manner by updating this posted document. Your continued use of the website after changes are applied means that you acknowledge and accept those changes. Please review this privacy statement before each use to stay informed about changes.',
+    ],
+  },
+];
+
+const copy = isVietnamese
+  ? {
+      pageTitle: 'Chính sách quyền riêng tư | Archway Business Brokers',
+      description: 'Chính sách quyền riêng tư của Archway Business Brokers.',
+      heading: 'Chính sách quyền riêng tư',
+      intro: 'Quyền riêng tư của Quý khách cực kỳ quan trọng đối với chúng tôi. Chúng tôi mong trải nghiệm của Quý khách trên mạng Internet được thoải mái và bổ ích nhất có thể, và mong Quý khách sử dụng kho thông tin, công cụ và cơ hội rộng lớn của mạng Internet với sự tin tưởng trọn vẹn.',
+      lastUpdated: 'Cập nhật lần cuối: 26/08/2026',
+      sections: vietnameseSections,
+      footerAddress: 'Tầng 17, Tòa nhà Vincom Center, 72 đường Lê Thánh Tôn, Quận 1, Thành phố Hồ Chí Minh, Việt Nam',
+      footerPhone: 'Điện thoại: 0346-346-550',
+    }
+  : {
+      pageTitle: 'Privacy Policy | Archway Business Brokers',
+      description: 'The Privacy Policy of Archway Business Brokers.',
+      heading: 'Privacy Policy',
+      intro: 'Your privacy is extremely important to us. We want your experience on the Internet to be as comfortable and useful as possible, and we want you to use the Internet’s broad supply of information, tools and opportunities with complete confidence.',
+      lastUpdated: 'Last updated: 26/08/2026',
+      sections: englishSections,
+      footerAddress: '17th Floor, Vincom Center Building, 72 Le Thanh Ton Street, District 1, Ho Chi Minh City, Vietnam',
+      footerPhone: 'Phone: (+84) 346-346-550',
+    };
+---
+
+<SiteLayout lang={lang} noIndex title={copy.pageTitle} description={copy.description}>
+  <div class="min-h-dvh bg-[var(--color-muted)] text-[var(--color-ink)]">
+    <div class="relative min-h-28 bg-[var(--color-paper)]">
+      <SiteNavigation lang={lang} showBrand theme="light" />
+    </div>
+
+    <main>
+      <section class="bg-[var(--color-muted)] px-6 py-16 sm:px-10 sm:py-24">
+        <div class="mx-auto max-w-3xl">
+          <h1 class="text-[clamp(2.25rem,4vw,2.75rem)] leading-tight">{copy.heading}</h1>
+          <p class="mt-5 text-base leading-7 text-[var(--color-ink)]">{copy.intro}</p>
+        </div>
+      </section>
+
+      <section class="bg-[var(--color-paper)] px-6 py-16 sm:px-10 sm:py-24">
+        <div class="mx-auto grid w-full max-w-3xl gap-4 text-base leading-7 text-[var(--color-ink)]">
+          {copy.sections.map((section, index) => (
+            <section aria-labelledby={`privacy-section-${index + 1}`}>
+              <h2 id={`privacy-section-${index + 1}`} class="mt-10 text-[clamp(1.5rem,3vw,1.875rem)] font-medium leading-tight text-[var(--color-ink)] first:mt-0">{section.heading}</h2>
+              {section.paragraphs.map((paragraph) => <p class="mt-4">{paragraph}</p>)}
+              {section.list && (
+                <ul class="mt-4 grid list-disc gap-2 pl-5">
+                  {section.list.map((item) => <li>{item}</li>)}
+                </ul>
+              )}
+            </section>
+          ))}
+          <p class="mt-6 text-sm leading-6 text-[var(--color-ink)]">{copy.lastUpdated}</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-[var(--color-ink)] px-6 py-8 text-center text-sm text-[var(--color-paper)] sm:px-10">
+      <p class="m-0">Archway Business Brokers, {copy.footerAddress}</p>
+      <a class="mt-2 inline-flex text-[var(--color-paper)] no-underline hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-paper)] focus-visible:outline-offset-4" href="tel:+84346346550">{copy.footerPhone}</a>
+      <a class="mt-2 block text-[var(--color-paper)] no-underline hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-paper)] focus-visible:outline-offset-4" href="mailto:brokers@archway.vn">brokers@archway.vn</a>
+    </footer>
+  </div>
+</SiteLayout>

@@ -1,0 +1,173 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import SiteNavigation from './SiteNavigation.astro';
+
+interface Props {
+  lang: 'en' | 'vi';
+}
+
+const { lang } = Astro.props;
+const isVietnamese = lang === 'vi';
+
+const copy = isVietnamese
+  ? {
+      pageTitle: 'Liên hệ | Archway Business Brokers',
+      description: 'Trao đổi với Archway Business Brokers về kế hoạch bán, mua hoặc chuyển giao doanh nghiệp.',
+      heading: 'Liên hệ',
+      introBefore: 'Hỏi Archway bất cứ điều gì. Nếu Quý khách muốn nhận định giá hoặc bán doanh nghiệp, Quý khách vui lòng điền vào',
+      sellLink: 'biểu mẫu bán doanh nghiệp',
+      introAfter: 'thay vì biểu mẫu gửi tin nhắn trong trang này.',
+      faqHeading: 'Câu hỏi thường gặp',
+      formHeading: 'Gửi tin nhắn cho Archway',
+      nameLabel: 'Họ và tên',
+      namePlaceholder: 'Nguyễn Văn A',
+      emailLabel: 'Email',
+      emailPlaceholder: 'email@domain.com',
+      messageLabel: 'Tin nhắn',
+      messagePlaceholder: 'Câu hỏi hoặc nội dung Quý khách muốn trao đổi với Archway',
+      privacyPrefix: 'Tôi chấp thuận',
+      privacyLink: 'Chính sách quyền riêng tư',
+      privacySuffix: ' và cam kết giữ bí mật nội dung trao đổi với Archway Business Brokers.',
+      submit: 'Gửi tin nhắn',
+      submitting: 'Đang gửi...',
+      success: 'Đã gửi tin nhắn.',
+      error: 'Không thể gửi tin nhắn lúc này. Vui lòng thử lại sau.',
+      phone: 'Điện thoại: 0346-346-550',
+      footerAddress: 'Tầng 17, Tòa nhà Vincom Center, 72 đường Lê Thánh Tôn, Quận 1, Thành phố Hồ Chí Minh, Việt Nam',
+      faqs: {
+        contact: 'Quý khách liên hệ với Archway bằng cách nào?',
+        process: 'Quy trình của Archway diễn ra thế nào?',
+        value: 'Doanh nghiệp của Quý khách đáng giá bao nhiêu?',
+      },
+    }
+  : {
+      pageTitle: 'Contact | Archway Business Brokers',
+      description: 'Speak with Archway Business Brokers about your plans to sell, buy or transfer a business.',
+      heading: 'Contact',
+      introBefore: 'Ask Archway anything. If you want a valuation or want to sell your business, please use the',
+      sellLink: 'sell your business form',
+      introAfter: 'instead of the message form on this page.',
+      faqHeading: 'Frequently asked questions',
+      formHeading: 'Send a message to Archway',
+      nameLabel: 'Full name',
+      namePlaceholder: 'Your full name',
+      emailLabel: 'Email',
+      emailPlaceholder: 'you@example.com',
+      messageLabel: 'Message',
+      messagePlaceholder: 'Your question or what you would like to discuss with Archway',
+      privacyPrefix: 'I accept the',
+      privacyLink: 'Privacy Policy',
+      privacySuffix: ' and agree to keep discussions with Archway Business Brokers confidential.',
+      submit: 'Send message',
+      submitting: 'Sending...',
+      success: 'Your message has been sent.',
+      error: 'We could not send your message right now. Please try again later.',
+      phone: 'Phone: (+84) 346-346-550',
+      footerAddress: '17th Floor, Vincom Center Building, 72 Le Thanh Ton Street, District 1, Ho Chi Minh City, Vietnam',
+      faqs: {
+        contact: 'How can you contact Archway?',
+        process: 'How does Archway’s process work?',
+        value: 'How much is your business worth?',
+      },
+    };
+
+const privacyHref = isVietnamese ? '/privacy-policy/' : '/en/privacy-policy/';
+const sellHref = isVietnamese ? '/sell-your-business/' : '/en/sell-your-business/';
+const howItWorksHref = isVietnamese ? '/how-it-works/' : '/en/how-it-works/';
+const inputClass = 'min-h-11 w-full border border-[var(--color-line-dark)] bg-[var(--color-paper)] px-4 py-2.5 text-base text-[var(--color-ink)] placeholder:text-[var(--color-ink)] placeholder:opacity-60 placeholder:italic focus:border-[var(--color-accent)] focus:outline-2 focus:outline-offset-2 focus:outline-[var(--color-accent)]';
+const labelClass = 'block text-sm font-medium text-[var(--color-ink)]';
+---
+
+<SiteLayout lang={lang} title={copy.pageTitle} description={copy.description}>
+  <div class="min-h-dvh bg-[var(--color-muted)] text-[var(--color-ink)]">
+    <div class="relative min-h-28 bg-[var(--color-paper)]">
+      <SiteNavigation lang={lang} showBrand theme="light" />
+    </div>
+
+    <main>
+      <section class="px-6 py-16 sm:px-10 sm:py-24" aria-labelledby="contact-heading">
+        <div class="mx-auto grid w-full max-w-6xl gap-10 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <h1 id="contact-heading" class="text-[clamp(2.25rem,4vw,2.75rem)] leading-tight">{copy.heading}</h1>
+            <p class="mt-5 max-w-xl text-base leading-7 text-[var(--color-ink)]">
+              {copy.introBefore} <a class="text-[var(--color-accent)] underline underline-offset-4 hover:text-[var(--color-accent-hover)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-ink)]" href={sellHref}>{copy.sellLink}</a> {copy.introAfter}
+            </p>
+
+            <h2 class="sr-only">{copy.faqHeading}</h2>
+            <div class="mt-10 grid gap-3">
+              {isVietnamese ? (
+                <>
+                  <details open class="border border-[var(--color-line-dark)] bg-[var(--color-paper)]">
+                    <summary class="cursor-pointer px-5 py-4 text-base font-medium text-[var(--color-ink)] focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-[var(--color-accent)]">{copy.faqs.contact}</summary>
+                    <p class="border-t border-[var(--color-line-dark)] px-5 py-4 text-base leading-7 text-[var(--color-ink)]">Quý khách có thể gửi tin nhắn qua biểu mẫu bên cạnh, gọi số <a class="text-[var(--color-accent)] underline underline-offset-4 hover:text-[var(--color-accent-hover)]" href="tel:+84346346550">0346-346-550</a> hoặc gửi email đến <a class="text-[var(--color-accent)] underline underline-offset-4 hover:text-[var(--color-accent-hover)]" href="mailto:brokers@archway.vn">brokers@archway.vn</a>. Archway phản hồi trong giờ làm việc.</p>
+                  </details>
+                  <details class="border border-[var(--color-line-dark)] bg-[var(--color-paper)]">
+                    <summary class="cursor-pointer px-5 py-4 text-base font-medium text-[var(--color-ink)] focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-[var(--color-accent)]">{copy.faqs.process}</summary>
+                    <p class="border-t border-[var(--color-line-dark)] px-5 py-4 text-base leading-7 text-[var(--color-ink)]">Quý khách có thể xem quy trình 10 bước bán doanh nghiệp tại trang <a class="text-[var(--color-accent)] underline underline-offset-4 hover:text-[var(--color-accent-hover)]" href={howItWorksHref}>Cách Archway hoạt động</a>.</p>
+                  </details>
+                  <details class="border border-[var(--color-line-dark)] bg-[var(--color-paper)]">
+                    <summary class="cursor-pointer px-5 py-4 text-base font-medium text-[var(--color-ink)] focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-[var(--color-accent)]">{copy.faqs.value}</summary>
+                    <p class="border-t border-[var(--color-line-dark)] px-5 py-4 text-base leading-7 text-[var(--color-ink)]">Archway cung cấp dịch vụ định giá miễn phí. Quý khách điền thông tin tại trang <a class="text-[var(--color-accent)] underline underline-offset-4 hover:text-[var(--color-accent-hover)]" href={sellHref}>Bán doanh nghiệp</a> và chúng tôi sẽ phản hồi trong thời gian sớm nhất.</p>
+                  </details>
+                </>
+              ) : (
+                <>
+                  <details open class="border border-[var(--color-line-dark)] bg-[var(--color-paper)]">
+                    <summary class="cursor-pointer px-5 py-4 text-base font-medium text-[var(--color-ink)] focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-[var(--color-accent)]">{copy.faqs.contact}</summary>
+                    <p class="border-t border-[var(--color-line-dark)] px-5 py-4 text-base leading-7 text-[var(--color-ink)]">You can send a message through the form beside this section, call <a class="text-[var(--color-accent)] underline underline-offset-4 hover:text-[var(--color-accent-hover)]" href="tel:+84346346550">(+84) 346-346-550</a> or email <a class="text-[var(--color-accent)] underline underline-offset-4 hover:text-[var(--color-accent-hover)]" href="mailto:brokers@archway.vn">brokers@archway.vn</a>. Archway responds during business hours.</p>
+                  </details>
+                  <details class="border border-[var(--color-line-dark)] bg-[var(--color-paper)]">
+                    <summary class="cursor-pointer px-5 py-4 text-base font-medium text-[var(--color-ink)] focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-[var(--color-accent)]">{copy.faqs.process}</summary>
+                    <p class="border-t border-[var(--color-line-dark)] px-5 py-4 text-base leading-7 text-[var(--color-ink)]">You can view Archway’s 10-step business sale process on the <a class="text-[var(--color-accent)] underline underline-offset-4 hover:text-[var(--color-accent-hover)]" href={howItWorksHref}>How Archway works</a> page.</p>
+                  </details>
+                  <details class="border border-[var(--color-line-dark)] bg-[var(--color-paper)]">
+                    <summary class="cursor-pointer px-5 py-4 text-base font-medium text-[var(--color-ink)] focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-[var(--color-accent)]">{copy.faqs.value}</summary>
+                    <p class="border-t border-[var(--color-line-dark)] px-5 py-4 text-base leading-7 text-[var(--color-ink)]">Archway provides a free valuation service. Complete the information on the <a class="text-[var(--color-accent)] underline underline-offset-4 hover:text-[var(--color-accent-hover)]" href={sellHref}>Sell your business</a> page and we will respond as soon as possible.</p>
+                  </details>
+                </>
+              )}
+            </div>
+          </div>
+
+          <div class="border border-[var(--color-line-dark)] bg-[var(--color-paper)] p-6 sm:p-10">
+            <h2 class="text-2xl font-medium leading-tight">{copy.formHeading}</h2>
+            <form id={`contact-form-${lang}`} class="mt-8 grid gap-5" method="post" action="/api/register/" data-contact-form data-locale={lang} data-submit-label={copy.submit} data-submitting-label={copy.submitting} data-success-message={copy.success} data-error-message={copy.error} novalidate>
+              <input type="hidden" name="form_type" value="contact" />
+              <input type="hidden" name="locale" value={lang} />
+              <input aria-hidden="true" autocomplete="off" class="hidden" name="fax_number" tabindex="-1" type="text" />
+              <div class="grid gap-2">
+                <label for={`contact-name-${lang}`} class={labelClass}>{copy.nameLabel} <span class="text-[var(--color-accent)]" aria-hidden="true">*</span></label>
+                <input id={`contact-name-${lang}`} name="name" type="text" required autocomplete="name" placeholder={copy.namePlaceholder} class={inputClass} />
+              </div>
+              <div class="grid gap-2">
+                <label for={`contact-email-${lang}`} class={labelClass}>{copy.emailLabel} <span class="text-[var(--color-accent)]" aria-hidden="true">*</span></label>
+                <input id={`contact-email-${lang}`} name="email" type="email" required autocomplete="email" placeholder={copy.emailPlaceholder} class={inputClass} />
+              </div>
+              <div class="grid gap-2">
+                <label for={`contact-message-${lang}`} class={labelClass}>{copy.messageLabel} <span class="text-[var(--color-accent)]" aria-hidden="true">*</span></label>
+                <textarea id={`contact-message-${lang}`} name="message" rows="5" required placeholder={copy.messagePlaceholder} class={`${inputClass} h-auto`}></textarea>
+              </div>
+              <label class="flex items-start gap-3 text-sm leading-6 text-[var(--color-ink)]" for={`contact-privacy-${lang}`}>
+                <input id={`contact-privacy-${lang}`} name="privacy-consent" value="on" type="checkbox" required class="mt-1 h-4 w-4 shrink-0 accent-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-ink)]" />
+                <span><span class="text-[var(--color-accent)]" aria-hidden="true">*</span> {copy.privacyPrefix} <a class="text-[var(--color-accent)] underline underline-offset-2 hover:text-[var(--color-accent-hover)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-ink)]" href={privacyHref}>{copy.privacyLink}</a>{copy.privacySuffix}</span>
+              </label>
+              <button id={`contact-submit-${lang}`} type="submit" data-contact-submit class="inline-flex min-h-11 w-full items-center justify-center gap-3 bg-[var(--color-ink)] px-6 py-3 font-medium text-[var(--color-paper)] transition-colors hover:bg-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-ink)] disabled:pointer-events-none disabled:opacity-60">
+                <span data-contact-spinner class="hidden h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent motion-reduce:animate-none" aria-hidden="true"></span>
+                <span data-contact-submit-label>{copy.submit}</span>
+              </button>
+              <p data-contact-status class="min-h-7 text-base text-[var(--color-ink)]" role="status" aria-live="polite" tabindex="-1"></p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-[var(--color-ink)] px-6 py-8 text-center text-sm text-[var(--color-paper)] sm:px-10">
+      <p class="m-0">Archway Business Brokers, {copy.footerAddress}</p>
+      <a class="mt-2 inline-flex text-[var(--color-paper)] no-underline hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-paper)] focus-visible:outline-offset-4" href="tel:+84346346550">{copy.phone}</a>
+      <a class="mt-2 block text-[var(--color-paper)] no-underline hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-offset-4" href="mailto:brokers@archway.vn">brokers@archway.vn</a>
+    </footer>
+  </div>
+</SiteLayout>
+
+<script is:inline src="/contact-form.js" defer></script>

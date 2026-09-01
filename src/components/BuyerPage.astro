@@ -1,0 +1,375 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+
+interface Props {
+  lang: 'en' | 'vi';
+}
+
+const { lang } = Astro.props;
+const isVietnamese = lang === 'vi';
+
+const copy = isVietnamese
+  ? {
+      pageTitle: 'Mua doanh nghiệp tại Việt Nam | Archway Business Brokers',
+      description: 'Đăng ký danh sách người mua ưu tiên của Archway Business Brokers để nhận cơ hội mua doanh nghiệp phù hợp trước khi niêm yết công khai.',
+      language: 'EN',
+      languageLabel: 'Chuyển sang English',
+      heroPrompt: 'Muốn nhận giao dịch mới sớm nhất',
+      heroDescription: 'Tham gia danh sách người mua ưu tiên của Archway Business Brokers và nhận thông báo về các cơ hội phù hợp trước khi niêm yết công khai.',
+      formHeading: 'Đăng ký ngay',
+      stepLabel: 'Bước',
+      stepOfLabel: 'trên',
+      contactPrompt: 'Vui lòng cho chúng tôi biết thông tin liên hệ của Quý khách',
+      locationPrompt: 'Vui lòng cho chúng tôi biết vị trí của Quý khách',
+      investmentPrompt: 'Năng lực đầu tư của Quý khách',
+      locationsPrompt: 'Quý khách muốn mua doanh nghiệp tại khu vực nào',
+      industriesPrompt: 'Quý khách quan tâm ngành nào',
+      criteriaPrompt: 'Điều gì khác chúng tôi nên biết',
+      nameLabel: 'Họ và tên',
+      companyLabel: 'Công ty',
+      companyOptional: '(không bắt buộc)',
+      phoneLabel: 'Số điện thoại',
+      emailLabel: 'Email',
+      provinceLabel: 'Tỉnh hoặc thành phố',
+      wardLabel: 'Phường hoặc xã',
+      capitalLabel: 'Vốn có thể đầu tư',
+      cashflowLabel: 'Dòng tiền tối thiểu kỳ vọng',
+      locationsLabel: 'Khu vực quan tâm',
+      industriesLabel: 'Ngành quan tâm',
+      criteriaLabel: 'Điều gì khác cần biết về tiêu chí mua của Quý khách',
+      namePlaceholder: 'Nguyễn Văn A',
+      companyPlaceholder: 'Công ty của Quý khách',
+      phonePlaceholder: '0912 345 678',
+      emailPlaceholder: 'email@domain.com',
+      provincePlaceholder: 'TP. Hồ Chí Minh',
+      wardPlaceholder: 'Phường Bến Nghé',
+      capitalPlaceholder: '2 tỷ',
+      cashflowPlaceholder: '500 triệu',
+      criteriaPlaceholder: 'Mô tả tiêu chí đầu tư, quy mô doanh nghiệp mục tiêu, cấu trúc giao dịch mong muốn, thời gian dự kiến hoặc thông tin liên quan khác...',
+      privacyPrefix: 'Tôi chấp thuận',
+      privacyLink: 'Chính sách bảo mật',
+      privacySuffix: ' và cam kết giữ bí mật nội dung trao đổi với Archway Business Brokers.',
+      newsletterLabel: 'Tôi đồng ý nhận thêm các cập nhật định kỳ từ Archway Business Brokers ngoài thông tin về cơ hội mua doanh nghiệp.',
+      back: 'Quay lại',
+      next: 'Tiếp tục',
+      submit: 'Hoàn tất đăng ký',
+      processing: 'Đang xử lý...',
+      submitting: 'Đang gửi...',
+      success: 'Xin cảm ơn. Archway Business Brokers đã tiếp nhận thông tin đăng ký và sẽ liên hệ khi có cơ hội phù hợp.',
+      error: 'Hiện chưa thể gửi thông tin. Vui lòng thử lại sau hoặc liên hệ brokers@archway.vn.',
+      locationError: 'Vui lòng chọn ít nhất một khu vực.',
+      industryError: 'Vui lòng chọn ít nhất một ngành.',
+      benefitsHeading: 'Cách hoạt động',
+      nextStepsHeading: 'Bước tiếp theo',
+      benefits: [
+        { bold: 'Biết tin đầu tiên.', text: 'Nhận thông báo về doanh nghiệp mới trước khi ra mắt công khai.' },
+        { bold: 'Chỉ thấy giao dịch phù hợp.', text: 'Cho chúng tôi biết Quý khách đang tìm kiếm gì, chúng tôi sẽ ghép với cơ hội phù hợp.' },
+        { bold: 'Bảo mật và độc quyền.', text: 'Thông tin của Quý khách được bảo mật; chúng tôi gửi thông tin phù hợp và giữ nguyên quyền riêng tư.' },
+      ],
+      nextSteps: [
+        'Điền biểu mẫu.',
+        'Kiểm tra email và ký thỏa thuận bảo mật (NDA) khi cần để nhận cơ hội.',
+        'Nhận thông báo về các cơ hội giao dịch phù hợp.',
+      ],
+      locations: ['Toàn quốc', 'TP. Hồ Chí Minh', 'Hà Nội', 'Các tỉnh lân cận TP.HCM', 'Trực tuyến'],
+      industries: ['Dịch vụ doanh nghiệp', 'Hàng tiêu dùng', 'Xây dựng', 'Phân phối', 'Giáo dục', 'Năng lượng', 'Y tế', 'Dịch vụ sinh hoạt', 'Sản xuất', 'Truyền thông hoặc marketing', 'Bất động sản', 'Phần mềm hoặc công nghệ', 'Vận tải'],
+      commitment: 'Chúng tôi chỉ chọn những doanh nghiệp thực sự đủ chất lượng để đưa ra thị trường. Mọi cơ hội gửi đến Quý khách đều đã được kiểm định: doanh thu thật, vận hành thật, tiềm năng thật. Khi Quý khách sẵn sàng mua, chúng tôi sẽ kết nối những doanh nghiệp xứng đáng với thời gian của Quý khách.',
+      commitmentAttribution: 'Archway Business Brokers',
+      footerAddress: 'Tầng 17, Tòa nhà Vincom Center, 72 đường Lê Thánh Tôn, Quận 1, Thành phố Hồ Chí Minh, Việt Nam',
+      footerPhone: 'Điện thoại: 0346-346-550',
+    }
+  : {
+      pageTitle: 'Buy a Business in Vietnam | Archway Business Brokers',
+      description: 'Join the priority buyer list from Archway Business Brokers to receive suitable business acquisition opportunities before public listing.',
+      language: 'VI',
+      languageLabel: 'Chuyển sang Vietnamese',
+      heroPrompt: 'Want to hear about new opportunities first',
+      heroDescription: 'Join the priority buyer list from Archway Business Brokers and receive notice of suitable opportunities before public listing.',
+      formHeading: 'Register now',
+      stepLabel: 'Step',
+      stepOfLabel: 'of',
+      contactPrompt: 'Please tell us your contact details',
+      locationPrompt: 'Please tell us where you are based',
+      investmentPrompt: 'Your investment capacity',
+      locationsPrompt: 'Where would you like to buy a business',
+      industriesPrompt: 'Which industries interest you',
+      criteriaPrompt: 'What else should we know',
+      nameLabel: 'Full name',
+      companyLabel: 'Company',
+      companyOptional: '(optional)',
+      phoneLabel: 'Mobile number',
+      emailLabel: 'Email',
+      provinceLabel: 'City or province',
+      wardLabel: 'Ward or commune',
+      capitalLabel: 'Available investment capital',
+      cashflowLabel: 'Minimum expected cash flow',
+      locationsLabel: 'Areas of interest',
+      industriesLabel: 'Industries of interest',
+      criteriaLabel: 'What else should we know about your buying criteria',
+      namePlaceholder: 'Your full name',
+      companyPlaceholder: 'Your company',
+      phonePlaceholder: 'Your mobile number',
+      emailPlaceholder: 'you@example.com',
+      provincePlaceholder: 'Ho Chi Minh City',
+      wardPlaceholder: 'Ben Nghe Ward',
+      capitalPlaceholder: 'VND 2 billion',
+      cashflowPlaceholder: 'VND 500 million',
+      criteriaPlaceholder: 'Tell us about your investment criteria, target business size, preferred transaction structure, timing or any other relevant information...',
+      privacyPrefix: 'I accept the',
+      privacyLink: 'Privacy Policy',
+      privacySuffix: ' and agree to treat my discussions with Archway Business Brokers as confidential.',
+      newsletterLabel: 'I would also like to receive occasional updates from Archway Business Brokers beyond business acquisition opportunities.',
+      back: 'Back',
+      next: 'Continue',
+      submit: 'Complete registration',
+      processing: 'Processing...',
+      submitting: 'Sending...',
+      success: 'Thank you. Archway Business Brokers has received your registration and will contact you when a suitable opportunity becomes available.',
+      error: 'We could not submit your information. Please try again or contact brokers@archway.vn.',
+      locationError: 'Please select at least one area.',
+      industryError: 'Please select at least one industry.',
+      benefitsHeading: 'How it works',
+      nextStepsHeading: 'Next steps',
+      benefits: [
+        { bold: 'Be first to know.', text: 'Receive notice of new businesses before they are publicly launched.' },
+        { bold: 'See relevant opportunities.', text: 'Tell us what you are looking for and we will match you with suitable opportunities.' },
+        { bold: 'Confidential and focused.', text: 'Your information stays confidential and we share relevant opportunities with care.' },
+      ],
+      nextSteps: [
+        'Complete the form.',
+        'Check your email and sign a confidentiality agreement (NDA) when required to receive an opportunity.',
+        'Receive notice of suitable acquisition opportunities.',
+      ],
+      locations: ['Nationwide', 'Ho Chi Minh City', 'Hanoi', 'Provinces near Ho Chi Minh City', 'Online businesses'],
+      industries: ['Business services', 'Consumer goods', 'Construction', 'Distribution', 'Education', 'Energy', 'Healthcare', 'Household services', 'Manufacturing', 'Media or marketing', 'Real estate', 'Software or technology', 'Transport'],
+      commitment: 'We only select businesses that are genuinely ready to be brought to market. Every opportunity we share with you has been vetted: real revenue, real operations, real potential. When you are ready to buy, we will connect you with businesses worthy of your time.',
+      commitmentAttribution: 'Archway Business Brokers',
+      footerAddress: '17th Floor, Vincom Center Building, 72 Le Thanh Ton Street, District 1, Ho Chi Minh City, Vietnam',
+      footerPhone: 'Phone: (+84) 346-346-550',
+    };
+
+const questionMark = String.fromCharCode(63);
+const homeHref = isVietnamese ? '/' : '/en/';
+const languageHref = isVietnamese ? '/en/buyer-register/' : '/buyer-register/';
+const languageFlag = isVietnamese ? '🇬🇧' : '🇻🇳';
+const privacyHref = isVietnamese ? '/privacy-policy/' : '/en/privacy-policy/';
+const formId = isVietnamese ? 'buyer-form-vi' : 'buyer-form-en';
+const requiredClass = 'text-[var(--color-accent-hover)]';
+const labelClass = 'block text-sm font-medium text-[var(--color-ink)]';
+const inputClass = 'min-h-11 w-full border border-[var(--color-line-dark)] bg-[var(--color-paper)] px-4 py-2.5 text-base text-[var(--color-ink)] placeholder:text-[var(--color-ink)] placeholder:opacity-60 placeholder:italic focus:border-[var(--color-accent)] focus:outline-2 focus:outline-offset-2 focus:outline-[var(--color-accent)]';
+const checkboxClass = 'mt-1 h-4 w-4 shrink-0 accent-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-2';
+const primaryButtonClass = 'inline-flex min-h-11 items-center justify-center gap-2 border-0 bg-[var(--color-accent)] px-6 py-3 text-base font-medium leading-none text-[var(--color-paper)] transition-colors hover:bg-[var(--color-accent-hover)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)] disabled:pointer-events-none disabled:opacity-60';
+const secondaryButtonClass = 'inline-flex min-h-11 items-center justify-center border border-[var(--color-ink)] bg-transparent px-6 py-3 text-base font-medium leading-none text-[var(--color-ink)] transition-colors hover:bg-[var(--color-muted)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-ink)] disabled:pointer-events-none disabled:opacity-60';
+---
+
+<SiteLayout lang={lang} title={copy.pageTitle} description={copy.description} includeNavigationScript={false}>
+  <div class="min-h-dvh bg-[var(--color-paper)] text-[var(--color-ink)]">
+    <header class="bg-[var(--color-paper)] text-[var(--color-ink)]">
+      <div class="relative mx-auto flex min-h-20 w-full max-w-7xl items-center justify-start px-4 py-4 sm:min-h-24 sm:justify-center sm:px-10 sm:py-6">
+        <a class="inline-flex max-w-full items-center whitespace-nowrap text-[clamp(0.75rem,3.8vw,1.5rem)] font-medium leading-none tracking-tight text-[var(--color-ink)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4" href={homeHref} aria-label={isVietnamese ? 'Trang chủ Archway Business Brokers' : 'Archway Business Brokers home'}>
+          <img class="mr-1.5 h-6 w-6 shrink-0 sm:mr-2 sm:h-7 sm:w-7" src="/favicon.svg" alt="" width="28" height="28" decoding="async" />
+          <span>Archway</span>
+          <span class="ml-1 text-[var(--color-accent)]">Business Brokers</span>
+        </a>
+        <a class="absolute right-4 inline-flex shrink-0 items-center gap-0 text-sm text-[var(--color-ink)] hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4 sm:right-10" href={languageHref} lang={isVietnamese ? 'en' : 'vi'} aria-label={copy.languageLabel}>
+          <span aria-hidden="true">{languageFlag}</span>
+          <span>{copy.language}</span>
+        </a>
+      </div>
+    </header>
+
+    <section class="bg-[var(--color-muted)] px-6 py-16 sm:px-10 sm:py-24">
+      <div class="mx-auto max-w-3xl text-center">
+        <h1 class="text-[clamp(2.25rem,4vw,2.75rem)] leading-tight">{copy.heroPrompt}{questionMark}</h1>
+        <p class="mt-5 text-base leading-7 text-[var(--color-ink)]">{copy.heroDescription}</p>
+      </div>
+    </section>
+
+    <section class="px-6 py-16 sm:px-10 sm:py-24">
+      <div class="mx-auto grid w-full max-w-7xl gap-10 lg:grid-cols-2 lg:gap-16">
+        <div class="order-2 lg:order-1">
+          <p class="text-lg leading-8 text-[var(--color-ink)]">{copy.heroDescription}</p>
+
+          <h2 class="mt-10 text-xl font-medium text-[var(--color-ink)]">{copy.benefitsHeading}</h2>
+          <ul class="mt-5 grid gap-4">
+            {copy.benefits.map((item) => (
+              <li class="flex items-start gap-3">
+                <span class="mt-1 flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-[var(--color-ink)] text-xs text-[var(--color-paper)]" aria-hidden="true">✓</span>
+                <p class="text-base leading-7 text-[var(--color-ink)]"><strong class="font-medium text-[var(--color-ink)]">{item.bold}</strong> {item.text}</p>
+              </li>
+            ))}
+          </ul>
+
+          <h2 class="mt-10 text-xl font-medium text-[var(--color-ink)]">{copy.nextStepsHeading}</h2>
+          <ol class="mt-5 grid gap-4">
+            {copy.nextSteps.map((step, index) => (
+              <li class="flex items-start gap-3">
+                <span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[var(--color-ink)] text-sm font-medium text-[var(--color-paper)]">{index + 1}</span>
+                <p class="text-base leading-7 text-[var(--color-ink)]">{step}</p>
+              </li>
+            ))}
+          </ol>
+
+          <p class="mt-10 text-sm leading-6 text-[var(--color-ink)]">{copy.commitment}</p>
+        </div>
+
+        <div class="order-1 lg:order-2">
+          <div class="border border-[var(--color-line-dark)] bg-[var(--color-muted)] p-6 sm:p-8">
+            <div class="mb-6 flex items-center justify-between gap-4">
+              <h2 class="text-2xl font-medium text-[var(--color-ink)]">{copy.formHeading}</h2>
+              <span data-step-indicator class="text-sm text-[var(--color-ink)]">{copy.stepLabel} 1 {copy.stepOfLabel} 6</span>
+            </div>
+            <div class="mb-8 h-2 w-full bg-[var(--color-line-dark)]">
+              <div data-progress-fill class="h-2 bg-[var(--color-accent)] transition-[width] duration-300" style="width: 16.67%"></div>
+            </div>
+
+            <form
+              id={formId}
+              class="grid gap-6"
+              data-buyer-form
+              data-step-label={copy.stepLabel}
+              data-step-of-label={copy.stepOfLabel}
+              data-next-label={copy.next}
+              data-submit-label={copy.submit}
+              data-processing-label={copy.processing}
+              data-submitting-label={copy.submitting}
+              data-success-message={copy.success}
+              data-error-message={copy.error}
+              method="post"
+              action="/api/register/"
+              novalidate
+            >
+              <input type="hidden" name="form_type" value="buyer" />
+              <input type="hidden" name="locale" value={lang} />
+              <input aria-hidden="true" autocomplete="off" class="hidden" name="fax_number" tabindex="-1" type="text" />
+
+              <div data-step class="grid gap-6">
+                <h3 class="text-lg font-medium text-[var(--color-ink)]">{copy.contactPrompt}</h3>
+                <div class="grid gap-2">
+                  <label for={`${formId}-name`} class={labelClass}>{copy.nameLabel} <span class={requiredClass} aria-hidden="true">*</span></label>
+                  <input id={`${formId}-name`} name="full_name" type="text" required autocomplete="name" placeholder={copy.namePlaceholder} class={inputClass} />
+                </div>
+                <div class="grid gap-2">
+                  <label for={`${formId}-company`} class={labelClass}>{copy.companyLabel} <span class="text-[var(--color-ink)]">{copy.companyOptional}</span></label>
+                  <input id={`${formId}-company`} name="company_name" type="text" autocomplete="organization" placeholder={copy.companyPlaceholder} class={inputClass} />
+                </div>
+                <div class="grid gap-2">
+                  <label for={`${formId}-phone`} class={labelClass}>{copy.phoneLabel} <span class={requiredClass} aria-hidden="true">*</span></label>
+                  <input id={`${formId}-phone`} data-phone-input name="phone" type="tel" required autocomplete="tel" inputmode="numeric" maxlength="16" placeholder={copy.phonePlaceholder} class={inputClass} />
+                </div>
+                <div class="grid gap-2">
+                  <label for={`${formId}-email`} class={labelClass}>{copy.emailLabel} <span class={requiredClass} aria-hidden="true">*</span></label>
+                  <input id={`${formId}-email`} name="email" type="email" required autocomplete="email" placeholder={copy.emailPlaceholder} class={inputClass} />
+                </div>
+              </div>
+
+              <div data-step class="grid gap-6" hidden>
+                <h3 class="text-lg font-medium text-[var(--color-ink)]">{copy.locationPrompt}</h3>
+                <div class="grid gap-2">
+                  <label for={`${formId}-province`} class={labelClass}>{copy.provinceLabel} <span class={requiredClass} aria-hidden="true">*</span></label>
+                  <input id={`${formId}-province`} name="province" type="text" required placeholder={copy.provincePlaceholder} autocomplete="address-level2" class={inputClass} />
+                </div>
+                <div class="grid gap-2">
+                  <label for={`${formId}-ward`} class={labelClass}>{copy.wardLabel} <span class={requiredClass} aria-hidden="true">*</span></label>
+                  <input id={`${formId}-ward`} name="ward" type="text" required placeholder={copy.wardPlaceholder} autocomplete="address-level3" class={inputClass} />
+                </div>
+              </div>
+
+              <div data-step class="grid gap-6" hidden>
+                <h3 class="text-lg font-medium text-[var(--color-ink)]">{copy.investmentPrompt}</h3>
+                <div class="grid gap-2">
+                  <label for={`${formId}-capital`} class={labelClass}>{copy.capitalLabel} <span class={requiredClass} aria-hidden="true">*</span></label>
+                  <input id={`${formId}-capital`} name="capital" type="text" required placeholder={copy.capitalPlaceholder} class={inputClass} />
+                </div>
+                <div class="grid gap-2">
+                  <label for={`${formId}-cashflow`} class={labelClass}>{copy.cashflowLabel} <span class={requiredClass} aria-hidden="true">*</span></label>
+                  <input id={`${formId}-cashflow`} name="cashflow" type="text" required placeholder={copy.cashflowPlaceholder} class={inputClass} />
+                </div>
+              </div>
+
+              <div data-step class="grid gap-4" hidden>
+                <h3 class="text-lg font-medium text-[var(--color-ink)]">{copy.locationsPrompt}{questionMark}</h3>
+                <p class={labelClass}>{copy.locationsLabel} <span class={requiredClass} aria-hidden="true">*</span></p>
+                <div data-choice-group="locations" class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                  {copy.locations.map((option, index) => (
+                    <label class="flex cursor-pointer items-center gap-3 text-[var(--color-ink)]">
+                      <input type="checkbox" name={index === 0 ? 'loc-all' : `loc-${index}`} value={option} data-location-checkbox={index === 0 ? 'all' : 'other'} class={checkboxClass} />
+                      <span>{option}</span>
+                    </label>
+                  ))}
+                </div>
+                <p data-step-error hidden class="text-sm text-[var(--color-accent-hover)]">{copy.locationError}</p>
+              </div>
+
+              <div data-step class="grid gap-4" hidden>
+                <h3 class="text-lg font-medium text-[var(--color-ink)]">{copy.industriesPrompt}{questionMark}</h3>
+                <p class={labelClass}>{copy.industriesLabel} <span class={requiredClass} aria-hidden="true">*</span></p>
+                <div data-choice-group="industries" class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                  {copy.industries.map((option, index) => (
+                    <label class="flex cursor-pointer items-center gap-3 text-[var(--color-ink)]">
+                      <input type="checkbox" name={`industry-${index}`} value={option} data-industry-checkbox class={checkboxClass} />
+                      <span>{option}</span>
+                    </label>
+                  ))}
+                </div>
+                <p data-step-error hidden class="text-sm text-[var(--color-accent-hover)]">{copy.industryError}</p>
+              </div>
+
+              <div data-step class="grid gap-6" hidden>
+                <h3 class="text-lg font-medium text-[var(--color-ink)]">{copy.criteriaPrompt}{questionMark}</h3>
+                <div class="grid gap-2">
+                  <label for={`${formId}-criteria`} class={labelClass}>{copy.criteriaLabel}{questionMark} <span class={requiredClass} aria-hidden="true">*</span></label>
+                  <textarea id={`${formId}-criteria`} name="criteria" required rows="8" placeholder={copy.criteriaPlaceholder} class={`${inputClass} h-auto min-h-11 py-3`}></textarea>
+                </div>
+
+                <label class="flex items-start gap-3 text-sm leading-[1.5]" for={`${formId}-privacy`}>
+                  <input id={`${formId}-privacy`} name="privacy-consent" value="on" type="checkbox" required class={checkboxClass} />
+                  <span><span class={requiredClass} aria-hidden="true">*</span> {copy.privacyPrefix} <a class="text-[var(--color-accent)] underline underline-offset-2 hover:text-[var(--color-accent-hover)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4" href={privacyHref}>{copy.privacyLink}</a>{copy.privacySuffix}</span>
+                </label>
+                <label class="flex items-start gap-3 text-sm leading-[1.5]" for={`${formId}-newsletter`}>
+                  <input id={`${formId}-newsletter`} name="newsletter" value="on" type="checkbox" class={checkboxClass} />
+                  <span>{copy.newsletterLabel} <span class="text-[var(--color-ink)]">({isVietnamese ? 'không bắt buộc' : 'optional'})</span></span>
+                </label>
+              </div>
+
+              <div class="flex items-center justify-between gap-3 pt-2">
+                <button id={`${formId}-back`} data-buyer-back type="button" hidden class={secondaryButtonClass}>{copy.back}</button>
+                <div class="ml-auto flex gap-3">
+                  <button id={`${formId}-next`} data-buyer-next type="submit" class={primaryButtonClass}>
+                    <span data-buyer-next-spinner class="hidden h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent motion-reduce:animate-none" aria-hidden="true"></span>
+                    <span data-buyer-next-label>{copy.next}</span>
+                  </button>
+                  <button id={`${formId}-submit`} data-buyer-submit type="submit" hidden class={primaryButtonClass}>
+                    <span data-buyer-submit-spinner class="hidden h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent motion-reduce:animate-none" aria-hidden="true"></span>
+                    <span data-buyer-submit-label>{copy.submit}</span>
+                  </button>
+                </div>
+              </div>
+              <p data-buyer-status class="min-h-7 text-base text-[var(--color-ink)]" role="status" aria-live="polite" tabindex="-1"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-[var(--color-muted)] px-6 py-16 sm:px-10 sm:py-24">
+      <div class="mx-auto flex w-full max-w-3xl flex-col items-center gap-8 md:flex-row md:gap-12">
+        <div class="h-32 w-32 shrink-0 overflow-hidden rounded-full border-4 border-[var(--color-ink)] bg-[var(--color-paper)] md:h-40 md:w-40">
+          <img class="h-full w-full object-contain p-3" src="/favicon.svg" alt={isVietnamese ? 'Logo Archway Business Brokers' : 'Archway Business Brokers logo'} width="160" height="160" loading="lazy" decoding="async" />
+        </div>
+        <div class="text-center md:text-left">
+          <blockquote class="text-lg italic leading-8 text-[var(--color-ink)]">“{copy.commitment}”</blockquote>
+          <p class="mt-4 text-sm font-medium text-[var(--color-ink)]">{copy.commitmentAttribution}</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-[var(--color-paper)] px-6 py-8 text-center text-sm text-[var(--color-ink)] sm:px-10">
+      <p class="m-0">Archway Business Brokers, {copy.footerAddress}</p>
+      <a class="mt-2 inline-flex text-[var(--color-ink)] no-underline hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4" href="tel:+84346346550">{copy.footerPhone}</a>
+      <a class="mt-2 block text-[var(--color-ink)] no-underline hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4" href="mailto:brokers@archway.vn">brokers@archway.vn</a>
+    </footer>
+  </div>
+
+  <script is:inline src="/buyer-form.js" defer></script>
+</SiteLayout>
