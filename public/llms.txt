@@ -1,21 +1,28 @@
 # Archway Business Brokers
 
-> Archway Business Brokers supports owners selling or transferring operating businesses in Vietnam with annual revenue from VND 3 billion.
+> Archway Business Brokers helps owners sell or transfer operating businesses in Vietnam with annual revenue from VND 3 billion, connects them with suitable buyers and guides the transaction process. All discussions and advisory support are free and confidential.
 
 ## About
 
 Archway Business Brokers is a Vietnam-focused business brokerage service for owners preparing a confidential sale or transfer of an operating business.
 
-The service helps owners prepare information, approach suitable buyers and coordinate the transaction process.
+Archway approaches each owner with respect, discretion and care because a business sale often reflects years of work and personal commitment.
 
-Initial discussions are free, and a discussion creates no obligation for either party.
+The service helps owners prepare information, approach suitable buyers and coordinate the transaction process through a clear and professional process.
 
 ## Criteria
 
 - Businesses operating in Vietnam.
-- Operating businesses with annual revenue from VND 3 billion.
+- Operating businesses in Vietnam with annual revenue from VND 3 billion.
 - Owners considering a sale or transfer.
 - Buyers seeking operating businesses in Vietnam.
+
+## Services
+
+- Owners can discuss selling or transferring a business through the seller registration form.
+- Buyers can register for suitable acquisition opportunities through the priority buyer list.
+- Visitors can review the ten-step business transfer process.
+- Visitors can contact Archway by form, phone or email.
 
 ## Contact
 
@@ -26,4 +33,14 @@ Initial discussions are free, and a discussion creates no obligation for either 
 ## Pages
 
 - Vietnamese homepage: https://archway.vn/
+- Vietnamese seller registration: https://archway.vn/sell-your-business/
+- Vietnamese buyer registration: https://archway.vn/buyer-register/
+- Vietnamese process: https://archway.vn/how-it-works/
+- Vietnamese contact: https://archway.vn/contact/
+- Vietnamese privacy policy: https://archway.vn/privacy-policy/
 - English homepage: https://archway.vn/en/
+- English seller registration: https://archway.vn/en/sell-your-business/
+- English buyer registration: https://archway.vn/en/buyer-register/
+- English process: https://archway.vn/en/how-it-works/
+- English contact: https://archway.vn/en/contact/
+- English privacy policy: https://archway.vn/en/privacy-policy/

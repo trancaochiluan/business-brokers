@@ -1,5 +1,7 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import SiteFooter from './SiteFooter.astro';
 
 interface Props {
   lang: 'en' | 'vi';
@@ -47,7 +49,7 @@ const copy = isVietnamese
       cashflowPlaceholder: '500 triệu',
       criteriaPlaceholder: 'Mô tả tiêu chí đầu tư, quy mô doanh nghiệp mục tiêu, cấu trúc giao dịch mong muốn, thời gian dự kiến hoặc thông tin liên quan khác...',
       privacyPrefix: 'Tôi chấp thuận',
-      privacyLink: 'Chính sách bảo mật',
+      privacyLink: 'Chính sách quyền riêng tư',
       privacySuffix: ' và cam kết giữ bí mật nội dung trao đổi với Archway Business Brokers.',
       newsletterLabel: 'Tôi đồng ý nhận thêm các cập nhật định kỳ từ Archway Business Brokers ngoài thông tin về cơ hội mua doanh nghiệp.',
       back: 'Quay lại',
@@ -133,14 +135,14 @@ const copy = isVietnamese
       benefits: [
         { bold: 'Be first to know.', text: 'Receive notice of new businesses before they are publicly launched.' },
         { bold: 'See relevant opportunities.', text: 'Tell us what you are looking for and we will match you with suitable opportunities.' },
-        { bold: 'Confidential and focused.', text: 'Your information stays confidential and we share relevant opportunities with care.' },
+        { bold: 'Confidential and exclusive.', text: 'Your information stays confidential; we share relevant opportunities with care and respect your privacy.' },
       ],
       nextSteps: [
         'Complete the form.',
         'Check your email and sign a confidentiality agreement (NDA) when required to receive an opportunity.',
         'Receive notice of suitable acquisition opportunities.',
       ],
-      locations: ['Nationwide', 'Ho Chi Minh City', 'Hanoi', 'Provinces near Ho Chi Minh City', 'Online businesses'],
+      locations: ['Nationwide', 'Ho Chi Minh City', 'Hanoi', 'Provinces near Ho Chi Minh City', 'Online'],
       industries: ['Business services', 'Consumer goods', 'Construction', 'Distribution', 'Education', 'Energy', 'Healthcare', 'Household services', 'Manufacturing', 'Media or marketing', 'Real estate', 'Software or technology', 'Transport'],
       commitment: 'We only select businesses that are genuinely ready to be brought to market. Every opportunity we share with you has been vetted: real revenue, real operations, real potential. When you are ready to buy, we will connect you with businesses worthy of your time.',
       commitmentAttribution: 'Archway Business Brokers',
@@ -156,16 +158,26 @@ const privacyHref = isVietnamese ? '/privacy-policy/' : '/en/privacy-policy/';
 const formId = isVietnamese ? 'buyer-form-vi' : 'buyer-form-en';
 const requiredClass = 'text-[var(--color-accent-hover)]';
 const labelClass = 'block text-sm font-medium text-[var(--color-ink)]';
-const inputClass = 'min-h-11 w-full border border-[var(--color-line-dark)] bg-[var(--color-paper)] px-4 py-2.5 text-base text-[var(--color-ink)] placeholder:text-[var(--color-ink)] placeholder:opacity-60 placeholder:italic focus:border-[var(--color-accent)] focus:outline-2 focus:outline-offset-2 focus:outline-[var(--color-accent)]';
+const inputClass = 'min-h-11 w-full border-0 bg-[var(--color-paper)] px-4 py-2.5 text-base text-[var(--color-ink)] placeholder:text-[var(--color-ink)] placeholder:opacity-60 placeholder:italic focus:outline-2 focus:outline-offset-2 focus:outline-[var(--color-accent)]';
 const checkboxClass = 'mt-1 h-4 w-4 shrink-0 accent-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-2';
 const primaryButtonClass = 'inline-flex min-h-11 items-center justify-center gap-2 border-0 bg-[var(--color-accent)] px-6 py-3 text-base font-medium leading-none text-[var(--color-paper)] transition-colors hover:bg-[var(--color-accent-hover)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)] disabled:pointer-events-none disabled:opacity-60';
-const secondaryButtonClass = 'inline-flex min-h-11 items-center justify-center border border-[var(--color-ink)] bg-transparent px-6 py-3 text-base font-medium leading-none text-[var(--color-ink)] transition-colors hover:bg-[var(--color-muted)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-ink)] disabled:pointer-events-none disabled:opacity-60';
+const secondaryButtonClass = 'inline-flex min-h-11 items-center justify-center border-0 bg-[var(--color-muted)] px-6 py-3 text-base font-medium leading-none text-[var(--color-ink)] transition-colors hover:bg-[var(--color-paper)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-ink)] disabled:pointer-events-none disabled:opacity-60';
+const breadcrumbItems = [
+  { name: isVietnamese ? 'Trang chủ' : 'Home', href: homeHref },
+  { name: copy.pageTitle.split(' | ')[0] },
+];
 ---
 
-<SiteLayout lang={lang} title={copy.pageTitle} description={copy.description} includeNavigationScript={false}>
+<SiteLayout
+  lang={lang}
+  title={copy.pageTitle}
+  description={copy.description}
+  includeNavigationScript={false}
+  breadcrumbs={breadcrumbItems}
+>
   <div class="min-h-dvh bg-[var(--color-paper)] text-[var(--color-ink)]">
     <header class="bg-[var(--color-paper)] text-[var(--color-ink)]">
-      <div class="relative mx-auto flex min-h-20 w-full max-w-7xl items-center justify-start px-4 py-4 sm:min-h-24 sm:justify-center sm:px-10 sm:py-6">
+      <div class="relative mx-auto flex min-h-16 w-full max-w-7xl items-center justify-start px-4 py-3 sm:justify-center sm:px-10">
         <a class="inline-flex max-w-full items-center whitespace-nowrap text-[clamp(0.75rem,3.8vw,1.5rem)] font-medium leading-none tracking-tight text-[var(--color-ink)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4" href={homeHref} aria-label={isVietnamese ? 'Trang chủ Archway Business Brokers' : 'Archway Business Brokers home'}>
           <img class="mr-1.5 h-6 w-6 shrink-0 sm:mr-2 sm:h-7 sm:w-7" src="/favicon.svg" alt="" width="28" height="28" decoding="async" />
           <span>Archway</span>
@@ -178,20 +190,20 @@ const secondaryButtonClass = 'inline-flex min-h-11 items-center justify-center b
       </div>
     </header>
 
-    <section class="bg-[var(--color-muted)] px-6 py-16 sm:px-10 sm:py-24">
-      <div class="mx-auto max-w-3xl text-center">
-        <h1 class="text-[clamp(2.25rem,4vw,2.75rem)] leading-tight">{copy.heroPrompt}{questionMark}</h1>
-        <p class="mt-5 text-base leading-7 text-[var(--color-ink)]">{copy.heroDescription}</p>
-      </div>
-    </section>
+    <main>
+      <section class="bg-[var(--color-muted)] px-6 py-10 sm:px-10 sm:py-14">
+        <div class="mx-auto max-w-3xl text-center">
+          <Breadcrumbs lang={lang} items={breadcrumbItems} />
+          <h1 class="text-[clamp(2.25rem,4vw,2.75rem)] leading-tight">{copy.heroPrompt}{questionMark}</h1>
+          <p class="mt-4 text-base leading-7 text-[var(--color-ink)]">{copy.heroDescription}</p>
+        </div>
+      </section>
 
-    <section class="px-6 py-16 sm:px-10 sm:py-24">
-      <div class="mx-auto grid w-full max-w-7xl gap-10 lg:grid-cols-2 lg:gap-16">
+      <section class="px-6 py-10 sm:px-10 sm:py-14">
+        <div class="mx-auto grid w-full max-w-7xl gap-6 lg:grid-cols-2 lg:gap-10">
         <div class="order-2 lg:order-1">
-          <p class="text-lg leading-8 text-[var(--color-ink)]">{copy.heroDescription}</p>
-
-          <h2 class="mt-10 text-xl font-medium text-[var(--color-ink)]">{copy.benefitsHeading}</h2>
-          <ul class="mt-5 grid gap-4">
+          <h2 class="mt-6 text-xl font-medium text-[var(--color-ink)]">{copy.benefitsHeading}</h2>
+          <ul class="mt-4 grid gap-4">
             {copy.benefits.map((item) => (
               <li class="flex items-start gap-3">
                 <span class="mt-1 flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-[var(--color-ink)] text-xs text-[var(--color-paper)]" aria-hidden="true">✓</span>
@@ -200,8 +212,8 @@ const secondaryButtonClass = 'inline-flex min-h-11 items-center justify-center b
             ))}
           </ul>
 
-          <h2 class="mt-10 text-xl font-medium text-[var(--color-ink)]">{copy.nextStepsHeading}</h2>
-          <ol class="mt-5 grid gap-4">
+          <h2 class="mt-6 text-xl font-medium text-[var(--color-ink)]">{copy.nextStepsHeading}</h2>
+          <ol class="mt-4 grid gap-4">
             {copy.nextSteps.map((step, index) => (
               <li class="flex items-start gap-3">
                 <span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[var(--color-ink)] text-sm font-medium text-[var(--color-paper)]">{index + 1}</span>
@@ -210,22 +222,21 @@ const secondaryButtonClass = 'inline-flex min-h-11 items-center justify-center b
             ))}
           </ol>
 
-          <p class="mt-10 text-sm leading-6 text-[var(--color-ink)]">{copy.commitment}</p>
         </div>
 
         <div class="order-1 lg:order-2">
-          <div class="border border-[var(--color-line-dark)] bg-[var(--color-muted)] p-6 sm:p-8">
-            <div class="mb-6 flex items-center justify-between gap-4">
+          <div class="bg-[var(--color-muted)] p-4 sm:p-5">
+            <div class="mb-4 flex items-center justify-between gap-4">
               <h2 class="text-2xl font-medium text-[var(--color-ink)]">{copy.formHeading}</h2>
               <span data-step-indicator class="text-sm text-[var(--color-ink)]">{copy.stepLabel} 1 {copy.stepOfLabel} 6</span>
             </div>
-            <div class="mb-8 h-2 w-full bg-[var(--color-line-dark)]">
+            <div class="mb-5 h-2 w-full bg-[var(--color-line-dark)]">
               <div data-progress-fill class="h-2 bg-[var(--color-accent)] transition-[width] duration-300" style="width: 16.67%"></div>
             </div>
 
             <form
               id={formId}
-              class="grid gap-6"
+              class="grid gap-5"
               data-buyer-form
               data-step-label={copy.stepLabel}
               data-step-of-label={copy.stepOfLabel}
@@ -243,7 +254,7 @@ const secondaryButtonClass = 'inline-flex min-h-11 items-center justify-center b
               <input type="hidden" name="locale" value={lang} />
               <input aria-hidden="true" autocomplete="off" class="hidden" name="fax_number" tabindex="-1" type="text" />
 
-              <div data-step class="grid gap-6">
+              <div data-step class="grid gap-5">
                 <h3 class="text-lg font-medium text-[var(--color-ink)]">{copy.contactPrompt}</h3>
                 <div class="grid gap-2">
                   <label for={`${formId}-name`} class={labelClass}>{copy.nameLabel} <span class={requiredClass} aria-hidden="true">*</span></label>
@@ -263,7 +274,7 @@ const secondaryButtonClass = 'inline-flex min-h-11 items-center justify-center b
                 </div>
               </div>
 
-              <div data-step class="grid gap-6" hidden>
+              <div data-step class="grid gap-5" hidden>
                 <h3 class="text-lg font-medium text-[var(--color-ink)]">{copy.locationPrompt}</h3>
                 <div class="grid gap-2">
                   <label for={`${formId}-province`} class={labelClass}>{copy.provinceLabel} <span class={requiredClass} aria-hidden="true">*</span></label>
@@ -275,7 +286,7 @@ const secondaryButtonClass = 'inline-flex min-h-11 items-center justify-center b
                 </div>
               </div>
 
-              <div data-step class="grid gap-6" hidden>
+              <div data-step class="grid gap-5" hidden>
                 <h3 class="text-lg font-medium text-[var(--color-ink)]">{copy.investmentPrompt}</h3>
                 <div class="grid gap-2">
                   <label for={`${formId}-capital`} class={labelClass}>{copy.capitalLabel} <span class={requiredClass} aria-hidden="true">*</span></label>
@@ -315,7 +326,7 @@ const secondaryButtonClass = 'inline-flex min-h-11 items-center justify-center b
                 <p data-step-error hidden class="text-sm text-[var(--color-accent-hover)]">{copy.industryError}</p>
               </div>
 
-              <div data-step class="grid gap-6" hidden>
+              <div data-step class="grid gap-5" hidden>
                 <h3 class="text-lg font-medium text-[var(--color-ink)]">{copy.criteriaPrompt}{questionMark}</h3>
                 <div class="grid gap-2">
                   <label for={`${formId}-criteria`} class={labelClass}>{copy.criteriaLabel}{questionMark} <span class={requiredClass} aria-hidden="true">*</span></label>
@@ -345,31 +356,28 @@ const secondaryButtonClass = 'inline-flex min-h-11 items-center justify-center b
                   </button>
                 </div>
               </div>
-              <p data-buyer-status class="min-h-7 text-base text-[var(--color-ink)]" role="status" aria-live="polite" tabindex="-1"></p>
             </form>
+            <p data-buyer-status hidden class="mt-4 min-h-7 text-base text-[var(--color-ink)]" role="status" aria-live="polite" tabindex="-1"></p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="bg-[var(--color-muted)] px-6 py-16 sm:px-10 sm:py-24">
-      <div class="mx-auto flex w-full max-w-3xl flex-col items-center gap-8 md:flex-row md:gap-12">
-        <div class="h-32 w-32 shrink-0 overflow-hidden rounded-full border-4 border-[var(--color-ink)] bg-[var(--color-paper)] md:h-40 md:w-40">
-          <img class="h-full w-full object-contain p-3" src="/favicon.svg" alt={isVietnamese ? 'Logo Archway Business Brokers' : 'Archway Business Brokers logo'} width="160" height="160" loading="lazy" decoding="async" />
+      <section class="bg-[var(--color-muted)] px-6 py-10 sm:px-10 sm:py-14">
+        <div class="mx-auto flex w-full max-w-3xl flex-col items-center gap-5 md:flex-row md:gap-8">
+          <div class="h-32 w-32 shrink-0 overflow-hidden rounded-full bg-[var(--color-paper)] md:h-36 md:w-36">
+            <img class="h-full w-full object-contain p-3" src="/favicon.svg" alt={isVietnamese ? 'Logo Archway Business Brokers' : 'Archway Business Brokers logo'} width="144" height="144" loading="lazy" decoding="async" />
+          </div>
+          <div class="text-center md:text-left">
+            <blockquote class="text-lg italic leading-8 text-[var(--color-ink)]">“{copy.commitment}”</blockquote>
+            <p class="mt-3 text-sm font-medium text-[var(--color-ink)]">{copy.commitmentAttribution}</p>
+          </div>
         </div>
-        <div class="text-center md:text-left">
-          <blockquote class="text-lg italic leading-8 text-[var(--color-ink)]">“{copy.commitment}”</blockquote>
-          <p class="mt-4 text-sm font-medium text-[var(--color-ink)]">{copy.commitmentAttribution}</p>
-        </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
-    <footer class="bg-[var(--color-paper)] px-6 py-8 text-center text-sm text-[var(--color-ink)] sm:px-10">
-      <p class="m-0">Archway Business Brokers, {copy.footerAddress}</p>
-      <a class="mt-2 inline-flex text-[var(--color-ink)] no-underline hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4" href="tel:+84346346550">{copy.footerPhone}</a>
-      <a class="mt-2 block text-[var(--color-ink)] no-underline hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4" href="mailto:brokers@archway.vn">brokers@archway.vn</a>
-    </footer>
+    <SiteFooter theme="dark" address={copy.footerAddress} phone={copy.footerPhone} />
   </div>
 
-  <script is:inline src="/buyer-form.js" defer></script>
+  <script src="../scripts/buyer-form.js"></script>
 </SiteLayout>

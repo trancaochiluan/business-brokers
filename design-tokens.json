@@ -1,14 +1,14 @@
 {
   "colors": {
-    "ink": "#2a0b12",
+    "ink": "#111111",
     "paper": "#ffffff",
-    "muted": "#f0dfe2",
+    "muted": "#f2f2f2",
     "accent": "#c52233",
     "accent-hover": "#9f1d2a",
     "line": "rgba(255, 255, 255, 0.5)",
-    "line-dark": "rgba(42, 11, 18, 0.3)",
+    "line-dark": "rgba(17, 17, 17, 0.22)",
     "field": "rgba(255, 255, 255, 0.1)",
-    "panel": "rgba(42, 11, 18, 0.94)",
+    "panel": "rgba(17, 17, 17, 0.96)",
     "scrim": "rgba(0, 0, 0, 0.8)",
     "favicon-red": "#c52233",
     "favicon-mid": "#7f1624",

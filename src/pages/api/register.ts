@@ -1,4 +1,8 @@
-import { RESEND_API_KEY, FORM_FROM_EMAIL, FORM_TO_EMAIL } from 'astro:env/server';
+import {
+  FORM_FROM_EMAIL,
+  FORM_TO_EMAIL,
+  RESEND_API_KEY,
+} from 'astro:env/server';
 import type { APIRoute } from 'astro';
 import { Resend } from 'resend';
 import { z } from 'zod';
@@ -16,6 +20,8 @@ const securityHeaders = {
 };
 
 const requiredText = (max: number) => z.string().trim().min(1).max(max);
+const allowedText = (values: readonly string[], max: number) =>
+  requiredText(max).refine((value) => values.includes(value), { message: 'Invalid option' });
 const optionalText = (max: number) =>
   z.preprocess(
     (value) => (typeof value === 'string' && value.trim() === '' ? undefined : value),
@@ -24,15 +30,129 @@ const optionalText = (max: number) =>
 const email = z.string().trim().pipe(z.email().max(254));
 const phone = z.string().trim().min(7).max(32).regex(/\d{7,}/);
 
+const sellerTimelineOptions = [
+  'Ngay bây giờ',
+  'Trong 6 tháng tới',
+  'Trong 1-2 năm tới',
+  'Trong 2-5 năm tới',
+  'Now',
+  'Within 6 months',
+  'Within 1-2 years',
+  'Within 2-5 years',
+];
+const sellerIndustryOptions = [
+  'Y tế và dịch vụ hỗ trợ y tế',
+  'Kế toán, thuế và dịch vụ thuê ngoài',
+  'Dịch vụ doanh nghiệp (B2B)',
+  'Bảo trì và bảo dưỡng',
+  'Dịch vụ công nghệ thông tin',
+  'Kiểm định và tuân thủ',
+  'Sản xuất',
+  'Thương mại và bán lẻ',
+  'Ẩm thực và nhà hàng',
+  'Xây dựng',
+  'Vận tải và logistics',
+  'Giáo dục',
+  'Du lịch và khách sạn',
+  'Thương mại điện tử',
+  'Nông nghiệp',
+  'Khác',
+  'Healthcare and healthcare support',
+  'Accounting, tax and outsourcing',
+  'Business services (B2B)',
+  'Maintenance and servicing',
+  'Information technology services',
+  'Inspection and compliance',
+  'Manufacturing',
+  'Trade and retail',
+  'Food and restaurants',
+  'Construction',
+  'Transport and logistics',
+  'Education',
+  'Travel and hospitality',
+  'E-commerce',
+  'Agriculture',
+  'Other',
+];
+const employeeOptions = ['0 - 5', '6 - 10', '11 - 20', '21 - 40', '41 - 100', 'Trên 100', 'Over 100'];
+const revenueOptions = [
+  'Dưới 3 tỷ',
+  '3 - 5 tỷ',
+  '5 - 10 tỷ',
+  '10 - 20 tỷ',
+  '20 - 50 tỷ',
+  'Trên 50 tỷ',
+  'Below VND 3 billion',
+  'VND 3 - 5 billion',
+  'VND 5 - 10 billion',
+  'VND 10 - 20 billion',
+  'VND 20 - 50 billion',
+  'Above VND 50 billion',
+];
+const profitOptions = [
+  'Dưới 500 triệu',
+  '500 triệu - 1 tỷ',
+  '1 - 2 tỷ',
+  '2 - 5 tỷ',
+  '5 - 10 tỷ',
+  'Trên 10 tỷ',
+  'Below VND 500 million',
+  'VND 500 million - 1 billion',
+  'VND 1 - 2 billion',
+  'VND 2 - 5 billion',
+  'VND 5 - 10 billion',
+  'Above VND 10 billion',
+];
+const buyerLocationOptions = [
+  'Toàn quốc',
+  'TP. Hồ Chí Minh',
+  'Hà Nội',
+  'Các tỉnh lân cận TP.HCM',
+  'Trực tuyến',
+  'Nationwide',
+  'Ho Chi Minh City',
+  'Hanoi',
+  'Provinces near Ho Chi Minh City',
+  'Online',
+];
+const buyerIndustryOptions = [
+  'Dịch vụ doanh nghiệp',
+  'Hàng tiêu dùng',
+  'Xây dựng',
+  'Phân phối',
+  'Giáo dục',
+  'Năng lượng',
+  'Y tế',
+  'Dịch vụ sinh hoạt',
+  'Sản xuất',
+  'Truyền thông hoặc marketing',
+  'Bất động sản',
+  'Phần mềm hoặc công nghệ',
+  'Vận tải',
+  'Business services',
+  'Consumer goods',
+  'Construction',
+  'Distribution',
+  'Education',
+  'Energy',
+  'Healthcare',
+  'Household services',
+  'Manufacturing',
+  'Media or marketing',
+  'Real estate',
+  'Software or technology',
+  'Transport',
+];
+
 const sellerSchema = z
   .object({
     form_type: z.literal('seller'),
     locale: z.enum(['vi', 'en']),
-    timeline: requiredText(80),
-    industry: requiredText(160),
-    employees: requiredText(80),
-    revenue: requiredText(80),
-    profit: requiredText(80),
+    timeline: allowedText(sellerTimelineOptions, 80),
+    industry: allowedText(sellerIndustryOptions, 160),
+    employees: allowedText(employeeOptions, 80),
+    revenue: allowedText(revenueOptions, 80),
+    profit: allowedText(profitOptions, 80),
     province: requiredText(120),
     website: requiredText(255),
     name: requiredText(120),
@@ -60,8 +180,8 @@ const buyerSchema = z
     ward: requiredText(120),
     capital: requiredText(120),
     cashflow: requiredText(120),
-    locations: z.array(requiredText(120)).min(1).max(10),
-    industries: z.array(requiredText(160)).min(1).max(20),
+    locations: z.array(allowedText(buyerLocationOptions, 120)).min(1).max(10),
+    industries: z.array(allowedText(buyerIndustryOptions, 160)).min(1).max(20),
     criteria: requiredText(3_000),
     'privacy-consent': z.literal('on'),
     newsletter: z.string().max(20).optional(),
@@ -97,8 +217,18 @@ const contactSchema = z
 const submissionSchema = z.discriminatedUnion('form_type', [sellerSchema, buyerSchema, contactSchema]);
 type Submission = z.infer<typeof submissionSchema>;
 const resend = RESEND_API_KEY ? new Resend(RESEND_API_KEY) : null;
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1_000;
+const RATE_LIMIT_MAX_REQUESTS = 5;
+const rateLimitStore = new Map<string, { count: number; resetAt: number }>();
 
-const jsonResponse = (body: Record<string, unknown>, status: number, requestId: string) =>
+type ResponseHeaders = Record<string, string>;
+
+const jsonResponse = (
+  body: Record<string, unknown>,
+  status: number,
+  requestId: string,
+  extraHeaders: ResponseHeaders = {},
+) =>
   new Response(JSON.stringify(body), {
     status,
     headers: {
@@ -106,8 +236,32 @@ const jsonResponse = (body: Record<string, unknown>, status: number, requestId: 
       'cache-control': 'no-store',
       'content-type': 'application/json; charset=utf-8',
       'x-request-id': requestId,
+      ...extraHeaders,
     },
   });
+
+const getClientIdentifier = (request: Request) => {
+  const cloudflareIp = request.headers.get('cf-connecting-ip')?.trim();
+  if (cloudflareIp) return cloudflareIp;
+
+  const forwardedIp = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim();
+  return forwardedIp || 'unknown';
+};
+
+const isRateLimited = (request: Request) => {
+  const now = Date.now();
+  const clientIdentifier = getClientIdentifier(request);
+  const existing = rateLimitStore.get(clientIdentifier);
+
+  if (!existing || existing.resetAt <= now) {
+    if (rateLimitStore.size >= 10_000) rateLimitStore.clear();
+    rateLimitStore.set(clientIdentifier, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    return false;
+  }
+
+  existing.count += 1;
+  return existing.count > RATE_LIMIT_MAX_REQUESTS;
+};
 
 const htmlEntities: Record<string, string> = {
   '&': '&amp;',
@@ -337,7 +491,7 @@ const renderEmail = (submission: Submission, requestId: string) => {
     .filter(([label, value]) => label !== undefined && value !== undefined && value !== '')
     .map(
       ([label, value]) =>
-        `<tr><td width="36%" valign="top" style="padding:14px 16px 14px 0;border-bottom:1px solid #e6cdd2;color:#6f4b52;font-size:13px;line-height:1.4;">${formatValue(label ?? '')}</td><td valign="top" style="padding:14px 0;border-bottom:1px solid #e6cdd2;color:#2a0b12;font-size:15px;line-height:1.5;">${formatValue(value ?? '')}</td></tr>`,
+        `<tr><td width="36%" valign="top" style="padding:14px 16px 14px 0;color:#555555;font-size:13px;line-height:1.4;">${formatValue(label ?? '')}</td><td valign="top" style="padding:14px 0;color:#111111;font-size:15px;line-height:1.5;">${formatValue(value ?? '')}</td></tr>`,
     )
     .join('');
   const receivedAt = new Date().toISOString().replace('T', ' ').replace('Z', ' UTC');
@@ -347,23 +501,23 @@ const renderEmail = (submission: Submission, requestId: string) => {
   return `<!doctype html>
 <html lang="${submission.locale}">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width"></head>
-<body style="margin:0;padding:0;background:#f0dfe2;color:#2a0b12;font-family:Arial,Helvetica,sans-serif;line-height:1.5;">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f0dfe2;">
+<body style="margin:0;padding:0;background:#f2f2f2;color:#111111;font-family:Arial,Helvetica,sans-serif;line-height:1.5;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f2f2f2;">
   <tr><td align="center" style="padding:32px 16px;">
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:680px;background:#ffffff;border:1px solid #d8aeb6;">
-      <tr><td style="padding:28px 32px;background:#2a0b12;color:#ffffff;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:680px;background:#ffffff;">
+      <tr><td style="padding:28px 32px;background:#111111;color:#ffffff;">
         <p style="margin:0;color:#ffffff;font-size:12px;font-weight:500;line-height:1.4;">ARCHWAY BUSINESS BROKERS</p>
         <h1 style="margin:8px 0 0;color:#ffffff;font-size:24px;font-weight:500;line-height:1.25;">${formatValue(labels.title)}</h1>
       </td></tr>
       <tr><td style="padding:28px 32px;">
         <h2 style="margin:0 0 8px;color:#c52233;font-size:22px;font-weight:500;line-height:1.3;">${formatValue(labels.details)}</h2>
-        <p style="margin:0;color:#2a0b12;font-size:16px;line-height:1.5;">${formatValue(submission.form_type === 'buyer' ? submission.full_name : submission.name)} &lt;${formatValue(replyEmail)}&gt;</p>
+        <p style="margin:0;color:#111111;font-size:16px;line-height:1.5;">${formatValue(submission.form_type === 'buyer' ? submission.full_name : submission.name)} &lt;${formatValue(replyEmail)}&gt;</p>
         <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:22px 0 30px;">
           <tr><td style="background:#c52233;"><a href="${replyHref}" style="display:inline-block;padding:11px 16px;color:#ffffff;font-size:14px;font-weight:500;text-decoration:none;">${formatValue(labels.reply)}</a></td></tr>
         </table>
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">${rows}</table>
       </td></tr>
-      <tr><td style="padding:18px 32px;background:#f0dfe2;border-top:1px solid #d8aeb6;color:#6f4b52;font-size:12px;line-height:1.6;">
+      <tr><td style="padding:18px 32px;background:#f2f2f2;color:#555555;font-size:12px;line-height:1.6;">
         ${formatValue(labels.received)}: ${formatValue(receivedAt)}<br>
         ${formatValue(labels.requestId)}: ${formatValue(requestId)}
       </td></tr>
@@ -393,6 +547,14 @@ export const POST: APIRoute = async ({ request }) => {
     return jsonResponse({ ok: false }, 415, requestId);
   }
   if (!isAllowedOrigin(request)) return jsonResponse({ ok: false }, 403, requestId);
+  if (isRateLimited(request)) {
+    return jsonResponse(
+      { ok: false },
+      429,
+      requestId,
+      { 'retry-after': String(RATE_LIMIT_WINDOW_MS / 1_000) },
+    );
+  }
 
   const declaredLength = Number(request.headers.get('content-length'));
   if (Number.isFinite(declaredLength) && declaredLength > MAX_REQUEST_BYTES) {

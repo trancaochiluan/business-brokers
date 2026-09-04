@@ -1,0 +1,34 @@
+{
+  "source": "image_source/founder.png",
+  "sourceWidth": 1086,
+  "sourceHeight": 1086,
+  "background": "image_source/common_use/archway_city_view_8.jpg",
+  "backgroundWidth": 4096,
+  "backgroundHeight": 2300,
+  "variants": [
+    {
+      "width": 320,
+      "height": 320,
+      "avif": {
+        "src": "/assets/founder/founder-320.avif",
+        "bytes": 8205
+      },
+      "webp": {
+        "src": "/assets/founder/founder-320.webp",
+        "bytes": 12860
+      }
+    },
+    {
+      "width": 640,
+      "height": 640,
+      "avif": {
+        "src": "/assets/founder/founder-640.avif",
+        "bytes": 24996
+      },
+      "webp": {
+        "src": "/assets/founder/founder-640.webp",
+        "bytes": 40048
+      }
+    }
+  ]
+}

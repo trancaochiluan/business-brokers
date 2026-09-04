@@ -6,6 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://archway.vn',
+  trailingSlash: 'always',
   output: 'static',
   adapter: cloudflare({ imageService: 'passthrough' }),
   session: false,

@@ -2,12 +2,19 @@
 import designTokens from '../../design-tokens.json';
 import '../styles/global.css';
 
+interface BreadcrumbItem {
+  name: string;
+  href?: string;
+}
+
 interface Props {
   title: string;
   description?: string;
   lang?: 'en' | 'vi';
   noIndex?: boolean;
   includeNavigationScript?: boolean;
+  pageType?: 'WebPage' | 'ContactPage';
+  breadcrumbs?: BreadcrumbItem[];
 }
 
 const {
@@ -16,6 +23,8 @@ const {
   lang = 'vi',
   noIndex = false,
   includeNavigationScript = true,
+  pageType = 'WebPage',
+  breadcrumbs = [],
 } = Astro.props;
 
 const colorVars = Object.entries(designTokens.colors as Record<string, string>)
@@ -35,8 +44,13 @@ const canonicalUrl = new URL(currentPath, siteUrl).href;
 const vietnameseUrl = new URL(vietnamesePath, siteUrl).href;
 const englishUrl = new URL(englishPath, siteUrl).href;
 const imageUrl = new URL('/assets/hero-poster.jpg', siteUrl).href;
+const logoUrl = new URL('/favicon.svg', siteUrl).href;
 const languageCode = lang === 'vi' ? 'vi-VN' : 'en-VN';
 const openGraphLocale = lang === 'vi' ? 'vi_VN' : 'en_VN';
+const absoluteBreadcrumbs = breadcrumbs.map((item) => ({
+  name: item.name,
+  url: new URL(item.href ?? currentPath, siteUrl).href,
+}));
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -46,6 +60,11 @@ const structuredData = {
       '@id': `${siteUrl.href}#organization`,
       name: 'Archway Business Brokers',
       url: siteUrl.href,
+      logo: {
+        '@type': 'ImageObject',
+        url: logoUrl,
+      },
+      image: imageUrl,
       email: 'brokers@archway.vn',
       telephone: '+84 346 346 550',
       areaServed: 'VN',
@@ -81,7 +100,7 @@ const structuredData = {
       publisher: { '@id': `${siteUrl.href}#organization` },
     },
     {
-      '@type': 'WebPage',
+      '@type': pageType,
       '@id': `${canonicalUrl}#webpage`,
       url: canonicalUrl,
       name: title,
@@ -90,6 +109,20 @@ const structuredData = {
       isPartOf: { '@id': `${siteUrl.href}#website` },
       about: { '@id': `${siteUrl.href}#organization` },
     },
+    ...(absoluteBreadcrumbs.length > 0
+      ? [
+          {
+            '@type': 'BreadcrumbList',
+            '@id': `${canonicalUrl}#breadcrumb`,
+            itemListElement: absoluteBreadcrumbs.map((item, index) => ({
+              '@type': 'ListItem',
+              position: index + 1,
+              name: item.name,
+              item: item.url,
+            })),
+          },
+        ]
+      : []),
   ],
 };
 ---
@@ -134,7 +167,7 @@ const structuredData = {
       rel="stylesheet"
     />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
-    {includeNavigationScript && <script is:inline src="/navigation.js" defer></script>}
+    {includeNavigationScript && <script src="../scripts/navigation.js"></script>}
     <title>{title}</title>
   </head>
   <body class="min-w-[320px] bg-[var(--color-ink)] font-sans text-[var(--color-paper)]">

@@ -1,5 +1,7 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import SiteFooter from './SiteFooter.astro';
 import SiteNavigation from './SiteNavigation.astro';
 
 interface Props {
@@ -19,7 +21,7 @@ const vietnameseSections: PrivacySection[] = [
   {
     heading: 'Giới thiệu',
     paragraphs: [
-      'Archway Business Brokers thu thập thông tin theo nhiều cách khác nhau từ những người truy cập website, sau đây gọi là “Khách truy cập”, và những người gửi thông tin cho chúng tôi thông qua các biểu mẫu trên website, sau đây gọi là “Người dùng”, bao gồm biểu mẫu liên hệ, biểu mẫu yêu cầu định giá và biểu mẫu đăng ký nhận cơ hội mua doanh nghiệp.',
+      'Archway Business Brokers thu thập thông tin theo nhiều cách khác nhau từ những người truy cập website, sau đây gọi là “Khách truy cập”, và những người gửi thông tin cho chúng tôi thông qua các biểu mẫu trên website, sau đây gọi là “Người dùng”, bao gồm biểu mẫu liên hệ, biểu mẫu đăng ký bán doanh nghiệp và biểu mẫu đăng ký nhận cơ hội mua doanh nghiệp.',
       'Chúng tôi xây dựng Chính sách quyền riêng tư này để thể hiện cam kết vững chắc về quyền riêng tư và bảo mật. Chính sách quyền riêng tư này mô tả cách Archway Business Brokers thu thập thông tin từ người dùng cuối của website, chúng tôi làm gì với thông tin thu thập được, và các lựa chọn của Quý khách liên quan đến việc thu thập và sử dụng thông tin đó. Chúng tôi đề nghị Quý khách đọc kỹ Chính sách quyền riêng tư này.',
       'Mặc dù chúng tôi áp dụng các biện pháp phù hợp để ngăn chặn việc tiết lộ thông tin trái phép, chúng tôi không thể bảo đảm rằng thông tin nhận diện cá nhân mà chúng tôi thu thập sẽ không bao giờ bị tiết lộ theo cách không nhất quán với Chính sách quyền riêng tư này.',
     ],
@@ -133,7 +135,7 @@ const englishSections: PrivacySection[] = [
   {
     heading: 'Introduction',
     paragraphs: [
-      'Archway Business Brokers collects information in several ways from people who visit the website, referred to below as “Visitors”, and from people who submit information through website forms, referred to below as “Users”, including the contact form, valuation request form and buyer opportunity registration form.',
+      'Archway Business Brokers collects information in several ways from people who visit the website, referred to below as “Visitors”, and from people who submit information through website forms, referred to below as “Users”, including the contact form, seller registration form and buyer opportunity registration form.',
       'We created this Privacy Policy to demonstrate our strong commitment to privacy and security. This Privacy Policy describes how Archway Business Brokers collects information from website end users, what we do with the information collected, and the choices available to you regarding the collection and use of that information. We encourage you to read this Privacy Policy carefully.',
       'Although we take appropriate measures to prevent unauthorized disclosure, we cannot guarantee that personally identifiable information we collect will never be disclosed in a manner inconsistent with this Privacy Policy.',
     ],
@@ -264,44 +266,46 @@ const copy = isVietnamese
       footerAddress: '17th Floor, Vincom Center Building, 72 Le Thanh Ton Street, District 1, Ho Chi Minh City, Vietnam',
       footerPhone: 'Phone: (+84) 346-346-550',
     };
+
+const breadcrumbItems = [
+  { name: isVietnamese ? 'Trang chủ' : 'Home', href: isVietnamese ? '/' : '/en/' },
+  { name: copy.heading },
+];
 ---
 
-<SiteLayout lang={lang} noIndex title={copy.pageTitle} description={copy.description}>
+<SiteLayout lang={lang} noIndex title={copy.pageTitle} description={copy.description} breadcrumbs={breadcrumbItems}>
   <div class="min-h-dvh bg-[var(--color-muted)] text-[var(--color-ink)]">
-    <div class="relative min-h-28 bg-[var(--color-paper)]">
+    <div class="relative min-h-[60px] bg-[var(--color-paper)]">
       <SiteNavigation lang={lang} showBrand theme="light" />
     </div>
 
     <main>
-      <section class="bg-[var(--color-muted)] px-6 py-16 sm:px-10 sm:py-24">
+      <section class="bg-[var(--color-muted)] px-6 py-10 sm:px-10 sm:py-14">
         <div class="mx-auto max-w-3xl">
+          <Breadcrumbs lang={lang} items={breadcrumbItems} />
           <h1 class="text-[clamp(2.25rem,4vw,2.75rem)] leading-tight">{copy.heading}</h1>
-          <p class="mt-5 text-base leading-7 text-[var(--color-ink)]">{copy.intro}</p>
+          <p class="mt-4 text-base leading-7 text-[var(--color-ink)]">{copy.intro}</p>
         </div>
       </section>
 
-      <section class="bg-[var(--color-paper)] px-6 py-16 sm:px-10 sm:py-24">
-        <div class="mx-auto grid w-full max-w-3xl gap-4 text-base leading-7 text-[var(--color-ink)]">
+      <section class="bg-[var(--color-paper)] px-6 py-10 sm:px-10 sm:py-14">
+        <div class="mx-auto grid w-full max-w-3xl gap-3 text-base leading-7 text-[var(--color-ink)]">
           {copy.sections.map((section, index) => (
             <section aria-labelledby={`privacy-section-${index + 1}`}>
-              <h2 id={`privacy-section-${index + 1}`} class="mt-10 text-[clamp(1.5rem,3vw,1.875rem)] font-medium leading-tight text-[var(--color-ink)] first:mt-0">{section.heading}</h2>
-              {section.paragraphs.map((paragraph) => <p class="mt-4">{paragraph}</p>)}
+              <h2 id={`privacy-section-${index + 1}`} class="mt-5 text-[clamp(1.5rem,3vw,1.875rem)] font-medium leading-tight text-[var(--color-ink)] first:mt-0">{section.heading}</h2>
+              {section.paragraphs.map((paragraph) => <p class="mt-3">{paragraph}</p>)}
               {section.list && (
-                <ul class="mt-4 grid list-disc gap-2 pl-5">
+                <ul class="mt-3 grid list-disc gap-2 pl-5">
                   {section.list.map((item) => <li>{item}</li>)}
                 </ul>
               )}
             </section>
           ))}
-          <p class="mt-6 text-sm leading-6 text-[var(--color-ink)]">{copy.lastUpdated}</p>
+          <p class="mt-4 text-sm leading-6 text-[var(--color-ink)]">{copy.lastUpdated}</p>
         </div>
       </section>
     </main>
 
-    <footer class="bg-[var(--color-ink)] px-6 py-8 text-center text-sm text-[var(--color-paper)] sm:px-10">
-      <p class="m-0">Archway Business Brokers, {copy.footerAddress}</p>
-      <a class="mt-2 inline-flex text-[var(--color-paper)] no-underline hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-paper)] focus-visible:outline-offset-4" href="tel:+84346346550">{copy.footerPhone}</a>
-      <a class="mt-2 block text-[var(--color-paper)] no-underline hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-paper)] focus-visible:outline-offset-4" href="mailto:brokers@archway.vn">brokers@archway.vn</a>
-    </footer>
+    <SiteFooter theme="dark" address={copy.footerAddress} phone={copy.footerPhone} />
   </div>
 </SiteLayout>

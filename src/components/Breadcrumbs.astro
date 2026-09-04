@@ -1,0 +1,35 @@
+---
+interface BreadcrumbItem {
+  name: string;
+  href?: string;
+}
+
+interface Props {
+  lang: 'en' | 'vi';
+  items: BreadcrumbItem[];
+}
+
+const { lang, items } = Astro.props;
+const currentItem = items.at(-1);
+const isVietnamese = lang === 'vi';
+const navigationLabel = isVietnamese ? 'Đường dẫn điều hướng' : 'Breadcrumb navigation';
+---
+
+{items.length > 0 && (
+  <nav aria-label={navigationLabel} class="mb-5 text-left text-sm text-[var(--color-ink)]">
+    <ol class="flex flex-wrap items-center gap-2">
+      {items.map((item, index) => (
+        <li class="inline-flex items-center gap-2">
+          {index > 0 && <span aria-hidden="true">/</span>}
+          {item.href && item !== currentItem ? (
+            <a class="underline underline-offset-4 hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-ink)]" href={item.href}>
+              {item.name}
+            </a>
+          ) : (
+            <span aria-current="page">{item.name}</span>
+          )}
+        </li>
+      ))}
+    </ol>
+  </nav>
+)}

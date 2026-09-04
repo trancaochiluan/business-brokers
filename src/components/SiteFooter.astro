@@ -1,0 +1,21 @@
+---
+interface Props {
+  address: string;
+  phone: string;
+  theme?: 'dark' | 'light';
+}
+
+const { address, phone, theme = 'dark' } = Astro.props;
+const footerClass = theme === 'light'
+  ? 'bg-[var(--color-paper)] px-6 py-6 text-center text-sm text-[var(--color-ink)] sm:px-10'
+  : 'bg-[var(--color-ink)] px-6 py-6 text-center text-sm text-[var(--color-paper)] sm:px-10';
+const linkClass = theme === 'light'
+  ? 'text-[var(--color-ink)] underline-offset-4 hover:text-[var(--color-accent)] hover:underline focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4'
+  : 'text-[var(--color-paper)] underline-offset-4 hover:text-[var(--color-accent)] hover:underline focus-visible:outline-2 focus-visible:outline-[var(--color-paper)] focus-visible:outline-offset-4';
+---
+
+<footer class={footerClass}>
+  <p class="m-0">Archway Business Brokers, {address}</p>
+  <a class={`mt-2 inline-flex ${linkClass}`} href="tel:+84346346550">{phone}</a>
+  <a class={`mt-1 block ${linkClass}`} href="mailto:brokers@archway.vn">brokers@archway.vn</a>
+</footer>

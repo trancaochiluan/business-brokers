@@ -1,0 +1,1976 @@
+{
+  "source": "image_source/common_use",
+  "targetWidths": [
+    640,
+    1280,
+    1920
+  ],
+  "images": [
+    {
+      "source": "archway_2_building.jpg",
+      "sourceWidth": 4032,
+      "sourceHeight": 2268,
+      "variants": [
+        {
+          "width": 640,
+          "height": 360,
+          "avif": {
+            "src": "/assets/image-library/archway_2_building-640.avif",
+            "bytes": 28775
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_2_building-640.webp",
+            "bytes": 62046
+          }
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "avif": {
+            "src": "/assets/image-library/archway_2_building-1280.avif",
+            "bytes": 99391
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_2_building-1280.webp",
+            "bytes": 211678
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "avif": {
+            "src": "/assets/image-library/archway_2_building-1920.avif",
+            "bytes": 199168
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_2_building-1920.webp",
+            "bytes": 425396
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_business_people_reviewing_financial_documents_1.jpg",
+      "sourceWidth": 6144,
+      "sourceHeight": 3456,
+      "variants": [
+        {
+          "width": 640,
+          "height": 360,
+          "avif": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_1-640.avif",
+            "bytes": 9617
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_1-640.webp",
+            "bytes": 12860
+          }
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "avif": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_1-1280.avif",
+            "bytes": 24259
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_1-1280.webp",
+            "bytes": 32696
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "avif": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_1-1920.avif",
+            "bytes": 41588
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_1-1920.webp",
+            "bytes": 57250
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_business_people_reviewing_financial_documents_10.jpg",
+      "sourceWidth": 6720,
+      "sourceHeight": 4480,
+      "variants": [
+        {
+          "width": 640,
+          "height": 427,
+          "avif": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_10-640.avif",
+            "bytes": 11278
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_10-640.webp",
+            "bytes": 16360
+          }
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "avif": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_10-1280.avif",
+            "bytes": 29501
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_10-1280.webp",
+            "bytes": 44356
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "avif": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_10-1920.avif",
+            "bytes": 52542
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_10-1920.webp",
+            "bytes": 79588
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_business_people_reviewing_financial_documents_11.jpg",
+      "sourceWidth": 4500,
+      "sourceHeight": 3000,
+      "variants": [
+        {
+          "width": 640,
+          "height": 427,
+          "avif": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_11-640.avif",
+            "bytes": 13619
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_11-640.webp",
+            "bytes": 20442
+          }
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "avif": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_11-1280.avif",
+            "bytes": 34368
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_11-1280.webp",
+            "bytes": 50412
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "avif": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_11-1920.avif",
+            "bytes": 58797
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_11-1920.webp",
+            "bytes": 90092
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_business_people_reviewing_financial_documents_2.jpg",
+      "sourceWidth": 4160,
+      "sourceHeight": 2773,
+      "variants": [
+        {
+          "width": 640,
+          "height": 426,
+          "avif": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_2-640.avif",
+            "bytes": 15212
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_2-640.webp",
+            "bytes": 27648
+          }
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "avif": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_2-1280.avif",
+            "bytes": 42555
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_2-1280.webp",
+            "bytes": 70052
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "avif": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_2-1920.avif",
+            "bytes": 83902
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_2-1920.webp",
+            "bytes": 156532
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_business_people_reviewing_financial_documents_3.jpg",
+      "sourceWidth": 4160,
+      "sourceHeight": 2773,
+      "variants": [
+        {
+          "width": 640,
+          "height": 426,
+          "avif": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_3-640.avif",
+            "bytes": 17525
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_3-640.webp",
+            "bytes": 33958
+          }
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "avif": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_3-1280.avif",
+            "bytes": 56127
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_3-1280.webp",
+            "bytes": 103120
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "avif": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_3-1920.avif",
+            "bytes": 110548
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_3-1920.webp",
+            "bytes": 205384
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_business_people_reviewing_financial_documents_4.jpg",
+      "sourceWidth": 6720,
+      "sourceHeight": 4480,
+      "variants": [
+        {
+          "width": 640,
+          "height": 427,
+          "avif": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_4-640.avif",
+            "bytes": 10499
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_4-640.webp",
+            "bytes": 15260
+          }
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "avif": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_4-1280.avif",
+            "bytes": 27161
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_4-1280.webp",
+            "bytes": 40134
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "avif": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_4-1920.avif",
+            "bytes": 50616
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_4-1920.webp",
+            "bytes": 78786
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_business_people_reviewing_financial_documents_5.jpg",
+      "sourceWidth": 5760,
+      "sourceHeight": 3840,
+      "variants": [
+        {
+          "width": 640,
+          "height": 427,
+          "avif": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_5-640.avif",
+            "bytes": 12314
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_5-640.webp",
+            "bytes": 21442
+          }
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "avif": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_5-1280.avif",
+            "bytes": 34463
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_5-1280.webp",
+            "bytes": 58066
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "avif": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_5-1920.avif",
+            "bytes": 60394
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_5-1920.webp",
+            "bytes": 98488
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_business_people_reviewing_financial_documents_6.jpg",
+      "sourceWidth": 6016,
+      "sourceHeight": 4016,
+      "variants": [
+        {
+          "width": 640,
+          "height": 427,
+          "avif": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_6-640.avif",
+            "bytes": 14963
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_6-640.webp",
+            "bytes": 23898
+          }
+        },
+        {
+          "width": 1280,
+          "height": 854,
+          "avif": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_6-1280.avif",
+            "bytes": 40139
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_6-1280.webp",
+            "bytes": 60646
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1282,
+          "avif": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_6-1920.avif",
+            "bytes": 72686
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_6-1920.webp",
+            "bytes": 107964
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_business_people_reviewing_financial_documents_7.jpg",
+      "sourceWidth": 6720,
+      "sourceHeight": 4480,
+      "variants": [
+        {
+          "width": 640,
+          "height": 427,
+          "avif": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_7-640.avif",
+            "bytes": 17816
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_7-640.webp",
+            "bytes": 31488
+          }
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "avif": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_7-1280.avif",
+            "bytes": 50573
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_7-1280.webp",
+            "bytes": 87764
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "avif": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_7-1920.avif",
+            "bytes": 93130
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_7-1920.webp",
+            "bytes": 165082
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_business_people_reviewing_financial_documents_8.jpg",
+      "sourceWidth": 4104,
+      "sourceHeight": 2736,
+      "variants": [
+        {
+          "width": 640,
+          "height": 427,
+          "avif": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_8-640.avif",
+            "bytes": 14557
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_8-640.webp",
+            "bytes": 21936
+          }
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "avif": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_8-1280.avif",
+            "bytes": 38906
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_8-1280.webp",
+            "bytes": 58090
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "avif": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_8-1920.avif",
+            "bytes": 68886
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_8-1920.webp",
+            "bytes": 101610
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_business_people_reviewing_financial_documents_9.jpg",
+      "sourceWidth": 6000,
+      "sourceHeight": 4000,
+      "variants": [
+        {
+          "width": 640,
+          "height": 427,
+          "avif": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_9-640.avif",
+            "bytes": 14732
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_9-640.webp",
+            "bytes": 22844
+          }
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "avif": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_9-1280.avif",
+            "bytes": 37633
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_9-1280.webp",
+            "bytes": 54374
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "avif": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_9-1920.avif",
+            "bytes": 65403
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_business_people_reviewing_financial_documents_9-1920.webp",
+            "bytes": 91668
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_city_top_view.jpg",
+      "sourceWidth": 4000,
+      "sourceHeight": 2250,
+      "variants": [
+        {
+          "width": 640,
+          "height": 360,
+          "avif": {
+            "src": "/assets/image-library/archway_city_top_view-640.avif",
+            "bytes": 44853
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_top_view-640.webp",
+            "bytes": 100060
+          }
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "avif": {
+            "src": "/assets/image-library/archway_city_top_view-1280.avif",
+            "bytes": 154679
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_top_view-1280.webp",
+            "bytes": 347402
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "avif": {
+            "src": "/assets/image-library/archway_city_top_view-1920.avif",
+            "bytes": 317915
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_top_view-1920.webp",
+            "bytes": 715732
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_city_view_1.jpg",
+      "sourceWidth": 7008,
+      "sourceHeight": 4672,
+      "variants": [
+        {
+          "width": 640,
+          "height": 427,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_1-640.avif",
+            "bytes": 21130
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_1-640.webp",
+            "bytes": 41408
+          }
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_1-1280.avif",
+            "bytes": 67217
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_1-1280.webp",
+            "bytes": 132978
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_1-1920.avif",
+            "bytes": 132442
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_1-1920.webp",
+            "bytes": 257876
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_city_view_10.jpg",
+      "sourceWidth": 6000,
+      "sourceHeight": 3375,
+      "variants": [
+        {
+          "width": 640,
+          "height": 359,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_10-640.avif",
+            "bytes": 21867
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_10-640.webp",
+            "bytes": 43828
+          }
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_10-1280.avif",
+            "bytes": 73334
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_10-1280.webp",
+            "bytes": 144454
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_10-1920.avif",
+            "bytes": 145709
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_10-1920.webp",
+            "bytes": 274162
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_city_view_12.jpg",
+      "sourceWidth": 3543,
+      "sourceHeight": 2397,
+      "variants": [
+        {
+          "width": 640,
+          "height": 433,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_12-640.avif",
+            "bytes": 16232
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_12-640.webp",
+            "bytes": 28736
+          }
+        },
+        {
+          "width": 1280,
+          "height": 866,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_12-1280.avif",
+            "bytes": 58242
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_12-1280.webp",
+            "bytes": 116054
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1299,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_12-1920.avif",
+            "bytes": 143067
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_12-1920.webp",
+            "bytes": 346182
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_city_view_14.jpg",
+      "sourceWidth": 5637,
+      "sourceHeight": 3172,
+      "variants": [
+        {
+          "width": 640,
+          "height": 360,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_14-640.avif",
+            "bytes": 26902
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_14-640.webp",
+            "bytes": 61088
+          }
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_14-1280.avif",
+            "bytes": 85943
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_14-1280.webp",
+            "bytes": 182404
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_14-1920.avif",
+            "bytes": 165989
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_14-1920.webp",
+            "bytes": 383734
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_city_view_15.jpg",
+      "sourceWidth": 14670,
+      "sourceHeight": 6490,
+      "variants": [
+        {
+          "width": 640,
+          "height": 283,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_15-640.avif",
+            "bytes": 21037
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_15-640.webp",
+            "bytes": 43484
+          }
+        },
+        {
+          "width": 1280,
+          "height": 566,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_15-1280.avif",
+            "bytes": 66513
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_15-1280.webp",
+            "bytes": 141448
+          }
+        },
+        {
+          "width": 1920,
+          "height": 849,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_15-1920.avif",
+            "bytes": 133700
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_15-1920.webp",
+            "bytes": 275752
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_city_view_16.jpg",
+      "sourceWidth": 5914,
+      "sourceHeight": 3697,
+      "variants": [
+        {
+          "width": 640,
+          "height": 400,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_16-640.avif",
+            "bytes": 24743
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_16-640.webp",
+            "bytes": 53462
+          }
+        },
+        {
+          "width": 1280,
+          "height": 800,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_16-1280.avif",
+            "bytes": 82376
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_16-1280.webp",
+            "bytes": 168898
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1200,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_16-1920.avif",
+            "bytes": 153903
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_16-1920.webp",
+            "bytes": 300060
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_city_view_4.jpg",
+      "sourceWidth": 5184,
+      "sourceHeight": 3456,
+      "variants": [
+        {
+          "width": 640,
+          "height": 427,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_4-640.avif",
+            "bytes": 17014
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_4-640.webp",
+            "bytes": 30150
+          }
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_4-1280.avif",
+            "bytes": 49968
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_4-1280.webp",
+            "bytes": 93876
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_4-1920.avif",
+            "bytes": 96467
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_4-1920.webp",
+            "bytes": 206820
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_city_view_5.jpg",
+      "sourceWidth": 5464,
+      "sourceHeight": 3070,
+      "variants": [
+        {
+          "width": 640,
+          "height": 359,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_5-640.avif",
+            "bytes": 38202
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_5-640.webp",
+            "bytes": 84294
+          }
+        },
+        {
+          "width": 1280,
+          "height": 719,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_5-1280.avif",
+            "bytes": 135337
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_5-1280.webp",
+            "bytes": 303250
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1079,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_5-1920.avif",
+            "bytes": 278798
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_5-1920.webp",
+            "bytes": 630426
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_city_view_6.jpg",
+      "sourceWidth": 6000,
+      "sourceHeight": 4000,
+      "variants": [
+        {
+          "width": 640,
+          "height": 427,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_6-640.avif",
+            "bytes": 27946
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_6-640.webp",
+            "bytes": 54890
+          }
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_6-1280.avif",
+            "bytes": 105760
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_6-1280.webp",
+            "bytes": 224932
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_6-1920.avif",
+            "bytes": 241314
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_6-1920.webp",
+            "bytes": 534138
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_city_view_7.jpg",
+      "sourceWidth": 6000,
+      "sourceHeight": 3376,
+      "variants": [
+        {
+          "width": 640,
+          "height": 360,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_7-640.avif",
+            "bytes": 36919
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_7-640.webp",
+            "bytes": 74826
+          }
+        },
+        {
+          "width": 1280,
+          "height": 720,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_7-1280.avif",
+            "bytes": 138417
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_7-1280.webp",
+            "bytes": 265132
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_7-1920.avif",
+            "bytes": 255037
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_7-1920.webp",
+            "bytes": 504094
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_city_view_8.jpg",
+      "sourceWidth": 4096,
+      "sourceHeight": 2300,
+      "variants": [
+        {
+          "width": 640,
+          "height": 359,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_8-640.avif",
+            "bytes": 15394
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_8-640.webp",
+            "bytes": 29162
+          }
+        },
+        {
+          "width": 1280,
+          "height": 719,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_8-1280.avif",
+            "bytes": 47337
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_8-1280.webp",
+            "bytes": 87482
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1078,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_8-1920.avif",
+            "bytes": 92479
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_8-1920.webp",
+            "bytes": 170878
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_city_view_9.jpg",
+      "sourceWidth": 6000,
+      "sourceHeight": 4000,
+      "variants": [
+        {
+          "width": 640,
+          "height": 427,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_9-640.avif",
+            "bytes": 29757
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_9-640.webp",
+            "bytes": 60038
+          }
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_9-1280.avif",
+            "bytes": 93686
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_9-1280.webp",
+            "bytes": 185984
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "avif": {
+            "src": "/assets/image-library/archway_city_view_9-1920.avif",
+            "bytes": 172107
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_city_view_9-1920.webp",
+            "bytes": 336282
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_confidential.jpg",
+      "sourceWidth": 5184,
+      "sourceHeight": 2920,
+      "variants": [
+        {
+          "width": 640,
+          "height": 360,
+          "avif": {
+            "src": "/assets/image-library/archway_confidential-640.avif",
+            "bytes": 10287
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_confidential-640.webp",
+            "bytes": 15114
+          }
+        },
+        {
+          "width": 1280,
+          "height": 721,
+          "avif": {
+            "src": "/assets/image-library/archway_confidential-1280.avif",
+            "bytes": 28042
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_confidential-1280.webp",
+            "bytes": 38826
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1081,
+          "avif": {
+            "src": "/assets/image-library/archway_confidential-1920.avif",
+            "bytes": 49679
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_confidential-1920.webp",
+            "bytes": 70394
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_construction.jpg",
+      "sourceWidth": 6000,
+      "sourceHeight": 4000,
+      "variants": [
+        {
+          "width": 640,
+          "height": 427,
+          "avif": {
+            "src": "/assets/image-library/archway_construction-640.avif",
+            "bytes": 24163
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_construction-640.webp",
+            "bytes": 51340
+          }
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "avif": {
+            "src": "/assets/image-library/archway_construction-1280.avif",
+            "bytes": 93610
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_construction-1280.webp",
+            "bytes": 201532
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "avif": {
+            "src": "/assets/image-library/archway_construction-1920.avif",
+            "bytes": 196287
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_construction-1920.webp",
+            "bytes": 412228
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_factory_working.jpg",
+      "sourceWidth": 4288,
+      "sourceHeight": 2848,
+      "variants": [
+        {
+          "width": 640,
+          "height": 425,
+          "avif": {
+            "src": "/assets/image-library/archway_factory_working-640.avif",
+            "bytes": 24163
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_factory_working-640.webp",
+            "bytes": 45554
+          }
+        },
+        {
+          "width": 1280,
+          "height": 850,
+          "avif": {
+            "src": "/assets/image-library/archway_factory_working-1280.avif",
+            "bytes": 66836
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_factory_working-1280.webp",
+            "bytes": 116966
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1275,
+          "avif": {
+            "src": "/assets/image-library/archway_factory_working-1920.avif",
+            "bytes": 124556
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_factory_working-1920.webp",
+            "bytes": 217980
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_factory.jpg",
+      "sourceWidth": 3850,
+      "sourceHeight": 2567,
+      "variants": [
+        {
+          "width": 640,
+          "height": 426,
+          "avif": {
+            "src": "/assets/image-library/archway_factory-640.avif",
+            "bytes": 24104
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_factory-640.webp",
+            "bytes": 50524
+          }
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "avif": {
+            "src": "/assets/image-library/archway_factory-1280.avif",
+            "bytes": 77926
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_factory-1280.webp",
+            "bytes": 162378
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "avif": {
+            "src": "/assets/image-library/archway_factory-1920.avif",
+            "bytes": 168429
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_factory-1920.webp",
+            "bytes": 402732
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_owner_working_2.jpg",
+      "sourceWidth": 5452,
+      "sourceHeight": 3635,
+      "variants": [
+        {
+          "width": 640,
+          "height": 426,
+          "avif": {
+            "src": "/assets/image-library/archway_owner_working_2-640.avif",
+            "bytes": 18977
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_owner_working_2-640.webp",
+            "bytes": 32272
+          }
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "avif": {
+            "src": "/assets/image-library/archway_owner_working_2-1280.avif",
+            "bytes": 54926
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_owner_working_2-1280.webp",
+            "bytes": 91104
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "avif": {
+            "src": "/assets/image-library/archway_owner_working_2-1920.avif",
+            "bytes": 106347
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_owner_working_2-1920.webp",
+            "bytes": 181420
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_owner_working_3.jpg",
+      "sourceWidth": 6000,
+      "sourceHeight": 4000,
+      "variants": [
+        {
+          "width": 640,
+          "height": 427,
+          "avif": {
+            "src": "/assets/image-library/archway_owner_working_3-640.avif",
+            "bytes": 20510
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_owner_working_3-640.webp",
+            "bytes": 34946
+          }
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "avif": {
+            "src": "/assets/image-library/archway_owner_working_3-1280.avif",
+            "bytes": 53930
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_owner_working_3-1280.webp",
+            "bytes": 80612
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "avif": {
+            "src": "/assets/image-library/archway_owner_working_3-1920.avif",
+            "bytes": 94163
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_owner_working_3-1920.webp",
+            "bytes": 131394
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_owner_working_4.jpg",
+      "sourceWidth": 4288,
+      "sourceHeight": 2848,
+      "variants": [
+        {
+          "width": 640,
+          "height": 425,
+          "avif": {
+            "src": "/assets/image-library/archway_owner_working_4-640.avif",
+            "bytes": 23482
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_owner_working_4-640.webp",
+            "bytes": 42154
+          }
+        },
+        {
+          "width": 1280,
+          "height": 850,
+          "avif": {
+            "src": "/assets/image-library/archway_owner_working_4-1280.avif",
+            "bytes": 68025
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_owner_working_4-1280.webp",
+            "bytes": 123690
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1275,
+          "avif": {
+            "src": "/assets/image-library/archway_owner_working_4-1920.avif",
+            "bytes": 149283
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_owner_working_4-1920.webp",
+            "bytes": 335514
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_owner_working_5.jpg",
+      "sourceWidth": 3936,
+      "sourceHeight": 2624,
+      "variants": [
+        {
+          "width": 640,
+          "height": 427,
+          "avif": {
+            "src": "/assets/image-library/archway_owner_working_5-640.avif",
+            "bytes": 25944
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_owner_working_5-640.webp",
+            "bytes": 52900
+          }
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "avif": {
+            "src": "/assets/image-library/archway_owner_working_5-1280.avif",
+            "bytes": 83587
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_owner_working_5-1280.webp",
+            "bytes": 162674
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "avif": {
+            "src": "/assets/image-library/archway_owner_working_5-1920.avif",
+            "bytes": 167351
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_owner_working_5-1920.webp",
+            "bytes": 323732
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_owner_working.jpg",
+      "sourceWidth": 6720,
+      "sourceHeight": 4480,
+      "variants": [
+        {
+          "width": 640,
+          "height": 427,
+          "avif": {
+            "src": "/assets/image-library/archway_owner_working-640.avif",
+            "bytes": 13497
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_owner_working-640.webp",
+            "bytes": 19010
+          }
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "avif": {
+            "src": "/assets/image-library/archway_owner_working-1280.avif",
+            "bytes": 34358
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_owner_working-1280.webp",
+            "bytes": 47970
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "avif": {
+            "src": "/assets/image-library/archway_owner_working-1920.avif",
+            "bytes": 65716
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_owner_working-1920.webp",
+            "bytes": 109394
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_restaurants_2.jpg",
+      "sourceWidth": 7008,
+      "sourceHeight": 4672,
+      "variants": [
+        {
+          "width": 640,
+          "height": 427,
+          "avif": {
+            "src": "/assets/image-library/archway_restaurants_2-640.avif",
+            "bytes": 22345
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_restaurants_2-640.webp",
+            "bytes": 44150
+          }
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "avif": {
+            "src": "/assets/image-library/archway_restaurants_2-1280.avif",
+            "bytes": 67599
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_restaurants_2-1280.webp",
+            "bytes": 128262
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "avif": {
+            "src": "/assets/image-library/archway_restaurants_2-1920.avif",
+            "bytes": 132693
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_restaurants_2-1920.webp",
+            "bytes": 242974
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_restaurants.jpg",
+      "sourceWidth": 6835,
+      "sourceHeight": 4557,
+      "variants": [
+        {
+          "width": 640,
+          "height": 426,
+          "avif": {
+            "src": "/assets/image-library/archway_restaurants-640.avif",
+            "bytes": 32477
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_restaurants-640.webp",
+            "bytes": 69634
+          }
+        },
+        {
+          "width": 1280,
+          "height": 854,
+          "avif": {
+            "src": "/assets/image-library/archway_restaurants-1280.avif",
+            "bytes": 104079
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_restaurants-1280.webp",
+            "bytes": 219172
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "avif": {
+            "src": "/assets/image-library/archway_restaurants-1920.avif",
+            "bytes": 205929
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_restaurants-1920.webp",
+            "bytes": 429400
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_retail.jpg",
+      "sourceWidth": 4000,
+      "sourceHeight": 3000,
+      "variants": [
+        {
+          "width": 640,
+          "height": 480,
+          "avif": {
+            "src": "/assets/image-library/archway_retail-640.avif",
+            "bytes": 43270
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_retail-640.webp",
+            "bytes": 96702
+          }
+        },
+        {
+          "width": 1280,
+          "height": 960,
+          "avif": {
+            "src": "/assets/image-library/archway_retail-1280.avif",
+            "bytes": 149331
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_retail-1280.webp",
+            "bytes": 326544
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1440,
+          "avif": {
+            "src": "/assets/image-library/archway_retail-1920.avif",
+            "bytes": 298847
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_retail-1920.webp",
+            "bytes": 637010
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_security.jpg",
+      "sourceWidth": 5005,
+      "sourceHeight": 3328,
+      "variants": [
+        {
+          "width": 640,
+          "height": 426,
+          "avif": {
+            "src": "/assets/image-library/archway_security-640.avif",
+            "bytes": 13399
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_security-640.webp",
+            "bytes": 21682
+          }
+        },
+        {
+          "width": 1280,
+          "height": 851,
+          "avif": {
+            "src": "/assets/image-library/archway_security-1280.avif",
+            "bytes": 33918
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_security-1280.webp",
+            "bytes": 52336
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1277,
+          "avif": {
+            "src": "/assets/image-library/archway_security-1920.avif",
+            "bytes": 57906
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_security-1920.webp",
+            "bytes": 89028
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_sign_contract.jpg",
+      "sourceWidth": 5760,
+      "sourceHeight": 3840,
+      "variants": [
+        {
+          "width": 640,
+          "height": 427,
+          "avif": {
+            "src": "/assets/image-library/archway_sign_contract-640.avif",
+            "bytes": 12510
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_sign_contract-640.webp",
+            "bytes": 17652
+          }
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "avif": {
+            "src": "/assets/image-library/archway_sign_contract-1280.avif",
+            "bytes": 31402
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_sign_contract-1280.webp",
+            "bytes": 43466
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "avif": {
+            "src": "/assets/image-library/archway_sign_contract-1920.avif",
+            "bytes": 53044
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_sign_contract-1920.webp",
+            "bytes": 74054
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_solar_panel.jpg",
+      "sourceWidth": 6000,
+      "sourceHeight": 4000,
+      "variants": [
+        {
+          "width": 640,
+          "height": 427,
+          "avif": {
+            "src": "/assets/image-library/archway_solar_panel-640.avif",
+            "bytes": 29110
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_solar_panel-640.webp",
+            "bytes": 64342
+          }
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "avif": {
+            "src": "/assets/image-library/archway_solar_panel-1280.avif",
+            "bytes": 101823
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_solar_panel-1280.webp",
+            "bytes": 209728
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "avif": {
+            "src": "/assets/image-library/archway_solar_panel-1920.avif",
+            "bytes": 200165
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_solar_panel-1920.webp",
+            "bytes": 398764
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_steel.jpg",
+      "sourceWidth": 3936,
+      "sourceHeight": 2624,
+      "variants": [
+        {
+          "width": 640,
+          "height": 427,
+          "avif": {
+            "src": "/assets/image-library/archway_steel-640.avif",
+            "bytes": 26152
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_steel-640.webp",
+            "bytes": 57866
+          }
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "avif": {
+            "src": "/assets/image-library/archway_steel-1280.avif",
+            "bytes": 86651
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_steel-1280.webp",
+            "bytes": 182552
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "avif": {
+            "src": "/assets/image-library/archway_steel-1920.avif",
+            "bytes": 179664
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_steel-1920.webp",
+            "bytes": 423952
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_storage.jpg",
+      "sourceWidth": 6720,
+      "sourceHeight": 4480,
+      "variants": [
+        {
+          "width": 640,
+          "height": 427,
+          "avif": {
+            "src": "/assets/image-library/archway_storage-640.avif",
+            "bytes": 26294
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_storage-640.webp",
+            "bytes": 50860
+          }
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "avif": {
+            "src": "/assets/image-library/archway_storage-1280.avif",
+            "bytes": 75357
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_storage-1280.webp",
+            "bytes": 139146
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "avif": {
+            "src": "/assets/image-library/archway_storage-1920.avif",
+            "bytes": 139240
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_storage-1920.webp",
+            "bytes": 245784
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_till_complete_2.jpg",
+      "sourceWidth": 4160,
+      "sourceHeight": 2773,
+      "variants": [
+        {
+          "width": 640,
+          "height": 426,
+          "avif": {
+            "src": "/assets/image-library/archway_till_complete_2-640.avif",
+            "bytes": 9369
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_till_complete_2-640.webp",
+            "bytes": 15100
+          }
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "avif": {
+            "src": "/assets/image-library/archway_till_complete_2-1280.avif",
+            "bytes": 31437
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_till_complete_2-1280.webp",
+            "bytes": 54104
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "avif": {
+            "src": "/assets/image-library/archway_till_complete_2-1920.avif",
+            "bytes": 70653
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_till_complete_2-1920.webp",
+            "bytes": 127366
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_till_complete.jpg",
+      "sourceWidth": 5137,
+      "sourceHeight": 3425,
+      "variants": [
+        {
+          "width": 640,
+          "height": 427,
+          "avif": {
+            "src": "/assets/image-library/archway_till_complete-640.avif",
+            "bytes": 18795
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_till_complete-640.webp",
+            "bytes": 30896
+          }
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "avif": {
+            "src": "/assets/image-library/archway_till_complete-1280.avif",
+            "bytes": 51786
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_till_complete-1280.webp",
+            "bytes": 82632
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "avif": {
+            "src": "/assets/image-library/archway_till_complete-1920.avif",
+            "bytes": 96131
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_till_complete-1920.webp",
+            "bytes": 157270
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_working.jpg",
+      "sourceWidth": 4898,
+      "sourceHeight": 3265,
+      "variants": [
+        {
+          "width": 640,
+          "height": 427,
+          "avif": {
+            "src": "/assets/image-library/archway_working-640.avif",
+            "bytes": 18075
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_working-640.webp",
+            "bytes": 30408
+          }
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "avif": {
+            "src": "/assets/image-library/archway_working-1280.avif",
+            "bytes": 54200
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_working-1280.webp",
+            "bytes": 95378
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "avif": {
+            "src": "/assets/image-library/archway_working-1920.avif",
+            "bytes": 117328
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_working-1920.webp",
+            "bytes": 239138
+          }
+        }
+      ]
+    },
+    {
+      "source": "vincom_center.jpg",
+      "sourceWidth": 819,
+      "sourceHeight": 1024,
+      "variants": [
+        {
+          "width": 640,
+          "height": 800,
+          "avif": {
+            "src": "/assets/image-library/vincom_center-640.avif",
+            "bytes": 56056
+          },
+          "webp": {
+            "src": "/assets/image-library/vincom_center-640.webp",
+            "bytes": 116492
+          }
+        },
+        {
+          "width": 819,
+          "height": 1024,
+          "avif": {
+            "src": "/assets/image-library/vincom_center-819.avif",
+            "bytes": 86983
+          },
+          "webp": {
+            "src": "/assets/image-library/vincom_center-819.webp",
+            "bytes": 182456
+          }
+        }
+      ]
+    }
+  ]
+}

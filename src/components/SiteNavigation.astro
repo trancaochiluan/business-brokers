@@ -56,8 +56,8 @@ const navLinkClass = isLightTheme
   : 'text-[var(--color-paper)] underline-offset-4 hover:text-[var(--color-paper)] hover:underline focus-visible:outline-2 focus-visible:outline-[var(--color-paper)] focus-visible:outline-offset-4';
 const summaryClass = `flex cursor-pointer list-none items-center gap-2 ${navLinkClass} [&::-webkit-details-marker]:hidden`;
 const menuPanelClass = isLightTheme
-  ? 'absolute right-0 top-full z-20 mt-2 min-w-[18rem] border border-[var(--color-line-dark)] bg-[var(--color-paper)] p-2 text-left'
-  : 'absolute right-0 top-full z-20 mt-2 min-w-[18rem] border border-[var(--color-line)] bg-[var(--color-panel)] p-2 text-left';
+  ? 'absolute right-0 top-full z-20 mt-2 min-w-[18rem] bg-[var(--color-paper)] p-2 text-left'
+  : 'absolute right-0 top-full z-20 mt-2 min-w-[18rem] bg-[var(--color-panel)] p-2 text-left';
 const menuItemClass = isLightTheme
   ? 'block px-3 py-2 text-sm text-[var(--color-ink)] hover:bg-[var(--color-accent)] hover:text-[var(--color-paper)] focus-visible:bg-[var(--color-accent)] focus-visible:text-[var(--color-paper)] focus-visible:outline-0'
   : 'block px-3 py-2 text-sm text-[var(--color-paper)] hover:bg-[var(--color-accent)] focus-visible:bg-[var(--color-accent)] focus-visible:outline-0';
@@ -72,10 +72,10 @@ const brandClass = isLightTheme
   : 'text-[var(--color-paper)] focus-visible:outline-2 focus-visible:outline-[var(--color-paper)] focus-visible:outline-offset-4';
 ---
 
-<header data-site-navigation class="absolute inset-x-6 top-6 z-[10] sm:inset-x-10 sm:top-8">
+<header data-site-navigation class="absolute inset-x-5 top-4 z-[10] sm:inset-x-10 sm:top-4">
   <div class={`flex items-start gap-3 ${showBrand ? 'justify-between' : 'justify-end'}`}>
     <div class={`flex items-start gap-3 ${showBrand ? 'order-2' : ''}`}>
-      <nav class="hidden items-center gap-6 text-sm lg:flex" aria-label={labels.navigation}>
+      <nav class="hidden items-center gap-5 text-sm lg:flex" aria-label={labels.navigation}>
         <a class={navLinkClass} href={localizedPath('/sell-your-business/')}>
           {labels.sell}
         </a>
@@ -134,9 +134,9 @@ const brandClass = isLightTheme
 
 <div class="pointer-events-none fixed inset-0 z-[40] bg-[var(--color-scrim)] opacity-0 transition-opacity duration-200 motion-reduce:transition-none lg:hidden" data-mobile-backdrop aria-hidden="true"></div>
 
-<aside id="mobile-nav-drawer" class="fixed inset-y-0 right-0 z-[50] w-[min(22rem,88vw)] translate-x-full border-l border-[var(--color-line-dark)] bg-[var(--color-paper)] text-[var(--color-ink)] transition-transform duration-200 motion-reduce:transition-none lg:hidden" data-mobile-drawer aria-hidden="true">
-  <div class="flex h-full flex-col overflow-y-auto px-6 py-6">
-    <div class="flex items-center justify-between gap-4 border-b border-[var(--color-line-dark)] pb-5">
+<aside id="mobile-nav-drawer" class="fixed inset-y-0 right-0 z-[50] w-[min(22rem,88vw)] translate-x-full bg-[var(--color-paper)] text-[var(--color-ink)] transition-transform duration-200 motion-reduce:transition-none lg:hidden" data-mobile-drawer aria-hidden="true" inert>
+  <div class="flex h-full flex-col overflow-y-auto px-5 py-5">
+    <div class="flex items-center justify-between gap-4 pb-4">
       <a class="flex min-w-0 items-center gap-3 text-[var(--color-ink)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4" href={homeHref} aria-label={isVietnamese ? 'Trang chủ Archway Business Brokers' : 'Archway Business Brokers home'}>
         <img class="h-10 w-10 shrink-0" src="/favicon.svg" alt="" width="40" height="40" decoding="async" />
         <span class="flex min-w-0 flex-col font-medium leading-[0.9] tracking-tight">
@@ -149,15 +149,15 @@ const brandClass = isLightTheme
       </button>
     </div>
 
-    <nav class="flex flex-col pt-5" aria-label={labels.navigation}>
-      <a class="border-b border-[var(--color-line-dark)] py-4 text-base text-[var(--color-ink)] hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4" href={localizedPath('/sell-your-business/')}>
+    <nav class="flex flex-col gap-1 pt-4" aria-label={labels.navigation}>
+      <a class="py-3 text-base text-[var(--color-ink)] hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4" href={localizedPath('/sell-your-business/')}>
         {labels.sell}
       </a>
-      <a class="border-b border-[var(--color-line-dark)] py-4 text-base text-[var(--color-ink)] hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4" href={localizedPath('/buyer-register/')}>
+      <a class="py-3 text-base text-[var(--color-ink)] hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4" href={localizedPath('/buyer-register/')}>
         {labels.buy}
       </a>
-      <details data-mobile-more-menu class="group border-b border-[var(--color-line-dark)]">
-        <summary class="flex cursor-pointer list-none items-center justify-between py-4 text-base text-[var(--color-ink)] hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4 [&::-webkit-details-marker]:hidden" aria-expanded="false">
+      <details data-mobile-more-menu class="group">
+        <summary class="flex cursor-pointer list-none items-center justify-between py-3 text-base text-[var(--color-ink)] hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4 [&::-webkit-details-marker]:hidden" aria-expanded="false">
           <span>{labels.learnMore}</span>
           <span class="h-2 w-2 rotate-45 border-b border-r border-current transition-transform duration-150 group-open:rotate-[225deg] motion-reduce:transition-none" aria-hidden="true"></span>
         </summary>
@@ -178,9 +178,9 @@ const brandClass = isLightTheme
       </details>
     </nav>
 
-    <div class="mt-auto border-t border-[var(--color-line-dark)] pt-5">
+    <div class="mt-auto pt-5">
       <p class="text-xs font-medium uppercase tracking-[0.12em] text-[var(--color-ink)]">{labels.contactDetails}</p>
-      <a class="mt-3 block text-sm text-[var(--color-ink)] hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4" href="tel:+84346346550">{labels.phone}: {phoneNumber}</a>
+      <a class="mt-2 block text-sm text-[var(--color-ink)] hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4" href="tel:+84346346550">{labels.phone}: {phoneNumber}</a>
       <a class="mt-2 block break-words text-sm text-[var(--color-ink)] hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4" href="mailto:brokers@archway.vn">{labels.email}: brokers@archway.vn</a>
     </div>
   </div>

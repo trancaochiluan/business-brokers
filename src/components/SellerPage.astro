@@ -1,5 +1,6 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
+import SiteFooter from './SiteFooter.astro';
 
 interface Props {
   lang: 'en' | 'vi';
@@ -11,8 +12,8 @@ const isVietnamese = lang === 'vi';
 const copy = isVietnamese
   ? {
       pageTitle: 'Bán doanh nghiệp tại Việt Nam | Archway Business Brokers',
-      heading: 'Bán doanh nghiệp',
-      description: 'Điền thông tin doanh nghiệp để trao đổi miễn phí và bảo mật với Archway Business Brokers.',
+      heading: 'Bán doanh nghiệp tại Việt Nam',
+      description: 'Trao đổi miễn phí và bảo mật với Archway Business Brokers về việc bán hoặc chuyển nhượng doanh nghiệp tại Việt Nam.',
       language: 'EN',
       languageLabel: 'Chuyển sang English',
       timelinePrompt: 'Quý khách dự kiến bán doanh nghiệp khi nào',
@@ -40,9 +41,8 @@ const copy = isVietnamese
       submitting: 'Đang gửi...',
       success: 'Xin cảm ơn. Archway Business Brokers đã tiếp nhận thông tin và sẽ liên hệ để trao đổi bước đầu.',
       error: 'Hiện chưa thể gửi thông tin. Vui lòng thử lại sau hoặc liên hệ brokers@archway.vn.',
-      confidentialNotice: 'Tất cả trao đổi và tư vấn đều miễn phí và bảo mật.',
       privacyPrefix: 'Tôi chấp thuận',
-      privacyLink: 'Chính sách bảo mật',
+      privacyLink: 'Chính sách quyền riêng tư',
       privacySuffix: ' và cam kết giữ bí mật nội dung trao đổi với Archway Business Brokers.',
       sidebarIntro: 'Archway Business Brokers hỗ trợ Quý khách trao đổi về việc bán hoặc chuyển nhượng doanh nghiệp đang hoạt động tại Việt Nam. Chúng tôi sẽ hướng dẫn từng bước phù hợp với tình hình doanh nghiệp.',
       points: [
@@ -59,8 +59,8 @@ const copy = isVietnamese
     }
   : {
       pageTitle: 'Sell Your Business in Vietnam | Archway Business Brokers',
-      heading: 'Sell your business',
-      description: 'Share your business details for a free and confidential conversation with Archway Business Brokers.',
+      heading: 'Sell your business in Vietnam',
+      description: 'Discuss selling or transferring your business in Vietnam with Archway Business Brokers through a free and confidential conversation.',
       language: 'VI',
       languageLabel: 'Chuyển sang Vietnamese',
       timelinePrompt: 'How Quickly Do You Want To Sell Your Business',
@@ -88,7 +88,6 @@ const copy = isVietnamese
       submitting: 'Sending...',
       success: 'Thank you. Archway Business Brokers has received your information and will contact you for an initial conversation.',
       error: 'We could not submit your information. Please try again or contact brokers@archway.vn.',
-      confidentialNotice: 'All discussions and advisory support are free and confidential.',
       privacyPrefix: 'I accept the',
       privacyLink: 'Privacy Policy',
       privacySuffix: ' and agree to treat my discussions with Archway Business Brokers as confidential.',
@@ -166,20 +165,25 @@ const languageFlag = isVietnamese ? '🇬🇧' : '🇻🇳';
 const privacyHref = isVietnamese ? '/privacy-policy/' : '/en/privacy-policy/';
 const questionMark = String.fromCharCode(63);
 const formId = isVietnamese ? 'seller-form-vi' : 'seller-form-en';
-const questionClass = 'border-b border-[var(--color-line-dark)] pb-5 text-center text-xl font-medium leading-snug text-[var(--color-ink)]';
-const optionCardClass = 'relative flex cursor-pointer items-center gap-4 border-2 border-[var(--color-line-dark)] bg-[var(--color-paper)] px-4 py-2.5 text-base leading-6 text-[var(--color-ink)] transition-colors has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-[var(--color-ink)] has-[:checked]:border-[var(--color-accent)]';
+const questionClass = 'pb-3 text-center text-xl font-medium leading-snug text-[var(--color-ink)]';
+const optionCardClass = 'relative flex cursor-pointer items-center gap-4 bg-[var(--color-muted)] px-4 py-2.5 text-base leading-6 text-[var(--color-ink)] transition-colors has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-[var(--color-ink)] has-[:checked]:bg-[var(--color-accent)] has-[:checked]:text-[var(--color-paper)]';
 const optionRingClass = 'flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-[var(--color-line-dark)] bg-[var(--color-paper)] transition-colors peer-checked:border-[var(--color-accent)]';
 const optionDotClass = 'h-2.5 w-2.5 rounded-full bg-transparent peer-checked:bg-[var(--color-accent)]';
 const fieldLabelClass = 'text-base font-medium text-[var(--color-ink)]';
-const inputClass = 'min-h-11 border border-[var(--color-line-dark)] bg-[var(--color-paper)] px-4 py-2.5 text-base text-[var(--color-ink)] placeholder:text-[var(--color-ink)] placeholder:opacity-60 placeholder:italic focus:border-[var(--color-accent)] focus:outline-2 focus:outline-offset-2 focus:outline-[var(--color-accent)]';
+const inputClass = 'min-h-11 border-0 bg-[var(--color-muted)] px-4 py-2.5 text-base text-[var(--color-ink)] placeholder:text-[var(--color-ink)] placeholder:opacity-60 placeholder:italic focus:outline-2 focus:outline-offset-2 focus:outline-[var(--color-accent)]';
 const buttonClass = 'inline-flex min-h-11 items-center justify-center gap-2 border-0 bg-[var(--color-accent)] px-6 py-3 text-base font-medium leading-none text-[var(--color-paper)] transition-colors hover:bg-[var(--color-accent-hover)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)] disabled:pointer-events-none disabled:opacity-60';
-const backButtonClass = 'inline-flex min-h-11 items-center justify-center border border-[var(--color-ink)] bg-transparent px-6 py-3 text-base font-medium leading-none text-[var(--color-ink)] transition-colors hover:bg-[var(--color-muted)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-ink)] disabled:pointer-events-none disabled:opacity-60';
+const backButtonClass = 'inline-flex min-h-11 items-center justify-center border-0 bg-[var(--color-muted)] px-6 py-3 text-base font-medium leading-none text-[var(--color-ink)] transition-colors hover:bg-[var(--color-paper)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-ink)] disabled:pointer-events-none disabled:opacity-60';
 ---
 
-<SiteLayout lang={lang} title={copy.pageTitle} description={copy.description} includeNavigationScript={false}>
+<SiteLayout
+  lang={lang}
+  title={copy.pageTitle}
+  description={copy.description}
+  includeNavigationScript={false}
+>
   <div class="min-h-dvh bg-[var(--color-muted)] text-[var(--color-ink)]">
     <header class="bg-[var(--color-paper)] text-[var(--color-ink)]">
-      <div class="relative mx-auto flex min-h-20 w-full max-w-7xl items-center justify-start px-4 py-4 sm:min-h-24 sm:justify-center sm:px-10 sm:py-6">
+      <div class="relative mx-auto flex min-h-16 w-full max-w-7xl items-center justify-start px-4 py-3 sm:justify-center sm:px-10">
         <a class="inline-flex max-w-full items-center whitespace-nowrap text-[clamp(0.75rem,3.8vw,1.5rem)] font-medium leading-none tracking-tight text-[var(--color-ink)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4" href={homeHref} aria-label={isVietnamese ? 'Trang chủ Archway Business Brokers' : 'Archway Business Brokers home'}>
           <img class="mr-1.5 h-6 w-6 shrink-0 sm:mr-2 sm:h-7 sm:w-7" src="/favicon.svg" alt="" width="28" height="28" decoding="async" />
           <span>Archway</span>
@@ -192,10 +196,10 @@ const backButtonClass = 'inline-flex min-h-11 items-center justify-center border
       </div>
     </header>
 
-    <main class="mx-auto mt-2.5 mb-16 w-[min(92%,75rem)] border border-[var(--color-line-dark)] bg-[var(--color-paper)] p-6 sm:p-10">
+    <main class="mx-auto mt-2.5 mb-10 w-[min(92%,75rem)] bg-[var(--color-paper)] p-4 sm:p-6">
       <h1 class="sr-only">{copy.heading}</h1>
 
-      <div class="lg:grid lg:grid-cols-3 lg:gap-12">
+      <div class="lg:grid lg:grid-cols-3 lg:gap-8">
         <form
           id={formId}
           class="lg:col-span-2"
@@ -215,7 +219,7 @@ const backButtonClass = 'inline-flex min-h-11 items-center justify-center border
           <input type="hidden" name="locale" value={lang} />
           <input aria-hidden="true" autocomplete="off" class="hidden" name="fax_number" tabindex="-1" type="text" />
 
-          <div data-step class="grid gap-6">
+          <div data-step class="grid gap-5">
             <h2 class={questionClass}>
               {copy.timelinePrompt}{questionMark} <span class="text-[var(--color-accent)]" aria-hidden="true">*</span>
             </h2>
@@ -230,7 +234,7 @@ const backButtonClass = 'inline-flex min-h-11 items-center justify-center border
             </div>
           </div>
 
-          <div data-step class="grid gap-6" hidden>
+          <div data-step class="grid gap-5" hidden>
             <h2 class={questionClass}>
               {copy.industryPrompt}{questionMark} <span class="text-[var(--color-accent)]" aria-hidden="true">*</span>
             </h2>
@@ -257,7 +261,7 @@ const backButtonClass = 'inline-flex min-h-11 items-center justify-center border
             </div>
           </div>
 
-          <div data-step class="grid gap-6" hidden>
+          <div data-step class="grid gap-5" hidden>
             <h2 class={questionClass}>
               {copy.revenuePrompt}{questionMark} <span class="text-[var(--color-accent)]" aria-hidden="true">*</span>
             </h2>
@@ -284,7 +288,7 @@ const backButtonClass = 'inline-flex min-h-11 items-center justify-center border
             </div>
           </div>
 
-          <div data-step class="grid gap-6" hidden>
+          <div data-step class="grid gap-5" hidden>
             <div class="grid gap-2">
               <label for={`${formId}-province`} class={fieldLabelClass}>
                 {copy.provinceLabel} <span class="text-[var(--color-accent)]" aria-hidden="true">*</span>
@@ -299,7 +303,7 @@ const backButtonClass = 'inline-flex min-h-11 items-center justify-center border
             </div>
           </div>
 
-          <div data-step class="grid gap-6" hidden>
+          <div data-step class="grid gap-5" hidden>
             <h2 class="text-left text-xl font-medium leading-snug text-[var(--color-ink)]">{copy.contactHeading}</h2>
             <div class="grid gap-5">
               <div class="grid gap-2">
@@ -330,20 +334,19 @@ const backButtonClass = 'inline-flex min-h-11 items-center justify-center border
             </label>
           </div>
 
-          <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
+          <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
             <button id={`${formId}-back`} data-step-back type="button" hidden class={backButtonClass}>{copy.back}</button>
             <button id={`${formId}-next`} data-step-next type="submit" class={buttonClass}>
               <span data-step-spinner class="hidden h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent motion-reduce:animate-none" aria-hidden="true"></span>
               <span data-step-next-label>{copy.next}</span>
             </button>
           </div>
-          <p data-form-status class="mt-4 min-h-7 text-base text-[var(--color-ink)]" role="status" aria-live="polite" tabindex="-1"></p>
-          <p class="mt-2 text-sm leading-6 text-[var(--color-ink)]">{copy.confidentialNotice}</p>
         </form>
+        <p data-form-status hidden class="mt-4 min-h-7 text-base text-[var(--color-ink)] lg:col-span-2" role="status" aria-live="polite" tabindex="-1"></p>
 
-        <aside class="mt-12 lg:mt-0">
-          <div class="flex flex-col items-center gap-6">
-            <div class="h-36 w-36 shrink-0 overflow-hidden rounded-full border-4 border-[var(--color-ink)] bg-[var(--color-paper)]">
+        <aside class="mt-6 lg:mt-0">
+          <div class="flex flex-col items-center gap-5">
+            <div class="h-32 w-32 shrink-0 overflow-hidden rounded-full bg-[var(--color-paper)]">
               <img class="h-full w-full object-contain p-3" src="/favicon.svg" alt={isVietnamese ? 'Logo Archway Business Brokers' : 'Archway Business Brokers logo'} width="144" height="144" decoding="async" />
             </div>
             <p class="text-base leading-7 text-[var(--color-ink)]">{copy.sidebarIntro}</p>
@@ -360,12 +363,8 @@ const backButtonClass = 'inline-flex min-h-11 items-center justify-center border
       </div>
     </main>
 
-    <footer class="bg-[var(--color-paper)] px-6 py-8 text-center text-sm text-[var(--color-ink)] sm:px-10">
-      <p class="m-0">Archway Business Brokers, {copy.footerAddress}</p>
-      <a class="mt-2 inline-flex text-[var(--color-ink)] no-underline hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4" href="tel:+84346346550">{copy.footerPhone}</a>
-      <a class="mt-2 block text-[var(--color-ink)] no-underline hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4" href="mailto:brokers@archway.vn">brokers@archway.vn</a>
-    </footer>
+    <SiteFooter theme="dark" address={copy.footerAddress} phone={copy.footerPhone} />
   </div>
 
-  <script is:inline src="/seller-form.js" defer></script>
+  <script src="../scripts/seller-form.js"></script>
 </SiteLayout>

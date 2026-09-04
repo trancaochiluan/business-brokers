@@ -1,0 +1,177 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import SiteNavigation from './SiteNavigation.astro';
+
+interface Props {
+  lang: 'en' | 'vi';
+}
+
+const { lang } = Astro.props;
+const isVietnamese = lang === 'vi';
+const localizedPath = (path: string) => (isVietnamese ? path : `/en${path}`);
+const copy = isVietnamese
+  ? {
+      title: 'Môi giới mua bán doanh nghiệp tại Việt Nam | Archway Business Brokers',
+      description: 'Archway Business Brokers hỗ trợ chủ doanh nghiệp bán hoặc chuyển nhượng doanh nghiệp đang hoạt động tại Việt Nam có doanh thu từ 3 tỷ đồng mỗi năm. Tất cả trao đổi và tư vấn đều miễn phí và bảo mật.',
+      heading: 'Môi giới mua bán doanh nghiệp tại Việt Nam',
+      introduction: 'Archway Business Brokers hỗ trợ chủ doanh nghiệp bán hoặc chuyển nhượng doanh nghiệp đang hoạt động tại Việt Nam có doanh thu từ 3 tỷ đồng mỗi năm, kết nối với bên mua phù hợp và đồng hành trong suốt quá trình giao dịch. Tất cả trao đổi và tư vấn đều miễn phí và bảo mật.',
+      primaryCta: 'Trao đổi về bán hoặc chuyển nhượng doanh nghiệp',
+      callCta: 'Gọi 0346-346-550',
+      address: 'Tầng 17, Tòa nhà Vincom Center, 72 đường Lê Thánh Tôn, Quận 1, Thành phố Hồ Chí Minh, Việt Nam',
+      phone: 'Điện thoại: 0346-346-550',
+      ownerHeading: 'Kính gửi các chủ doanh nghiệp đang cân nhắc chuyển nhượng.',
+      ownerParagraphs: [
+        'Archway Business Brokers được thành lập để hỗ trợ các chủ doanh nghiệp đang cân nhắc bán hoặc chuyển nhượng doanh nghiệp mà bản thân đã dày công xây dựng. Chúng tôi mong muốn trở thành người đồng hành đáng tin cậy trong một quyết định quan trọng, khi Quý khách cân nhắc chuyển giao thành quả của nhiều năm tâm huyết, nỗ lực và trách nhiệm. Chúng tôi hiểu rằng với nhiều chủ doanh nghiệp, doanh nghiệp của mình giống như một đứa con tinh thần, vì vậy quyết định chuyển giao cần được cân nhắc và chuẩn bị với sự thấu hiểu, tôn trọng.',
+        'Chúng tôi tự tin là một trong những đơn vị môi giới doanh nghiệp uy tín và chuyên nghiệp nhất tại Việt Nam. Với cách làm việc rõ ràng, bảo mật và sát với thực tế, Archway sẽ giúp Quý khách chuẩn bị và trình bày doanh nghiệp một cách thuyết phục hơn, qua đó nâng cao giá trị doanh nghiệp được người mua nhìn nhận và tăng cơ hội nhận được những đề nghị nghiêm túc, phù hợp.',
+        'Việc bán hoặc chuyển nhượng doanh nghiệp có thể là một hành trình M&A phức tạp và kéo dài. Khi hợp tác với Archway, Quý khách không phải tự mình xử lý toàn bộ quy trình; chúng tôi sẽ đồng hành và điều phối từng bước một cách chuyên nghiệp, chủ động và rõ ràng để Quý khách cảm thấy an tâm hơn trong suốt hành trình. Quý khách nên bắt đầu chuẩn bị từ sớm, bởi một kế hoạch tốt sẽ giúp hạn chế những sai sót không đáng có và tạo thêm thời gian để đưa ra quyết định phù hợp. Hãy thoải mái liên hệ với Archway để bắt đầu cuộc trao đổi đầu tiên khi Quý khách sẵn sàng, vì sẽ không tốn một đồng chi phí nào cho tới khi chúng tôi bán được doanh nghiệp.',
+      ],
+      ownerCta: 'Trao đổi riêng với Archway',
+    }
+  : {
+      title: 'Business Brokers in Vietnam | Archway Business Brokers',
+      description: 'Archway Business Brokers helps owners sell or transfer operating businesses in Vietnam with annual revenue from VND 3 billion. All discussions and advisory support are free and confidential.',
+      heading: 'Business Brokers in Vietnam',
+      introduction: 'Archway Business Brokers helps owners sell or transfer operating businesses in Vietnam with annual revenue from VND 3 billion, connects them with suitable buyers and guides the transaction process. All discussions and advisory support are free and confidential.',
+      primaryCta: 'Discuss selling or transferring your business',
+      callCta: 'Call (+84) 346-346-550',
+      address: '17th Floor, Vincom Center Building, 72 Le Thanh Ton Street, District 1, Ho Chi Minh City, Vietnam',
+      phone: 'Phone: (+84) 346-346-550',
+      ownerHeading: 'Dear business owners considering a sale or transfer.',
+      ownerParagraphs: [
+        'Archway Business Brokers was established to support owners who are considering selling or transferring the business they have worked hard to build. We want to be a trusted partner in an important decision, as you consider passing on the result of many years of commitment, effort and responsibility. We understand that, for many owners, a business is a deeply personal creation, so the decision to transfer it deserves understanding and respect.',
+        'We are confident that Archway is among the most reputable and professional business brokerage firms in Vietnam. Through a clear, confidential and practical approach, Archway will help you prepare and present your business more persuasively. This can strengthen the value buyers perceive in the business and improve your opportunity to receive serious and suitable offers.',
+        'Selling or transferring a business can be a complex and lengthy M&A journey. When you work with Archway, you do not have to manage the entire process alone. We will support and coordinate each step professionally, proactively and clearly, so you can feel more confident throughout the journey. Starting early gives you more time to prepare, reduce avoidable mistakes and make suitable decisions. Please feel free to contact Archway to begin an initial conversation when you are ready, because you will not pay any fee until we sell your business.',
+      ],
+      ownerCta: 'Have a private conversation with Archway',
+    };
+
+---
+
+<SiteLayout lang={lang} title={copy.title} description={copy.description}>
+  <main>
+    <section class="relative min-h-screen overflow-hidden bg-[var(--color-ink)] text-[var(--color-paper)]">
+    <SiteNavigation lang={lang} />
+    <img
+      class="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover object-center"
+      src="/assets/hero-poster.jpg"
+      alt=""
+      aria-hidden="true"
+      width="1280"
+      height="720"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+    />
+    <video
+      class="pointer-events-none absolute inset-0 z-[1] h-full w-full object-cover object-center motion-reduce:hidden"
+      autoplay
+      loop
+      muted
+      playsinline
+      preload="none"
+      poster="/assets/hero-poster.jpg"
+      aria-hidden="true"
+      data-hero-video
+    >
+      <source data-src="/assets/hero-video.mp4" type="video/mp4" />
+      <source data-src="/assets/hero-video.webm" type="video/webm" />
+    </video>
+    <div class="pointer-events-none absolute inset-0 z-[2] bg-[var(--color-scrim)]"></div>
+
+    <div class="relative z-[3] flex min-h-screen flex-col justify-between px-6 py-4 sm:px-10 sm:py-5">
+      <div class="flex flex-1 flex-col items-center justify-center gap-5 py-8 text-center sm:gap-6 sm:py-6">
+        <img
+          class="h-20 w-20 sm:h-24 sm:w-24"
+          src="/favicon.svg"
+          alt=""
+          aria-hidden="true"
+          width="96"
+          height="96"
+          decoding="async"
+        />
+        <div class="flex flex-col items-center font-medium leading-[0.86] text-[var(--color-paper)]" aria-label="Archway Business Brokers">
+          <span class="text-[clamp(2.25rem,7vw,5rem)]">Archway</span>
+          <span class="ml-[0.16em] text-[clamp(1.05rem,3.4vw,2.8rem)] text-[var(--color-paper)]">Business Brokers</span>
+        </div>
+
+        <div class="flex max-w-[48rem] flex-col items-center gap-3">
+          <h1 class="m-0 max-w-[48rem] text-[clamp(1rem,1.25vw,1.25rem)] font-normal leading-[1.4] text-[var(--color-paper)]">
+            {copy.heading}
+          </h1>
+          <p class="m-0 max-w-[48rem] text-[clamp(1rem,1.25vw,1.25rem)] font-normal leading-[1.4] text-[var(--color-paper)]">
+            {copy.introduction}
+          </p>
+        </div>
+
+        <div class="flex w-full flex-wrap items-center justify-center gap-3">
+          <a
+            class="inline-flex w-full max-w-full items-center justify-center border-0 bg-[var(--color-accent)] px-6 py-[0.78rem] text-center text-[var(--color-paper)] hover:bg-[var(--color-accent-hover)] focus-visible:outline-2 focus-visible:outline-[var(--color-paper)] focus-visible:outline-offset-4 sm:w-auto"
+            href={localizedPath('/sell-your-business/')}
+          >
+            {copy.primaryCta}
+          </a>
+          <a
+            class="inline-flex w-full max-w-full items-center justify-center border-0 bg-[var(--color-paper)] px-6 py-[0.78rem] text-center text-[var(--color-ink)] hover:bg-[var(--color-muted)] focus-visible:outline-2 focus-visible:outline-[var(--color-paper)] focus-visible:outline-offset-4 sm:w-auto"
+            href="tel:+84346346550"
+          >
+            {copy.callCta}
+          </a>
+        </div>
+      </div>
+
+      <footer id="contact" class="z-[3] flex flex-col items-center gap-1.5 pb-1 text-center text-sm sm:gap-2 sm:text-base">
+        <p class="m-0">Archway Business Brokers</p>
+        <p class="m-0 max-w-[62rem] leading-[1.5]">{copy.address}</p>
+        <div class="flex flex-col items-center gap-2">
+          <a class="text-[var(--color-paper)] no-underline hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-paper)] focus-visible:outline-offset-4" href="tel:+84346346550"><span>{copy.phone}</span></a>
+          <a class="text-[var(--color-paper)] no-underline hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-paper)] focus-visible:outline-offset-4" href="mailto:brokers@archway.vn"><span>brokers@archway.vn</span></a>
+        </div>
+      </footer>
+    </div>
+    </section>
+
+    <section class="bg-[var(--color-paper)] px-6 py-12 text-[var(--color-ink)] sm:px-10 sm:py-16" aria-labelledby="owner-note-title">
+      <div class="mx-auto grid max-w-6xl items-center gap-8 lg:grid-cols-[minmax(0,18rem)_minmax(0,1fr)] lg:gap-14">
+        <div class="mx-auto aspect-square w-48 overflow-hidden rounded-full bg-[var(--color-muted)] sm:w-56 lg:mx-0 lg:w-full">
+          <picture>
+            <source
+              type="image/avif"
+              srcset="/assets/founder/founder-320.avif 320w, /assets/founder/founder-640.avif 640w"
+              sizes="(min-width: 1024px) 18rem, (min-width: 640px) 14rem, 12rem"
+            />
+            <source
+              type="image/webp"
+              srcset="/assets/founder/founder-320.webp 320w, /assets/founder/founder-640.webp 640w"
+              sizes="(min-width: 1024px) 18rem, (min-width: 640px) 14rem, 12rem"
+            />
+            <img
+              class="h-full w-full object-cover"
+              src="/assets/founder/founder-640.webp"
+              srcset="/assets/founder/founder-320.webp 320w, /assets/founder/founder-640.webp 640w"
+              sizes="(min-width: 1024px) 18rem, (min-width: 640px) 14rem, 12rem"
+              alt={isVietnamese ? 'Nhà sáng lập Archway Business Brokers' : 'Founder of Archway Business Brokers'}
+              width="640"
+              height="640"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
+        </div>
+        <div class="max-w-3xl">
+          <h2 id="owner-note-title" class="text-[clamp(1.9rem,4vw,3rem)] leading-tight">{copy.ownerHeading}</h2>
+          <div class="mt-5 space-y-3 text-justify text-base leading-7">
+            {copy.ownerParagraphs.map((paragraph) => <p class="m-0">{paragraph}</p>)}
+          </div>
+          <a
+            class="mt-7 inline-flex min-h-11 items-center justify-center border-0 bg-[var(--color-accent)] px-6 py-3 text-center text-[var(--color-paper)] hover:bg-[var(--color-accent-hover)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
+            href={localizedPath('/sell-your-business/')}
+          >
+            {copy.ownerCta}
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../scripts/hero-video.js"></script>
+</SiteLayout>

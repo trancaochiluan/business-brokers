@@ -1,5 +1,7 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import SiteFooter from './SiteFooter.astro';
 import SiteNavigation from './SiteNavigation.astro';
 
 interface Props {
@@ -43,7 +45,7 @@ const copy = isVietnamese
         {
           number: '03',
           title: 'Hồ sơ giới thiệu (5-14 ngày)',
-          text: 'Đội truyền thông của Archway soạn bộ hồ sơ chào bán dành cho người mua. Chúng tôi dành nhiều năm hoàn thiện những nội dung cần có trong hồ sơ chào bán và chăm chút thiết kế thuộc nhóm tốt nhất trong ngành để hồ sơ của Quý khách nổi bật.',
+          text: 'Đội truyền thông của Archway soạn bộ hồ sơ chào bán dành cho người mua. Chúng tôi dành nhiều năm hoàn thiện những nội dung cần có trong hồ sơ chào bán và xây dựng bản trình bày chất lượng cao để hồ sơ của Quý khách nổi bật.',
         },
         {
           number: '04',
@@ -158,40 +160,48 @@ const copy = isVietnamese
       ] as ProcessStep[],
     };
 
+const breadcrumbItems = [
+  { name: isVietnamese ? 'Trang chủ' : 'Home', href: isVietnamese ? '/' : '/en/' },
+  { name: copy.heading },
+];
+
 ---
 
-<SiteLayout lang={lang} title={copy.pageTitle} description={copy.description}>
+<SiteLayout lang={lang} title={copy.pageTitle} description={copy.description} breadcrumbs={breadcrumbItems}>
   <div class="min-h-dvh bg-[var(--color-muted)] text-[var(--color-ink)]">
-    <div class="relative min-h-28 bg-[var(--color-paper)]">
+    <div class="relative min-h-[60px] bg-[var(--color-paper)]">
       <SiteNavigation lang={lang} showBrand theme="light" />
     </div>
 
     <main>
-      <section class="bg-[var(--color-muted)] px-6 py-16 text-center sm:px-10 sm:py-24 lg:py-28">
+      <section class="bg-[var(--color-muted)] px-6 py-10 text-center sm:px-10 sm:py-14 lg:py-16">
+        <div class="mx-auto w-full max-w-6xl text-left">
+          <Breadcrumbs lang={lang} items={breadcrumbItems} />
+        </div>
         <div class="mx-auto max-w-3xl">
           <h1 class="text-[clamp(2.25rem,4vw,2.75rem)] leading-tight">{copy.heading}</h1>
-          <p class="mx-auto mt-5 max-w-2xl text-base leading-7 text-[var(--color-ink)]">{copy.intro}</p>
+          <p class="mx-auto mt-4 max-w-2xl text-base leading-7 text-[var(--color-ink)]">{copy.intro}</p>
           <p class="mx-auto mt-1 max-w-2xl text-base leading-7 text-[var(--color-ink)]">{copy.feeNote}</p>
         </div>
       </section>
 
-      <section class="bg-[var(--color-paper)] px-6 py-16 sm:px-10 sm:py-24" aria-labelledby="process-title">
+      <section class="bg-[var(--color-paper)] px-6 py-10 sm:px-10 sm:py-14" aria-labelledby="process-title">
         <div class="mx-auto w-full max-w-6xl">
           <h2 id="process-title" class="sr-only">{copy.processHeading}</h2>
-          <div class="relative mx-auto max-w-5xl">
+          <div class="relative mx-auto max-w-[68rem]">
             <div class="pointer-events-none absolute bottom-5 left-5 top-5 w-px bg-[var(--color-line-dark)] lg:bottom-0 lg:left-1/2 lg:top-0 lg:-translate-x-1/2" aria-hidden="true"></div>
-            <ol class="relative grid gap-8 lg:gap-0">
+            <ol class="relative grid gap-6 lg:gap-0">
               {copy.steps.map((step, index) => (
-                <li class="relative grid grid-cols-[2.5rem_minmax(0,1fr)] gap-4 lg:min-h-[15rem] lg:grid-cols-[minmax(0,1fr)_5rem_minmax(0,1fr)] lg:items-center lg:gap-0">
+                <li class="relative grid grid-cols-[2.5rem_minmax(0,1fr)] gap-4 lg:min-h-[12rem] lg:grid-cols-[minmax(0,1fr)_5rem_minmax(0,1fr)] lg:items-center lg:gap-0">
                   <div class="z-10 col-start-1 row-start-1 flex h-10 w-10 items-center justify-center self-start justify-self-center bg-[var(--color-accent)] text-sm font-medium text-[var(--color-paper)] sm:h-12 sm:w-12 lg:col-start-2 lg:h-12 lg:w-12 lg:self-center" aria-hidden="true">
                     {step.number}
                   </div>
-                  <article class={`col-start-2 row-start-1 min-w-0 max-w-full bg-[var(--color-ink)] p-5 text-[var(--color-paper)] sm:p-7 lg:max-w-[34rem] ${index % 2 === 0 ? 'lg:col-start-1 lg:justify-self-end lg:mr-8' : 'lg:col-start-3 lg:justify-self-start lg:ml-8'}`}>
+                  <article class={`col-start-2 row-start-1 min-w-0 max-w-full bg-[var(--color-ink)] p-4 text-[var(--color-paper)] sm:p-5 lg:max-w-[36rem] ${index % 2 === 0 ? 'lg:col-start-1 lg:justify-self-end lg:mr-8' : 'lg:col-start-3 lg:justify-self-start lg:ml-8'}`}>
                     <p class="text-sm font-medium uppercase tracking-[0.12em] text-[var(--color-paper)]">{isVietnamese ? 'Bước' : 'Step'} {step.number}</p>
-                    <h3 class="mt-3 text-xl font-medium leading-tight text-[var(--color-paper)]">{step.title}</h3>
-                    <p class="mt-4 text-base leading-7 text-[var(--color-paper)]">{step.text}</p>
+                    <h3 class="mt-2 text-xl font-medium leading-tight text-[var(--color-paper)]">{step.title}</h3>
+                    <p class="mt-3 text-base leading-7 text-[var(--color-paper)]">{step.text}</p>
                     {step.points && (
-                      <ul class="mt-4 grid gap-2 text-base leading-7 text-[var(--color-paper)]">
+                      <ul class="mt-3 grid gap-2 text-base leading-7 text-[var(--color-paper)]">
                         {step.points.map((point) => <li class="pl-4 before:mr-2 before:text-[var(--color-paper)] before:content-['•']">{point}</li>)}
                       </ul>
                     )}
@@ -203,21 +213,17 @@ const copy = isVietnamese
         </div>
       </section>
 
-      <section class="border-y border-[var(--color-line-dark)] bg-[var(--color-muted)] px-6 sm:px-10" aria-labelledby="cta-title">
-        <div class="mx-auto flex max-w-6xl flex-col gap-8 py-16 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:py-24">
+      <section class="bg-[var(--color-muted)] px-6 sm:px-10" aria-labelledby="cta-title">
+        <div class="mx-auto flex max-w-6xl flex-col gap-6 py-10 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:py-14">
           <div>
             <h2 id="cta-title" class="text-[clamp(2rem,4vw,3rem)] leading-tight">{copy.ctaHeading}</h2>
-            <p class="mt-4 max-w-xl text-base leading-7 text-[var(--color-ink)]">{copy.ctaText}</p>
+            <p class="mt-3 max-w-xl text-base leading-7 text-[var(--color-ink)]">{copy.ctaText}</p>
           </div>
           <a class="inline-flex min-h-11 w-full shrink-0 items-center justify-center bg-[var(--color-ink)] px-6 py-3 text-base font-medium text-[var(--color-paper)] transition-colors hover:bg-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-ink)] sm:w-auto" href={isVietnamese ? '/sell-your-business/' : '/en/sell-your-business/'}>{copy.ctaLink}</a>
         </div>
       </section>
     </main>
 
-    <footer class="bg-[var(--color-ink)] px-6 py-8 text-center text-sm text-[var(--color-paper)] sm:px-10">
-      <p class="m-0">Archway Business Brokers, {copy.footerAddress}</p>
-      <a class="mt-2 inline-flex text-[var(--color-paper)] no-underline hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-paper)] focus-visible:outline-offset-4" href="tel:+84346346550">{copy.footerPhone}</a>
-      <a class="mt-2 block text-[var(--color-paper)] no-underline hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-paper)] focus-visible:outline-offset-4" href="mailto:brokers@archway.vn">brokers@archway.vn</a>
-    </footer>
+    <SiteFooter theme="dark" address={copy.footerAddress} phone={copy.footerPhone} />
   </div>
 </SiteLayout>
