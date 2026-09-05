@@ -1,0 +1,22 @@
+---
+interface Props {
+  country: 'gb' | 'vn';
+}
+
+const { country } = Astro.props;
+---
+
+{country === 'vn' ? (
+  <svg class="h-3 w-[18px] shrink-0" viewBox="0 0 24 16" fill="none" aria-hidden="true" focusable="false">
+    <rect width="24" height="16" fill="#da251d" />
+    <path fill="#ff0" d="m12 2.2 1.1 3.2h3.4l-2.75 2 1.05 3.2L12 8.65 9.2 10.6l1.05-3.2-2.75-2h3.4L12 2.2Z" />
+  </svg>
+) : (
+  <svg class="h-3 w-[18px] shrink-0" viewBox="0 0 24 16" fill="none" aria-hidden="true" focusable="false">
+    <rect width="24" height="16" fill="#012169" />
+    <path stroke="#fff" stroke-width="3" d="M0 0 24 16M24 0 0 16" />
+    <path stroke="#c8102e" stroke-width="1.2" d="M0 0 24 16M24 0 0 16" />
+    <path stroke="#fff" stroke-width="5" d="M12 0v16M0 8h24" />
+    <path stroke="#c8102e" stroke-width="3" d="M12 0v16M0 8h24" />
+  </svg>
+)}

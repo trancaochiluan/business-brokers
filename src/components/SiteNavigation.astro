@@ -1,4 +1,6 @@
 ---
+import LanguageFlag from './LanguageFlag.astro';
+
 interface Props {
   lang: 'en' | 'vi';
   showBrand?: boolean;
@@ -50,7 +52,7 @@ const currentPath = normalizedCurrentPath === '/' || normalizedCurrentPath.endsW
 const languageHref = isVietnamese ? (currentPath === '/' ? '/en/' : `/en${currentPath}`) : currentPath.replace(/^\/en(?=\/|$)/, '') || '/';
 const phoneNumber = isVietnamese ? '0346-346-550' : '(+84) 346-346-550';
 const localizedPath = (path: string) => (isVietnamese ? path : `/en${path}`);
-const languageFlag = isVietnamese ? '🇬🇧' : '🇻🇳';
+const languageCountry = isVietnamese ? 'gb' : 'vn';
 const navLinkClass = isLightTheme
   ? 'text-[var(--color-ink)] underline-offset-4 hover:text-[var(--color-accent)] hover:underline focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4'
   : 'text-[var(--color-paper)] underline-offset-4 hover:text-[var(--color-paper)] hover:underline focus-visible:outline-2 focus-visible:outline-[var(--color-paper)] focus-visible:outline-offset-4';
@@ -105,7 +107,7 @@ const brandClass = isLightTheme
       </nav>
 
       <a class={languageClass} href={languageHref} lang={isVietnamese ? 'en' : 'vi'} aria-label={labels.languageLabel}>
-        <span aria-hidden="true">{languageFlag}</span>
+        <LanguageFlag country={languageCountry} />
         <span>{labels.language}</span>
       </a>
 

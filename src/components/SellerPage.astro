@@ -1,5 +1,6 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
+import LanguageFlag from './LanguageFlag.astro';
 import SiteFooter from './SiteFooter.astro';
 
 interface Props {
@@ -193,7 +194,7 @@ const profit = isVietnamese
 
 const homeHref = isVietnamese ? '/' : '/en/';
 const languageHref = isVietnamese ? '/en/sell-your-business/' : '/sell-your-business/';
-const languageFlag = isVietnamese ? '🇬🇧' : '🇻🇳';
+const languageCountry = isVietnamese ? 'gb' : 'vn';
 const privacyHref = isVietnamese ? '/privacy-policy/' : '/en/privacy-policy/';
 const questionMark = String.fromCharCode(63);
 const formId = isVietnamese ? 'seller-form-vi' : 'seller-form-en';
@@ -222,7 +223,7 @@ const backButtonClass = 'inline-flex min-h-11 items-center justify-center border
           <span class="ml-1 text-[var(--color-accent)]">Business Brokers</span>
         </a>
         <a class="absolute right-4 inline-flex shrink-0 items-center gap-0 text-sm text-[var(--color-ink)] hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4 sm:right-10" href={languageHref} lang={isVietnamese ? 'en' : 'vi'} aria-label={copy.languageLabel}>
-          <span aria-hidden="true">{languageFlag}</span>
+          <LanguageFlag country={languageCountry} />
           <span>{copy.language}</span>
         </a>
       </div>

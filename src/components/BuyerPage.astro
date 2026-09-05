@@ -1,6 +1,7 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
 import PageHero from './PageHero.astro';
+import LanguageFlag from './LanguageFlag.astro';
 import SiteFooter from './SiteFooter.astro';
 
 interface Props {
@@ -157,7 +158,7 @@ const copy = isVietnamese
 const questionMark = String.fromCharCode(63);
 const homeHref = isVietnamese ? '/' : '/en/';
 const languageHref = isVietnamese ? '/en/buyer-register/' : '/buyer-register/';
-const languageFlag = isVietnamese ? '🇬🇧' : '🇻🇳';
+const languageCountry = isVietnamese ? 'gb' : 'vn';
 const privacyHref = isVietnamese ? '/privacy-policy/' : '/en/privacy-policy/';
 const formId = isVietnamese ? 'buyer-form-vi' : 'buyer-form-en';
 const requiredClass = 'text-[var(--color-accent-hover)]';
@@ -188,7 +189,7 @@ const breadcrumbItems = [
           <span class="ml-1 text-[var(--color-accent)]">Business Brokers</span>
         </a>
         <a class="absolute right-4 inline-flex shrink-0 items-center gap-0 text-sm text-[var(--color-ink)] hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-ink)] focus-visible:outline-offset-4 sm:right-10" href={languageHref} lang={isVietnamese ? 'en' : 'vi'} aria-label={copy.languageLabel}>
-          <span aria-hidden="true">{languageFlag}</span>
+          <LanguageFlag country={languageCountry} />
           <span>{copy.language}</span>
         </a>
       </div>
