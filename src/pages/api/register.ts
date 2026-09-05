@@ -286,6 +286,19 @@ const escapeHtml = (value: string) => value.replace(/[&<>"']/g, (character) => h
 
 const formatValue = (value: string) => escapeHtml(value).replace(/\r?\n/g, '<br />');
 
+const describeError = (error: unknown) => {
+  if (error instanceof Error) return `${error.name}: ${error.message}`;
+  if (typeof error === 'object' && error !== null) {
+    const record = error as Record<string, unknown>;
+    return JSON.stringify({
+      name: typeof record.name === 'string' ? record.name : undefined,
+      message: typeof record.message === 'string' ? record.message : undefined,
+      statusCode: typeof record.statusCode === 'number' || typeof record.statusCode === 'string' ? record.statusCode : undefined,
+    });
+  }
+  return String(error);
+};
+
 const getString = (form: FormData, name: string) => {
   const value = form.get(name);
   return typeof value === 'string' ? value : undefined;
@@ -623,11 +636,11 @@ export const POST: APIRoute = async ({ request }) => {
     });
 
     if (error) {
-      console.error(JSON.stringify({ event: 'form_email_failed', requestId, form: submission.form_type }));
+      console.error(JSON.stringify({ event: 'form_email_failed', requestId, form: submission.form_type, error: describeError(error) }));
       return jsonResponse({ ok: false }, 502, requestId);
     }
-  } catch {
-    console.error(JSON.stringify({ event: 'form_email_failed', requestId, form: submission.form_type }));
+  } catch (error) {
+    console.error(JSON.stringify({ event: 'form_email_failed', requestId, form: submission.form_type, error: describeError(error) }));
     return jsonResponse({ ok: false }, 502, requestId);
   }
 
