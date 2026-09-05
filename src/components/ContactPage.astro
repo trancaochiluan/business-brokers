@@ -13,10 +13,10 @@ const isVietnamese = lang === 'vi';
 
 const copy = isVietnamese
   ? {
-      pageTitle: 'Liên hệ | Archway Business Brokers',
-      description: 'Trao đổi với Archway Business Brokers về kế hoạch bán, mua hoặc chuyển giao doanh nghiệp.',
-      heading: 'Liên hệ',
-      introBefore: 'Hỏi Archway bất cứ điều gì. Nếu Quý khách muốn nhận định giá hoặc bán doanh nghiệp, Quý khách vui lòng điền vào',
+      pageTitle: 'Liên hệ môi giới mua bán doanh nghiệp | Archway',
+      description: 'Liên hệ Archway Business Brokers để trao đổi về bán, mua, định giá hoặc chuyển nhượng doanh nghiệp tại Việt Nam.',
+      heading: 'Liên hệ Archway Business Brokers',
+      introBefore: 'Hỏi Archway, đơn vị môi giới mua bán doanh nghiệp tại Việt Nam, bất cứ điều gì. Nếu Quý khách muốn nhận định giá hoặc bán doanh nghiệp, Quý khách vui lòng điền vào',
       sellLink: 'biểu mẫu bán doanh nghiệp',
       introAfter: 'thay vì biểu mẫu gửi tin nhắn trong trang này.',
       faqHeading: 'Câu hỏi thường gặp',
@@ -38,15 +38,15 @@ const copy = isVietnamese
       footerAddress: 'Tầng 17, Tòa nhà Vincom Center, 72 đường Lê Thánh Tôn, Quận 1, Thành phố Hồ Chí Minh, Việt Nam',
       faqs: {
         contact: 'Quý khách liên hệ với Archway bằng cách nào?',
-        process: 'Quy trình của Archway diễn ra thế nào?',
+        process: 'Quy trình bán doanh nghiệp của Archway diễn ra thế nào?',
         value: 'Doanh nghiệp của Quý khách đáng giá bao nhiêu?',
       },
     }
   : {
-      pageTitle: 'Contact | Archway Business Brokers',
-      description: 'Speak with Archway Business Brokers about your plans to sell, buy or transfer a business.',
-      heading: 'Contact',
-      introBefore: 'Ask Archway anything. If you want a valuation or want to sell your business, please use the',
+      pageTitle: 'Contact Vietnam Business Brokers | Archway',
+      description: 'Contact Archway Business Brokers about a business valuation, selling, buying or transferring a business in Vietnam.',
+      heading: 'Contact Archway Business Brokers',
+      introBefore: 'Ask Archway, a business broker in Vietnam, anything. If you want a valuation or want to sell your business, please use the',
       sellLink: 'sell your business form',
       introAfter: 'instead of the message form on this page.',
       faqHeading: 'Frequently asked questions',
@@ -68,7 +68,7 @@ const copy = isVietnamese
       footerAddress: '17th Floor, Vincom Center Building, 72 Le Thanh Ton Street, District 1, Ho Chi Minh City, Vietnam',
       faqs: {
         contact: 'How can you contact Archway?',
-        process: 'How does Archway’s process work?',
+        process: 'How does Archway’s business sale process work?',
         value: 'How much is your business worth?',
       },
     };
@@ -109,7 +109,7 @@ const labelClass = 'block text-sm font-medium text-[var(--color-ink)]';
                   </details>
                   <details class="bg-[var(--color-paper)]">
                     <summary class="cursor-pointer px-4 py-3 text-base font-medium text-[var(--color-ink)] focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-[var(--color-accent)]">{copy.faqs.process}</summary>
-                    <p class="bg-[var(--color-muted)] px-4 py-3 text-base leading-7 text-[var(--color-ink)]">Quý khách có thể xem quy trình 10 bước bán doanh nghiệp tại trang <a class="text-[var(--color-accent)] underline underline-offset-4 hover:text-[var(--color-accent-hover)]" href={howItWorksHref}>Cách Archway hoạt động</a>.</p>
+                    <p class="bg-[var(--color-muted)] px-4 py-3 text-base leading-7 text-[var(--color-ink)]">Quý khách có thể xem quy trình 10 bước bán và chuyển nhượng doanh nghiệp tại trang <a class="text-[var(--color-accent)] underline underline-offset-4 hover:text-[var(--color-accent-hover)]" href={howItWorksHref}>quy trình bán và chuyển nhượng doanh nghiệp</a>.</p>
                   </details>
                   <details class="bg-[var(--color-paper)]">
                     <summary class="cursor-pointer px-4 py-3 text-base font-medium text-[var(--color-ink)] focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-[var(--color-accent)]">{copy.faqs.value}</summary>
@@ -124,7 +124,7 @@ const labelClass = 'block text-sm font-medium text-[var(--color-ink)]';
                   </details>
                   <details class="bg-[var(--color-paper)]">
                     <summary class="cursor-pointer px-4 py-3 text-base font-medium text-[var(--color-ink)] focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-[var(--color-accent)]">{copy.faqs.process}</summary>
-                    <p class="bg-[var(--color-muted)] px-4 py-3 text-base leading-7 text-[var(--color-ink)]">You can view Archway’s 10-step business sale process on the <a class="text-[var(--color-accent)] underline underline-offset-4 hover:text-[var(--color-accent-hover)]" href={howItWorksHref}>How Archway works</a> page.</p>
+                    <p class="bg-[var(--color-muted)] px-4 py-3 text-base leading-7 text-[var(--color-ink)]">You can view Archway’s 10-step business sale and transfer process on the <a class="text-[var(--color-accent)] underline underline-offset-4 hover:text-[var(--color-accent-hover)]" href={howItWorksHref}>business sale process</a> page.</p>
                   </details>
                   <details class="bg-[var(--color-paper)]">
                     <summary class="cursor-pointer px-4 py-3 text-base font-medium text-[var(--color-ink)] focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-[var(--color-accent)]">{copy.faqs.value}</summary>

@@ -13,10 +13,10 @@ const isVietnamese = lang === 'vi';
 
 const copy = isVietnamese
   ? {
-      pageTitle: 'Sứ mệnh, tầm nhìn và giá trị | Archway Business Brokers',
-      description: 'Tìm hiểu sứ mệnh, tầm nhìn và giá trị của Archway Business Brokers trong việc hỗ trợ chủ doanh nghiệp thực hiện thương vụ chuyển nhượng phù hợp.',
-      heading: 'Sứ mệnh, tầm nhìn và giá trị của chúng tôi',
-      intro: 'Chúng tôi là đơn vị môi giới doanh nghiệp đặt chất lượng lên hàng đầu và tập trung mang đến cho Quý khách một thương vụ chuyển nhượng như kỳ vọng.',
+      pageTitle: 'Về Archway | Môi giới mua bán doanh nghiệp tại Việt Nam',
+      description: 'Tìm hiểu Archway Business Brokers, đơn vị môi giới và tư vấn mua bán, chuyển nhượng doanh nghiệp cho chủ doanh nghiệp tại Việt Nam.',
+      heading: 'Về Archway Business Brokers',
+      intro: 'Archway là đơn vị môi giới mua bán doanh nghiệp tại Việt Nam, đặt chất lượng lên hàng đầu và tập trung mang đến cho Quý khách một thương vụ chuyển nhượng như kỳ vọng.',
       teamHeading: 'Đội ngũ của chúng tôi luôn sẵn sàng đồng hành cùng Quý khách trong suốt hành trình M&A.',
       teamText: 'Đội ngũ của chúng tôi quy tụ các chuyên gia đa dạng, mỗi người đóng góp những kỹ năng và góc nhìn riêng để hỗ trợ khách hàng xử lý những phức tạp của hành trình M&A. Chúng tôi cam kết không ngừng hoàn thiện cả về chuyên môn và cá nhân, đồng thời chủ động tìm kiếm những cách thức để phát triển năng lực. Giống như những mảnh ghép của một bức tranh, chúng tôi kết hợp thế mạnh của mình để mang đến chất lượng dịch vụ cao nhất. Khi cần chuyên môn chuyên sâu, chúng tôi tận dụng mạng lưới rộng của mình để bảo đảm mỗi khách hàng nhận được sự hỗ trợ tốt nhất.',
       founderHeading: 'Lời nhắn từ founder',
@@ -36,10 +36,10 @@ const copy = isVietnamese
       footerPhone: 'Điện thoại: 0346-346-550',
     }
   : {
-      pageTitle: 'Our Mission, Vision, and Values | Archway Business Brokers',
-      description: 'Learn about Archway Business Brokers’ mission, vision and values as we help business owners pursue the right exit.',
-      heading: 'Our Mission, Vision, and Values',
-      intro: 'We are a quality-first business brokerage focused on delivering your ideal exit.',
+      pageTitle: 'About Archway | Vietnam Business Brokers and M&A Advisory',
+      description: 'Learn about Archway Business Brokers, a Vietnam business brokerage helping owners pursue business sales, transfers and M&A exits.',
+      heading: 'About Archway Business Brokers',
+      intro: 'Archway is a quality-first business brokerage in Vietnam focused on helping owners pursue the right business sale, transfer or M&A exit.',
       teamHeading: 'Our team is here to guide you through the M&A process.',
       teamText: 'Our team brings together a diverse group of professionals, each contributing unique skills and perspectives to guide clients through the complexities of the M&A process. We are committed to continuous improvement, both professionally and personally, and we actively seek ways to grow our expertise. Like pieces of a puzzle, we combine our strengths to provide the highest level of service. When specialized expertise is needed, we leverage our expansive network to ensure every client receives the best possible support.',
       founderHeading: 'A note from our founder',
@@ -65,7 +65,7 @@ const breadcrumbItems = [
 ];
 ---
 
-<SiteLayout lang={lang} title={copy.pageTitle} description={copy.description} breadcrumbs={breadcrumbItems}>
+<SiteLayout lang={lang} title={copy.pageTitle} description={copy.description} pageType="AboutPage" breadcrumbs={breadcrumbItems}>
   <div class="flex min-h-dvh flex-col bg-[var(--color-muted)] text-[var(--color-ink)]">
     <div class="relative min-h-[60px] bg-[var(--color-paper)]">
       <SiteNavigation lang={lang} showBrand theme="light" />

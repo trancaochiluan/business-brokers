@@ -13,7 +13,7 @@ interface Props {
   lang?: 'en' | 'vi';
   noIndex?: boolean;
   includeNavigationScript?: boolean;
-  pageType?: 'WebPage' | 'ContactPage';
+  pageType?: 'WebPage' | 'ContactPage' | 'AboutPage' | 'CollectionPage';
   breadcrumbs?: BreadcrumbItem[];
 }
 
@@ -47,6 +47,9 @@ const imageUrl = new URL('/assets/hero-poster.jpg', siteUrl).href;
 const logoUrl = new URL('/favicon.svg', siteUrl).href;
 const languageCode = lang === 'vi' ? 'vi-VN' : 'en-VN';
 const openGraphLocale = lang === 'vi' ? 'vi_VN' : 'en_VN';
+const organizationDescription = lang === 'vi'
+  ? 'Archway Business Brokers là đơn vị môi giới mua bán và chuyển nhượng doanh nghiệp tại Việt Nam.'
+  : 'Archway Business Brokers is a business brokerage helping owners sell, transfer and acquire businesses in Vietnam.';
 const absoluteBreadcrumbs = breadcrumbs.map((item) => ({
   name: item.name,
   url: new URL(item.href ?? currentPath, siteUrl).href,
@@ -56,10 +59,11 @@ const structuredData = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'Organization',
+      '@type': ['Organization', 'ProfessionalService'],
       '@id': `${siteUrl.href}#organization`,
       name: 'Archway Business Brokers',
       url: siteUrl.href,
+      description: organizationDescription,
       logo: {
         '@type': 'ImageObject',
         url: logoUrl,
@@ -67,15 +71,21 @@ const structuredData = {
       image: imageUrl,
       email: 'brokers@archway.vn',
       telephone: '+84 346 346 550',
-      areaServed: 'VN',
+      areaServed: {
+        '@type': 'Country',
+        name: 'Vietnam',
+      },
       knowsAbout: [
-        'Business brokerage',
+        'Business brokerage in Vietnam',
         'Business sales and transfers',
-        'M&A advisory',
-        'Business valuation preparation',
+        'M&A advisory in Vietnam',
+        'Business valuation',
+        'Buying a business in Vietnam',
+        'Selling a business in Vietnam',
         'Bán doanh nghiệp',
         'Chuyển nhượng doanh nghiệp',
         'Môi giới mua bán doanh nghiệp',
+        'Định giá doanh nghiệp',
       ],
       contactPoint: {
         '@type': 'ContactPoint',

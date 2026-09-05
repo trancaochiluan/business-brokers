@@ -41,33 +41,35 @@ const sellerTimelineOptions = [
   'Within 2-5 years',
 ];
 const sellerIndustryOptions = [
-  'Y tế và dịch vụ hỗ trợ y tế',
+  'HVAC',
+  'Nhà thầu điện',
+  '3PL / Giao nhận vận tải',
+  'Máy móc & thiết bị công nghiệp',
+  'IT Outsourcing / Managed IT Services',
+  'Thiết bị y tế & dịch vụ kỹ thuật',
+  'Sản xuất và gia công công nghiệp',
+  'Y tế và phòng khám',
   'Kế toán, thuế và dịch vụ thuê ngoài',
   'Dịch vụ doanh nghiệp (B2B)',
-  'Bảo trì và bảo dưỡng',
-  'Dịch vụ công nghệ thông tin',
-  'Kiểm định và tuân thủ',
-  'Sản xuất',
   'Thương mại và bán lẻ',
   'Ẩm thực và nhà hàng',
   'Xây dựng',
-  'Vận tải và logistics',
   'Giáo dục',
   'Du lịch và khách sạn',
   'Thương mại điện tử',
   'Nông nghiệp',
   'Khác',
-  'Healthcare and healthcare support',
+  'Electrical Contractors',
+  '3PL / Freight Forwarding',
+  'Industrial Machinery & Equipment',
+  'Medical Equipment & Technical Services',
+  'Manufacturing and Industrial Processing',
+  'Healthcare Services and Clinics',
   'Accounting, tax and outsourcing',
   'Business services (B2B)',
-  'Maintenance and servicing',
-  'Information technology services',
-  'Inspection and compliance',
-  'Manufacturing',
   'Trade and retail',
   'Food and restaurants',
   'Construction',
-  'Transport and logistics',
   'Education',
   'Travel and hospitality',
   'E-commerce',
@@ -150,6 +152,7 @@ const sellerSchema = z
     locale: z.enum(['vi', 'en']),
     timeline: allowedText(sellerTimelineOptions, 80),
     industry: allowedText(sellerIndustryOptions, 160),
+    industry_other: optionalText(160),
     employees: allowedText(employeeOptions, 80),
     revenue: allowedText(revenueOptions, 80),
     profit: allowedText(profitOptions, 80),
@@ -165,6 +168,14 @@ const sellerSchema = z
   .superRefine((data, context) => {
     if (data.fax_number?.trim()) {
       context.addIssue({ code: 'custom', path: ['fax_number'], message: 'Invalid submission' });
+    }
+
+    const isOtherIndustry = data.industry === 'Khác' || data.industry === 'Other';
+    if (isOtherIndustry && !data.industry_other) {
+      context.addIssue({ code: 'custom', path: ['industry_other'], message: 'Industry details are required' });
+    }
+    if (!isOtherIndustry && data.industry_other) {
+      context.addIssue({ code: 'custom', path: ['industry_other'], message: 'Invalid submission' });
     }
   });
 
@@ -300,6 +311,7 @@ const toSubmissionInput = (form: FormData): Record<string, unknown> | null => {
       ...common,
       timeline: getString(form, 'timeline'),
       industry: getString(form, 'industry'),
+      industry_other: getString(form, 'industry_other'),
       employees: getString(form, 'employees'),
       revenue: getString(form, 'revenue'),
       profit: getString(form, 'profit'),
@@ -457,7 +469,7 @@ const renderEmail = (submission: Submission, requestId: string) => {
     submission.form_type === 'seller'
       ? [
           [labels.timeline, submission.timeline],
-          [labels.industry, submission.industry],
+          [labels.industry, submission.industry_other ? `${submission.industry}: ${submission.industry_other}` : submission.industry],
           [labels.employees, submission.employees],
           [labels.revenue, submission.revenue],
           [labels.profit, submission.profit],

@@ -9,7 +9,7 @@ interface Props {
 }
 
 const industryImages = {
-  industrialServices: {
+  hvac: {
     avifSrcset: '/assets/image-library/archway_owner_working_2-640.avif 640w, /assets/image-library/archway_owner_working_2-1280.avif 1280w, /assets/image-library/archway_owner_working_2-1920.avif 1920w',
     webpSrcset: '/assets/image-library/archway_owner_working_2-640.webp 640w, /assets/image-library/archway_owner_working_2-1280.webp 1280w, /assets/image-library/archway_owner_working_2-1920.webp 1920w',
     src: '/assets/image-library/archway_owner_working_2-1280.webp',
@@ -18,7 +18,25 @@ const industryImages = {
     altVi: 'Nhân viên trao đổi tại cơ sở dịch vụ công nghiệp',
     altEn: 'Workers reviewing equipment at an industrial services facility',
   },
-  industrialManufacturing: {
+  itManagedServices: {
+    avifSrcset: '/assets/image-library/archway_working-640.avif 640w, /assets/image-library/archway_working-1280.avif 1280w, /assets/image-library/archway_working-1920.avif 1920w',
+    webpSrcset: '/assets/image-library/archway_working-640.webp 640w, /assets/image-library/archway_working-1280.webp 1280w, /assets/image-library/archway_working-1920.webp 1920w',
+    src: '/assets/image-library/archway_working-1280.webp',
+    width: 1280,
+    height: 853,
+    altVi: 'Nhân viên làm việc với máy tính tại doanh nghiệp',
+    altEn: 'Employee working at a computer in a business',
+  },
+  electricalContractors: {
+    avifSrcset: '/assets/image-library/archway_solar_panel-640.avif 640w, /assets/image-library/archway_solar_panel-1280.avif 1280w, /assets/image-library/archway_solar_panel-1920.avif 1920w',
+    webpSrcset: '/assets/image-library/archway_solar_panel-640.webp 640w, /assets/image-library/archway_solar_panel-1280.webp 1280w, /assets/image-library/archway_solar_panel-1920.webp 1920w',
+    src: '/assets/image-library/archway_solar_panel-1280.webp',
+    width: 1280,
+    height: 853,
+    altVi: 'Công nhân lắp đặt hệ thống điện mặt trời',
+    altEn: 'Workers installing a solar power system',
+  },
+  industrialMachinery: {
     avifSrcset: '/assets/image-library/archway_factory-640.avif 640w, /assets/image-library/archway_factory-1280.avif 1280w, /assets/image-library/archway_factory-1920.avif 1920w',
     webpSrcset: '/assets/image-library/archway_factory-640.webp 640w, /assets/image-library/archway_factory-1280.webp 1280w, /assets/image-library/archway_factory-1920.webp 1920w',
     src: '/assets/image-library/archway_factory-1280.webp',
@@ -27,32 +45,31 @@ const industryImages = {
     altVi: 'Nhân viên vận hành máy móc trong nhà xưởng',
     altEn: 'Worker operating machinery in a factory',
   },
-  itServices: {
-    avifSrcset: '/assets/image-library/archway_working-640.avif 640w, /assets/image-library/archway_working-1280.avif 1280w, /assets/image-library/archway_working-1920.avif 1920w',
-    webpSrcset: '/assets/image-library/archway_working-640.webp 640w, /assets/image-library/archway_working-1280.webp 1280w, /assets/image-library/archway_working-1920.webp 1920w',
-    src: '/assets/image-library/archway_working-1280.webp',
+  logisticsServices: {
+    avifSrcset: '/assets/image-library/archway_storage-640.avif 640w, /assets/image-library/archway_storage-1280.avif 1280w, /assets/image-library/archway_storage-1920.avif 1920w',
+    webpSrcset: '/assets/image-library/archway_storage-640.webp 640w, /assets/image-library/archway_storage-1280.webp 1280w, /assets/image-library/archway_storage-1920.webp 1920w',
+    src: '/assets/image-library/archway_storage-1280.webp',
     width: 1280,
     height: 853,
-    altVi: 'Nhân viên làm việc với hệ thống công nghệ thông tin',
-    altEn: 'Employee working with an information technology system',
+    altVi: 'Kho hàng với hệ thống kệ lưu trữ',
+    altEn: 'Warehouse with storage racking',
   },
-  healthcare: {
-    avifSrcset: '/assets/image-library/archway_healthcare_services-640.avif 640w, /assets/image-library/archway_healthcare_services-1024.avif 1024w',
-    webpSrcset: '/assets/image-library/archway_healthcare_services-640.webp 640w, /assets/image-library/archway_healthcare_services-1024.webp 1024w',
-    src: '/assets/image-library/archway_healthcare_services-1024.webp',
-    width: 1024,
-    height: 683,
-    altVi: 'Nhân viên chăm sóc người cao tuổi',
-    altEn: 'Caregiver supporting an older adult',
+  medicalEquipment: {
+    avifSrcset: '/assets/image-library/archway_factory_working-640.avif 640w, /assets/image-library/archway_factory_working-1280.avif 1280w, /assets/image-library/archway_factory_working-1920.avif 1920w',
+    webpSrcset: '/assets/image-library/archway_factory_working-640.webp 640w, /assets/image-library/archway_factory_working-1280.webp 1280w, /assets/image-library/archway_factory_working-1920.webp 1920w',
+    src: '/assets/image-library/archway_factory_working-1280.webp',
+    width: 1280,
+    height: 850,
+    altVi: 'Công nhân vận hành thiết bị sản xuất',
+    altEn: 'Worker operating production equipment',
   },
 } as const;
 
 type IndustryImageKey = keyof typeof industryImages;
 
-interface IndustryGroup {
+interface IndustryCard {
   title: string;
-  description?: string;
-  items: string[];
+  description: string;
   image: IndustryImageKey;
 }
 
@@ -61,66 +78,92 @@ const isVietnamese = lang === 'vi';
 
 const copy = isVietnamese
   ? {
-      pageTitle: 'Các ngành chúng tôi phục vụ | Archway Business Brokers',
-      description: 'Tìm hiểu các nhóm ngành Archway Business Brokers tập trung hỗ trợ trong hoạt động mua bán và chuyển nhượng doanh nghiệp tại Việt Nam.',
-      heading: 'Các ngành chúng tôi phục vụ',
-      intro: 'Archway tập trung chuyên sâu vào bốn lĩnh vực trọng tâm để phát triển hiểu biết ngành, nâng cao hiệu quả làm việc, chất lượng tư vấn và kết quả của từng thương vụ. Tuy nhiên, chúng tôi vẫn hỗ trợ các thương vụ thuộc những ngành khác. Vui lòng liên hệ với Archway để trao đổi thêm về nhu cầu của Quý khách.',
-      groupsHeading: 'Bốn nhóm ngành trọng tâm',
-      groups: [
+      pageTitle: 'Các ngành Archway hỗ trợ mua bán doanh nghiệp | Archway',
+      description: 'Tìm hiểu sáu ngành Archway Business Brokers tập trung hỗ trợ trong hoạt động mua bán, chuyển nhượng và tư vấn M&A tại Việt Nam.',
+      heading: 'Các ngành Archway hỗ trợ mua bán doanh nghiệp',
+      intro: 'Archway tập trung phát triển hiểu biết ngành và năng lực hỗ trợ cho sáu lĩnh vực dưới đây trong các thương vụ mua bán, chuyển nhượng và tư vấn M&A tại Việt Nam. Tuy nhiên, chúng tôi vẫn hỗ trợ các thương vụ thuộc những ngành khác. Vui lòng liên hệ với Archway để trao đổi thêm về nhu cầu của Quý khách.',
+      cardsHeading: 'Các ngành trọng tâm',
+      ctaHeading: 'Quý khách đang cân nhắc bán hoặc mua doanh nghiệp?',
+      ctaText: 'Archway hỗ trợ chủ doanh nghiệp chuẩn bị giao dịch và người mua tìm cơ hội phù hợp tại Việt Nam.',
+      sellCta: 'Trao đổi về bán doanh nghiệp',
+      buyCta: 'Đăng ký nhận cơ hội mua',
+      industries: [
         {
-          title: 'Dịch vụ công nghiệp',
-          image: 'industrialServices',
-          items: ['HVAC', 'Nhà thầu điện', 'Hệ thống cấp thoát nước', 'Dịch vụ cơ khí', 'Bảo trì cơ sở vật chất', 'Dịch vụ môi trường', 'Phục hồi sau tổn thất'],
+          title: 'HVAC',
+          image: 'hvac',
+          description: 'Hệ thống sưởi, thông gió và điều hòa không khí cho công trình và doanh nghiệp.',
         },
         {
-          title: 'Sản xuất công nghiệp',
-          image: 'industrialManufacturing',
-          items: ['Máy móc và thiết bị', 'Sản xuất chính xác', 'CNC / Gia công', 'Gia công kim loại'],
+          title: 'Nhà thầu điện',
+          image: 'electricalContractors',
+          description: 'Nhà thầu và đơn vị cung cấp dịch vụ điện cho công trình và doanh nghiệp.',
         },
         {
-          title: 'Dịch vụ công nghệ thông tin / Nhà cung cấp dịch vụ quản trị công nghệ thông tin thuê ngoài',
-          image: 'itServices',
-          description: 'Dịch vụ hỗ trợ, vận hành và quản trị công nghệ thông tin thuê ngoài cho doanh nghiệp.',
-          items: [],
+          title: '3PL / Giao nhận vận tải',
+          image: 'logisticsServices',
+          description: 'Dịch vụ logistics bên thứ ba, giao nhận, kho bãi và vận chuyển hàng hóa.',
         },
         {
-          title: 'Dịch vụ chăm sóc sức khỏe',
-          image: 'healthcare',
-          items: ['Phòng khám', 'Chăm sóc sức khỏe tại nhà', 'Dịch vụ y tế'],
+          title: 'Máy móc & thiết bị công nghiệp',
+          image: 'industrialMachinery',
+          description: 'Doanh nghiệp cung cấp máy móc, thiết bị và giải pháp phục vụ sản xuất công nghiệp.',
         },
-      ] as IndustryGroup[],
+        {
+          title: 'IT Outsourcing / Managed IT Services',
+          image: 'itManagedServices',
+          description: 'Dịch vụ IT được thuê ngoài, quản trị và vận hành cho doanh nghiệp.'
+        },
+        {
+          title: 'Thiết bị y tế & dịch vụ kỹ thuật',
+          image: 'medicalEquipment',
+          description: 'Doanh nghiệp cung cấp thiết bị y tế, dịch vụ kỹ thuật và hỗ trợ vận hành.',
+        },
+      ] as IndustryCard[],
       footerAddress: 'Tầng 17, Tòa nhà Vincom Center, 72 đường Lê Thánh Tôn, Quận 1, Thành phố Hồ Chí Minh, Việt Nam',
       footerPhone: 'Điện thoại: 0346-346-550',
     }
   : {
-      pageTitle: 'Industries We Serve | Archway Business Brokers',
-      description: 'Explore the industries Archway Business Brokers focuses on for business sales and transfers in Vietnam.',
-      heading: 'Industries We Serve',
-      intro: 'Archway focuses deeply on four core sectors to build stronger industry knowledge, improve execution efficiency, enhance advisory quality and deliver better outcomes in every transaction. However, we also support transactions in other industries. Please contact us to discuss your requirements further.',
-      groupsHeading: 'Four focus areas',
-      groups: [
+      pageTitle: 'Industries We Serve | Vietnam Business Brokers | Archway',
+      description: 'Explore six industries Archway supports in business sales, acquisitions and M&A transactions in Vietnam.',
+      heading: 'Industries We Serve in Vietnam',
+      intro: 'As a business broker in Vietnam, Archway focuses on the six industries below to build stronger sector knowledge and support business sales, acquisitions and M&A transactions in Vietnam. However, we also support transactions in other industries. Please contact us to discuss your requirements further.',
+      cardsHeading: 'Industries we focus on',
+      ctaHeading: 'Are you considering selling or buying a business?',
+      ctaText: 'Archway supports owners preparing a sale and buyers looking for suitable acquisition opportunities in Vietnam.',
+      sellCta: 'Discuss selling your business',
+      buyCta: 'Join the buyer list',
+      industries: [
         {
-          title: 'Industrial Services',
-          image: 'industrialServices',
-          items: ['HVAC', 'Electrical Contractor', 'Plumbing', 'Mechanical Services', 'Facility Maintenance', 'Environmental Services', 'Restoration'],
+          title: 'HVAC',
+          image: 'hvac',
+          description: 'Heating, ventilation and air conditioning systems for buildings and businesses.',
         },
         {
-          title: 'Industrial Manufacturing',
-          image: 'industrialManufacturing',
-          items: ['Machinery & Equipment', 'Precision Manufacturing', 'CNC / Machining', 'Metal Fabrication'],
+          title: 'Electrical Contractors',
+          image: 'electricalContractors',
+          description: 'Electrical contractors and service providers for buildings, facilities and businesses.',
         },
         {
-          title: 'Information Technology Services / Managed Service Providers',
-          image: 'itServices',
-          description: 'Managed information technology support and technology services for business operations.',
-          items: [],
+          title: '3PL / Freight Forwarding',
+          image: 'logisticsServices',
+          description: 'Third-party logistics, freight forwarding, warehousing and transportation services.',
         },
         {
-          title: 'Healthcare Services',
-          image: 'healthcare',
-          items: ['Clinics', 'Home Healthcare', 'Medical Services'],
+          title: 'Industrial Machinery & Equipment',
+          image: 'industrialMachinery',
+          description: 'Businesses supplying machinery, equipment and solutions for industrial production.',
         },
-      ] as IndustryGroup[],
+        {
+          title: 'IT Outsourcing / Managed IT Services',
+          image: 'itManagedServices',
+          description: 'Outsourced IT support, management and operations for businesses.'
+        },
+        {
+          title: 'Medical Equipment & Technical Services',
+          image: 'medicalEquipment',
+          description: 'Businesses supplying medical equipment, technical services and operational support.',
+        },
+      ] as IndustryCard[],
       footerAddress: '17th Floor, Vincom Center Building, 72 Le Thanh Ton Street, District 1, Ho Chi Minh City, Vietnam',
       footerPhone: 'Phone: (+84) 346-346-550',
     };
@@ -131,7 +174,7 @@ const breadcrumbItems = [
 ];
 ---
 
-<SiteLayout lang={lang} title={copy.pageTitle} description={copy.description} breadcrumbs={breadcrumbItems}>
+<SiteLayout lang={lang} title={copy.pageTitle} description={copy.description} pageType="CollectionPage" breadcrumbs={breadcrumbItems}>
   <div class="flex min-h-dvh flex-col bg-[var(--color-muted)] text-[var(--color-ink)]">
     <div class="relative min-h-[60px] bg-[var(--color-paper)]">
       <SiteNavigation lang={lang} showBrand theme="light" />
@@ -140,42 +183,45 @@ const breadcrumbItems = [
     <main>
       <PageHero lang={lang} items={breadcrumbItems} heading={copy.heading} intro={copy.intro} />
 
-      <section class="bg-[var(--color-paper)] px-6 py-14 sm:px-10 sm:py-20" aria-labelledby="industries-groups-title">
+      <section class="bg-[var(--color-paper)] px-6 py-14 sm:px-10 sm:py-20" aria-labelledby="industries-cards-title">
         <div class="mx-auto w-full max-w-6xl">
-          <h2 id="industries-groups-title" class="text-[clamp(1.9rem,4vw,3rem)] leading-tight text-[var(--color-navy)]">{copy.groupsHeading}</h2>
-          <div class="mt-8 grid gap-5 md:grid-cols-2">
-            {copy.groups.map((group, index) => (
+          <h2 id="industries-cards-title" class="text-[clamp(1.9rem,4vw,3rem)] leading-tight text-[var(--color-navy)]">{copy.cardsHeading}</h2>
+          <div class="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {copy.industries.map((industry, index) => (
               <article class="bg-[var(--color-muted)] p-6 sm:p-8">
                 <div class="-mx-6 -mt-6 mb-6 overflow-hidden sm:-mx-8 sm:-mt-8">
                   <picture class="block aspect-[3/2]">
-                    <source type="image/avif" srcset={industryImages[group.image].avifSrcset} sizes="(min-width: 768px) 50vw, 100vw" />
-                    <source type="image/webp" srcset={industryImages[group.image].webpSrcset} sizes="(min-width: 768px) 50vw, 100vw" />
+                    <source type="image/avif" srcset={industryImages[industry.image].avifSrcset} sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" />
+                    <source type="image/webp" srcset={industryImages[industry.image].webpSrcset} sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" />
                     <img
                       class="h-full w-full object-cover"
-                      src={industryImages[group.image].src}
-                      alt={isVietnamese ? industryImages[group.image].altVi : industryImages[group.image].altEn}
-                      width={industryImages[group.image].width}
-                      height={industryImages[group.image].height}
+                      src={industryImages[industry.image].src}
+                      alt={isVietnamese ? industryImages[industry.image].altVi : industryImages[industry.image].altEn}
+                      width={industryImages[industry.image].width}
+                      height={industryImages[industry.image].height}
                       loading={index < 2 ? 'eager' : 'lazy'}
                       decoding="async"
                     />
                   </picture>
                 </div>
                 <p class="text-sm font-medium uppercase tracking-[0.12em] text-[var(--color-navy)]">{String(index + 1).padStart(2, '0')}</p>
-                <h3 class="mt-3 text-[clamp(1.45rem,3vw,2rem)] font-medium leading-tight text-[var(--color-navy)]">{group.title}</h3>
-                {group.description && <p class="mt-4 text-base leading-7 text-[var(--color-ink)]">{group.description}</p>}
-                {group.items.length > 0 && (
-                  <ul class="mt-5 grid gap-3 sm:grid-cols-2">
-                    {group.items.map((item) => (
-                      <li class="flex items-start gap-3 text-base leading-7 text-[var(--color-ink)]">
-                        <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-[var(--color-accent)]" aria-hidden="true"></span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                <h3 class="mt-3 text-[clamp(1.45rem,3vw,2rem)] font-medium leading-tight text-[var(--color-navy)]">{industry.title}</h3>
+                <p class="mt-4 text-base leading-7 text-[var(--color-ink)]">{industry.description}</p>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-[var(--color-paper)] px-6 py-12 sm:px-10 sm:py-16" aria-labelledby="industries-cta-title">
+        <div class="mx-auto flex w-full max-w-6xl flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+          <div class="max-w-2xl">
+            <h2 id="industries-cta-title" class="text-[clamp(1.65rem,3vw,2.5rem)] leading-tight text-[var(--color-navy)]">{copy.ctaHeading}</h2>
+            <p class="mt-3 text-base leading-7 text-[var(--color-ink)]">{copy.ctaText}</p>
+          </div>
+          <div class="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+            <a class="inline-flex min-h-11 items-center justify-center bg-[var(--color-accent)] px-5 py-3 text-center text-sm font-medium text-[var(--color-paper)] hover:bg-[var(--color-accent-hover)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)] sm:text-base" href={isVietnamese ? '/sell-your-business/' : '/en/sell-your-business/'}>{copy.sellCta}</a>
+            <a class="inline-flex min-h-11 items-center justify-center bg-[var(--color-ink)] px-5 py-3 text-center text-sm font-medium text-[var(--color-paper)] hover:bg-[var(--color-navy)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-ink)] sm:text-base" href={isVietnamese ? '/buyer-register/' : '/en/buyer-register/'}>{copy.buyCta}</a>
           </div>
         </div>
       </section>

@@ -13,17 +13,20 @@ const copy = isVietnamese
   ? {
       pageTitle: 'Bán doanh nghiệp tại Việt Nam | Archway Business Brokers',
       heading: 'Bán doanh nghiệp tại Việt Nam',
-      description: 'Trao đổi miễn phí và bảo mật với Archway Business Brokers về việc bán hoặc chuyển nhượng doanh nghiệp tại Việt Nam.',
+      description: 'Trao đổi miễn phí và bảo mật với Archway Business Brokers về việc bán, định giá hoặc chuyển nhượng doanh nghiệp tại Việt Nam.',
       language: 'EN',
       languageLabel: 'Chuyển sang English',
       timelinePrompt: 'Quý khách dự kiến bán doanh nghiệp khi nào',
       industryPrompt: 'Doanh nghiệp của Quý khách thuộc ngành nào',
+      otherIndustriesHeading: 'Các ngành khác',
+      otherIndustryLabel: 'Vui lòng ghi rõ ngành nghề của doanh nghiệp',
+      otherIndustryPlaceholder: 'Nhập ngành nghề cụ thể',
       employeesPrompt: 'Doanh nghiệp của Quý khách có bao nhiêu nhân viên, bao gồm cả cộng tác viên',
       revenuePrompt: 'Doanh thu 12 tháng gần nhất của doanh nghiệp',
-      profitPrompt: 'Lợi nhuận ròng 12 tháng gần nhất, gồm cả lương Quý khách tự trả',
+      profitPrompt: 'Lợi nhuận ròng 12 tháng gần nhất, gồm cả lương chủ tự trả bản thân',
       provinceLabel: 'Doanh nghiệp đặt tại tỉnh hoặc thành phố nào?',
       websiteLabel: 'Website hoặc fanpage (Facebook/Zalo) của doanh nghiệp?',
-      contactHeading: 'Chúng tôi chỉ cần thông tin liên hệ của Quý khách để tiện liên lạc lại.',
+      contactHeading: 'Chúng tôi cần thông tin liên hệ của Quý khách để tiện liên lạc lại.',
       nameLabel: 'Họ và tên',
       emailLabel: 'Email',
       phoneLabel: 'Số điện thoại',
@@ -44,7 +47,7 @@ const copy = isVietnamese
       privacyPrefix: 'Tôi chấp thuận',
       privacyLink: 'Chính sách quyền riêng tư',
       privacySuffix: ' và cam kết giữ bí mật nội dung trao đổi với Archway Business Brokers.',
-      sidebarIntro: 'Archway Business Brokers hỗ trợ Quý khách trao đổi về việc bán hoặc chuyển nhượng doanh nghiệp đang hoạt động tại Việt Nam. Chúng tôi sẽ hướng dẫn từng bước phù hợp với tình hình doanh nghiệp.',
+      sidebarIntro: 'Kính gửi các chủ doanh nghiệp, Đội ngũ của chúng tôi là một trong những đơn vị môi giới được lựa chọn hàng đầu cho các doanh nghiệp Việt Nam có doanh thu 3-50 tỷ đồng. Làm việc cùng Archway, Quý khách sẽ bán được doanh nghiệp với mức giá cao hơn và điều khoản tốt hơn. Tôi hi vọng rằng hợp tác với Archway sẽ đem lại sự an tâm và thoải mái cho Quý khách.',
       points: [
         'Trao đổi và tư vấn miễn phí',
         'Thông tin được giữ bảo mật',
@@ -60,17 +63,20 @@ const copy = isVietnamese
   : {
       pageTitle: 'Sell Your Business in Vietnam | Archway Business Brokers',
       heading: 'Sell your business in Vietnam',
-      description: 'Discuss selling or transferring your business in Vietnam with Archway Business Brokers through a free and confidential conversation.',
+      description: 'Work with a business broker in Vietnam for an initial business valuation and support to sell or transfer your operating business. Free and confidential.',
       language: 'VI',
       languageLabel: 'Chuyển sang Vietnamese',
       timelinePrompt: 'How Quickly Do You Want To Sell Your Business',
       industryPrompt: 'What industry is your business in',
+      otherIndustriesHeading: 'Other industries',
+      otherIndustryLabel: 'Please specify the business industry',
+      otherIndustryPlaceholder: 'Enter the specific industry',
       employeesPrompt: 'How many employees does your business have, including contractors',
       revenuePrompt: 'What was your business revenue in the last 12 months',
       profitPrompt: 'What was your net profit in the last 12 months, including your own salary',
       provinceLabel: 'Which city or province is the business located in?',
       websiteLabel: 'What is the business website or social page (Facebook/Zalo)?',
-      contactHeading: 'We only need your contact details so we can follow up with you.',
+      contactHeading: 'We need your contact details so we can follow up with you.',
       nameLabel: 'Full name',
       emailLabel: 'Email',
       phoneLabel: 'Mobile number',
@@ -91,7 +97,7 @@ const copy = isVietnamese
       privacyPrefix: 'I accept the',
       privacyLink: 'Privacy Policy',
       privacySuffix: ' and agree to treat my discussions with Archway Business Brokers as confidential.',
-      sidebarIntro: 'Archway Business Brokers helps owners discuss the sale or transfer of operating businesses in Vietnam. We will guide you through the steps that fit your business.',
+      sidebarIntro: 'Dear business owners, Our team is one of the leading brokerage firms chosen by Vietnamese businesses with annual revenue of VND 3-50 billion. By working with Archway, you can be confident that you will sell your business at a higher price and on better terms. I hope that working with Archway will give you confidence and peace of mind.',
       points: [
         'Free discussions and advisory support',
         'Confidential handling of information',
@@ -109,19 +115,43 @@ const timeline = isVietnamese
   ? ['Ngay bây giờ', 'Trong 6 tháng tới', 'Trong 1-2 năm tới', 'Trong 2-5 năm tới']
   : ['Now', 'Within 6 months', 'Within 1-2 years', 'Within 2-5 years'];
 
-const industries = isVietnamese
+const industryGroups = isVietnamese
   ? [
-      'Y tế và dịch vụ hỗ trợ y tế',
+      {
+        title: 'Các ngành Archway trọng tâm',
+        options: [
+          'HVAC',
+          'Nhà thầu điện',
+          '3PL / Giao nhận vận tải',
+          'Máy móc & thiết bị công nghiệp',
+          'IT Outsourcing / Managed IT Services',
+          'Thiết bị y tế & dịch vụ kỹ thuật',
+        ],
+      },
+    ]
+  : [
+      {
+        title: 'Archway focus industries',
+        options: [
+          'HVAC',
+          'Electrical Contractors',
+          '3PL / Freight Forwarding',
+          'Industrial Machinery & Equipment',
+          'IT Outsourcing / Managed IT Services',
+          'Medical Equipment & Technical Services',
+        ],
+      },
+    ];
+
+const otherIndustries = isVietnamese
+  ? [
+      'Sản xuất và gia công công nghiệp',
+      'Y tế và phòng khám',
       'Kế toán, thuế và dịch vụ thuê ngoài',
       'Dịch vụ doanh nghiệp (B2B)',
-      'Bảo trì và bảo dưỡng',
-      'Dịch vụ công nghệ thông tin',
-      'Kiểm định và tuân thủ',
-      'Sản xuất',
       'Thương mại và bán lẻ',
       'Ẩm thực và nhà hàng',
       'Xây dựng',
-      'Vận tải và logistics',
       'Giáo dục',
       'Du lịch và khách sạn',
       'Thương mại điện tử',
@@ -129,23 +159,21 @@ const industries = isVietnamese
       'Khác',
     ]
   : [
-      'Healthcare and healthcare support',
+      'Manufacturing and Industrial Processing',
+      'Healthcare Services and Clinics',
       'Accounting, tax and outsourcing',
       'Business services (B2B)',
-      'Maintenance and servicing',
-      'Information technology services',
-      'Inspection and compliance',
-      'Manufacturing',
       'Trade and retail',
       'Food and restaurants',
       'Construction',
-      'Transport and logistics',
       'Education',
       'Travel and hospitality',
       'E-commerce',
       'Agriculture',
       'Other',
     ];
+
+const otherIndustryOption = isVietnamese ? 'Khác' : 'Other';
 
 const employees = isVietnamese
   ? ['0 - 5', '6 - 10', '11 - 20', '21 - 40', '41 - 100', 'Trên 100']
@@ -234,31 +262,70 @@ const backButtonClass = 'inline-flex min-h-11 items-center justify-center border
             </div>
           </div>
 
+          <div data-step class="grid gap-6" hidden>
+            <fieldset class="grid gap-5 border-0 p-0">
+              <legend class={questionClass}>
+                {copy.industryPrompt}{questionMark} <span class="text-[var(--color-accent)]" aria-hidden="true">*</span>
+              </legend>
+              <div class="grid gap-6 pt-1">
+                {industryGroups.map((group) => (
+                  <div class="grid gap-2.5">
+                    {group.options.length > 1 && <h3 class="text-left text-base font-medium text-[var(--color-ink)]">{group.title}</h3>}
+                    <div class="grid gap-2.5 sm:grid-cols-2">
+                      {group.options.map((option) => (
+                        <label class={optionCardClass}>
+                          <input type="radio" name="industry" value={option} required class="peer sr-only" />
+                          <span class={optionRingClass} aria-hidden="true"><span class={optionDotClass}></span></span>
+                          <span>{option}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+                <div class="grid gap-2.5">
+                  <h3 class="text-left text-base font-medium text-[var(--color-ink)]">{copy.otherIndustriesHeading}</h3>
+                  <div class="grid gap-2.5 sm:grid-cols-2">
+                    {otherIndustries.filter((option) => option !== otherIndustryOption).map((option) => (
+                      <label class={optionCardClass}>
+                        <input type="radio" name="industry" value={option} required class="peer sr-only" />
+                        <span class={optionRingClass} aria-hidden="true"><span class={optionDotClass}></span></span>
+                        <span>{option}</span>
+                      </label>
+                    ))}
+                    <div class="grid gap-2.5 sm:col-span-2">
+                      <label class={optionCardClass}>
+                        <input type="radio" name="industry" value={otherIndustryOption} data-other-industry required class="peer sr-only" />
+                        <span class={optionRingClass} aria-hidden="true"><span class={optionDotClass}></span></span>
+                        <span>{otherIndustryOption}</span>
+                      </label>
+                      <div data-other-industry-field hidden class="grid gap-2">
+                        <label for={`${formId}-industry-other`} class={fieldLabelClass}>
+                          {copy.otherIndustryLabel} <span class="text-[var(--color-accent)]" aria-hidden="true">*</span>
+                        </label>
+                        <input id={`${formId}-industry-other`} name="industry_other" data-other-industry-input type="text" disabled maxlength="160" placeholder={copy.otherIndustryPlaceholder} class={inputClass} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
           <div data-step class="grid gap-5" hidden>
-            <h2 class={questionClass}>
-              {copy.industryPrompt}{questionMark} <span class="text-[var(--color-accent)]" aria-hidden="true">*</span>
-            </h2>
-            <div class="grid gap-2.5 pt-1 sm:grid-cols-2">
-              {industries.map((option) => (
-                <label class={optionCardClass}>
-                  <input type="radio" name="industry" value={option} required class="peer sr-only" />
-                  <span class={optionRingClass} aria-hidden="true"><span class={optionDotClass}></span></span>
-                  <span>{option}</span>
-                </label>
-              ))}
-            </div>
-            <h2 class={questionClass}>
-              {copy.employeesPrompt}{questionMark} <span class="text-[var(--color-accent)]" aria-hidden="true">*</span>
-            </h2>
-            <div class="grid gap-2.5 pt-1 sm:grid-cols-2">
-              {employees.map((option) => (
-                <label class={optionCardClass}>
-                  <input type="radio" name="employees" value={option} required class="peer sr-only" />
-                  <span class={optionRingClass} aria-hidden="true"><span class={optionDotClass}></span></span>
-                  <span>{option}</span>
-                </label>
-              ))}
-            </div>
+            <fieldset class="grid gap-5 border-0 p-0">
+              <legend class={questionClass}>
+                {copy.employeesPrompt}{questionMark} <span class="text-[var(--color-accent)]" aria-hidden="true">*</span>
+              </legend>
+              <div class="grid gap-2.5 pt-1 sm:grid-cols-2">
+                {employees.map((option) => (
+                  <label class={optionCardClass}>
+                    <input type="radio" name="employees" value={option} required class="peer sr-only" />
+                    <span class={optionRingClass} aria-hidden="true"><span class={optionDotClass}></span></span>
+                    <span>{option}</span>
+                  </label>
+                ))}
+              </div>
+            </fieldset>
           </div>
 
           <div data-step class="grid gap-5" hidden>
@@ -347,7 +414,11 @@ const backButtonClass = 'inline-flex min-h-11 items-center justify-center border
         <aside class="mt-6 lg:mt-0">
           <div class="flex flex-col items-center gap-5">
             <div class="h-32 w-32 shrink-0 overflow-hidden rounded-full bg-[var(--color-paper)]">
-              <img class="h-full w-full object-contain p-3" src="/favicon.svg" alt={isVietnamese ? 'Logo Archway Business Brokers' : 'Archway Business Brokers logo'} width="144" height="144" decoding="async" />
+              <picture>
+                <source type="image/avif" srcset="/assets/founder/founder-320.avif 320w, /assets/founder/founder-640.avif 640w" sizes="8rem" />
+                <source type="image/webp" srcset="/assets/founder/founder-320.webp 320w, /assets/founder/founder-640.webp 640w" sizes="8rem" />
+                <img class="h-full w-full object-cover" src="/assets/founder/founder-640.webp" alt={isVietnamese ? 'Ảnh chân dung Luân, nhà sáng lập Archway' : 'Portrait of Luan, Founder of Archway'} width="640" height="640" loading="lazy" decoding="async" />
+              </picture>
             </div>
             <p class="text-base leading-7 text-[var(--color-ink)]">{copy.sidebarIntro}</p>
             <ul class="grid w-full gap-3">
