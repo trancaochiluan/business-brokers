@@ -25,7 +25,7 @@
 - Seller form hiển thị hai nhóm ngành là `Các ngành Archway trọng tâm` và `Các ngành khác`; nhóm đầu tiên dùng đúng sáu ngành trên trang Industries, còn nhóm thứ hai giữ 12 lựa chọn phổ biến và đa dạng. Khi người dùng chọn `Khác` hoặc `Other`, form hiển thị ô nhập ngành cụ thể và endpoint kiểm tra giá trị `industry_other`; danh sách giá trị trong `src/components/SellerPage.astro` phải đồng bộ với `sellerIndustryOptions` trong endpoint.
 - Request gửi form có timeout 15 giây.
 - `POST /api/register/` không dùng Turnstile; endpoint kiểm tra origin, content type, kích thước request, honeypot, lựa chọn hợp lệ và payload bằng Zod.
-- Rate limit hiện tại là tối đa 5 request trong 10 phút cho mỗi IP theo cơ chế in-memory best effort, không thay thế WAF hoặc rate limit phân tán.
+- Endpoint không dùng rate limit ở cấp ứng dụng; nếu lưu lượng production tăng đáng kể, cần cấu hình WAF hoặc rate limit phân tán tại Cloudflare.
 - Nội dung đưa vào HTML email phải tiếp tục được escape.
 
 ## SEO và nội dung song ngữ phải nhất quán.

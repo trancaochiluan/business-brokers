@@ -227,9 +227,6 @@ const contactSchema = z
 
 const submissionSchema = z.discriminatedUnion('form_type', [sellerSchema, buyerSchema, contactSchema]);
 type Submission = z.infer<typeof submissionSchema>;
-const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1_000;
-const RATE_LIMIT_MAX_REQUESTS = 5;
-const rateLimitStore = new Map<string, { count: number; resetAt: number }>();
 
 type ResponseHeaders = Record<string, string>;
 
@@ -249,29 +246,6 @@ const jsonResponse = (
       ...extraHeaders,
     },
   });
-
-const getClientIdentifier = (request: Request) => {
-  const cloudflareIp = request.headers.get('cf-connecting-ip')?.trim();
-  if (cloudflareIp) return cloudflareIp;
-
-  const forwardedIp = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim();
-  return forwardedIp || 'unknown';
-};
-
-const isRateLimited = (request: Request) => {
-  const now = Date.now();
-  const clientIdentifier = getClientIdentifier(request);
-  const existing = rateLimitStore.get(clientIdentifier);
-
-  if (!existing || existing.resetAt <= now) {
-    if (rateLimitStore.size >= 10_000) rateLimitStore.clear();
-    rateLimitStore.set(clientIdentifier, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
-    return false;
-  }
-
-  existing.count += 1;
-  return existing.count > RATE_LIMIT_MAX_REQUESTS;
-};
 
 const htmlEntities: Record<string, string> = {
   '&': '&amp;',
@@ -571,14 +545,6 @@ export const POST: APIRoute = async ({ request }) => {
     return jsonResponse({ ok: false }, 415, requestId);
   }
   if (!isAllowedOrigin(request)) return jsonResponse({ ok: false }, 403, requestId);
-  if (isRateLimited(request)) {
-    return jsonResponse(
-      { ok: false },
-      429,
-      requestId,
-      { 'retry-after': String(RATE_LIMIT_WINDOW_MS / 1_000) },
-    );
-  }
 
   const declaredLength = Number(request.headers.get('content-length'));
   if (Number.isFinite(declaredLength) && declaredLength > MAX_REQUEST_BYTES) {
