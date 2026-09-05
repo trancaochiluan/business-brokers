@@ -27,7 +27,7 @@ const optionalText = (max: number) =>
     (value) => (typeof value === 'string' && value.trim() === '' ? undefined : value),
     z.string().trim().max(max).optional(),
   );
-const email = z.string().trim().pipe(z.email().max(254));
+const email = z.string().trim().pipe(z.email({ pattern: z.regexes.browserEmail }).max(254));
 const phone = z.string().trim().min(7).max(32).regex(/\d{7,}/);
 
 const sellerTimelineOptions = [
