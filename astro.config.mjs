@@ -31,6 +31,9 @@ export default defineConfig({
   },
   integrations: [sitemap({ filter: (page) => !page.endsWith('/404/') && !page.includes('/privacy-policy/'), entryLimit: 50000 })],
   vite: {
+    build: {
+      assetsInlineLimit: 0,
+    },
     optimizeDeps: {
       include: ['astro/assets/services/noop', 'astro/logger/json'],
     },

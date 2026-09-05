@@ -1,59 +1,49 @@
-# Tài liệu này ghi lại các quyết định bảo trì của website.
+# Project này ghi lại các quyết định bảo trì cần được giữ nguyên.
 
-Tài liệu này giải thích các thay đổi giao diện, nội dung, biểu mẫu và SEO để những lần chỉnh sửa sau giữ đúng mục tiêu hiện tại.
+## Giao diện giữ trọng tâm vào biểu mẫu.
 
-## Giao diện giữ sự tập trung cho biểu mẫu
+- Nền chính dùng đen, trắng và xám; màu đỏ chỉ dùng cho nút, trạng thái, tiến trình và điểm nhấn.
+- Card, khung biểu mẫu và ô nhập liệu không dùng đường viền trang trí; đường viền chỉ xuất hiện ở điều khiển cần phản hồi.
+- Seller ưu tiên điền form trực tiếp, giữ `h1` với lớp `sr-only`, không hiển thị breadcrumb, tiêu đề, đoạn giới thiệu hoặc thông báo miễn phí.
+- Buyer chỉ hiển thị cam kết trong section riêng.
+- Seller và buyer dùng chung `src/components/SiteFooter.astro`.
+- Homepage dùng `src/components/HomePage.astro` cho cả hai ngôn ngữ và giữ section founder với ba đoạn nội dung.
+- Trang `how-it-works` giữ vùng nội dung rộng `max-w-[68rem]` và card bước rộng tối đa `36rem`.
+- Các route `/about/` và `/industries-we-serve/`, cùng bản tiếng Anh, chưa được tạo và phải giữ nguyên liên kết để bổ sung sau.
 
-- Hệ thống màu sử dụng đen, trắng và xám cho nền chính, còn màu đỏ chỉ dùng cho nút, trạng thái, tiến trình và điểm nhấn.
-- Các card, khung biểu mẫu, ô nhập liệu và bảng thông tin không dùng đường viền trang trí.
-- Đường viền chỉ còn ở các điều khiển cần phản hồi trực quan, chẳng hạn vòng chọn radio, mũi tên menu và biểu tượng loading.
-- Các header nội dung dùng khoảng đệm nhỏ hơn, đồng thời giữ khoảng cách trên và dưới cân đối.
-- Trang `sell-your-business` bỏ breadcrumb hiển thị, tiêu đề hiển thị, đoạn giới thiệu và thông báo miễn phí để người dùng có thể bắt đầu điền biểu mẫu ngay.
-- Trang `sell-your-business` vẫn giữ một `h1` với lớp `sr-only` để bảo đảm cấu trúc tài liệu mà không tạo nhiễu thị giác.
-- Card biểu mẫu seller giữ khoảng cách trên `10px` thông qua lớp `mt-2.5`.
-- Footer của seller và buyer dùng cùng component `src/components/SiteFooter.astro` với nền đen như các trang nội dung khác.
-- Trang buyer chỉ hiển thị cam kết ở section riêng phía dưới và không lặp lại cam kết bên dưới phần bước tiếp theo.
-- Trang `how-it-works` dùng vùng quy trình rộng hơn với `max-w-[68rem]` và card bước rộng tối đa `36rem` để nội dung dễ đọc hơn.
-- Những route `/about/` và `/industries-we-serve/` chưa được tạo vì chủ dự án sẽ bổ sung sau.
+## Tài sản tĩnh được xử lý trước khi build.
 
-## Tài sản hình ảnh đã được xử lý trước
+- `public/assets/image-library/` chứa 46 ảnh cùng các bản AVIF và WebP ở chiều rộng 640px, 1280px và 1920px; `manifest.json` lưu metadata. Không xoá hoặc di chuyển thư mục này vì đây là thư viện dành cho các trang tương lai.
+- `public/assets/founder/` chứa các bản 320px và 640px đã xử lý của ảnh founder. Khi thay ảnh nguồn, xử lý bên ngoài rồi cập nhật asset và manifest, vì project không chạy pipeline ảnh trong lúc build.
+- Giao diện dùng một webfont Montserrat với weight 400 và 500 tại `public/fonts/`; không thêm lại Google Fonts.
+- Hero video giữ nguyên markup, poster, source path, autoplay, loop, mute, kích thước 1280x720 và thời lượng khoảng 10 giây. Chỉ được re-encode `hero-video.mp4` H.264 hoặc `hero-video.webm` VP8 để giảm dung lượng, không sửa hành vi trong `HomePage.astro` hoặc `hero-video.js`.
 
-- Thư mục `public/assets/image-library/` chứa 46 ảnh từ `image_source/common_use/` với các phiên bản AVIF và WebP ở chiều rộng 640px, 1280px và 1920px.
-- File `public/assets/image-library/manifest.json` lưu kích thước, dung lượng và đường dẫn của từng phiên bản.
-- Ảnh founder từ `image_source/founder.png` đã được tách nền trắng, ghép với `archway_city_view_8` và lưu thành các phiên bản AVIF cùng WebP 320px và 640px trong `public/assets/founder/`.
-- Section thuyết phục trên homepage dùng ảnh founder bằng phần tử `picture`, với `alt` song ngữ và `srcset` phù hợp với kích thước hiển thị.
-- Các ảnh là tài sản tĩnh đã được xử lý trước khi commit. Project không duy trì script xử lý ảnh trong repository và không chạy pipeline ảnh trong lúc build. Khi thay ảnh nguồn, cần xử lý bên ngoài rồi cập nhật các file trong `public/assets/` cùng manifest tương ứng.
+## Biểu mẫu dùng chung quy tắc chuyển bước và gửi dữ liệu.
 
-## Hiệu ứng chuyển bước của biểu mẫu
+- `src/scripts/request-form.js` chứa request dùng chung cho buyer, seller và contact.
+- Chuyển bước hiển thị spinner trong 320 ms và khóa nút quay lại trong thời gian chờ.
+- Request gửi form có timeout 15 giây.
+- `POST /api/register/` không dùng Turnstile; endpoint kiểm tra origin, content type, kích thước request, honeypot, lựa chọn hợp lệ và payload bằng Zod.
+- Rate limit hiện tại là tối đa 5 request trong 10 phút cho mỗi IP theo cơ chế in-memory best effort, không thay thế WAF hoặc rate limit phân tán.
+- Nội dung đưa vào HTML email phải tiếp tục được escape.
 
-- Các nút `Next` hoặc `Continue` hiển thị spinner trong `320ms` trước khi chuyển bước để người dùng nhận biết thao tác đang được xử lý.
-- Script chuyển bước khóa nút quay lại trong thời gian chờ để tránh thay đổi trạng thái giữa hai bước.
-- Script vẫn dùng timeout `15 giây` cho request gửi biểu mẫu vì timeout này bảo vệ thao tác gửi email, còn delay `320ms` chỉ tạo phản hồi thị giác cho chuyển bước.
-- Logic chuyển bước nằm trong `src/scripts/buyer-form.js` và `src/scripts/seller-form.js`, còn script cũ trong `public/` không còn được dùng.
+## SEO và nội dung song ngữ phải nhất quán.
 
-## Bảo vệ endpoint biểu mẫu
+- Homepage, seller, buyer, contact và quy trình bán doanh nghiệp phải giữ tương đương ý nghĩa giữa tiếng Việt và tiếng Anh.
+- `SiteLayout` quản lý title, description, viewport, canonical, hreflang, Open Graph, Twitter metadata và JSON-LD; homepage giữ metadata ngắn gọn để hạn chế bị cắt trên kết quả tìm kiếm.
+- Trang nội dung dùng breadcrumb hiển thị và structured data; seller ưu tiên thao tác form nên không hiển thị breadcrumb.
+- Seller giữ `h1` ẩn; các trang nội dung khác giữ `h1` hiển thị.
+- Sitemap chỉ gồm trang công khai, loại 404 và privacy policy. Privacy policy giữ `noindex`.
+- `public/llms.txt` mô tả dịch vụ, tiêu chí, biểu mẫu và các URL song ngữ chính.
 
-- Endpoint `POST /api/register/` không dùng Turnstile.
-- Endpoint kiểm tra origin, content type, kích thước request, honeypot, giá trị lựa chọn và payload bằng Zod trước khi gửi email.
-- Endpoint giới hạn tối đa `5` request trong `10` phút cho mỗi địa chỉ IP theo cơ chế in-memory best effort.
-- Cơ chế rate limit in-memory không thay thế WAF hoặc rate limit phân tán nếu lưu lượng production tăng đáng kể.
-- Nội dung đưa vào email phải tiếp tục được escape HTML trước khi render.
+## CSP và build phải giữ tính tương thích.
 
-## Nội dung song ngữ và SEO
+- `astro.config.mjs` dùng `assetsInlineLimit: 0` để script Astro được xuất thành file ngoài và hoạt động với `script-src 'self'`.
+- `public/_headers` chỉ cho phép font từ cùng origin; không thêm `unsafe-inline` cho script.
 
-- Nội dung tiếng Việt và tiếng Anh phải tương đương về ý nghĩa, đặc biệt ở homepage, seller, buyer, contact và quy trình bán doanh nghiệp.
-- Homepage dùng component chung `src/components/HomePage.astro` để tránh hai bản markup bị lệch nội dung.
-- Homepage có thêm một section nền trắng phía dưới hero để giải thích lý do chọn Archway bằng giọng văn thân thiện, tôn trọng và tập trung vào giá trị doanh nghiệp.
-- Section thuyết phục trên homepage có ảnh founder hình tròn bên trái, với `alt` song ngữ và nền thành phố đã được xử lý trước.
-- Nội dung section này giữ đúng ba đoạn: đoạn đầu giới thiệu và đồng cảm, đoạn hai giải thích năng lực cùng giá trị mang lại, còn đoạn ba giải thích cách đồng hành trong hành trình M&A và lý do nên chuẩn bị sớm.
-- Các trang nội dung dùng breadcrumb hiển thị cùng structured data trong `SiteLayout`, ngoại trừ seller vì seller ưu tiên thao tác điền form trực tiếp.
-- Seller giữ `h1` ẩn hỗ trợ cấu trúc SEO, còn các trang nội dung khác giữ h1 hiển thị.
-- Sitemap giữ các trang công khai chính, đồng thời loại trang `404` và chính sách quyền riêng tư theo chủ đích `noIndex` hiện tại.
-- File `public/llms.txt` mô tả dịch vụ, tiêu chí, biểu mẫu và các URL song ngữ chính.
+## Bản build phải vượt qua các kiểm tra sau.
 
-## Cách kiểm tra trước khi bàn giao
-
-- Lệnh `bun run check` phải hoàn thành mà không có lỗi hoặc cảnh báo.
-- Lệnh `bun run build` phải hoàn thành, đồng thời phải tạo sitemap cuối cùng.
-- Kiểm tra `git diff --check` để bảo đảm không có whitespace lỗi.
-- Kiểm tra link nội bộ sau build, ngoại trừ bốn route about và industries đang chờ chủ dự án tạo.
+- `bun run check` phải hoàn thành với 0 lỗi, 0 cảnh báo và 0 hint.
+- `bun run build` phải hoàn thành và tạo sitemap cuối cùng.
+- `git diff --check` phải không phát hiện whitespace lỗi.
+- Kiểm tra link nội bộ sau build, ngoại trừ bốn route about và industries đang chờ tạo.

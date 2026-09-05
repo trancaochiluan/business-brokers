@@ -1,90 +1,74 @@
-# Archway Business Brokers website
+# Archway Business Brokers là website môi giới mua bán doanh nghiệp.
 
-Website tiếng Việt mặc định tại `/` và bản tiếng Anh tại `/en/`.
+Website dùng tiếng Việt tại `/` và tiếng Anh tại `/en/`.
 
-## Stack
+## Project này dùng các công nghệ sau.
 
 - Astro 7 với Tailwind CSS 4.
-- Bun `1.4.0` là runtime và package manager.
+- Bun 1.4.0 làm runtime và package manager.
 - Cloudflare Workers thông qua `@astrojs/cloudflare`.
-- Astro sitemap tạo sitemap cho các trang công khai, ngoại trừ trang 404.
-- Resend xử lý email từ form bán và mua doanh nghiệp.
-- Zod kiểm tra payload trước khi gửi email.
-- Các trang nội dung được prerender thành HTML tĩnh.
-- Endpoint `/api/register/` chạy theo request trên Cloudflare Worker.
+- Resend gửi email từ các biểu mẫu.
+- Zod kiểm tra payload.
+- Các trang được prerender thành HTML tĩnh; endpoint `POST /api/register/` chạy trên Cloudflare Worker.
 
-## Chạy local
+## Project này chạy local bằng các lệnh sau.
 
 ```bash
 bun install
+cp .env.example .env
 bun run dev
 ```
 
-Kiểm tra type và template bằng:
+Các lệnh kiểm tra và build gồm:
 
 ```bash
 bun run check
+bun run build
+bun run preview
 ```
 
-Build production bằng:
+Build tạo sitemap cuối cùng tại `dist/client/sitemap.xml`.
+
+## Các biểu mẫu gửi dữ liệu về cùng một endpoint.
+
+Các route `/sell-your-business/`, `/en/sell-your-business/`, `/buyer-register/`, `/en/buyer-register/`, `/contact/` và `/en/contact/` gửi dữ liệu tới `POST /api/register/`.
+
+Endpoint kiểm tra origin, content type, kích thước request, rate limit, honeypot, lựa chọn hợp lệ và payload Zod trước khi gửi email. Nội dung email được escape HTML và địa chỉ người gửi được đưa vào `Reply-To`.
+
+`RESEND_API_KEY` là Worker secret. `FORM_FROM_EMAIL` và `FORM_TO_EMAIL` có giá trị mặc định trong `.env.example`.
+
+## Tài sản tĩnh được giữ trong repository.
+
+`public/assets/image-library/` là thư viện ảnh dành cho các trang tương lai và không được xoá. Các ảnh đã xử lý, manifest, ảnh founder và hero video đều là tài sản tĩnh được chuẩn bị trước build.
+
+Giao diện self-host Montserrat tại `public/fonts/` với weight 400 và 500. Hero video giữ nguyên hành vi, source path và kích thước; chỉ được re-encode file MP4 hoặc WebM khi cần giảm dung lượng.
+
+## Project này deploy lên Cloudflare bằng các lệnh sau.
+
+Build command:
 
 ```bash
 bun run build
 ```
 
-## Form bán và mua doanh nghiệp
-
-Các form tại `/sell-your-business/`, `/en/sell-your-business/`, `/buyer-register/`, `/en/buyer-register/`, `/contact/` và `/en/contact/` gửi dữ liệu tới `POST /api/register/`.
-
-Endpoint kiểm tra content type, origin, giới hạn tần suất, kích thước request, honeypot, giá trị lựa chọn và payload Zod trước khi gửi email qua Resend.
-
-Email nội bộ dùng địa chỉ người gửi form trong `Reply-To`.
-
-Nội dung form được escape trước khi đưa vào HTML email.
-
-`RESEND_API_KEY` là Worker secret, còn `FORM_FROM_EMAIL` và `FORM_TO_EMAIL` có giá trị mặc định trong `.env.example`.
-
-## Tài sản hình ảnh đã được chuẩn bị
-
-Thư mục `public/assets/image-library/` chứa 46 ảnh được lấy từ `image_source/common_use/` và đã được xử lý sẵn thành các phiên bản AVIF cùng WebP ở chiều rộng 640px, 1280px và 1920px. File `public/assets/image-library/manifest.json` lưu kích thước, dung lượng và đường dẫn của từng phiên bản.
-
-Ảnh founder tại `/home/luan/archway/image_source/founder.png` đã được tách khỏi nền trắng, ghép lên ảnh thành phố `archway_city_view_8` và xuất thành các phiên bản 320px cùng 640px trong `public/assets/founder/`. Homepage sử dụng phần tử `picture` để ưu tiên AVIF, sau đó dùng WebP và chọn kích thước phù hợp với màn hình.
-
-Các ảnh này là tài sản tĩnh đã được xử lý trước khi commit. Project không chạy pipeline xử lý ảnh trong lúc build. Khi thay ảnh nguồn, cần xử lý bên ngoài rồi cập nhật các file trong `public/assets/` và manifest tương ứng.
-
-Sao chép `.env.example` thành `.env` khi chạy local.
-
-## Deploy Cloudflare
-
-Kết nối repository GitHub với Cloudflare Workers Builds trên branch triển khai.
-
-Đặt build command là:
-
-```bash
-bun run build
-```
-
-Trong Cloudflare Build Variables, đặt:
-
-```text
-BUN_VERSION=1.4.0
-```
-
-Đặt deploy command là:
+Deploy command:
 
 ```bash
 bunx wrangler deploy --config dist/server/wrangler.json --domains archway.vn
 ```
 
-Website dùng domain gốc `archway.vn` và không dùng subdomain.
+Cloudflare Build Variables cần có:
 
-Trong Cloudflare Worker Settings, đặt `RESEND_API_KEY` ở mục Variables and Secrets với loại Secret.
+```text
+BUN_VERSION=1.4.0
+```
 
-Xác minh domain `archway.vn` trong Resend trước khi gửi email production.
+Đặt `RESEND_API_KEY` trong Worker Settings với loại Secret và xác minh domain gửi email trong Resend.
 
-## Kiểm tra trước khi push
+## Project này phải vượt qua các kiểm tra sau trước khi commit.
 
 ```bash
 bun run check
 bun run build
+git diff --check
 ```

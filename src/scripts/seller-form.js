@@ -1,21 +1,6 @@
-const REQUEST_TIMEOUT = 15_000;
+import { requestForm } from './request-form.js';
+
 const STEP_TRANSITION_DELAY = 320;
-
-const requestForm = async (form) => {
-  const controller = new AbortController();
-  const timeoutId = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT);
-
-  try {
-    return await fetch(form.action, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: { Accept: 'application/json' },
-      signal: controller.signal,
-    });
-  } finally {
-    window.clearTimeout(timeoutId);
-  }
-};
 
 for (const form of document.querySelectorAll('[data-seller-form]')) {
   const steps = Array.from(form.querySelectorAll('[data-step]'));
