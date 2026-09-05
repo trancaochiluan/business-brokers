@@ -227,7 +227,6 @@ const contactSchema = z
 
 const submissionSchema = z.discriminatedUnion('form_type', [sellerSchema, buyerSchema, contactSchema]);
 type Submission = z.infer<typeof submissionSchema>;
-const resend = RESEND_API_KEY ? new Resend(RESEND_API_KEY) : null;
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1_000;
 const RATE_LIMIT_MAX_REQUESTS = 5;
 const rateLimitStore = new Map<string, { count: number; resetAt: number }>();
@@ -604,12 +603,13 @@ export const POST: APIRoute = async ({ request }) => {
   if (!input) return jsonResponse({ ok: false }, 400, requestId);
   const parsed = submissionSchema.safeParse(input);
   if (!parsed.success) return jsonResponse({ ok: false }, 400, requestId);
-  if (!resend) {
+  if (!RESEND_API_KEY) {
     console.error(JSON.stringify({ event: 'form_configuration_missing', requestId, form: parsed.data.form_type }));
     return jsonResponse({ ok: false }, 503, requestId);
   }
 
   const submission = parsed.data;
+  const resend = new Resend(RESEND_API_KEY);
   const subjectType =
     submission.form_type === 'seller'
       ? submission.locale === 'vi'
