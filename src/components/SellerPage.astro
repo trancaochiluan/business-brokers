@@ -44,6 +44,8 @@ const copy = isVietnamese
       submitting: 'Đang gửi...',
       success: 'Xin cảm ơn. Archway Business Brokers đã tiếp nhận thông tin và sẽ liên hệ để trao đổi bước đầu.',
       error: 'Hiện chưa thể gửi thông tin. Vui lòng thử lại sau hoặc liên hệ brokers@archway.vn.',
+      validationError: 'Vui lòng kiểm tra lại các trường bắt buộc.',
+      invalidEmail: 'Vui lòng nhập địa chỉ email hợp lệ.',
       privacyPrefix: 'Tôi chấp thuận',
       privacyLink: 'Chính sách quyền riêng tư',
       privacySuffix: ' và cam kết giữ bí mật nội dung trao đổi với Archway Business Brokers.',
@@ -94,6 +96,8 @@ const copy = isVietnamese
       submitting: 'Sending...',
       success: 'Thank you. Archway Business Brokers has received your information and will contact you for an initial conversation.',
       error: 'We could not submit your information. Please try again or contact brokers@archway.vn.',
+      validationError: 'Please check the required fields again.',
+      invalidEmail: 'Please enter a valid email address.',
       privacyPrefix: 'I accept the',
       privacyLink: 'Privacy Policy',
       privacySuffix: ' and agree to treat my discussions with Archway Business Brokers as confidential.',
@@ -239,6 +243,8 @@ const backButtonClass = 'inline-flex min-h-11 items-center justify-center border
           data-submitting-label={copy.submitting}
           data-success-message={copy.success}
           data-error-message={copy.error}
+          data-validation-error-message={copy.validationError}
+          data-invalid-email-message={copy.invalidEmail}
           method="post"
           action="/api/register/"
           novalidate

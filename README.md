@@ -33,7 +33,7 @@ Build tạo sitemap cuối cùng tại `dist/client/sitemap.xml`.
 
 Các route `/sell-your-business/`, `/en/sell-your-business/`, `/buyer-register/`, `/en/buyer-register/`, `/contact/` và `/en/contact/` gửi dữ liệu tới `POST /api/register/`.
 
-Endpoint kiểm tra origin, content type, kích thước request, honeypot, lựa chọn hợp lệ và payload Zod trước khi gửi email. Nội dung email được escape HTML và địa chỉ người gửi được đưa vào `Reply-To`.
+Endpoint kiểm tra origin, content type, kích thước request, honeypot, lựa chọn hợp lệ và payload Zod trước khi gửi email. Lỗi validation trả về tên trường an toàn để giao diện hướng dẫn người dùng; lỗi gửi email vẫn dùng thông báo chung. Nội dung email được escape HTML và địa chỉ người gửi được đưa vào `Reply-To`.
 
 `RESEND_API_KEY` là Worker secret. `FORM_FROM_EMAIL` và `FORM_TO_EMAIL` có giá trị mặc định trong `.env.example`.
 

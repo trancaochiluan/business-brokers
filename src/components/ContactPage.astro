@@ -34,6 +34,8 @@ const copy = isVietnamese
       submitting: 'Đang gửi...',
       success: 'Đã gửi tin nhắn.',
       error: 'Không thể gửi tin nhắn lúc này. Vui lòng thử lại sau.',
+      validationError: 'Vui lòng kiểm tra lại các trường bắt buộc.',
+      invalidEmail: 'Vui lòng nhập địa chỉ email hợp lệ.',
       phone: 'Điện thoại: 0346-346-550',
       footerAddress: 'Tầng 17, Tòa nhà Vincom Center, 72 đường Lê Thánh Tôn, Quận 1, Thành phố Hồ Chí Minh, Việt Nam',
       faqs: {
@@ -64,6 +66,8 @@ const copy = isVietnamese
       submitting: 'Sending...',
       success: 'Your message has been sent.',
       error: 'We could not send your message right now. Please try again later.',
+      validationError: 'Please check the required fields again.',
+      invalidEmail: 'Please enter a valid email address.',
       phone: 'Phone: (+84) 346-346-550',
       footerAddress: '17th Floor, Vincom Center Building, 72 Le Thanh Ton Street, District 1, Ho Chi Minh City, Vietnam',
       faqs: {
@@ -137,7 +141,7 @@ const labelClass = 'block text-sm font-medium text-[var(--color-ink)]';
 
           <div class="bg-[var(--color-paper)] p-4 sm:p-5">
             <h2 class="text-2xl font-medium leading-tight">{copy.formHeading}</h2>
-            <form id={`contact-form-${lang}`} class="mt-5 grid gap-4" method="post" action="/api/register/" data-contact-form data-locale={lang} data-submit-label={copy.submit} data-submitting-label={copy.submitting} data-success-message={copy.success} data-error-message={copy.error} novalidate>
+            <form id={`contact-form-${lang}`} class="mt-5 grid gap-4" method="post" action="/api/register/" data-contact-form data-locale={lang} data-submit-label={copy.submit} data-submitting-label={copy.submitting} data-success-message={copy.success} data-error-message={copy.error} data-validation-error-message={copy.validationError} data-invalid-email-message={copy.invalidEmail} novalidate>
               <input type="hidden" name="form_type" value="contact" />
               <input type="hidden" name="locale" value={lang} />
               <input aria-hidden="true" autocomplete="off" class="hidden" name="fax_number" tabindex="-1" type="text" />

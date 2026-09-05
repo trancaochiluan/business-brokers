@@ -1,4 +1,4 @@
-import { requestForm } from './request-form.js';
+import { focusValidationField, getValidationMessage, submitForm } from './request-form.js';
 
 for (const form of document.querySelectorAll('[data-contact-form]')) {
   const submitButton = form.querySelector('[data-contact-submit]');
@@ -42,9 +42,16 @@ for (const form of document.querySelectorAll('[data-contact-form]')) {
     setStatus(form.dataset.submittingLabel || '');
 
     try {
-      const response = await requestForm(form);
-      const payload = await response.json().catch(() => null);
-      if (!response.ok || payload?.ok !== true) throw new Error('Submission failed');
+      const result = await submitForm(form);
+      if (!result.ok) {
+        if (result.validationFields.length > 0) {
+          setStatus(getValidationMessage(form, result.validationFields), true);
+          focusValidationField(form, result.validationFields);
+          setBusy(false);
+          return;
+        }
+        throw new Error('Submission failed');
+      }
 
       submitted = true;
       setStatus(form.dataset.successMessage || '');

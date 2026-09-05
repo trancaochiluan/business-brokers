@@ -24,7 +24,7 @@
 - Seller form hiện có sáu bước; câu hỏi ngành và số nhân viên nằm ở hai bước riêng, còn chuyển bước hiển thị spinner trong 320 ms và khóa nút quay lại trong thời gian chờ.
 - Seller form hiển thị hai nhóm ngành là `Các ngành Archway trọng tâm` và `Các ngành khác`; nhóm đầu tiên dùng đúng sáu ngành trên trang Industries, còn nhóm thứ hai giữ 12 lựa chọn phổ biến và đa dạng. Khi người dùng chọn `Khác` hoặc `Other`, form hiển thị ô nhập ngành cụ thể và endpoint kiểm tra giá trị `industry_other`; danh sách giá trị trong `src/components/SellerPage.astro` phải đồng bộ với `sellerIndustryOptions` trong endpoint.
 - Request gửi form có timeout 15 giây.
-- `POST /api/register/` không dùng Turnstile; endpoint kiểm tra origin, content type, kích thước request, honeypot, lựa chọn hợp lệ và payload bằng Zod.
+- `POST /api/register/` không dùng Turnstile; endpoint kiểm tra origin, content type, kích thước request, honeypot, lựa chọn hợp lệ và payload bằng Zod. Lỗi validation trả về tên trường an toàn để frontend hiển thị hướng dẫn, còn lỗi cấu hình và gửi email vẫn dùng thông báo chung.
 - Endpoint không dùng rate limit ở cấp ứng dụng; nếu lưu lượng production tăng đáng kể, cần cấu hình WAF hoặc rate limit phân tán tại Cloudflare.
 - Nội dung đưa vào HTML email phải tiếp tục được escape.
 

@@ -572,6 +572,14 @@ export const POST: APIRoute = async ({ request }) => {
   }
   const parsed = submissionSchema.safeParse(input);
   if (!parsed.success) {
+    const validationFields = Array.from(
+      new Set(
+        parsed.error.issues.map((issue) => {
+          const field = issue.path[0];
+          return typeof field === 'string' && field !== 'fax_number' ? field : 'form';
+        }),
+      ),
+    );
     console.warn(
       JSON.stringify({
         event: 'form_validation_failed',
@@ -583,7 +591,7 @@ export const POST: APIRoute = async ({ request }) => {
         issues: parsed.error.issues.map((issue) => ({ path: issue.path.join('.'), code: issue.code })),
       }),
     );
-    return jsonResponse({ ok: false }, 400, requestId);
+    return jsonResponse({ ok: false, error: 'validation_failed', fields: validationFields }, 400, requestId);
   }
   if (!RESEND_API_KEY) {
     console.error(JSON.stringify({ event: 'form_configuration_missing', requestId, form: parsed.data.form_type }));

@@ -1,4 +1,4 @@
-import { requestForm } from './request-form.js';
+import { focusValidationField, getValidationMessage, submitForm } from './request-form.js';
 
 const STEP_TRANSITION_DELAY = 320;
 
@@ -116,9 +116,20 @@ for (const form of document.querySelectorAll('[data-buyer-form]')) {
     setStatus('');
 
     try {
-      const response = await requestForm(form);
-      const result = await response.json().catch(() => null);
-      if (!response.ok || !result?.ok) throw new Error('submission_failed');
+      const result = await submitForm(form);
+      if (!result.ok) {
+        if (result.validationFields.length > 0) {
+          setStatus(getValidationMessage(form, result.validationFields), true);
+          focusValidationField(form, result.validationFields);
+          setButtonBusy(submitButton, submitSpinner, false, {
+            element: submitLabel,
+            value: form.dataset.submitLabel || '',
+          });
+          if (backButton instanceof HTMLButtonElement) backButton.disabled = false;
+          return;
+        }
+        throw new Error('submission_failed');
+      }
 
       submitted = true;
       form.classList.add('hidden');
