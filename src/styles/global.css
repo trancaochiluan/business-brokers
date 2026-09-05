@@ -82,6 +82,12 @@
   }
 }
 
+[data-mobile-drawer] nav > a,
+[data-mobile-drawer] nav > details > summary,
+[data-mobile-drawer] nav > details > div > a {
+  border-bottom: 1px solid var(--color-line-dark);
+}
+
 .feedback-marquee {
   animation: feedback-marquee-forward 34s linear infinite;
 }

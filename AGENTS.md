@@ -6,6 +6,7 @@
 - Card, khung biểu mẫu và ô nhập liệu không dùng đường viền trang trí; đường viền chỉ xuất hiện ở điều khiển cần phản hồi.
 - Seller ưu tiên điền form trực tiếp, giữ `h1` với lớp `sr-only`, không hiển thị breadcrumb, tiêu đề, đoạn giới thiệu hoặc thông báo miễn phí.
 - Buyer chỉ hiển thị cam kết trong section riêng.
+- Drawer mobile dùng đường viền dưới mảnh cho các item điều hướng để người dùng dễ phân biệt từng mục.
 - Seller, buyer và các trang nội dung dùng chung `src/components/SiteFooter.astro`; page shell dùng `min-h-dvh` cùng flex column để footer bám cuối viewport khi nội dung ngắn. Footer hiển thị số điện thoại và email inline với icon SVG, còn footer liên hệ trên homepage giữ cùng cách trình bày.
 - Homepage dùng `src/components/HomePage.astro` cho cả hai ngôn ngữ, giữ section founder với ba đoạn nội dung, trong đó riêng cụm lời nhắn nằm trên nền xanh dương nhạt full width ở mobile, heading và nội dung thu nhỏ nhẹ ở mobile; heading và nội dung của hai section bên dưới cũng thu nhỏ nhẹ trên mobile, còn banner CTA định giá miễn phí full width dùng `archway_city_view_12`, overlay, nền ảnh tối bên trong, nền ngoài trùng section nhận xét và chỉ bo tròn phía trên.
 - Trang `how-it-works` giữ vùng nội dung rộng `max-w-[68rem]`, card bước rộng tối đa `36rem` và CTA cuối trang dùng banner ảnh, overlay tối cùng bố cục như banner định giá trên homepage.
