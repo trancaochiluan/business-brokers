@@ -566,9 +566,25 @@ export const POST: APIRoute = async ({ request }) => {
   if (estimatedFormSize > MAX_REQUEST_BYTES) return jsonResponse({ ok: false }, 413, requestId);
 
   const input = toSubmissionInput(formData);
-  if (!input) return jsonResponse({ ok: false }, 400, requestId);
+  if (!input) {
+    console.warn(JSON.stringify({ event: 'form_payload_missing', requestId }));
+    return jsonResponse({ ok: false }, 400, requestId);
+  }
   const parsed = submissionSchema.safeParse(input);
-  if (!parsed.success) return jsonResponse({ ok: false }, 400, requestId);
+  if (!parsed.success) {
+    console.warn(
+      JSON.stringify({
+        event: 'form_validation_failed',
+        requestId,
+        form: typeof input.form_type === 'string' ? input.form_type : undefined,
+        fields: Object.entries(input)
+          .filter(([, value]) => value !== undefined && value !== '')
+          .map(([key]) => key),
+        issues: parsed.error.issues.map((issue) => ({ path: issue.path.join('.'), code: issue.code })),
+      }),
+    );
+    return jsonResponse({ ok: false }, 400, requestId);
+  }
   if (!RESEND_API_KEY) {
     console.error(JSON.stringify({ event: 'form_configuration_missing', requestId, form: parsed.data.form_type }));
     return jsonResponse({ ok: false }, 503, requestId);
