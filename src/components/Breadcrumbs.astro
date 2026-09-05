@@ -7,22 +7,28 @@ interface BreadcrumbItem {
 interface Props {
   lang: 'en' | 'vi';
   items: BreadcrumbItem[];
+  theme?: 'light' | 'dark';
 }
 
-const { lang, items } = Astro.props;
+const { lang, items, theme = 'light' } = Astro.props;
 const currentItem = items.at(-1);
 const isVietnamese = lang === 'vi';
+const isDark = theme === 'dark';
 const navigationLabel = isVietnamese ? 'Đường dẫn điều hướng' : 'Breadcrumb navigation';
+const navigationClass = isDark ? 'text-[var(--color-paper)]' : 'text-[var(--color-ink)]';
+const linkClass = isDark
+  ? 'text-[var(--color-paper)] underline underline-offset-4 hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-paper)] focus-visible:outline-offset-4'
+  : 'underline underline-offset-4 hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-ink)]';
 ---
 
 {items.length > 0 && (
-  <nav aria-label={navigationLabel} class="mb-5 text-left text-sm text-[var(--color-ink)]">
+  <nav aria-label={navigationLabel} class={`mb-5 text-left text-sm ${navigationClass}`}>
     <ol class="flex flex-wrap items-center gap-2">
       {items.map((item, index) => (
         <li class="inline-flex items-center gap-2">
           {index > 0 && <span aria-hidden="true">/</span>}
           {item.href && item !== currentItem ? (
-            <a class="underline underline-offset-4 hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-ink)]" href={item.href}>
+            <a class={linkClass} href={item.href}>
               {item.name}
             </a>
           ) : (

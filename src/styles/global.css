@@ -57,3 +57,54 @@
 @theme {
   --font-sans: "Montserrat", sans-serif;
 }
+
+@keyframes feedback-marquee-forward {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes feedback-marquee-reverse {
+  from {
+    transform: translate3d(-50%, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.feedback-marquee {
+  animation: feedback-marquee-forward 34s linear infinite;
+}
+
+.feedback-marquee-reverse {
+  animation-name: feedback-marquee-reverse;
+  animation-duration: 29s;
+}
+
+.feedback-marquee:hover,
+.feedback-marquee:focus-within {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feedback-marquee {
+    width: 100%;
+    animation: none;
+  }
+
+  .feedback-marquee > ul[aria-hidden="true"] {
+    display: none;
+  }
+
+  .feedback-marquee > ul:first-child {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

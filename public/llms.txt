@@ -4,11 +4,9 @@
 
 ## About
 
-Archway Business Brokers is a Vietnam-focused business brokerage service for owners preparing a confidential sale or transfer of an operating business.
+Archway Business Brokers is a quality-first business brokerage focused on delivering an ideal exit for business owners in Vietnam.
 
-Archway approaches each owner with respect, discretion and care because a business sale often reflects years of work and personal commitment.
-
-The service helps owners prepare information, approach suitable buyers and coordinate the transaction process through a clear and professional process.
+The team guides owners through the M&A process with a clear, confidential and practical approach.
 
 ## Criteria
 
@@ -16,6 +14,13 @@ The service helps owners prepare information, approach suitable buyers and coord
 - Operating businesses in Vietnam with annual revenue from VND 3 billion.
 - Owners considering a sale or transfer.
 - Buyers seeking operating businesses in Vietnam.
+
+## Industries
+
+- Industrial Services: HVAC, electrical contractors, plumbing, mechanical services, facility maintenance, environmental services and restoration.
+- Industrial Manufacturing: machinery and equipment, precision manufacturing, CNC or machining and metal fabrication.
+- Information Technology Services and Managed Service Providers.
+- Healthcare Services: clinics, home healthcare and medical services.
 
 ## Services
 
@@ -36,11 +41,15 @@ The service helps owners prepare information, approach suitable buyers and coord
 - Vietnamese seller registration: https://archway.vn/sell-your-business/
 - Vietnamese buyer registration: https://archway.vn/buyer-register/
 - Vietnamese process: https://archway.vn/how-it-works/
+- Vietnamese about: https://archway.vn/about/
+- Vietnamese industries: https://archway.vn/industries-we-serve/
 - Vietnamese contact: https://archway.vn/contact/
 - Vietnamese privacy policy: https://archway.vn/privacy-policy/
 - English homepage: https://archway.vn/en/
 - English seller registration: https://archway.vn/en/sell-your-business/
 - English buyer registration: https://archway.vn/en/buyer-register/
 - English process: https://archway.vn/en/how-it-works/
+- English about: https://archway.vn/en/about/
+- English industries: https://archway.vn/en/industries-we-serve/
 - English contact: https://archway.vn/en/contact/
 - English privacy policy: https://archway.vn/en/privacy-policy/

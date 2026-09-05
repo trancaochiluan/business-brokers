@@ -1,6 +1,6 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
-import Breadcrumbs from './Breadcrumbs.astro';
+import PageHero from './PageHero.astro';
 import SiteFooter from './SiteFooter.astro';
 import SiteNavigation from './SiteNavigation.astro';
 
@@ -168,22 +168,15 @@ const breadcrumbItems = [
 ---
 
 <SiteLayout lang={lang} title={copy.pageTitle} description={copy.description} breadcrumbs={breadcrumbItems}>
-  <div class="min-h-dvh bg-[var(--color-muted)] text-[var(--color-ink)]">
+  <div class="flex min-h-dvh flex-col bg-[var(--color-muted)] text-[var(--color-ink)]">
     <div class="relative min-h-[60px] bg-[var(--color-paper)]">
       <SiteNavigation lang={lang} showBrand theme="light" />
     </div>
 
     <main>
-      <section class="bg-[var(--color-muted)] px-6 py-10 text-center sm:px-10 sm:py-14 lg:py-16">
-        <div class="mx-auto w-full max-w-6xl text-left">
-          <Breadcrumbs lang={lang} items={breadcrumbItems} />
-        </div>
-        <div class="mx-auto max-w-3xl">
-          <h1 class="text-[clamp(2.25rem,4vw,2.75rem)] leading-tight">{copy.heading}</h1>
-          <p class="mx-auto mt-4 max-w-2xl text-base leading-7 text-[var(--color-ink)]">{copy.intro}</p>
-          <p class="mx-auto mt-1 max-w-2xl text-base leading-7 text-[var(--color-ink)]">{copy.feeNote}</p>
-        </div>
-      </section>
+      <PageHero lang={lang} items={breadcrumbItems} heading={copy.heading} intro={copy.intro} align="center">
+        <p class="mx-auto mt-1 max-w-4xl text-base leading-7 text-[var(--color-paper)]">{copy.feeNote}</p>
+      </PageHero>
 
       <section class="bg-[var(--color-paper)] px-6 py-10 sm:px-10 sm:py-14" aria-labelledby="process-title">
         <div class="mx-auto w-full max-w-6xl">
@@ -213,13 +206,37 @@ const breadcrumbItems = [
         </div>
       </section>
 
-      <section class="bg-[var(--color-muted)] px-6 sm:px-10" aria-labelledby="cta-title">
-        <div class="mx-auto flex max-w-6xl flex-col gap-6 py-10 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:py-14">
-          <div>
-            <h2 id="cta-title" class="text-[clamp(2rem,4vw,3rem)] leading-tight">{copy.ctaHeading}</h2>
-            <p class="mt-3 max-w-xl text-base leading-7 text-[var(--color-ink)]">{copy.ctaText}</p>
+      <section class="bg-[var(--color-muted)] py-0 text-[var(--color-paper)]" aria-labelledby="cta-title">
+        <div class="relative isolate flex min-h-[20rem] w-full items-center overflow-hidden rounded-t-[3rem] bg-[var(--color-ink)] px-6 py-12 sm:px-16 sm:py-16 lg:px-24">
+          <picture class="pointer-events-none absolute inset-0 z-0 block" aria-hidden="true">
+            <source
+              type="image/avif"
+              srcset="/assets/image-library/archway_city_view_12-640.avif 640w, /assets/image-library/archway_city_view_12-1280.avif 1280w, /assets/image-library/archway_city_view_12-1920.avif 1920w"
+              sizes="100vw"
+            />
+            <source
+              type="image/webp"
+              srcset="/assets/image-library/archway_city_view_12-640.webp 640w, /assets/image-library/archway_city_view_12-1280.webp 1280w, /assets/image-library/archway_city_view_12-1920.webp 1920w"
+              sizes="100vw"
+            />
+            <img
+              class="h-full w-full object-cover object-center"
+              src="/assets/image-library/archway_city_view_12-1280.webp"
+              alt=""
+              width="1280"
+              height="719"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
+          <div class="pointer-events-none absolute inset-0 z-[1] bg-[var(--color-scrim)]"></div>
+          <div class="relative z-[2] flex w-full flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
+            <div class="max-w-3xl">
+              <h2 id="cta-title" class="text-[clamp(1.65rem,4vw,3rem)] leading-tight">{copy.ctaHeading}</h2>
+              <p class="mt-3 max-w-xl text-sm leading-6 text-[var(--color-paper)] sm:text-base sm:leading-7">{copy.ctaText}</p>
+            </div>
+            <a class="inline-flex min-h-11 w-full shrink-0 items-center justify-center border-0 bg-[var(--color-accent)] px-6 py-3 text-sm font-medium text-[var(--color-paper)] transition-colors hover:bg-[var(--color-accent-hover)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-paper)] sm:w-auto sm:text-base" href={isVietnamese ? '/sell-your-business/' : '/en/sell-your-business/'}>{copy.ctaLink}</a>
           </div>
-          <a class="inline-flex min-h-11 w-full shrink-0 items-center justify-center bg-[var(--color-ink)] px-6 py-3 text-base font-medium text-[var(--color-paper)] transition-colors hover:bg-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-ink)] sm:w-auto" href={isVietnamese ? '/sell-your-business/' : '/en/sell-your-business/'}>{copy.ctaLink}</a>
         </div>
       </section>
     </main>

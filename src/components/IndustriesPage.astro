@@ -1,0 +1,186 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PageHero from './PageHero.astro';
+import SiteFooter from './SiteFooter.astro';
+import SiteNavigation from './SiteNavigation.astro';
+
+interface Props {
+  lang: 'en' | 'vi';
+}
+
+const industryImages = {
+  industrialServices: {
+    avifSrcset: '/assets/image-library/archway_owner_working_2-640.avif 640w, /assets/image-library/archway_owner_working_2-1280.avif 1280w, /assets/image-library/archway_owner_working_2-1920.avif 1920w',
+    webpSrcset: '/assets/image-library/archway_owner_working_2-640.webp 640w, /assets/image-library/archway_owner_working_2-1280.webp 1280w, /assets/image-library/archway_owner_working_2-1920.webp 1920w',
+    src: '/assets/image-library/archway_owner_working_2-1280.webp',
+    width: 1280,
+    height: 853,
+    altVi: 'Nhân viên trao đổi tại cơ sở dịch vụ công nghiệp',
+    altEn: 'Workers reviewing equipment at an industrial services facility',
+  },
+  industrialManufacturing: {
+    avifSrcset: '/assets/image-library/archway_factory-640.avif 640w, /assets/image-library/archway_factory-1280.avif 1280w, /assets/image-library/archway_factory-1920.avif 1920w',
+    webpSrcset: '/assets/image-library/archway_factory-640.webp 640w, /assets/image-library/archway_factory-1280.webp 1280w, /assets/image-library/archway_factory-1920.webp 1920w',
+    src: '/assets/image-library/archway_factory-1280.webp',
+    width: 1280,
+    height: 853,
+    altVi: 'Nhân viên vận hành máy móc trong nhà xưởng',
+    altEn: 'Worker operating machinery in a factory',
+  },
+  itServices: {
+    avifSrcset: '/assets/image-library/archway_working-640.avif 640w, /assets/image-library/archway_working-1280.avif 1280w, /assets/image-library/archway_working-1920.avif 1920w',
+    webpSrcset: '/assets/image-library/archway_working-640.webp 640w, /assets/image-library/archway_working-1280.webp 1280w, /assets/image-library/archway_working-1920.webp 1920w',
+    src: '/assets/image-library/archway_working-1280.webp',
+    width: 1280,
+    height: 853,
+    altVi: 'Nhân viên làm việc với hệ thống công nghệ thông tin',
+    altEn: 'Employee working with an information technology system',
+  },
+  healthcare: {
+    avifSrcset: '/assets/image-library/archway_healthcare_services-640.avif 640w, /assets/image-library/archway_healthcare_services-1024.avif 1024w',
+    webpSrcset: '/assets/image-library/archway_healthcare_services-640.webp 640w, /assets/image-library/archway_healthcare_services-1024.webp 1024w',
+    src: '/assets/image-library/archway_healthcare_services-1024.webp',
+    width: 1024,
+    height: 683,
+    altVi: 'Nhân viên chăm sóc người cao tuổi',
+    altEn: 'Caregiver supporting an older adult',
+  },
+} as const;
+
+type IndustryImageKey = keyof typeof industryImages;
+
+interface IndustryGroup {
+  title: string;
+  description?: string;
+  items: string[];
+  image: IndustryImageKey;
+}
+
+const { lang } = Astro.props;
+const isVietnamese = lang === 'vi';
+
+const copy = isVietnamese
+  ? {
+      pageTitle: 'Các ngành chúng tôi phục vụ | Archway Business Brokers',
+      description: 'Tìm hiểu các nhóm ngành Archway Business Brokers tập trung hỗ trợ trong hoạt động mua bán và chuyển nhượng doanh nghiệp tại Việt Nam.',
+      heading: 'Các ngành chúng tôi phục vụ',
+      intro: 'Archway tập trung chuyên sâu vào bốn lĩnh vực trọng tâm để phát triển hiểu biết ngành, nâng cao hiệu quả làm việc, chất lượng tư vấn và kết quả của từng thương vụ. Tuy nhiên, chúng tôi vẫn hỗ trợ các thương vụ thuộc những ngành khác. Vui lòng liên hệ với Archway để trao đổi thêm về nhu cầu của Quý khách.',
+      groupsHeading: 'Bốn nhóm ngành trọng tâm',
+      groups: [
+        {
+          title: 'Dịch vụ công nghiệp',
+          image: 'industrialServices',
+          items: ['HVAC', 'Nhà thầu điện', 'Hệ thống cấp thoát nước', 'Dịch vụ cơ khí', 'Bảo trì cơ sở vật chất', 'Dịch vụ môi trường', 'Phục hồi sau tổn thất'],
+        },
+        {
+          title: 'Sản xuất công nghiệp',
+          image: 'industrialManufacturing',
+          items: ['Máy móc và thiết bị', 'Sản xuất chính xác', 'CNC / Gia công', 'Gia công kim loại'],
+        },
+        {
+          title: 'Dịch vụ công nghệ thông tin / Nhà cung cấp dịch vụ quản trị công nghệ thông tin thuê ngoài',
+          image: 'itServices',
+          description: 'Dịch vụ hỗ trợ, vận hành và quản trị công nghệ thông tin thuê ngoài cho doanh nghiệp.',
+          items: [],
+        },
+        {
+          title: 'Dịch vụ chăm sóc sức khỏe',
+          image: 'healthcare',
+          items: ['Phòng khám', 'Chăm sóc sức khỏe tại nhà', 'Dịch vụ y tế'],
+        },
+      ] as IndustryGroup[],
+      footerAddress: 'Tầng 17, Tòa nhà Vincom Center, 72 đường Lê Thánh Tôn, Quận 1, Thành phố Hồ Chí Minh, Việt Nam',
+      footerPhone: 'Điện thoại: 0346-346-550',
+    }
+  : {
+      pageTitle: 'Industries We Serve | Archway Business Brokers',
+      description: 'Explore the industries Archway Business Brokers focuses on for business sales and transfers in Vietnam.',
+      heading: 'Industries We Serve',
+      intro: 'Archway focuses deeply on four core sectors to build stronger industry knowledge, improve execution efficiency, enhance advisory quality and deliver better outcomes in every transaction. We also support transactions in other industries. Please contact us to discuss your requirements further.',
+      groupsHeading: 'Four focus areas',
+      groups: [
+        {
+          title: 'Industrial Services',
+          image: 'industrialServices',
+          items: ['HVAC', 'Electrical Contractor', 'Plumbing', 'Mechanical Services', 'Facility Maintenance', 'Environmental Services', 'Restoration'],
+        },
+        {
+          title: 'Industrial Manufacturing',
+          image: 'industrialManufacturing',
+          items: ['Machinery & Equipment', 'Precision Manufacturing', 'CNC / Machining', 'Metal Fabrication'],
+        },
+        {
+          title: 'Information Technology Services / Managed Service Providers',
+          image: 'itServices',
+          description: 'Managed information technology support and technology services for business operations.',
+          items: [],
+        },
+        {
+          title: 'Healthcare Services',
+          image: 'healthcare',
+          items: ['Clinics', 'Home Healthcare', 'Medical Services'],
+        },
+      ] as IndustryGroup[],
+      footerAddress: '17th Floor, Vincom Center Building, 72 Le Thanh Ton Street, District 1, Ho Chi Minh City, Vietnam',
+      footerPhone: 'Phone: (+84) 346-346-550',
+    };
+
+const breadcrumbItems = [
+  { name: isVietnamese ? 'Trang chủ' : 'Home', href: isVietnamese ? '/' : '/en/' },
+  { name: isVietnamese ? 'Các ngành chúng tôi phục vụ' : 'Industries We Serve' },
+];
+---
+
+<SiteLayout lang={lang} title={copy.pageTitle} description={copy.description} breadcrumbs={breadcrumbItems}>
+  <div class="flex min-h-dvh flex-col bg-[var(--color-muted)] text-[var(--color-ink)]">
+    <div class="relative min-h-[60px] bg-[var(--color-paper)]">
+      <SiteNavigation lang={lang} showBrand theme="light" />
+    </div>
+
+    <main>
+      <PageHero lang={lang} items={breadcrumbItems} heading={copy.heading} intro={copy.intro} />
+
+      <section class="bg-[var(--color-paper)] px-6 py-14 sm:px-10 sm:py-20" aria-labelledby="industries-groups-title">
+        <div class="mx-auto w-full max-w-6xl">
+          <h2 id="industries-groups-title" class="text-[clamp(1.9rem,4vw,3rem)] leading-tight text-[var(--color-navy)]">{copy.groupsHeading}</h2>
+          <div class="mt-8 grid gap-5 md:grid-cols-2">
+            {copy.groups.map((group, index) => (
+              <article class="bg-[var(--color-muted)] p-6 sm:p-8">
+                <div class="-mx-6 -mt-6 mb-6 overflow-hidden sm:-mx-8 sm:-mt-8">
+                  <picture class="block aspect-[3/2]">
+                    <source type="image/avif" srcset={industryImages[group.image].avifSrcset} sizes="(min-width: 768px) 50vw, 100vw" />
+                    <source type="image/webp" srcset={industryImages[group.image].webpSrcset} sizes="(min-width: 768px) 50vw, 100vw" />
+                    <img
+                      class="h-full w-full object-cover"
+                      src={industryImages[group.image].src}
+                      alt={isVietnamese ? industryImages[group.image].altVi : industryImages[group.image].altEn}
+                      width={industryImages[group.image].width}
+                      height={industryImages[group.image].height}
+                      loading={index < 2 ? 'eager' : 'lazy'}
+                      decoding="async"
+                    />
+                  </picture>
+                </div>
+                <p class="text-sm font-medium uppercase tracking-[0.12em] text-[var(--color-navy)]">{String(index + 1).padStart(2, '0')}</p>
+                <h3 class="mt-3 text-[clamp(1.45rem,3vw,2rem)] font-medium leading-tight text-[var(--color-navy)]">{group.title}</h3>
+                {group.description && <p class="mt-4 text-base leading-7 text-[var(--color-ink)]">{group.description}</p>}
+                {group.items.length > 0 && (
+                  <ul class="mt-5 grid gap-3 sm:grid-cols-2">
+                    {group.items.map((item) => (
+                      <li class="flex items-start gap-3 text-base leading-7 text-[var(--color-ink)]">
+                        <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-[var(--color-accent)]" aria-hidden="true"></span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <SiteFooter theme="dark" address={copy.footerAddress} phone={copy.footerPhone} />
+  </div>
+</SiteLayout>

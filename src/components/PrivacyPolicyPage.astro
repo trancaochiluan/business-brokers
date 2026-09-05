@@ -1,6 +1,6 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
-import Breadcrumbs from './Breadcrumbs.astro';
+import PageHero from './PageHero.astro';
 import SiteFooter from './SiteFooter.astro';
 import SiteNavigation from './SiteNavigation.astro';
 
@@ -274,19 +274,13 @@ const breadcrumbItems = [
 ---
 
 <SiteLayout lang={lang} noIndex title={copy.pageTitle} description={copy.description} breadcrumbs={breadcrumbItems}>
-  <div class="min-h-dvh bg-[var(--color-muted)] text-[var(--color-ink)]">
+  <div class="flex min-h-dvh flex-col bg-[var(--color-muted)] text-[var(--color-ink)]">
     <div class="relative min-h-[60px] bg-[var(--color-paper)]">
       <SiteNavigation lang={lang} showBrand theme="light" />
     </div>
 
     <main>
-      <section class="bg-[var(--color-muted)] px-6 py-10 sm:px-10 sm:py-14">
-        <div class="mx-auto max-w-3xl">
-          <Breadcrumbs lang={lang} items={breadcrumbItems} />
-          <h1 class="text-[clamp(2.25rem,4vw,2.75rem)] leading-tight">{copy.heading}</h1>
-          <p class="mt-4 text-base leading-7 text-[var(--color-ink)]">{copy.intro}</p>
-        </div>
-      </section>
+      <PageHero lang={lang} items={breadcrumbItems} heading={copy.heading} intro={copy.intro} />
 
       <section class="bg-[var(--color-paper)] px-6 py-10 sm:px-10 sm:py-14">
         <div class="mx-auto grid w-full max-w-3xl gap-3 text-base leading-7 text-[var(--color-ink)]">

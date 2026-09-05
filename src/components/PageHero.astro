@@ -1,0 +1,52 @@
+---
+import Breadcrumbs from './Breadcrumbs.astro';
+
+interface BreadcrumbItem {
+  name: string;
+  href?: string;
+}
+
+interface Props {
+  lang: 'en' | 'vi';
+  items: BreadcrumbItem[];
+  heading: string;
+  intro?: string;
+  align?: 'left' | 'center';
+}
+
+const { lang, items, heading, intro, align = 'left' } = Astro.props;
+const isCentered = align === 'center';
+---
+
+<section class={`relative isolate overflow-hidden px-6 py-10 text-[var(--color-paper)] sm:px-10 sm:py-14 lg:py-16 ${isCentered ? 'text-center' : ''}`}>
+  <picture class="pointer-events-none absolute inset-0 z-0 block" aria-hidden="true">
+    <source
+      type="image/avif"
+      srcset="/assets/image-library/archway_business_people_reviewing_financial_documents_1-640.avif 640w, /assets/image-library/archway_business_people_reviewing_financial_documents_1-1280.avif 1280w, /assets/image-library/archway_business_people_reviewing_financial_documents_1-1920.avif 1920w"
+      sizes="100vw"
+    />
+    <source
+      type="image/webp"
+      srcset="/assets/image-library/archway_business_people_reviewing_financial_documents_1-640.webp 640w, /assets/image-library/archway_business_people_reviewing_financial_documents_1-1280.webp 1280w, /assets/image-library/archway_business_people_reviewing_financial_documents_1-1920.webp 1920w"
+      sizes="100vw"
+    />
+    <img
+      class="h-full w-full object-cover object-center"
+      src="/assets/image-library/archway_business_people_reviewing_financial_documents_1-1280.webp"
+      alt=""
+      width="1280"
+      height="720"
+      loading="eager"
+      decoding="async"
+    />
+  </picture>
+  <div class="pointer-events-none absolute inset-0 z-[1] bg-[rgba(0,43,92,0.9)]"></div>
+  <div class="relative z-[2] mx-auto w-full max-w-6xl">
+    <Breadcrumbs lang={lang} items={items} theme="dark" />
+    <div class={isCentered ? 'mx-auto max-w-5xl' : 'max-w-5xl'}>
+      <h1 class="text-[clamp(2.25rem,4vw,2.75rem)] leading-tight">{heading}</h1>
+      {intro && <p class={`mt-4 max-w-4xl text-base leading-7 text-[var(--color-paper)] ${isCentered ? 'mx-auto' : ''}`}>{intro}</p>}
+      <slot />
+    </div>
+  </div>
+</section>

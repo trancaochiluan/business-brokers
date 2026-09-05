@@ -3,6 +3,8 @@
     "ink": "#111111",
     "paper": "#ffffff",
     "muted": "#f2f2f2",
+    "soft-blue": "#eaf4ff",
+    "navy": "#002b5c",
     "accent": "#c52233",
     "accent-hover": "#9f1d2a",
     "line": "rgba(255, 255, 255, 0.5)",

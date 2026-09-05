@@ -1,6 +1,6 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
-import Breadcrumbs from './Breadcrumbs.astro';
+import PageHero from './PageHero.astro';
 import SiteFooter from './SiteFooter.astro';
 import SiteNavigation from './SiteNavigation.astro';
 
@@ -85,24 +85,21 @@ const labelClass = 'block text-sm font-medium text-[var(--color-ink)]';
 ---
 
 <SiteLayout lang={lang} title={copy.pageTitle} description={copy.description} pageType="ContactPage" breadcrumbs={breadcrumbItems}>
-  <div class="min-h-dvh bg-[var(--color-muted)] text-[var(--color-ink)]">
+  <div class="flex min-h-dvh flex-col bg-[var(--color-muted)] text-[var(--color-ink)]">
     <div class="relative min-h-[60px] bg-[var(--color-paper)]">
       <SiteNavigation lang={lang} showBrand theme="light" />
     </div>
 
     <main>
-      <section class="px-6 py-10 sm:px-10 sm:py-14" aria-labelledby="contact-heading">
-        <div class="mx-auto w-full max-w-6xl">
-          <Breadcrumbs lang={lang} items={breadcrumbItems} />
-        </div>
+      <PageHero lang={lang} items={breadcrumbItems} heading={copy.heading} />
+
+      <section class="px-6 py-10 sm:px-10 sm:py-14">
         <div class="mx-auto grid w-full max-w-6xl gap-6 lg:grid-cols-2 lg:gap-8">
           <div>
-            <h1 id="contact-heading" class="text-[clamp(2.25rem,4vw,2.75rem)] leading-tight">{copy.heading}</h1>
-            <p class="mt-4 max-w-xl text-base leading-7 text-[var(--color-ink)]">
+            <p class="max-w-xl text-base leading-7 text-[var(--color-ink)]">
               {copy.introBefore} <a class="text-[var(--color-accent)] underline underline-offset-4 hover:text-[var(--color-accent-hover)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-ink)]" href={sellHref}>{copy.sellLink}</a> {copy.introAfter}
             </p>
-
-            <h2 class="sr-only">{copy.faqHeading}</h2>
+            <h2 id="contact-faq-heading" class="sr-only">{copy.faqHeading}</h2>
             <div class="mt-6 grid gap-3">
               {isVietnamese ? (
                 <>

@@ -1942,6 +1942,37 @@
       ]
     },
     {
+      "source": "dich-vu-cham-soc-nguoi-cao-tuoi-1024x683.jpg",
+      "sourceWidth": 1024,
+      "sourceHeight": 683,
+      "variants": [
+        {
+          "width": 640,
+          "height": 427,
+          "avif": {
+            "src": "/assets/image-library/archway_healthcare_services-640.avif",
+            "bytes": 18003
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_healthcare_services-640.webp",
+            "bytes": 36010
+          }
+        },
+        {
+          "width": 1024,
+          "height": 683,
+          "avif": {
+            "src": "/assets/image-library/archway_healthcare_services-1024.avif",
+            "bytes": 35421
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_healthcare_services-1024.webp",
+            "bytes": 67224
+          }
+        }
+      ]
+    },
+    {
       "source": "vincom_center.jpg",
       "sourceWidth": 819,
       "sourceHeight": 1024,

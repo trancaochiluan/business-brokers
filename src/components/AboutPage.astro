@@ -1,0 +1,138 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PageHero from './PageHero.astro';
+import SiteFooter from './SiteFooter.astro';
+import SiteNavigation from './SiteNavigation.astro';
+
+interface Props {
+  lang: 'en' | 'vi';
+}
+
+const { lang } = Astro.props;
+const isVietnamese = lang === 'vi';
+
+const copy = isVietnamese
+  ? {
+      pageTitle: 'Sứ mệnh, tầm nhìn và giá trị | Archway Business Brokers',
+      description: 'Tìm hiểu sứ mệnh, tầm nhìn và giá trị của Archway Business Brokers trong việc hỗ trợ chủ doanh nghiệp thực hiện thương vụ chuyển nhượng phù hợp.',
+      heading: 'Sứ mệnh, tầm nhìn và giá trị của chúng tôi',
+      intro: 'Chúng tôi là đơn vị môi giới doanh nghiệp đặt chất lượng lên hàng đầu và tập trung mang đến cho Quý khách một thương vụ chuyển nhượng như kỳ vọng.',
+      teamHeading: 'Đội ngũ của chúng tôi luôn sẵn sàng đồng hành cùng Quý khách trong suốt hành trình M&A.',
+      teamText: 'Đội ngũ của chúng tôi quy tụ các chuyên gia đa dạng, mỗi người đóng góp những kỹ năng và góc nhìn riêng để hỗ trợ khách hàng xử lý những phức tạp của hành trình M&A. Chúng tôi cam kết không ngừng hoàn thiện cả về chuyên môn và cá nhân, đồng thời chủ động tìm kiếm những cách thức để phát triển năng lực. Giống như những mảnh ghép của một bức tranh, chúng tôi kết hợp thế mạnh của mình để mang đến chất lượng dịch vụ cao nhất. Khi cần chuyên môn chuyên sâu, chúng tôi tận dụng mạng lưới rộng của mình để bảo đảm mỗi khách hàng nhận được sự hỗ trợ tốt nhất.',
+      founderHeading: 'Lời nhắn từ founder',
+      founderMessage: 'Archway là đơn vị môi giới doanh nghiệp đặt chất lượng lên hàng đầu, được xây dựng để nâng cao tiêu chuẩn của các thương vụ chuyển nhượng tại Việt Nam. Chúng tôi luôn nỗ lực xây dựng một cách làm việc chuyên nghiệp, rõ ràng và tận tâm, để mỗi cuộc trao đổi với Archway được thực hiện bằng sự tôn trọng và trách nhiệm. Tôi hi vọng rằng hợp tác với Archway sẽ đem lại sự an tâm và thoải mái cho Quý khách.',
+      founderName: 'Luân, nhà sáng lập Archway',
+      storyHeading: 'Chúng tôi là ai',
+      storyParagraphs: [
+        'Năm 2025, một nhóm bạn trẻ từ nền tảng khởi nghiệp và tư vấn doanh nghiệp bắt đầu đặt câu hỏi: tại sao doanh nghiệp vừa và nhỏ tại Việt Nam hầu như không có nơi nào để tìm kiếm hỗ trợ chuyên nghiệp khi muốn bán hoặc chuyển nhượng doanh nghiệp? Họ nhận ra rằng thị trường môi giới M&A chỉ phục vụ các giao dịch lớn, còn phần đông chủ doanh nghiệp không được tiếp cận dịch vụ nào.',
+        'Trong suốt một năm, nhóm đã phỏng vấn hơn 100 chủ doanh nghiệp nhỏ, từ chủ tiệm cà phê, xưởng sản xuất, công ty công nghệ. Họ lắng nghe những người trẻ muốn mua doanh nghiệp để khởi nghiệp, những cô chú muốn đầu tư vào một ngành mới và những chủ doanh nghiệp lớn tuổi muốn tìm người kế nghiệp xứng đáng. Một nhu cầu rõ ràng hiện ra: thiếu một đơn vị môi giới chuyên nghiệp, có quy trình và thực sự hiểu doanh nghiệp vừa và nhỏ.',
+        'Năm 2026, Archway Vietnam được thành lập. Từ một ý tưởng đơn giản, chúng tôi xây dựng một quy trình môi giới bài bản dành riêng cho SME: định giá thương mại, kiểm soát thông tin và kết nối đúng người mua.',
+      ],
+      missionLabel: 'Tuyên bố sứ mệnh của Archway',
+      missionText: 'Bảo vệ tương lai của chủ doanh nghiệp thông qua đại diện chuyên nghiệp trong giao dịch mua bán và chuyển nhượng.',
+      visionLabel: 'Tầm nhìn của Archway',
+      visionText: 'Trở thành đơn vị môi giới và tư vấn mua bán doanh nghiệp uy tín cho các doanh nghiệp tư nhân tại Việt Nam.',
+      footerAddress: 'Tầng 17, Tòa nhà Vincom Center, 72 đường Lê Thánh Tôn, Quận 1, Thành phố Hồ Chí Minh, Việt Nam',
+      footerPhone: 'Điện thoại: 0346-346-550',
+    }
+  : {
+      pageTitle: 'Our Mission, Vision, and Values | Archway Business Brokers',
+      description: 'Learn about Archway Business Brokers’ mission, vision and values as we help business owners pursue the right exit.',
+      heading: 'Our Mission, Vision, and Values',
+      intro: 'We are a quality-first business brokerage focused on delivering your ideal exit.',
+      teamHeading: 'Our team is here to guide you through the M&A process.',
+      teamText: 'Our team brings together a diverse group of professionals, each contributing unique skills and perspectives to guide clients through the complexities of the M&A process. We are committed to continuous improvement, both professionally and personally, and we actively seek ways to grow our expertise. Like pieces of a puzzle, we combine our strengths to provide the highest level of service. When specialized expertise is needed, we leverage our expansive network to ensure every client receives the best possible support.',
+      founderHeading: 'A note from our founder',
+      founderMessage: 'Archway is a quality-first business brokerage built to raise the standard of business transfers in Vietnam. We are committed to working in a professional, clear and thoughtful way, so that every conversation with Archway is handled with respect and responsibility. I hope that working with Archway will give you confidence and peace of mind.',
+      founderName: 'Luan, Founder of Archway',
+      storyHeading: 'Who we are',
+      storyParagraphs: [
+        'In 2025, a group of young professionals with backgrounds in entrepreneurship and business consulting began asking why small and mid-sized businesses in Vietnam had few places to find professional support when considering a sale or transfer. They saw that the M&A brokerage market largely served large transactions, while most business owners could not access a comparable service.',
+        'Over the following year, the group interviewed more than 100 small business owners, including café owners, manufacturers and technology companies. They listened to younger people looking to buy a business to start their own venture, older investors seeking a new industry and older business owners looking for a worthy successor. A clear need emerged: a professional brokerage with a process that genuinely understands small and mid-sized businesses.',
+        'In 2026, Archway Vietnam was founded. From a simple idea, we built a structured brokerage process for SMEs that combines commercial valuation, information control and connections with the right buyers.',
+      ],
+      missionLabel: 'Archway mission statement',
+      missionText: 'To protect the future of business owners through professional representation in business sale and transfer transactions.',
+      visionLabel: 'Archway vision',
+      visionText: 'To become a trusted business brokerage and advisory firm for private businesses in Vietnam.',
+      footerAddress: '17th Floor, Vincom Center Building, 72 Le Thanh Ton Street, District 1, Ho Chi Minh City, Vietnam',
+      footerPhone: 'Phone: (+84) 346-346-550',
+    };
+
+const breadcrumbItems = [
+  { name: isVietnamese ? 'Trang chủ' : 'Home', href: isVietnamese ? '/' : '/en/' },
+  { name: isVietnamese ? 'Về Archway' : 'About Archway' },
+];
+---
+
+<SiteLayout lang={lang} title={copy.pageTitle} description={copy.description} breadcrumbs={breadcrumbItems}>
+  <div class="flex min-h-dvh flex-col bg-[var(--color-muted)] text-[var(--color-ink)]">
+    <div class="relative min-h-[60px] bg-[var(--color-paper)]">
+      <SiteNavigation lang={lang} showBrand theme="light" />
+    </div>
+
+    <main>
+      <PageHero lang={lang} items={breadcrumbItems} heading={copy.heading} intro={copy.intro} />
+
+      <section class="bg-[var(--color-paper)] px-6 py-14 sm:px-10 sm:py-20" aria-labelledby="about-team-title">
+        <div class="mx-auto grid w-full max-w-6xl gap-8 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] lg:gap-8">
+          <h2 id="about-team-title" class="max-w-3xl text-[clamp(1.65rem,3vw,2.5rem)] leading-tight text-[var(--color-navy)]">{copy.teamHeading}</h2>
+          <p class="max-w-none text-base leading-7 text-[var(--color-ink)]">{copy.teamText}</p>
+        </div>
+      </section>
+
+      <section class="bg-[var(--color-paper)] px-6 py-14 sm:px-10 sm:py-20" aria-labelledby="about-story-title">
+        <div class="mx-auto w-full max-w-6xl">
+          <h2 id="about-story-title" class="text-[clamp(1.9rem,4vw,3rem)] leading-tight text-[var(--color-navy)]">{copy.storyHeading}</h2>
+          <div class="mt-8 grid gap-8 lg:grid-cols-3 lg:gap-10">
+            <p class="text-base leading-7 text-[var(--color-ink)]">{copy.storyParagraphs[0]}</p>
+            <p class="text-base leading-7 text-[var(--color-ink)]">{copy.storyParagraphs[1]}</p>
+            <div>
+              <p class="text-base leading-7 text-[var(--color-ink)]">{copy.storyParagraphs[2]}</p>
+              <h3 class="mt-8 text-sm font-medium uppercase tracking-[0.08em] text-[var(--color-navy)]">{copy.missionLabel}</h3>
+              <p class="mt-2 text-base leading-7 text-[var(--color-ink)]">{copy.missionText}</p>
+              <h3 class="mt-7 text-sm font-medium uppercase tracking-[0.08em] text-[var(--color-navy)]">{copy.visionLabel}</h3>
+              <p class="mt-2 text-base leading-7 text-[var(--color-ink)]">{copy.visionText}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-[var(--color-muted)] px-6 py-14 sm:px-10 sm:py-20" aria-label={copy.founderHeading}>
+        <div class="mx-auto grid w-full max-w-6xl items-center gap-8 lg:grid-cols-[minmax(0,18rem)_minmax(0,1fr)] lg:gap-12">
+          <div class="mx-auto aspect-square w-48 overflow-hidden rounded-full bg-[var(--color-paper)] sm:w-56 lg:mx-0 lg:w-full">
+            <picture>
+              <source
+                type="image/avif"
+                srcset="/assets/founder/founder-320.avif 320w, /assets/founder/founder-640.avif 640w"
+                sizes="(min-width: 1024px) 18rem, (min-width: 640px) 14rem, 12rem"
+              />
+              <source
+                type="image/webp"
+                srcset="/assets/founder/founder-320.webp 320w, /assets/founder/founder-640.webp 640w"
+                sizes="(min-width: 1024px) 18rem, (min-width: 640px) 14rem, 12rem"
+              />
+              <img
+                class="h-full w-full object-cover"
+                src="/assets/founder/founder-640.webp"
+                alt={isVietnamese ? 'Founder của Archway Business Brokers' : 'Founder of Archway Business Brokers'}
+                width="640"
+                height="640"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+          </div>
+          <div class="max-w-3xl">
+            <div class="bg-[var(--color-navy)] p-6 text-[var(--color-paper)] sm:p-8">
+              <blockquote class="text-lg leading-8 text-[var(--color-paper)] sm:text-xl sm:leading-9">“{copy.founderMessage}”</blockquote>
+            </div>
+            <p class="mt-3 text-sm font-medium italic text-[var(--color-ink)]">{copy.founderName}</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <SiteFooter theme="dark" address={copy.footerAddress} phone={copy.footerPhone} />
+  </div>
+</SiteLayout>

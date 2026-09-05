@@ -26,6 +26,20 @@ const copy = isVietnamese
         'Việc bán hoặc chuyển nhượng doanh nghiệp có thể là một hành trình M&A phức tạp và kéo dài. Khi hợp tác với Archway, Quý khách không phải tự mình xử lý toàn bộ quy trình; chúng tôi sẽ đồng hành và điều phối từng bước một cách chuyên nghiệp, chủ động và rõ ràng để Quý khách cảm thấy an tâm hơn trong suốt hành trình. Quý khách nên bắt đầu chuẩn bị từ sớm, bởi một kế hoạch tốt sẽ giúp hạn chế những sai sót không đáng có và tạo thêm thời gian để đưa ra quyết định phù hợp. Hãy thoải mái liên hệ với Archway để bắt đầu cuộc trao đổi đầu tiên khi Quý khách sẵn sàng, vì sẽ không tốn một đồng chi phí nào cho tới khi chúng tôi bán được doanh nghiệp.',
       ],
       ownerCta: 'Trao đổi riêng với Archway',
+      feedbackHeading: 'Lắng nghe các chủ doanh nghiệp chia sẻ lý do họ chọn Archway Business Brokers',
+      feedbackMessages: [
+        'Chuyên nghiệp và nhanh chóng',
+        'Rất nhanh!!',
+        'Làm việc tuyệt vời',
+        'Đồng hành cùng bạn trong suốt hành trình',
+        'Thẳng thắn và rõ ràng',
+        'Kiên nhẫn và cung cấp thông tin đầy đủ',
+        'Chất lượng cao',
+        'Nhanh chóng và đi thẳng vào vấn đề',
+        'Đội ngũ tuyệt vời!!!',
+      ],
+      valuationHeading: 'Hãy để Archway định giá doanh nghiệp miễn phí và chuẩn bị hồ sơ chuyên nghiệp cho quá trình chuyển nhượng.',
+      valuationCta: 'Nhận định giá miễn phí',
     }
   : {
       title: 'Business Brokers in Vietnam | Archway',
@@ -43,7 +57,24 @@ const copy = isVietnamese
         'Selling or transferring a business can be a complex and lengthy M&A journey. When you work with Archway, you do not have to manage the entire process alone. We will support and coordinate each step professionally, proactively and clearly, so you can feel more confident throughout the journey. Starting early gives you more time to prepare, reduce avoidable mistakes and make suitable decisions. Please feel free to contact Archway to begin an initial conversation when you are ready, because you will not pay any fee until we sell your business.',
       ],
       ownerCta: 'Have a private conversation with Archway',
+      feedbackHeading: 'Hear From Other Business Owners About Why They Chose Archway Business Brokers',
+      feedbackMessages: [
+        'Professional & Fast',
+        'Very fast!!',
+        'Awesome work',
+        'Led You The Whole Way',
+        'Straight Shooters',
+        'Patient and Informative',
+        'High Quality',
+        'Fast and Straight-Forward',
+        'Excellent team!!!',
+      ],
+      valuationHeading: 'Let Archway provide a free valuation and prepare a professional business profile for the sale process.',
+      valuationCta: 'Get a Free Valuation',
     };
+
+const feedbackTextVariants = ['text-[var(--color-ink)]', 'text-[var(--color-accent)]'];
+const feedbackRows = [copy.feedbackMessages.slice(0, 5), copy.feedbackMessages.slice(5)];
 
 ---
 
@@ -122,9 +153,20 @@ const copy = isVietnamese
       <footer id="contact" class="z-[3] flex flex-col items-center gap-1.5 pb-1 text-center text-sm sm:gap-2 sm:text-base">
         <p class="m-0">Archway Business Brokers</p>
         <p class="m-0 max-w-[62rem] leading-[1.5]">{copy.address}</p>
-        <div class="flex flex-col items-center gap-2">
-          <a class="text-[var(--color-paper)] no-underline hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-paper)] focus-visible:outline-offset-4" href="tel:+84346346550"><span>{copy.phone}</span></a>
-          <a class="text-[var(--color-paper)] no-underline hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-paper)] focus-visible:outline-offset-4" href="mailto:brokers@archway.vn"><span>brokers@archway.vn</span></a>
+        <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
+          <a class="inline-flex items-center gap-2 text-[var(--color-paper)] no-underline hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-paper)] focus-visible:outline-offset-4" href="tel:+84346346550">
+            <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5.3 4.7 7 3a1.4 1.4 0 0 1 2 .1l2.1 2.4a1.4 1.4 0 0 1 .1 1.8L9.9 9a14.3 14.3 0 0 0 5.1 5.1l1.7-1.3a1.4 1.4 0 0 1 1.8.1l2.4 2.1a1.4 1.4 0 0 1 .1 2l-1.7 1.7c-.8.8-2 1.1-3.1.7A18.4 18.4 0 0 1 4.6 7.8c-.4-1.1-.1-2.3.7-3.1Z" />
+            </svg>
+            <span>{copy.phone}</span>
+          </a>
+          <a class="inline-flex items-center gap-2 text-[var(--color-paper)] no-underline hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-[var(--color-paper)] focus-visible:outline-offset-4" href="mailto:brokers@archway.vn">
+            <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="1.5" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="m4 7 8 6 8-6" />
+            </svg>
+            <span>brokers@archway.vn</span>
+          </a>
         </div>
       </footer>
     </div>
@@ -157,9 +199,9 @@ const copy = isVietnamese
             />
           </picture>
         </div>
-        <div class="max-w-3xl">
-          <h2 id="owner-note-title" class="text-[clamp(1.9rem,4vw,3rem)] leading-tight">{copy.ownerHeading}</h2>
-          <div class="mt-5 space-y-3 text-justify text-base leading-7">
+        <div class="-mx-6 max-w-3xl bg-[var(--color-soft-blue)] px-6 py-6 sm:mx-0 sm:p-8">
+          <h2 id="owner-note-title" class="text-[clamp(1.75rem,4vw,3rem)] leading-tight">{copy.ownerHeading}</h2>
+          <div class="mt-5 space-y-3 text-justify text-[0.9375rem] leading-6 sm:text-base sm:leading-7">
             {copy.ownerParagraphs.map((paragraph) => <p class="m-0">{paragraph}</p>)}
           </div>
           <a
@@ -167,6 +209,74 @@ const copy = isVietnamese
             href={localizedPath('/sell-your-business/')}
           >
             {copy.ownerCta}
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-[var(--color-muted)] px-6 py-12 text-[var(--color-ink)] sm:px-10 sm:py-16" aria-labelledby="owner-feedback-title">
+      <div class="mx-auto max-w-6xl">
+        <h2 id="owner-feedback-title" class="max-w-4xl text-[clamp(1.75rem,4vw,3rem)] leading-tight">{copy.feedbackHeading}</h2>
+        <div class="mt-10 space-y-8">
+          {feedbackRows.map((messages, rowIndex) => (
+            <div class="relative overflow-hidden py-4">
+              <div class={`feedback-marquee flex w-max items-center ${rowIndex === 1 ? 'feedback-marquee-reverse' : ''}`}>
+                <ul class="m-0 flex shrink-0 list-none items-center gap-10 p-0 pr-10 sm:gap-16 sm:pr-16">
+                  {messages.map((message, index) => (
+                    <li class="shrink-0">
+                      <blockquote class={`w-max text-[clamp(1.125rem,3vw,2.25rem)] font-medium leading-tight ${feedbackTextVariants[(rowIndex + index) % feedbackTextVariants.length]}`}>
+                        <p class="m-0 whitespace-nowrap">{message}</p>
+                      </blockquote>
+                    </li>
+                  ))}
+                </ul>
+                <ul class="m-0 flex shrink-0 list-none items-center gap-10 p-0 pr-10 sm:gap-16 sm:pr-16" aria-hidden="true">
+                  {messages.map((message, index) => (
+                    <li class="shrink-0">
+                      <blockquote class={`w-max text-[clamp(1.125rem,3vw,2.25rem)] font-medium leading-tight ${feedbackTextVariants[(rowIndex + index) % feedbackTextVariants.length]}`}>
+                        <p class="m-0 whitespace-nowrap">{message}</p>
+                      </blockquote>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-[var(--color-muted)] py-0 text-[var(--color-paper)]" aria-labelledby="valuation-title">
+      <div class="relative isolate flex min-h-[20rem] w-full items-center overflow-hidden rounded-t-[3rem] bg-[var(--color-ink)] px-6 py-12 sm:px-16 sm:py-16 lg:px-24">
+        <picture class="pointer-events-none absolute inset-0 z-0 block" aria-hidden="true">
+          <source
+            type="image/avif"
+            srcset="/assets/image-library/archway_city_view_12-640.avif 640w, /assets/image-library/archway_city_view_12-1280.avif 1280w, /assets/image-library/archway_city_view_12-1920.avif 1920w"
+            sizes="100vw"
+          />
+          <source
+            type="image/webp"
+            srcset="/assets/image-library/archway_city_view_12-640.webp 640w, /assets/image-library/archway_city_view_12-1280.webp 1280w, /assets/image-library/archway_city_view_12-1920.webp 1920w"
+            sizes="100vw"
+          />
+          <img
+            class="h-full w-full object-cover object-center"
+            src="/assets/image-library/archway_city_view_12-1280.webp"
+            alt=""
+            width="1280"
+            height="719"
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
+        <div class="pointer-events-none absolute inset-0 z-[1] bg-[var(--color-scrim)]"></div>
+        <div class="relative z-[2] flex w-full flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
+          <h2 id="valuation-title" class="max-w-3xl text-[clamp(1.65rem,4vw,3rem)] leading-tight">{copy.valuationHeading}</h2>
+          <a
+            class="inline-flex min-h-11 shrink-0 items-center justify-center border-0 bg-[var(--color-accent)] px-6 py-3 text-center text-sm text-[var(--color-paper)] hover:bg-[var(--color-accent-hover)] focus-visible:outline-2 focus-visible:outline-[var(--color-paper)] focus-visible:outline-offset-4 sm:text-base"
+            href={localizedPath('/sell-your-business/')}
+          >
+            {copy.valuationCta}
           </a>
         </div>
       </div>
