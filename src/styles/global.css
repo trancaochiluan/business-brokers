@@ -58,6 +58,28 @@
   --font-sans: "Montserrat", sans-serif;
 }
 
+.force-light {
+  color-scheme: only light;
+}
+
+html.auto-dark-theme [data-navigation-theme="light"] {
+  background-color: var(--color-navy);
+  color: var(--color-paper);
+}
+
+html.auto-dark-theme [data-navigation-theme="light"] :is(a, summary, button, p),
+html.auto-dark-theme [data-navigation-theme="light"] [data-navigation-brand] span {
+  color: var(--color-paper);
+}
+
+html.auto-dark-theme [data-navigation-theme="light"] :is(a, summary, button):is(:hover, :focus-visible) {
+  color: var(--color-paper);
+}
+
+html.auto-dark-theme [data-navigation-theme="light"] [data-desktop-more-menu] > div {
+  background-color: var(--color-panel);
+}
+
 @keyframes feedback-marquee-forward {
   from {
     transform: translate3d(0, 0, 0);

@@ -46,6 +46,15 @@
 - `astro.config.mjs` dùng `assetsInlineLimit: 0` để script Astro được xuất thành file ngoài và hoạt động với `script-src 'self'`.
 - `public/_headers` chỉ cho phép font từ cùng origin; không thêm `unsafe-inline` cho script.
 
+## Website luôn ưu tiên giao diện sáng.
+
+- `public/scripts/force-light.js` chạy một lần trong `<head>` để kiểm tra trình duyệt có ép Auto Dark hay không, sau đó thêm class `force-light` vào `<html>`.
+- `public/force-light-probe.css` định dạng phần tử kiểm tra ẩn mà script dùng với `getComputedStyle()`.
+- Class `force-light` đặt `color-scheme: only light` để trình duyệt ưu tiên giao diện sáng cho toàn website.
+- Class `auto-dark-theme` chỉ biểu thị việc trình duyệt đang ép Auto Dark và chỉ đổi header sáng, wordmark, menu desktop cùng menu mobile sang màu phù hợp với nền navy.
+- `src/layouts/SiteLayout.astro` phải nạp meta `color-scheme`, `force-light-probe.css` và `force-light.js` trong `<head>` theo đúng thứ tự.
+- `src/components/SiteNavigation.astro` giữ marker `data-navigation-theme` để Auto Dark không làm thay đổi header tối sẵn của homepage.
+
 ## Bản build phải vượt qua các kiểm tra sau.
 
 - `bun run check` phải hoàn thành với 0 lỗi, 0 cảnh báo và 0 hint.
