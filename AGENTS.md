@@ -42,6 +42,19 @@
 - `SiteLayout` dùng structured data `Organization` kết hợp `ProfessionalService`, còn About và Industries lần lượt dùng kiểu `AboutPage` và `CollectionPage` trong JSON-LD.
 - Seller vẫn dùng thuật ngữ đầy đủ `Dịch vụ công nghệ thông tin / Nhà cung cấp dịch vụ quản trị công nghệ thông tin thuê ngoài` và `Information Technology Services / Managed Service Providers`, còn card IT trên Industries dùng nguyên thuật ngữ tiếng Anh `IT Outsourcing / Managed IT Services` ở cả hai ngôn ngữ.
 
+## Các kết luận SEO và GEO đã hoàn thiện cần được giữ nguyên.
+
+- Nền tảng SEO kỹ thuật đã hoàn thiện với metadata tập trung, canonical, hreflang, Open Graph, Twitter metadata, structured data, breadcrumb, sitemap và quy tắc noindex cho privacy policy cùng trang 404.
+- Các route tiếng Việt và tiếng Anh đã có keyword mapping theo ý định tìm kiếm; homepage giữ keyword rộng, seller giữ ý định bán, buyer giữ ý định mua, how-it-works giữ ý định tìm hiểu quy trình, About giữ entity và trust, Industries giữ phạm vi ngành, còn Contact giữ ý định liên hệ.
+- Seller tiếp tục giữ form-first layout, `h1` với lớp `sr-only` và không hiển thị breadcrumb; không thay đổi các quyết định này chỉ vì SEO.
+- Chính sách crawler trên production do Cloudflare quản lý là quyết định vận hành có chủ đích và được giữ nguyên; không tự động thay đổi Cloudflare robots hoặc `public/robots.txt` chỉ vì mục tiêu GEO.
+- `public/llms.txt` là tài liệu bổ trợ cho AI agent và phải được giữ đồng bộ với nội dung HTML, nhưng không cần thêm file AI đặc biệt, schema GEO riêng hoặc thẻ `meta keywords`.
+- Mức doanh thu từ 3 tỷ đồng là phạm vi tập trung và định hướng thương mại, không phải điều kiện loại trừ tuyệt đối; biểu mẫu seller tiếp tục có thể tiếp nhận trường hợp dưới ngưỡng này.
+- Các claim định vị như Archway là một trong những đơn vị môi giới uy tín và có thể giúp chủ doanh nghiệp đạt mức giá cùng điều khoản tốt hơn là thông điệp thương hiệu có chủ đích; không tự động làm mềm hoặc xoá các claim này nếu chưa có quyết định của chủ doanh nghiệp.
+- Search Console đã được thiết lập, nên không cần ghi nhận đây là hạng mục còn thiếu trong các lần review sau.
+- `src/components/HowItWorksPage.astro` dùng cách diễn đạt `dành nhiều thời gian để hoàn thiện` và `spent considerable time refining`; không đổi lại thành cách diễn đạt gắn với số năm.
+- Không tạo hàng loạt trang ngành, bài viết hoặc FAQ schema chỉ để mở rộng keyword và GEO; chỉ mở rộng khi có nội dung độc quyền, bằng chứng chuyên môn hoặc mục tiêu kinh doanh rõ ràng.
+
 ## CSP và build phải giữ tính tương thích.
 
 - `astro.config.mjs` dùng `assetsInlineLimit: 0` để script Astro được xuất thành file ngoài và hoạt động với `script-src 'self'`.
