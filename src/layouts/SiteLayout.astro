@@ -43,7 +43,7 @@ const englishPath = lang === 'en' ? currentPath : `/en${currentPath === '/' ? '/
 const canonicalUrl = new URL(currentPath, siteUrl).href;
 const vietnameseUrl = new URL(vietnamesePath, siteUrl).href;
 const englishUrl = new URL(englishPath, siteUrl).href;
-const imageUrl = new URL('/assets/hero-poster.jpg', siteUrl).href;
+const imageUrl = new URL('/assets/og-image.jpg', siteUrl).href;
 const logoUrl = new URL('/favicon.svg', siteUrl).href;
 const languageCode = lang === 'vi' ? 'vi-VN' : 'en-VN';
 const openGraphLocale = lang === 'vi' ? 'vi_VN' : 'en_VN';
@@ -155,9 +155,9 @@ const structuredData = {
     <meta property="og:locale" content={openGraphLocale} />
     <meta property="og:locale:alternate" content={lang === 'vi' ? 'en_VN' : 'vi_VN'} />
     <meta property="og:image" content={imageUrl} />
-    <meta property="og:image:alt" content="Archway Business Brokers" />
-    <meta property="og:image:width" content="1280" />
-    <meta property="og:image:height" content="720" />
+    <meta property="og:image:alt" content="M&A Business Brokers in Vietnam | Archway Business Brokers" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:image:type" content="image/jpeg" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
