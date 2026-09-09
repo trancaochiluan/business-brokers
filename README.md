@@ -11,6 +11,12 @@ Website dùng tiếng Việt tại `/` và tiếng Anh tại `/en/`.
 - Zod kiểm tra payload.
 - Các trang được prerender thành HTML tĩnh; endpoint `POST /api/register/` chạy trên Cloudflare Worker.
 
+## Project này quản lý các trang ngành bằng component dùng chung.
+
+Các cặp trang ngành được tạo qua hai dynamic route tại `src/pages/industries-we-serve/[slug].astro` và `src/pages/en/industries-we-serve/[slug].astro`. Cả sáu ngành đều dùng seller-focused template tại `src/components/IndustryServicePage.astro` với nội dung và benchmark riêng tại `src/data/industry-service-pages.ts`. Các CTA đánh giá thương mại trên trang ngành dẫn trực tiếp đến form bán doanh nghiệp.
+
+LinkedIn của Archway được liên kết từ footer và thuộc tính `sameAs` trong structured data của tổ chức.
+
 ## Project này chạy local bằng các lệnh sau.
 
 ```bash

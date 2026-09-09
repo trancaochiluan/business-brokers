@@ -6,36 +6,45 @@ interface BreadcrumbItem {
   href?: string;
 }
 
+interface HeroImage {
+  avifSrcset: string;
+  webpSrcset: string;
+  src: string;
+  width: number;
+  height: number;
+}
+
 interface Props {
   lang: 'en' | 'vi';
   items: BreadcrumbItem[];
   heading: string;
   intro?: string;
   align?: 'left' | 'center';
+  image?: HeroImage;
 }
 
-const { lang, items, heading, intro, align = 'left' } = Astro.props;
+const defaultImage: HeroImage = {
+  avifSrcset: '/assets/image-library/archway_business_people_reviewing_financial_documents_1-640.avif 640w, /assets/image-library/archway_business_people_reviewing_financial_documents_1-1280.avif 1280w, /assets/image-library/archway_business_people_reviewing_financial_documents_1-1920.avif 1920w',
+  webpSrcset: '/assets/image-library/archway_business_people_reviewing_financial_documents_1-640.webp 640w, /assets/image-library/archway_business_people_reviewing_financial_documents_1-1280.webp 1280w, /assets/image-library/archway_business_people_reviewing_financial_documents_1-1920.webp 1920w',
+  src: '/assets/image-library/archway_business_people_reviewing_financial_documents_1-1280.webp',
+  width: 1280,
+  height: 720,
+};
+
+const { lang, items, heading, intro, align = 'left', image = defaultImage } = Astro.props;
 const isCentered = align === 'center';
 ---
 
 <section class={`relative isolate overflow-hidden px-6 py-10 text-[var(--color-paper)] sm:px-10 sm:py-14 lg:py-16 ${isCentered ? 'text-center' : ''}`}>
   <picture class="pointer-events-none absolute inset-0 z-0 block" aria-hidden="true">
-    <source
-      type="image/avif"
-      srcset="/assets/image-library/archway_business_people_reviewing_financial_documents_1-640.avif 640w, /assets/image-library/archway_business_people_reviewing_financial_documents_1-1280.avif 1280w, /assets/image-library/archway_business_people_reviewing_financial_documents_1-1920.avif 1920w"
-      sizes="100vw"
-    />
-    <source
-      type="image/webp"
-      srcset="/assets/image-library/archway_business_people_reviewing_financial_documents_1-640.webp 640w, /assets/image-library/archway_business_people_reviewing_financial_documents_1-1280.webp 1280w, /assets/image-library/archway_business_people_reviewing_financial_documents_1-1920.webp 1920w"
-      sizes="100vw"
-    />
+    <source type="image/avif" srcset={image.avifSrcset} sizes="100vw" />
+    <source type="image/webp" srcset={image.webpSrcset} sizes="100vw" />
     <img
       class="h-full w-full object-cover object-center"
-      src="/assets/image-library/archway_business_people_reviewing_financial_documents_1-1280.webp"
+      src={image.src}
       alt=""
-      width="1280"
-      height="720"
+      width={image.width}
+      height={image.height}
       loading="eager"
       fetchpriority="high"
       decoding="async"

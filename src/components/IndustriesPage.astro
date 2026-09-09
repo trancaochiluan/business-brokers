@@ -1,4 +1,5 @@
 ---
+import { industryPages } from '../data/industry-pages';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import PageHero from './PageHero.astro';
 import SiteFooter from './SiteFooter.astro';
@@ -8,73 +9,9 @@ interface Props {
   lang: 'en' | 'vi';
 }
 
-const industryImages = {
-  hvac: {
-    avifSrcset: '/assets/image-library/archway_owner_working_2-640.avif 640w, /assets/image-library/archway_owner_working_2-1280.avif 1280w, /assets/image-library/archway_owner_working_2-1920.avif 1920w',
-    webpSrcset: '/assets/image-library/archway_owner_working_2-640.webp 640w, /assets/image-library/archway_owner_working_2-1280.webp 1280w, /assets/image-library/archway_owner_working_2-1920.webp 1920w',
-    src: '/assets/image-library/archway_owner_working_2-1280.webp',
-    width: 1280,
-    height: 853,
-    altVi: 'Nhân viên trao đổi tại cơ sở dịch vụ công nghiệp',
-    altEn: 'Workers reviewing equipment at an industrial services facility',
-  },
-  itManagedServices: {
-    avifSrcset: '/assets/image-library/archway_working-640.avif 640w, /assets/image-library/archway_working-1280.avif 1280w, /assets/image-library/archway_working-1920.avif 1920w',
-    webpSrcset: '/assets/image-library/archway_working-640.webp 640w, /assets/image-library/archway_working-1280.webp 1280w, /assets/image-library/archway_working-1920.webp 1920w',
-    src: '/assets/image-library/archway_working-1280.webp',
-    width: 1280,
-    height: 853,
-    altVi: 'Nhân viên làm việc với máy tính tại doanh nghiệp',
-    altEn: 'Employee working at a computer in a business',
-  },
-  electricalContractors: {
-    avifSrcset: '/assets/image-library/archway_solar_panel-640.avif 640w, /assets/image-library/archway_solar_panel-1280.avif 1280w, /assets/image-library/archway_solar_panel-1920.avif 1920w',
-    webpSrcset: '/assets/image-library/archway_solar_panel-640.webp 640w, /assets/image-library/archway_solar_panel-1280.webp 1280w, /assets/image-library/archway_solar_panel-1920.webp 1920w',
-    src: '/assets/image-library/archway_solar_panel-1280.webp',
-    width: 1280,
-    height: 853,
-    altVi: 'Công nhân lắp đặt hệ thống điện mặt trời',
-    altEn: 'Workers installing a solar power system',
-  },
-  industrialMachinery: {
-    avifSrcset: '/assets/image-library/archway_factory-640.avif 640w, /assets/image-library/archway_factory-1280.avif 1280w, /assets/image-library/archway_factory-1920.avif 1920w',
-    webpSrcset: '/assets/image-library/archway_factory-640.webp 640w, /assets/image-library/archway_factory-1280.webp 1280w, /assets/image-library/archway_factory-1920.webp 1920w',
-    src: '/assets/image-library/archway_factory-1280.webp',
-    width: 1280,
-    height: 853,
-    altVi: 'Nhân viên vận hành máy móc trong nhà xưởng',
-    altEn: 'Worker operating machinery in a factory',
-  },
-  logisticsServices: {
-    avifSrcset: '/assets/image-library/archway_storage-640.avif 640w, /assets/image-library/archway_storage-1280.avif 1280w, /assets/image-library/archway_storage-1920.avif 1920w',
-    webpSrcset: '/assets/image-library/archway_storage-640.webp 640w, /assets/image-library/archway_storage-1280.webp 1280w, /assets/image-library/archway_storage-1920.webp 1920w',
-    src: '/assets/image-library/archway_storage-1280.webp',
-    width: 1280,
-    height: 853,
-    altVi: 'Kho hàng với hệ thống kệ lưu trữ',
-    altEn: 'Warehouse with storage racking',
-  },
-  medicalEquipment: {
-    avifSrcset: '/assets/image-library/archway_factory_working-640.avif 640w, /assets/image-library/archway_factory_working-1280.avif 1280w, /assets/image-library/archway_factory_working-1920.avif 1920w',
-    webpSrcset: '/assets/image-library/archway_factory_working-640.webp 640w, /assets/image-library/archway_factory_working-1280.webp 1280w, /assets/image-library/archway_factory_working-1920.webp 1920w',
-    src: '/assets/image-library/archway_factory_working-1280.webp',
-    width: 1280,
-    height: 850,
-    altVi: 'Công nhân vận hành thiết bị sản xuất',
-    altEn: 'Worker operating production equipment',
-  },
-} as const;
-
-type IndustryImageKey = keyof typeof industryImages;
-
-interface IndustryCard {
-  title: string;
-  description: string;
-  image: IndustryImageKey;
-}
-
 const { lang } = Astro.props;
 const isVietnamese = lang === 'vi';
+const localizedPath = (path: string) => (isVietnamese ? path : `/en${path}`);
 
 const copy = isVietnamese
   ? {
@@ -87,38 +24,6 @@ const copy = isVietnamese
       ctaText: 'Archway hỗ trợ chủ doanh nghiệp chuẩn bị giao dịch và người mua tìm cơ hội phù hợp tại Việt Nam.',
       sellCta: 'Trao đổi về bán doanh nghiệp',
       buyCta: 'Đăng ký nhận cơ hội mua',
-      industries: [
-        {
-          title: 'HVAC',
-          image: 'hvac',
-          description: 'Hệ thống sưởi, thông gió và điều hòa không khí cho công trình và doanh nghiệp.',
-        },
-        {
-          title: 'Nhà thầu điện',
-          image: 'electricalContractors',
-          description: 'Nhà thầu và đơn vị cung cấp dịch vụ điện cho công trình và doanh nghiệp.',
-        },
-        {
-          title: '3PL / Giao nhận vận tải',
-          image: 'logisticsServices',
-          description: 'Dịch vụ logistics bên thứ ba, giao nhận, kho bãi và vận chuyển hàng hóa.',
-        },
-        {
-          title: 'Máy móc & thiết bị công nghiệp',
-          image: 'industrialMachinery',
-          description: 'Doanh nghiệp cung cấp máy móc, thiết bị và giải pháp phục vụ sản xuất công nghiệp.',
-        },
-        {
-          title: 'IT Outsourcing / Managed IT Services',
-          image: 'itManagedServices',
-          description: 'Dịch vụ IT được thuê ngoài, quản trị và vận hành cho doanh nghiệp.'
-        },
-        {
-          title: 'Thiết bị y tế & dịch vụ kỹ thuật',
-          image: 'medicalEquipment',
-          description: 'Doanh nghiệp cung cấp thiết bị y tế, dịch vụ kỹ thuật và hỗ trợ vận hành.',
-        },
-      ] as IndustryCard[],
       footerAddress: 'Tầng 17, Tòa nhà Vincom Center, 72 đường Lê Thánh Tôn, Quận 1, Thành phố Hồ Chí Minh, Việt Nam',
       footerPhone: 'Điện thoại: 0346-346-550',
     }
@@ -132,38 +37,6 @@ const copy = isVietnamese
       ctaText: 'Archway supports owners preparing a sale and buyers looking for suitable acquisition opportunities in Vietnam.',
       sellCta: 'Discuss selling your business',
       buyCta: 'Join the buyer list',
-      industries: [
-        {
-          title: 'HVAC',
-          image: 'hvac',
-          description: 'Heating, ventilation and air conditioning systems for buildings and businesses.',
-        },
-        {
-          title: 'Electrical Contractors',
-          image: 'electricalContractors',
-          description: 'Electrical contractors and service providers for buildings, facilities and businesses.',
-        },
-        {
-          title: '3PL / Freight Forwarding',
-          image: 'logisticsServices',
-          description: 'Third-party logistics, freight forwarding, warehousing and transportation services.',
-        },
-        {
-          title: 'Industrial Machinery & Equipment',
-          image: 'industrialMachinery',
-          description: 'Businesses supplying machinery, equipment and solutions for industrial production.',
-        },
-        {
-          title: 'IT Outsourcing / Managed IT Services',
-          image: 'itManagedServices',
-          description: 'Outsourced IT support, management and operations for businesses.'
-        },
-        {
-          title: 'Medical Equipment & Technical Services',
-          image: 'medicalEquipment',
-          description: 'Businesses supplying medical equipment, technical services and operational support.',
-        },
-      ] as IndustryCard[],
       footerAddress: '17th Floor, Vincom Center Building, 72 Le Thanh Ton Street, District 1, Ho Chi Minh City, Vietnam',
       footerPhone: 'Phone: (+84) 346-346-550',
     };
@@ -187,28 +60,36 @@ const breadcrumbItems = [
         <div class="mx-auto w-full max-w-6xl">
           <h2 id="industries-cards-title" class="text-[clamp(1.9rem,4vw,3rem)] leading-tight text-[var(--color-navy)]">{copy.cardsHeading}</h2>
           <div class="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {copy.industries.map((industry, index) => (
-              <article class="bg-[var(--color-muted)] p-6 sm:p-8">
-                <div class="-mx-6 -mt-6 mb-6 overflow-hidden sm:-mx-8 sm:-mt-8">
-                  <picture class="block aspect-[3/2]">
-                    <source type="image/avif" srcset={industryImages[industry.image].avifSrcset} sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" />
-                    <source type="image/webp" srcset={industryImages[industry.image].webpSrcset} sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" />
-                    <img
-                      class="h-full w-full object-cover"
-                      src={industryImages[industry.image].src}
-                      alt={isVietnamese ? industryImages[industry.image].altVi : industryImages[industry.image].altEn}
-                      width={industryImages[industry.image].width}
-                      height={industryImages[industry.image].height}
-                      loading={index < 2 ? 'eager' : 'lazy'}
-                      decoding="async"
-                    />
-                  </picture>
-                </div>
-                <p class="text-sm font-medium uppercase tracking-[0.12em] text-[var(--color-navy)]">{String(index + 1).padStart(2, '0')}</p>
-                <h3 class="mt-3 text-[clamp(1.45rem,3vw,2rem)] font-medium leading-tight text-[var(--color-navy)]">{industry.title}</h3>
-                <p class="mt-4 text-base leading-7 text-[var(--color-ink)]">{industry.description}</p>
-              </article>
-            ))}
+            {industryPages.map((industry, index) => {
+              const industryContent = industry[lang];
+              const industryHref = localizedPath(`/industries-we-serve/${industry.slug}/`);
+
+              return (
+                <article class="flex h-full flex-col bg-[var(--color-muted)] p-6 sm:p-8">
+                  <div class="-mx-6 -mt-6 mb-6 overflow-hidden sm:-mx-8 sm:-mt-8">
+                    <picture class="block aspect-[3/2]">
+                      <source type="image/avif" srcset={industry.image.avifSrcset} sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" />
+                      <source type="image/webp" srcset={industry.image.webpSrcset} sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" />
+                      <img
+                        class="h-full w-full object-cover"
+                        src={industry.image.src}
+                        alt={isVietnamese ? industry.image.altVi : industry.image.altEn}
+                        width={industry.image.width}
+                        height={industry.image.height}
+                        loading={index < 2 ? 'eager' : 'lazy'}
+                        decoding="async"
+                      />
+                    </picture>
+                  </div>
+                  <p class="text-sm font-medium uppercase tracking-[0.12em] text-[var(--color-navy)]">{String(index + 1).padStart(2, '0')}</p>
+                  <h3 class="mt-3 text-[clamp(1.45rem,3vw,2rem)] font-medium leading-tight text-[var(--color-navy)]">
+                    <a class="hover:text-[var(--color-accent)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-ink)]" href={industryHref}>{industryContent.title}</a>
+                  </h3>
+                  <p class="mt-4 text-base leading-7 text-[var(--color-ink)]">{industryContent.cardDescription}</p>
+                  <a class="mt-auto pt-5 text-sm font-medium leading-6 text-[var(--color-accent)] underline underline-offset-4 hover:text-[var(--color-accent-hover)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-ink)] sm:text-base" href={industryHref}>{industryContent.cardLinkLabel}</a>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -220,8 +101,8 @@ const breadcrumbItems = [
             <p class="mt-3 text-base leading-7 text-[var(--color-ink)]">{copy.ctaText}</p>
           </div>
           <div class="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-            <a class="inline-flex min-h-11 items-center justify-center bg-[var(--color-accent)] px-5 py-3 text-center text-sm font-medium text-[var(--color-paper)] hover:bg-[var(--color-accent-hover)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)] sm:text-base" href={isVietnamese ? '/sell-your-business/' : '/en/sell-your-business/'}>{copy.sellCta}</a>
-            <a class="inline-flex min-h-11 items-center justify-center bg-[var(--color-ink)] px-5 py-3 text-center text-sm font-medium text-[var(--color-paper)] hover:bg-[var(--color-navy)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-ink)] sm:text-base" href={isVietnamese ? '/buyer-register/' : '/en/buyer-register/'}>{copy.buyCta}</a>
+            <a class="inline-flex min-h-11 items-center justify-center bg-[var(--color-accent)] px-5 py-3 text-center text-sm font-medium text-[var(--color-paper)] hover:bg-[var(--color-accent-hover)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)] sm:text-base" href={localizedPath('/sell-your-business/')}>{copy.sellCta}</a>
+            <a class="inline-flex min-h-11 items-center justify-center bg-[var(--color-ink)] px-5 py-3 text-center text-sm font-medium text-[var(--color-paper)] hover:bg-[var(--color-navy)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-ink)] sm:text-base" href={localizedPath('/buyer-register/')}>{copy.buyCta}</a>
           </div>
         </div>
       </section>

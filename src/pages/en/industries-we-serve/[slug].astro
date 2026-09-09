@@ -1,0 +1,19 @@
+---
+import IndustryServicePage from '../../../components/IndustryServicePage.astro';
+import { getIndustryServicePage } from '../../../data/industry-service-pages';
+import { industryPages } from '../../../data/industry-pages';
+
+export function getStaticPaths() {
+  return industryPages.map((industry) => ({
+    params: { slug: industry.slug },
+  }));
+}
+
+const servicePage = getIndustryServicePage(Astro.params.slug ?? '');
+
+if (!servicePage) {
+  throw new Error(`Missing service page for ${Astro.params.slug ?? 'unknown'}`);
+}
+---
+
+<IndustryServicePage lang="en" page={servicePage} />

@@ -1973,6 +1973,264 @@
       ]
     },
     {
+      "source": "electrical_contractors.jpg",
+      "sourceWidth": 2000,
+      "sourceHeight": 1333,
+      "variants": [
+        {
+          "width": 640,
+          "height": 426,
+          "avif": {
+            "src": "/assets/image-library/electrical_contractors-640.avif",
+            "bytes": 20562
+          },
+          "webp": {
+            "src": "/assets/image-library/electrical_contractors-640.webp",
+            "bytes": 43220
+          }
+        },
+        {
+          "width": 1280,
+          "height": 854,
+          "avif": {
+            "src": "/assets/image-library/electrical_contractors-1280.avif",
+            "bytes": 51343
+          },
+          "webp": {
+            "src": "/assets/image-library/electrical_contractors-1280.webp",
+            "bytes": 127910
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "avif": {
+            "src": "/assets/image-library/electrical_contractors-1920.avif",
+            "bytes": 85305
+          },
+          "webp": {
+            "src": "/assets/image-library/electrical_contractors-1920.webp",
+            "bytes": 250786
+          }
+        }
+      ]
+    },
+    {
+      "source": "3pl_logistics.jpg",
+      "sourceWidth": 2500,
+      "sourceHeight": 1096,
+      "variants": [
+        {
+          "width": 640,
+          "height": 280,
+          "avif": {
+            "src": "/assets/image-library/3pl_logistics-640.avif",
+            "bytes": 17435
+          },
+          "webp": {
+            "src": "/assets/image-library/3pl_logistics-640.webp",
+            "bytes": 46836
+          }
+        },
+        {
+          "width": 1280,
+          "height": 562,
+          "avif": {
+            "src": "/assets/image-library/3pl_logistics-1280.avif",
+            "bytes": 53168
+          },
+          "webp": {
+            "src": "/assets/image-library/3pl_logistics-1280.webp",
+            "bytes": 149782
+          }
+        },
+        {
+          "width": 1920,
+          "height": 842,
+          "avif": {
+            "src": "/assets/image-library/3pl_logistics-1920.avif",
+            "bytes": 95654
+          },
+          "webp": {
+            "src": "/assets/image-library/3pl_logistics-1920.webp",
+            "bytes": 285556
+          }
+        }
+      ]
+    },
+    {
+      "source": "industrial_machinery.jpg",
+      "sourceWidth": 4288,
+      "sourceHeight": 2848,
+      "variants": [
+        {
+          "width": 640,
+          "height": 426,
+          "avif": {
+            "src": "/assets/image-library/industrial_machinery-640.avif",
+            "bytes": 34225
+          },
+          "webp": {
+            "src": "/assets/image-library/industrial_machinery-640.webp",
+            "bytes": 76242
+          }
+        },
+        {
+          "width": 1280,
+          "height": 850,
+          "avif": {
+            "src": "/assets/image-library/industrial_machinery-1280.avif",
+            "bytes": 95319
+          },
+          "webp": {
+            "src": "/assets/image-library/industrial_machinery-1280.webp",
+            "bytes": 227696
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1276,
+          "avif": {
+            "src": "/assets/image-library/industrial_machinery-1920.avif",
+            "bytes": 159971
+          },
+          "webp": {
+            "src": "/assets/image-library/industrial_machinery-1920.webp",
+            "bytes": 418530
+          }
+        }
+      ]
+    },
+    {
+      "source": "it_services.jpg",
+      "sourceWidth": 1890,
+      "sourceHeight": 1080,
+      "variants": [
+        {
+          "width": 640,
+          "height": 366,
+          "avif": {
+            "src": "/assets/image-library/it_services-640.avif",
+            "bytes": 9366
+          },
+          "webp": {
+            "src": "/assets/image-library/it_services-640.webp",
+            "bytes": 22842
+          }
+        },
+        {
+          "width": 1280,
+          "height": 732,
+          "avif": {
+            "src": "/assets/image-library/it_services-1280.avif",
+            "bytes": 16810
+          },
+          "webp": {
+            "src": "/assets/image-library/it_services-1280.webp",
+            "bytes": 47150
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1098,
+          "avif": {
+            "src": "/assets/image-library/it_services-1920.avif",
+            "bytes": 24411
+          },
+          "webp": {
+            "src": "/assets/image-library/it_services-1920.webp",
+            "bytes": 74212
+          }
+        }
+      ]
+    },
+    {
+      "source": "medical_equipment.jpg",
+      "sourceWidth": 2560,
+      "sourceHeight": 1707,
+      "variants": [
+        {
+          "width": 640,
+          "height": 426,
+          "avif": {
+            "src": "/assets/image-library/medical_equipment-640.avif",
+            "bytes": 12064
+          },
+          "webp": {
+            "src": "/assets/image-library/medical_equipment-640.webp",
+            "bytes": 24398
+          }
+        },
+        {
+          "width": 1280,
+          "height": 854,
+          "avif": {
+            "src": "/assets/image-library/medical_equipment-1280.avif",
+            "bytes": 24911
+          },
+          "webp": {
+            "src": "/assets/image-library/medical_equipment-1280.webp",
+            "bytes": 59360
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "avif": {
+            "src": "/assets/image-library/medical_equipment-1920.avif",
+            "bytes": 37042
+          },
+          "webp": {
+            "src": "/assets/image-library/medical_equipment-1920.webp",
+            "bytes": 96964
+          }
+        }
+      ]
+    },
+    {
+      "source": "archway_hvac_ductwork.jpg",
+      "sourceWidth": 2560,
+      "sourceHeight": 1707,
+      "variants": [
+        {
+          "width": 640,
+          "height": 427,
+          "avif": {
+            "src": "/assets/image-library/archway_hvac_ductwork-640.avif",
+            "bytes": 10873
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_hvac_ductwork-640.webp",
+            "bytes": 28976
+          }
+        },
+        {
+          "width": 1280,
+          "height": 854,
+          "avif": {
+            "src": "/assets/image-library/archway_hvac_ductwork-1280.avif",
+            "bytes": 23344
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_hvac_ductwork-1280.webp",
+            "bytes": 71034
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "avif": {
+            "src": "/assets/image-library/archway_hvac_ductwork-1920.avif",
+            "bytes": 34763
+          },
+          "webp": {
+            "src": "/assets/image-library/archway_hvac_ductwork-1920.webp",
+            "bytes": 119834
+          }
+        }
+      ]
+    },
+    {
       "source": "vincom_center.jpg",
       "sourceWidth": 819,
       "sourceHeight": 1024,

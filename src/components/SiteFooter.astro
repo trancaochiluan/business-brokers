@@ -6,6 +6,9 @@ interface Props {
 }
 
 const { address, phone, theme = 'dark' } = Astro.props;
+const linkedinLabel = Astro.url.pathname.startsWith('/en/')
+  ? 'Archway Business Brokers on LinkedIn'
+  : 'Archway Business Brokers trên LinkedIn';
 const footerClass = theme === 'light'
   ? 'mt-auto bg-[var(--color-paper)] px-6 py-6 text-center text-sm text-[var(--color-ink)] sm:px-10'
   : 'mt-auto bg-[var(--color-ink)] px-6 py-6 text-center text-sm text-[var(--color-paper)] sm:px-10';
@@ -29,6 +32,12 @@ const linkClass = theme === 'light'
         <path stroke-linecap="round" stroke-linejoin="round" d="m4 7 8 6 8-6" />
       </svg>
       <span>brokers@archway.vn</span>
+    </a>
+    <a class={`inline-flex items-center gap-2 ${linkClass}`} href="https://www.linkedin.com/company/archway-business-brokers/" rel="me external" aria-label={linkedinLabel}>
+      <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M5.3 7.8H2.2V21h3.1V7.8ZM5.5 3.8A1.8 1.8 0 1 0 2 3.8a1.8 1.8 0 0 0 3.5 0ZM21 13.4c0-4-2.1-5.9-4.9-5.9a4.2 4.2 0 0 0-3.8 2.1V7.8H9.2V21h3.1v-6.5c0-1.7.3-3.4 2.5-3.4 2.2 0 2.2 2 2.2 3.5V21h3.1l.9-7.6Z" />
+      </svg>
+      <span>LinkedIn</span>
     </a>
   </div>
 </footer>

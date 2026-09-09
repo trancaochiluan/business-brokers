@@ -15,6 +15,7 @@ interface Props {
   includeNavigationScript?: boolean;
   pageType?: 'WebPage' | 'ContactPage' | 'AboutPage' | 'CollectionPage';
   breadcrumbs?: BreadcrumbItem[];
+  serviceType?: string;
 }
 
 const {
@@ -25,6 +26,7 @@ const {
   includeNavigationScript = true,
   pageType = 'WebPage',
   breadcrumbs = [],
+  serviceType,
 } = Astro.props;
 
 const colorVars = Object.entries(designTokens.colors as Record<string, string>)
@@ -54,6 +56,7 @@ const absoluteBreadcrumbs = breadcrumbs.map((item) => ({
   name: item.name,
   url: new URL(item.href ?? currentPath, siteUrl).href,
 }));
+const serviceId = `${canonicalUrl}#service`;
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -63,6 +66,7 @@ const structuredData = {
       '@id': `${siteUrl.href}#organization`,
       name: 'Archway Business Brokers',
       url: siteUrl.href,
+      sameAs: ['https://www.linkedin.com/company/archway-business-brokers/'],
       description: organizationDescription,
       logo: {
         '@type': 'ImageObject',
@@ -118,7 +122,25 @@ const structuredData = {
       inLanguage: languageCode,
       isPartOf: { '@id': `${siteUrl.href}#website` },
       about: { '@id': `${siteUrl.href}#organization` },
+      ...(serviceType ? { mainEntity: { '@id': serviceId } } : {}),
     },
+    ...(serviceType
+      ? [
+          {
+            '@type': 'Service',
+            '@id': serviceId,
+            name: serviceType,
+            description,
+            serviceType,
+            url: canonicalUrl,
+            provider: { '@id': `${siteUrl.href}#organization` },
+            areaServed: {
+              '@type': 'Country',
+              name: 'Vietnam',
+            },
+          },
+        ]
+      : []),
     ...(absoluteBreadcrumbs.length > 0
       ? [
           {

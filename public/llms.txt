@@ -4,14 +4,14 @@
 
 ## About
 
-Archway Business Brokers is a quality-first business brokerage focused on delivering an ideal exit for business owners in Vietnam.
+Archway Business Brokers is a quality-first business brokerage focused on supporting business owners in Vietnam through a sale or ownership transfer.
 
 The team guides owners through the M&A process with a clear, confidential and practical approach.
 
 ## Criteria
 
 - Businesses operating in Vietnam.
-- Operating businesses in Vietnam with annual revenue from VND 3 billion.
+- Operating businesses in Vietnam with annual revenue from VND 3 billion are Archway's primary focus, although the seller form can accept businesses below this level.
 - Owners considering a sale or transfer.
 - Buyers seeking operating businesses in Vietnam.
 
@@ -29,32 +29,50 @@ Archway also considers transactions in other industries.
 ## Services
 
 - Business owners can discuss selling or transferring a business through the seller registration form.
-- Archway supports initial business valuation preparation, sale profile development, buyer outreach and transaction coordination.
+- Archway provides a free and confidential initial commercial valuation assessment for owners preparing to sell. This assessment supports sale preparation and is not a certified valuation, audit, fairness opinion or legal, tax or accounting advice.
+- Archway supports sale profile development, confidential buyer outreach, offer comparison, due diligence coordination and handover.
+- Each industry page provides seller-focused guidance on valuation, preparation, transferability and transaction support, and links directly to the seller registration form.
 - Buyers can register for suitable business acquisition opportunities through the priority buyer list.
 - Visitors can review the ten-step business sale and transfer process.
-- Visitors can contact Archway by form, phone or email.
+- Visitors can contact Archway by form, phone, email or LinkedIn.
 
 ## Contact
 
 - Phone: +84 346 346 550
 - Email: brokers@archway.vn
+- LinkedIn: https://www.linkedin.com/company/archway-business-brokers/
 - Website: https://archway.vn/
 
-## Pages
+## Vietnamese pages
 
-- Vietnamese homepage: https://archway.vn/
-- Vietnamese seller registration: https://archway.vn/sell-your-business/
-- Vietnamese buyer registration: https://archway.vn/buyer-register/
-- Vietnamese process: https://archway.vn/how-it-works/
-- Vietnamese about: https://archway.vn/about/
-- Vietnamese industries: https://archway.vn/industries-we-serve/
-- Vietnamese contact: https://archway.vn/contact/
-- Vietnamese privacy policy: https://archway.vn/privacy-policy/
-- English homepage: https://archway.vn/en/
-- English seller registration: https://archway.vn/en/sell-your-business/
-- English buyer registration: https://archway.vn/en/buyer-register/
-- English process: https://archway.vn/en/how-it-works/
-- English about: https://archway.vn/en/about/
-- English industries: https://archway.vn/en/industries-we-serve/
-- English contact: https://archway.vn/en/contact/
-- English privacy policy: https://archway.vn/en/privacy-policy/
+- Homepage: https://archway.vn/
+- Seller registration: https://archway.vn/sell-your-business/
+- Buyer registration: https://archway.vn/buyer-register/
+- Business sale process: https://archway.vn/how-it-works/
+- About Archway: https://archway.vn/about/
+- Industries: https://archway.vn/industries-we-serve/
+- Sell an HVAC business: https://archway.vn/industries-we-serve/hvac/
+- Sell an electrical contracting business: https://archway.vn/industries-we-serve/electrical-contractors/
+- Sell a 3PL or freight forwarding business: https://archway.vn/industries-we-serve/3pl-freight-forwarding/
+- Sell an industrial machinery and equipment business: https://archway.vn/industries-we-serve/industrial-machinery-equipment/
+- Sell an IT outsourcing or managed IT services business: https://archway.vn/industries-we-serve/it-outsourcing-managed-it-services/
+- Sell a medical equipment and technical services business: https://archway.vn/industries-we-serve/medical-equipment-technical-services/
+- Contact: https://archway.vn/contact/
+- Privacy policy: https://archway.vn/privacy-policy/
+
+## English pages
+
+- Homepage: https://archway.vn/en/
+- Seller registration: https://archway.vn/en/sell-your-business/
+- Buyer registration: https://archway.vn/en/buyer-register/
+- Business sale process: https://archway.vn/en/how-it-works/
+- About Archway: https://archway.vn/en/about/
+- Industries: https://archway.vn/en/industries-we-serve/
+- Sell an HVAC business: https://archway.vn/en/industries-we-serve/hvac/
+- Sell an electrical contracting business: https://archway.vn/en/industries-we-serve/electrical-contractors/
+- Sell a 3PL or freight forwarding business: https://archway.vn/en/industries-we-serve/3pl-freight-forwarding/
+- Sell an industrial machinery and equipment business: https://archway.vn/en/industries-we-serve/industrial-machinery-equipment/
+- Sell an IT outsourcing or managed IT services business: https://archway.vn/en/industries-we-serve/it-outsourcing-managed-it-services/
+- Sell a medical equipment and technical services business: https://archway.vn/en/industries-we-serve/medical-equipment-technical-services/
+- Contact: https://archway.vn/en/contact/
+- Privacy policy: https://archway.vn/en/privacy-policy/

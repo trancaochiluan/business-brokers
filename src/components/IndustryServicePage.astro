@@ -1,0 +1,186 @@
+---
+import type { IndustryServicePage as IndustryServicePageData } from '../data/industry-service-pages';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PageHero from './PageHero.astro';
+import SiteFooter from './SiteFooter.astro';
+import SiteNavigation from './SiteNavigation.astro';
+
+interface Props {
+  lang: 'en' | 'vi';
+  page: IndustryServicePageData;
+}
+
+const { lang, page } = Astro.props;
+const isVietnamese = lang === 'vi';
+const content = page[lang];
+const benchmarkRows = [
+  {
+    label: isVietnamese ? 'Hệ số SDE' : 'SDE multiple',
+    range: content.benchmarkItems[0].value,
+    average: content.benchmarkItems[1].value,
+  },
+  {
+    label: isVietnamese ? 'Hệ số doanh thu' : 'Revenue multiple',
+    range: content.benchmarkItems[2].value,
+    average: content.benchmarkItems[3].value,
+  },
+];
+const industriesHref = isVietnamese ? '/industries-we-serve/' : '/en/industries-we-serve/';
+const sellerHref = isVietnamese ? '/sell-your-business/' : '/en/sell-your-business/';
+const breadcrumbItems = [
+  { name: content.homeLabel, href: isVietnamese ? '/' : '/en/' },
+  { name: content.industriesLabel, href: industriesHref },
+  { name: content.heading },
+];
+---
+
+<SiteLayout
+  lang={lang}
+  title={content.metaTitle}
+  description={content.metaDescription}
+  breadcrumbs={breadcrumbItems}
+  serviceType={content.serviceType}
+>
+  <div class="flex min-h-dvh flex-col bg-[var(--color-muted)] text-[var(--color-ink)]">
+    <div class="relative min-h-[60px] bg-[var(--color-paper)]">
+      <SiteNavigation lang={lang} showBrand theme="light" />
+    </div>
+
+    <main>
+      <PageHero lang={lang} items={breadcrumbItems} heading={content.heading} intro={content.intro} image={page.heroImage} />
+
+      <section class="bg-[var(--color-paper)] px-6 py-14 sm:px-10 sm:py-20" aria-labelledby="service-lead-title">
+        <div class="mx-auto w-full max-w-6xl">
+          <div class="grid gap-8 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] lg:gap-16">
+            <h2 id="service-lead-title" class="text-[clamp(1.9rem,4vw,3rem)] leading-tight text-[var(--color-navy)]">{content.leadHeading}</h2>
+            <div class="max-w-3xl space-y-5 text-base leading-7 text-[var(--color-ink)]">
+              {content.leadParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+              <a class="inline-flex text-base font-medium text-[var(--color-accent)] underline underline-offset-4 hover:text-[var(--color-accent-hover)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-ink)]" href={sellerHref}>{content.leadLink}</a>
+            </div>
+          </div>
+          <picture class="mt-10 block aspect-[4/3] overflow-hidden sm:mt-14 sm:aspect-[16/7] lg:aspect-[16/5]">
+            <source type="image/avif" srcset={page.leadImage.avifSrcset} sizes="(min-width: 1024px) 1200px, 100vw" />
+            <source type="image/webp" srcset={page.leadImage.webpSrcset} sizes="(min-width: 1024px) 1200px, 100vw" />
+            <img
+              class="h-full w-full object-cover object-center"
+              src={page.leadImage.src}
+              alt={isVietnamese ? page.leadImage.altVi : page.leadImage.altEn}
+              width={page.leadImage.width}
+              height={page.leadImage.height}
+              loading="eager"
+              decoding="async"
+            />
+          </picture>
+        </div>
+      </section>
+
+      <section class="bg-[var(--color-muted)] px-6 py-14 sm:px-10 sm:py-20" aria-labelledby="service-offer-title">
+        <div class="mx-auto w-full max-w-6xl">
+          <div class="max-w-4xl">
+            <h2 id="service-offer-title" class="text-[clamp(1.9rem,4vw,3rem)] leading-tight text-[var(--color-navy)]">{content.servicesHeading}</h2>
+            <p class="mt-4 max-w-3xl text-base leading-7 text-[var(--color-ink)]">{content.servicesIntro}</p>
+          </div>
+
+          <div class="mt-12 space-y-16 sm:mt-16 sm:space-y-24">
+            {content.services.map((service, index) => {
+              const imageFirst = service.imagePosition === 'left';
+              const serviceTitleId = `service-${index + 1}-title`;
+
+              return (
+                <article class="grid items-center gap-8 lg:grid-cols-2 lg:gap-16" aria-labelledby={serviceTitleId}>
+                  <div class={imageFirst ? 'lg:order-1' : 'lg:order-2'}>
+                    <picture class="block aspect-[3/2] overflow-hidden">
+                      <source type="image/avif" srcset={service.image.avifSrcset} sizes="(min-width: 1024px) 50vw, 100vw" />
+                      <source type="image/webp" srcset={service.image.webpSrcset} sizes="(min-width: 1024px) 50vw, 100vw" />
+                      <img
+                        class="h-full w-full object-cover"
+                        src={service.image.src}
+                        alt={isVietnamese ? service.image.altVi : service.image.altEn}
+                        width={service.image.width}
+                        height={service.image.height}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </picture>
+                  </div>
+                  <div class={imageFirst ? 'lg:order-2' : 'lg:order-1'}>
+                    <h3 id={serviceTitleId} class="text-[clamp(1.65rem,3vw,2.4rem)] leading-tight text-[var(--color-navy)]">{service.title}</h3>
+                    <p class="mt-4 max-w-xl text-base leading-7 text-[var(--color-ink)]">{service.text}</p>
+                    {service.linkLabel && <a class="mt-5 inline-flex text-base font-medium text-[var(--color-accent)] underline underline-offset-4 hover:text-[var(--color-accent-hover)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-ink)]" href={sellerHref}>{service.linkLabel}</a>}
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-[var(--color-paper)] px-6 py-14 sm:px-10 sm:py-20" aria-labelledby="service-benchmark-title">
+        <div class="mx-auto w-full max-w-6xl">
+          <div class="max-w-4xl">
+            <h2 id="service-benchmark-title" class="text-[clamp(1.9rem,4vw,3rem)] leading-tight text-[var(--color-navy)]">{content.benchmarkHeading}</h2>
+            <p class="mt-4 max-w-3xl text-base leading-7 text-[var(--color-ink)]">{content.benchmarkIntro}</p>
+          </div>
+          <dl class="mt-10 grid gap-8 sm:grid-cols-2 sm:gap-x-12">
+            {benchmarkRows.map((row) => (
+              <div class="space-y-2">
+                <dt class="text-base font-medium text-[var(--color-navy)]">{row.label}</dt>
+                <dd>
+                  <span class="block text-[clamp(1.6rem,3vw,2.4rem)] leading-none text-[var(--color-navy)]">{row.range}</span>
+                  <span class="mt-2 block text-sm leading-6 text-[var(--color-ink)]">{isVietnamese ? 'Trung bình: ' : 'Average: '}{row.average}</span>
+                </dd>
+              </div>
+            ))}
+          </dl>
+          <p class="mt-6 max-w-4xl text-sm leading-6 text-[var(--color-ink)]">{content.benchmarkNote}</p>
+        </div>
+      </section>
+
+      <section class="bg-[var(--color-paper)] px-6 py-12 sm:px-10 sm:py-16" aria-labelledby="service-benchmark-example-title">
+        <div class="mx-auto grid w-full max-w-6xl gap-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-12">
+          <h2 id="service-benchmark-example-title" class="text-[clamp(1.75rem,3.5vw,2.75rem)] leading-tight text-[var(--color-navy)]">{content.benchmarkExampleHeading}</h2>
+          <div class="space-y-4 text-base leading-7 text-[var(--color-ink)]">
+            {content.benchmarkExampleParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-[var(--color-ink)] px-6 py-14 text-[var(--color-paper)] sm:px-10 sm:py-20" aria-labelledby="service-outcomes-title">
+        <div class="mx-auto grid w-full max-w-6xl gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
+          <div>
+            <h2 id="service-outcomes-title" class="text-[clamp(1.9rem,4vw,3rem)] leading-tight text-[var(--color-paper)]">{content.outcomesHeading}</h2>
+            <p class="mt-5 max-w-xl text-base leading-7 text-[var(--color-paper)]">{content.outcomesIntro}</p>
+          </div>
+          <div class="grid gap-x-10 gap-y-9 sm:grid-cols-2">
+            {content.outcomes.map((outcome) => (
+              <article>
+                <h3 class="text-xl font-medium leading-tight text-[var(--color-paper)]">{outcome.title}</h3>
+                <p class="mt-3 text-base leading-7 text-[var(--color-paper)]">{outcome.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-[var(--color-muted)] py-0 text-[var(--color-paper)]" aria-labelledby="service-cta-title">
+        <div class="relative isolate flex min-h-[22rem] w-full items-center overflow-hidden rounded-t-[3rem] bg-[var(--color-ink)] px-6 py-12 sm:px-16 sm:py-16 lg:px-24">
+          <picture class="pointer-events-none absolute inset-0 z-0 block" aria-hidden="true">
+            <source type="image/avif" srcset={page.ctaImage.avifSrcset} sizes="100vw" />
+            <source type="image/webp" srcset={page.ctaImage.webpSrcset} sizes="100vw" />
+            <img class="h-full w-full object-cover object-center" src={page.ctaImage.src} alt="" width={page.ctaImage.width} height={page.ctaImage.height} loading="lazy" decoding="async" />
+          </picture>
+          <div class="pointer-events-none absolute inset-0 z-[1] bg-[var(--color-scrim)]"></div>
+          <div class="relative z-[2] flex w-full flex-col items-start justify-between gap-7 sm:flex-row sm:items-center">
+            <div class="max-w-3xl">
+              <h2 id="service-cta-title" class="text-[clamp(1.75rem,4vw,3rem)] leading-tight text-[var(--color-paper)]">{content.ctaHeading}</h2>
+              <p class="mt-4 max-w-2xl text-base leading-7 text-[var(--color-paper)]">{content.ctaText}</p>
+            </div>
+            <a class="inline-flex min-h-11 w-full shrink-0 items-center justify-center bg-[var(--color-accent)] px-6 py-3 text-center text-sm font-medium text-[var(--color-paper)] hover:bg-[var(--color-accent-hover)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-paper)] sm:w-auto sm:text-base" href={sellerHref}>{content.ctaLink}</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <SiteFooter theme="dark" address={content.footerAddress} phone={content.footerPhone} />
+  </div>
+</SiteLayout>
